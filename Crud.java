@@ -26,11 +26,11 @@ public class Crud{
             ps = connection.prepareStatement(sql);
             ps.setString(1, u.getNom());
             ps.setString(2, u.getPrenom());
-            ps.setString(3, u.getDate_naissance());
+            ps.setString(3, u.getDateNaissance());
             ps.setString(4, u.getAdresse());
             ps.setString(5, u.getMail());
-            ps.setString(6, u.getNumero_telephone());
-            ps.setString(7, u.getEtat_civil());
+            ps.setString(6, u.getNumeroTelephone());
+            ps.setString(7, u.getEtatCivil());
             ps.setString(8, u.getProfession());
             ps.setString(9, u.getPhoto());
             ps.setString(10, String.valueOf(u.getPoint()));
@@ -98,17 +98,17 @@ public class Crud{
                         ps = connection.prepareStatement(sql);
                         ps.setString(1, u.getNom());
                         ps.setString(2, u.getPrenom());
-                        ps.setString(3, u.getDate_naissance());
+                        ps.setString(3, u.getDateNaissance());
                         ps.setString(4, u.getAdresse());
                         ps.setString(5, u.getMail());
-                        ps.setString(6, u.getNumero_telephone());
-                        ps.setString(7, u.getEtat_civil());
+                        ps.setString(6, u.getNumeroTelephone());
+                        ps.setString(7, u.getEtatCivil());
                         ps.setString(8, u.getProfession());
                         ps.setString(9, u.getPhoto());
                         ps.setString(10, String.valueOf(u.getPoint()));
                         ps.setString(11, String.valueOf(u.getLatitude()));
                         ps.setString(12, String.valueOf(u.getLongitude()));
-                        ps.setString(13, String.valueOf(u.getId_utilisateur()));
+                        ps.setString(13, String.valueOf(u.getIdUtilisateur()));
                 
                     ps.executeUpdate();
                     
@@ -148,14 +148,14 @@ public class Crud{
                 if (rs.next())
                 {    
                     utilisateur = new Utilisateur();
-                    utilisateur.setId_utilisateur(rs.getInt("id_utilisateur"));
+                    utilisateur.setIdUtilisateur(rs.getInt("id_utilisateur"));
                     utilisateur.setNom(rs.getString("nom"));
                     utilisateur.setPrenom(rs.getString("prenom"));
-                    utilisateur.setDate_naissance(rs.getString("date_naissance"));
+                    utilisateur.setDateNaissance(rs.getString("date_naissance"));
                     utilisateur.setAdresse(rs.getString("adresse"));
                     utilisateur.setMail(rs.getString("mail"));
-                    utilisateur.setNumero_telephone(rs.getString("numero_telephone"));
-                    utilisateur.setEtat_civil(rs.getString("etat_civil"));
+                    utilisateur.setNumeroTelephone(rs.getString("numero_telephone"));
+                    utilisateur.setEtatCivil(rs.getString("etat_civil"));
                     utilisateur.setProfession(rs.getString("profession"));
                     utilisateur.setPhoto(rs.getString("photo"));
                     utilisateur.setPoint(rs.getLong("point"));
@@ -219,8 +219,8 @@ public class Crud{
             rs = ps.executeQuery();
             if (rs.next()) {
                 secteur = new Secteur();
-                secteur.setId_secteur(rs.getInt("id_secteur"));
-                secteur.setNom_secteur(rs.getString("nom_secteur"));
+                secteur.setIdSecteur(rs.getInt("id_secteur"));
+                secteur.setNomSecteur(rs.getString("nom_secteur"));
             }
         } finally {
             if (rs != null) {
@@ -243,8 +243,8 @@ public class Crud{
             connection = Connex.getConnection();
             String sql = "UPDATE Secteur SET nom_secteur = ? WHERE id_secteur = ?";
             ps = connection.prepareStatement(sql);
-            ps.setString(1, secteur.getNom_secteur());
-            ps.setInt(2, secteur.getId_secteur());
+            ps.setString(1, secteur.getNomSecteur());
+            ps.setInt(2, secteur.getIdSecteur());
 
             ps.executeUpdate();
         } finally {
@@ -286,7 +286,7 @@ public class Crud{
             String sql = "INSERT INTO Diplome (diplome, id_secteur) VALUES (?, ?)";
             ps = connection.prepareStatement(sql);
             ps.setString(1, diplome.getDiplome());
-            ps.setInt(2, diplome.getId_secteur());
+            ps.setInt(2, diplome.getIdSecteur());
 
             ps.executeUpdate();
         } finally {
@@ -312,9 +312,9 @@ public class Crud{
             rs = ps.executeQuery();
             if (rs.next()) {
                 diplome = new Diplome();
-                diplome.setId_diplome(rs.getInt("id_diplome"));
+                diplome.setIdDiplome(rs.getInt("id_diplome"));
                 diplome.setDiplome(rs.getString("diplome"));
-                diplome.setId_secteur(rs.getInt("id_secteur"));
+                diplome.setIdSecteur(rs.getInt("id_secteur"));
             }
         } finally {
             if (rs != null) {
@@ -338,8 +338,8 @@ public class Crud{
             String sql = "UPDATE Diplome SET diplome = ?, id_secteur = ? WHERE id_diplome = ?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, diplome.getDiplome());
-            ps.setInt(2, diplome.getId_secteur());
-            ps.setInt(3, diplome.getId_diplome());
+            ps.setInt(2, diplome.getIdSecteur());
+            ps.setInt(3, diplome.getIdDiplome());
 
             ps.executeUpdate();
         } finally {
@@ -384,11 +384,11 @@ public class Crud{
             ps.setString(1, entreprise.getEntreprise());
             ps.setString(2, String.valueOf(entreprise.getPoint()));
             ps.setString(3, entreprise.getType());
-            ps.setString(4, entreprise.getDate_creation());
+            ps.setString(4, entreprise.getDateCreation());
             ps.setString(5, entreprise.getAdresse());
-            ps.setString(6, entreprise.getSite_web());
+            ps.setString(6, entreprise.getSiteWeb());
             ps.setString(7, entreprise.getMail());
-            ps.setString(8, entreprise.getNum_telephone());
+            ps.setString(8, entreprise.getNumTelephone());
             ps.setString(9, String.valueOf(entreprise.getLatitude()));
             ps.setString(10,String.valueOf(entreprise.getLongitude()));
             ps.setString(11, entreprise.getImage());
@@ -434,15 +434,15 @@ public class Crud{
             ps.setString(1, entreprise.getEntreprise());
             ps.setString(2, String.valueOf(entreprise.getPoint()));
             ps.setString(3, entreprise.getType());
-            ps.setString(4, entreprise.getDate_creation());
+            ps.setString(4, entreprise.getDateCreation());
             ps.setString(5, entreprise.getAdresse());
-            ps.setString(6, entreprise.getSite_web());
+            ps.setString(6, entreprise.getSiteWeb());
             ps.setString(7, entreprise.getMail());
-            ps.setString(8, entreprise.getNum_telephone());
+            ps.setString(8, entreprise.getNumTelephone());
             ps.setString(9, String.valueOf(entreprise.getLatitude()));
             ps.setString(10,String.valueOf(entreprise.getLongitude()));
             ps.setString(11, entreprise.getImage());
-            ps.setInt(12, entreprise.getId_entreprise());
+            ps.setInt(12, entreprise.getIdEntreprise());
 
             ps.executeUpdate();
         } finally {
@@ -468,15 +468,15 @@ public class Crud{
             rs = ps.executeQuery();
             if (rs.next()) {
                 entreprise = new Entreprise();
-                entreprise.setId_entreprise(rs.getInt("id_entreprise"));
+                entreprise.setIdEntreprise(rs.getInt("id_entreprise"));
                 entreprise.setEntreprise(rs.getString("entreprise"));
                 entreprise.setPoint(rs.getLong("point"));
                 entreprise.setType(rs.getString("type"));
-                entreprise.setDate_creation(rs.getDate("date_creation"));
+                entreprise.setDateCreation(rs.getDate("date_creation"));
                 entreprise.setAdresse(rs.getString("adresse"));
-                entreprise.setSite_web(rs.getString("site_web"));
+                entreprise.setSiteWeb(rs.getString("site_web"));
                 entreprise.setMail(rs.getString("mail"));
-                entreprise.setNum_telephone(rs.getString("num_telephone"));
+                entreprise.setNumTelephone(rs.getString("num_telephone"));
                 entreprise.setLatitude(rs.getDouble("latitude"));
                 entreprise.setLongitude(rs.getDouble("longitude"));
                 entreprise.setImage(rs.getString("image"));
@@ -509,8 +509,8 @@ public class Crud{
             ps.setString(1, poste.getDescription());
             ps.setDouble(2, poste.getSalaire());
             ps.setString(3, poste.getTitre());
-            ps.setInt(4, poste.getId_diplome());
-            ps.setInt(5, poste.getId_entreprise());
+            ps.setInt(4, poste.getIdDiplome());
+            ps.setInt(5, poste.getIdEntreprise());
 
             ps.executeUpdate();
         } finally {
@@ -552,9 +552,9 @@ public class Crud{
             ps.setString(1, poste.getDescription());
             ps.setDouble(2, poste.getSalaire());
             ps.setString(3, poste.getTitre());
-            ps.setInt(4, poste.getId_diplome());
-            ps.setInt(5, poste.getId_entreprise());
-            ps.setInt(6, poste.getId_post());
+            ps.setInt(4, poste.getIdDiplome());
+            ps.setInt(5, poste.getIdEntreprise());
+            ps.setInt(6, poste.getIdPost());
 
             ps.executeUpdate();
         } finally {
@@ -580,12 +580,12 @@ public class Crud{
             rs = ps.executeQuery();
             if (rs.next()) {
                 poste = new Poste();
-                poste.setId_post(rs.getInt("id_post"));
+                poste.setIdPost(rs.getInt("id_post"));
                 poste.setDescription(rs.getString("description"));
                 poste.setSalaire(rs.getDouble("salaire"));
                 poste.setTitre(rs.getString("titre"));
-                poste.setId_diplome(rs.getInt("id_diplome"));
-                poste.setId_entreprise(rs.getInt("id_entreprise"));
+                poste.setIdDiplome(rs.getInt("id_diplome"));
+                poste.setIdEntreprise(rs.getInt("id_entreprise"));
             }
         } finally {
             if (rs != null) {
@@ -615,7 +615,7 @@ public class Crud{
             ps = connection.prepareStatement(sql);
             ps.setString(1, competence.getCompetence());
             ps.setString(2, competence.getDescription());
-            ps.setInt(3, competence.getId_utilisateur());
+            ps.setInt(3, competence.getIdUtilisateur());
 
             ps.executeUpdate();
         } finally {
@@ -656,8 +656,8 @@ public class Crud{
             ps = connection.prepareStatement(sql);
             ps.setString(1, competence.getCompetence());
             ps.setString(2, competence.getDescription());
-            ps.setInt(3, competence.getId_utilisateur());
-            ps.setInt(4, competence.getId_competence());
+            ps.setInt(3, competence.getIdUtilisateur());
+            ps.setInt(4, competence.getIdCompetence());
 
             ps.executeUpdate();
         } finally {
@@ -683,10 +683,10 @@ public class Crud{
             rs = ps.executeQuery();
             if (rs.next()) {
                 competence = new Competence();
-                competence.setId_competence(rs.getInt("id_competence"));
+                competence.setIdCompetence(rs.getInt("id_competence"));
                 competence.setCompetence(rs.getString("competence"));
                 competence.setDescription(rs.getString("description"));
-                competence.setId_utilisateur(rs.getInt("id_utilisateur"));
+                competence.setIdUtilisateur(rs.getInt("id_utilisateur"));
             }
         } finally {
             if (rs != null) {
