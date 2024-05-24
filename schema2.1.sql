@@ -84,8 +84,10 @@ CREATE TABLE Formation(
    date_fin DATE,
    description TEXT NOT NULL,
    id_utilisateur INTEGER NOT NULL,
+   id_secteur INTEGER NOT NULL,
    PRIMARY KEY(id_formation),
-   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur),
+   FOREIGN KEY(id_secteur) REFERENCES Secteur(id_secteur)
 );
 
 CREATE TABLE Notification(
