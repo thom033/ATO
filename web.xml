@@ -1,0 +1,23 @@
+<web-app>
+    <servlet>
+        <servlet-name>FrontController</servlet-name>
+        <servlet-class>lohataona.FrontController</servlet-class>
+        <init-param>
+            <param-name>controllerPackage</param-name>
+            <param-value>controller</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FrontController</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>*.png</url-pattern>
+        <url-pattern>*.jpg</url-pattern>
+        <url-pattern>*.jpeg</url-pattern>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+</web-app>
