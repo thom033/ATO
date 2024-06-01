@@ -6,8 +6,15 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.regex.Pattern;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "utilisateur")
 public class Utilisateur {
-    int idUser;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id_utilisateur")
+    private Long idUser;
     String nom;
     String prenom;
     Date dateNaissance;
@@ -23,7 +30,12 @@ public class Utilisateur {
     String motdepasse;
 
     // ---- ---- CONSTRUCTEURS ------- ------
-    public Utilisateur(int idUser, String nom, String prenom, Date dateNaissance, String adresse, String mail,
+
+    public Utilisateur() {
+
+    }
+
+    public Utilisateur(Long idUser, String nom, String prenom, Date dateNaissance, String adresse, String mail,
             String numeroTelephone, String etat_civil, String profession, String photo, int point, float longitude,
             float latitude, String motdepasse) {
         this.idUser = idUser;
@@ -43,7 +55,7 @@ public class Utilisateur {
     }
 
     // ------- setters -------------
-    public void setIdUser(int idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 
@@ -101,7 +113,7 @@ public class Utilisateur {
     /* ---- ------ FIN CONSTRUCTOR --------- - */
 
     // ------ gettters ------- ---------
-    public int getIdUser() {
+    public Long getIdUser() {
         return idUser;
     }
 
