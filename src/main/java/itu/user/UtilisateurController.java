@@ -24,13 +24,13 @@ public class UtilisateurController {
     }
 
     @GetMapping("/utilisateur/liste")
-    public String getMethodName(Model model) {
+    public String lister(Model model) {
         model.addAttribute("listeUtilisateur", utilisateurRepository.getUtilisateur("Do", "do"));
         return "splashScreen/index";
     }
 
     @PostMapping("/login/test")
-    public String postMethodName(@RequestParam HashMap<String, Object> login) {
+    public String verificationLogin(@RequestParam HashMap<String, Object> login) {
         boolean validite = true;
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setMail((String) login.get("mail"));
@@ -45,6 +45,23 @@ public class UtilisateurController {
         } else {
             return "login/login-register";
         }
+    }
+
+    @PostMapping("/utilisateur/inscription")
+    public String inscription(@RequestParam HashMap<String, Object> login) {
+        Utilisateur utilisateur = new Utilisateur();
+        try {
+            utilisateur.setNom((String) login.get("nom"));
+            utilisateur.setPrenom((String) login.get("prenom"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        utilisateur.setMail((String) login.get("mail"));
+        utilisateur.setMotdepasse((String) login.get("mdp"));
+
+        utilisateurRepository.save(utilisateur);
+
+        return "login/login-register";
     }
 
 }

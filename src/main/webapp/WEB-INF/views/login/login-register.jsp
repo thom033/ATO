@@ -52,10 +52,11 @@
             --%>
             <span class="loginwith">Or</span>
 
-            <form>
-                <input type="text" placeholder="name">
-                <input type="email" placeholder="email">
-                <input type="password" placeholder="password">
+            <form action="/utilisateur/inscription" method="post">
+                <input type="text" placeholder="nom" name="nom">
+                <input type="text" placeholder="prenom" name="prenom">
+                <input type="email" placeholder="email" name="mail">
+                <input type="password" placeholder="password" name="mdp">
                 <span class="remember">I accept terms</span>
                 <span class="clearfix"></span>
                 <button type="submit">Register</button>
