@@ -1,4 +1,13 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="itu.model.Secteur" %>
+<%@ page import="itu.model.Diplome" %>
+<%@ page import="itu.model.Competence" %>
+<%
+List<Secteur> secteurs = (List<Secteur>) request.getAttribute("allSecteurs");
+List<Competence> competences = (List<Competence>) request.getAttribute("allCompetences");
+List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
+%>    
 
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="fr">
@@ -7,17 +16,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home - Brand</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/stylesRecherche.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/input.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/stylesRecherche.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/input.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aleo&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Grotesk:300,400&amp;display=swap">
 </head>
 
-<body style="background-image: url(assets/img/recherche.png);">
+<body style="background-image: url(${pageContext.request.contextPath}/img/recherche.png);">
     <nav class="navbar navbar-expand-md sticky-top navbar-shrink py-3 navbar-light" id="mainNav" style="margin-bottom: -1px;padding-bottom: 30px;margin-top: -2px;padding-top: 0px; font-weight:lighter;">
-        <div class="container"><img src="assets/img/Brand%20100-33.png" style="margin-top: -32px;margin-bottom: -21px;" width="114" height="36"><a class="navbar-brand d-flex align-items-center" href="/"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><img src="${pageContext.request.contextPath}/img/Brand%20100-33.png" style="margin-top: -32px;margin-bottom: -21px;" width="114" height="36"><a class="navbar-brand d-flex align-items-center" href="/"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1" style="font-size: large;margin-bottom: -2px;">
                 <ul class="navbar-nav mx-auto" style="font-family: 'Segoe UI';  font-weight:lighter;">
                     <li class="nav-item"><a class="nav-link active" href="index.html" style="font-family: 'Segoe UI';font-size: 14px;">Acceuil</a></li>
@@ -76,7 +85,12 @@
                                     </svg>
                                 </span>
                                 <select class="form-select" name="diplome" id="diplome">
-                                    <option value="">Diplôme</option>
+                                    <option value="">Sélectionnez</option>
+                                    <% 
+                                        for(Diplome Diplome : diplomes) {
+                                    %>
+                                    <option value="<%= Diplome.getIdDiplome() %>"><%= Diplome.getDiplome() %></option>
+                                    <% } %>
                                 </select>
                             </div>
                         </div>
@@ -86,7 +100,7 @@
                                 <label class="user-label">Age min</label>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-3 mb-3"> 
                             <div class="input-group">
                                 <input required="" type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Age max</label>
@@ -103,7 +117,12 @@
                                     </svg>
                                 </span>
                                 <select class="form-select" name="secteur" id="secteur">
-                                    <option value="" class="option">Secteur</option>
+                                    <option value="">Sélectionnez</option>
+                                    <% 
+                                        for(Secteur secteur : secteurs) {
+                                    %>
+                                    <option value="<%= secteur.getIdSecteur() %>"><%= secteur.getSecteur() %></option>
+                                    <% } %>
                                 </select>
                             </div>
                         </div>
@@ -141,8 +160,13 @@
                                         <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5 5 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334"/>
                                     </svg>
                                 </span>
-                                <select class="form-select" name="secteur" id="secteur">
-                                    <option value="" class="option">Competence</option>
+                                <select class="form-select" name="Competence" id="Competence">
+                                    <option value="">Sélectionnez</option>
+                                    <% 
+                                        for(Competence Competence : competences) {
+                                    %>
+                                    <option value="<%= Competence.getIdCompetence() %>"><%= Competence.getCompetence() %></option>
+                                    <% } %>
                                 </select>
                             </div>
                         </div>
@@ -207,9 +231,9 @@
             </div>
         </div>
     </footer>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/bold-and-bright.js"></script>
+    <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bs-init.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bold-and-bright.js"></script>
 </body>
 
 </html>

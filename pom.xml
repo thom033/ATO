@@ -15,7 +15,7 @@
 	<name>ato</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>19</java.version>
 	</properties>
 	<dependencies>
 		<!-- <dependency>
@@ -64,7 +64,12 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.3.1</version> <!-- Remplacez par la version souhaitée -->
+			<version>42.2.20</version> <!-- Remplacez par la version souhaitée -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
 	</dependencies>

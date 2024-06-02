@@ -34,5 +34,5 @@ public class LoginController {
             return "login/login-register";
         }
     }
-
+ 
 }

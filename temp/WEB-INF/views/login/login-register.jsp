@@ -3,7 +3,7 @@
 <head>
     <title>Login page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
+    <link href="../../../public/css/style.css" rel="stylesheet">
 </head>
 <body>
 <div id="container">
@@ -64,6 +64,6 @@
     </div>
 </div>
 
-<script src="${pageContext.request.contextPath}/js/login.js"></script>
+<script src="../../../public/js/login.js"></script>
 </body>
 </html>
