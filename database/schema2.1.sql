@@ -137,13 +137,22 @@ SELECT
     p.date_insertion AS poste_date_insertion,
     p.salaire AS poste_salaire,
     p.titre AS poste_titre,
+    -- Ilay nbr nnee d'exp tsy ao anaty base akory 
     p.nbr_annee_experience AS nbr_annee_experience,
+    -- ilay formation ngah atao prise en compte indray ??
     p.nbr_annee_formation AS nbr_annee_formation,
+    -- Age io koa tsy ao anaty baxse
     p.age AS age_requise,
+    -- Ilay poste mbola mila ihany koa hoe "id_competence"
+
     d.id_diplome,
     d.diplome AS diplome_nom,
+    -- idSecteur tsy tafiditra
+    -- d.id_secteur AS diplome_id_secteur
+
     s.id_secteur,
     s.secteur AS secteur_nom,
+
     e.id_entreprise,
     e.entreprise AS entreprise_nom,
     e.point AS entreprise_point,
@@ -156,7 +165,11 @@ SELECT
     e.latitude AS entreprise_latitude,
     e.longitude AS entreprise_longitude,
     e.image AS entreprise_image,
-    c.competence AS competence_requise
+    
+    c.id_competence,
+    c.competence AS competence_requise,
+    c.description AS competence_description,
+    c.id_utilisateur AS competence_owner_id
 FROM 
     poste p
 JOIN 
@@ -164,6 +177,4 @@ JOIN
 JOIN 
     secteur s ON d.id_secteur = s.id_secteur
 JOIN 
-    entreprise e ON p.id_entreprise = e.id_entreprise
-JOIN
-    competence c ON s.id_secteur = c.id_secteur;
+    entreprise e ON p.id_entreprise = e.id_entreprise;
