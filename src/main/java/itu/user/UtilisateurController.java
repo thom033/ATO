@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,11 +31,11 @@ public class UtilisateurController {
     @PostMapping("/login/test")
     public String verificationLogin(@RequestParam HashMap<String, Object> login) {
         boolean validite = true;
-        Utilisateur utilisateur = new Utilisateur();
+        itu.user.Utilisateur utilisateur = new itu.user.Utilisateur();
         utilisateur.setMail((String) login.get("mail"));
         utilisateur.setMotdepasse((String) login.get("mdp"));
 
-        List<Utilisateur> recherche = utilisateurRepository.getUtilisateur(utilisateur.getMail(),
+        List<itu.user.Utilisateur> recherche = utilisateurRepository.getUtilisateur(utilisateur.getMail(),
                 utilisateur.getMotdepasse());
         validite = recherche.size() == 1;
 
@@ -49,7 +48,7 @@ public class UtilisateurController {
 
     @PostMapping("/utilisateur/inscription")
     public String inscription(@RequestParam HashMap<String, Object> login) {
-        Utilisateur utilisateur = new Utilisateur();
+        itu.user.Utilisateur utilisateur = new itu.user.Utilisateur();
         try {
             utilisateur.setNom((String) login.get("nom"));
             utilisateur.setPrenom((String) login.get("prenom"));

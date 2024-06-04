@@ -1,8 +1,8 @@
 
-<%@ page import="itu.user.Utilisateur" %>
+<%@ page import="itu.user.Notification" %>
 <%@ page import="java.util.List" %>
 <%
-    List<Utilisateur> utilisateurList = (List<Utilisateur>) request.getAttribute("listeUtilisateur");
+    List<Notification> utilisateurList = (List<Notification>) request.getAttribute("listeUtilisateur");
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 
-<%@ page import="itu.user.Utilisateur" %>
+<%@ page import="itu.user.Notification" %>
 <%@ page import="java.util.List" %>
 <%
 
