@@ -1,0 +1,6 @@
+.btn :hover{
+    box-shadow: 5px 10px red;
+}
+.bi :hover{
+    transform: scale(2);
+}
