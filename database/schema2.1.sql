@@ -56,10 +56,10 @@ CREATE TABLE poste(
    titre VARCHAR(255)  NOT NULL,
    id_diplome INTEGER NOT NULL,
    id_secteur INTEGER NOT NULL,
+   id_competence INTEGER NOT NULL,
    id_entreprise INTEGER NOT NULL,
    nbr_annee_experience INTEGER NOT NULL,
-   nbr_annee_formation INTEGER NOT NULL,
-   age INTEGER NOT NULL,
+   age_favorable INTEGER NOT NULL,
    PRIMARY KEY(id_poste),
    FOREIGN KEY(id_diplome) REFERENCES Diplome(id_diplome),
    FOREIGN KEY(id_entreprise) REFERENCES Entreprise(id_entreprise)
@@ -137,18 +137,16 @@ SELECT
     p.date_insertion AS poste_date_insertion,
     p.salaire AS poste_salaire,
     p.titre AS poste_titre,
-    -- Ilay nbr nnee d'exp tsy ao anaty base akory 
+    p.id_diplome AS poste_diplome,
+    p.id_secteur AS poste_secteur,
+    p.id_competence AS poste_competence,
+    p.id_entreprise AS poste_entreprise, 
     p.nbr_annee_experience AS nbr_annee_experience,
-    -- ilay formation ngah atao prise en compte indray ??
-    p.nbr_annee_formation AS nbr_annee_formation,
-    -- Age io koa tsy ao anaty baxse
-    p.age AS age_requise,
-    -- Ilay poste mbola mila ihany koa hoe "id_competence"
+    p.age_favorable AS poste_age_favorable,
 
     d.id_diplome,
     d.diplome AS diplome_nom,
-    -- idSecteur tsy tafiditra
-    -- d.id_secteur AS diplome_id_secteur
+    d.id_secteur AS diplome_id_secteur,
 
     s.id_secteur,
     s.secteur AS secteur_nom,
@@ -166,15 +164,17 @@ SELECT
     e.longitude AS entreprise_longitude,
     e.image AS entreprise_image,
     
-    c.id_competence,
+    c.id_competence ,
     c.competence AS competence_requise,
     c.description AS competence_description,
-    c.id_utilisateur AS competence_owner_id
+    c.id_secteur AS competence_secteur
 FROM 
-    poste p
+   poste p
 JOIN 
-    diplome d ON p.id_diplome = d.id_diplome
+   diplome d ON p.id_diplome = d.id_diplome
 JOIN 
-    secteur s ON d.id_secteur = s.id_secteur
+   secteur s ON d.id_secteur = s.id_secteur
 JOIN 
-    entreprise e ON p.id_entreprise = e.id_entreprise;
+   entreprise e ON p.id_entreprise = e.id_entreprise
+JOIN
+   competence c ON p.id_competence = c.id_competence;
