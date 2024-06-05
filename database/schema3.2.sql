@@ -105,7 +105,7 @@ CREATE TABLE Reponse(
 CREATE TABLE type_notification(
    id_type_notification SERIAL,
    poste INTEGER REFERENCES poste(id_poste),
-   point BIGINT REFERENCES utilisateur(id_utilisateur),
+   point BOOLEAN,
    PRIMARY KEY(id_type_notification)
 );
 
