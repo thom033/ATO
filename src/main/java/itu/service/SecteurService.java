@@ -16,4 +16,3 @@ public class SecteurService {
         return secteurRepository.findAll();
     }
 }
-

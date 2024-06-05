@@ -34,5 +34,10 @@ public class RechercheController {
         return "recherche/recherche-form"; // Correspond à /WEB-INF/jsp/recherche/recherche.jsp
     }
 
-    
+    @GetMapping("/recherche_result")
+    public String rechercheResult (Model model) throws Exception {
+
+        return "splashScreen/splash"; // Correspond à /WEB-INF/jsp/recherche/recherche.jsp
+    }
+
 }

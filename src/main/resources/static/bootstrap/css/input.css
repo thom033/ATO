@@ -24,12 +24,12 @@
     font-weight: bold;
 }
 
-.input:focus, input:valid {
+.input:focus{
     outline: none;
     border: 1.5px solid #82b6fb;
 }
 
-.input:focus ~ label, input:valid ~ label {
+.input:focus ~ label {
     transform: translateY(-50%) scale(0.8);
     background-color: #fff;
     padding: 0 .2em;

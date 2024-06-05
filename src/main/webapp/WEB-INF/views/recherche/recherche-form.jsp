@@ -29,7 +29,7 @@ List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
         <div class="container"><img src="${pageContext.request.contextPath}/img/Brand%20100-33.png" style="margin-top: -32px;margin-bottom: -21px;" width="114" height="36"><a class="navbar-brand d-flex align-items-center" href="/"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1" style="font-size: large;margin-bottom: -2px;">
                 <ul class="navbar-nav mx-auto" style="font-family: 'Segoe UI';  font-weight:lighter;">
-                    <li class="nav-item"><a class="nav-link active" href="index.html" style="font-family: 'Segoe UI';font-size: 14px;">Acceuil</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Segoe UI';font-size: 14px;">Acceuil</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Segoe UI';font-size: 14px;">Statistique</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Segoe UI';font-size: 14px;">Offres d'emploi</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Segoe UI';font-size: 14px;">ChatBot</a></li>
@@ -64,6 +64,7 @@ List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
             <div class="container mt-5">
                 <div class="content">
                     <h5>Recherche de travail</h5><hr>
+                    <form method="get" action="recherche_result">
                     <div class="row" >
                         <div class="input-group">
                             <span class="input-group-text" style="height:47px;">
@@ -85,7 +86,7 @@ List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
                                     </svg>
                                 </span>
                                 <select class="form-select" name="diplome" id="diplome">
-                                    <option value="">Sélectionnez</option>
+                                    <option value="">Diplome</option>
                                     <% 
                                         for(Diplome Diplome : diplomes) {
                                     %>
@@ -96,13 +97,13 @@ List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
                         </div>
                         <div class="col-md-3 mb-3">
                             <div class="input-group">
-                                <input required="" type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Age min</label>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3"> 
                             <div class="input-group">
-                                <input required="" type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Age max</label>
                             </div>
                         </div>
@@ -117,7 +118,7 @@ List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
                                     </svg>
                                 </span>
                                 <select class="form-select" name="secteur" id="secteur">
-                                    <option value="">Sélectionnez</option>
+                                    <option value="">Secteur</option>
                                     <% 
                                         for(Secteur secteur : secteurs) {
                                     %>
@@ -128,19 +129,19 @@ List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
                         </div>
                         <div class="col-md-3 mb-3">
                             <div class="input-group">
-                                <input required="" type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Salaire min</label>
                             </div>
                         </div> 
                         <div class="col-md-3 mb-3">
                             <div class="input-group">
-                                <input required="" type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Salaire max</label>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <div class="input-group">
-                                <input required="" type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Distance</label>
                             </div>
                         </div>
@@ -149,7 +150,7 @@ List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <div class="input-group">
-                                <input required="" type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Année</label>
                             </div>
                         </div>
@@ -161,7 +162,7 @@ List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
                                     </svg>
                                 </span>
                                 <select class="form-select" name="Competence" id="Competence">
-                                    <option value="">Sélectionnez</option>
+                                    <option value="">Competence</option>
                                     <% 
                                         for(Competence Competence : competences) {
                                     %>
@@ -172,9 +173,10 @@ List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
                         </div>
                         <div class="col-md-3 mb-3"> </div>
                         <div class="col-md-3 mb-3">
-                            <button type="button" class="button">Valider</button>
+                            <button type="submit" class="button">Valider</button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
