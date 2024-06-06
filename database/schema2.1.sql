@@ -171,7 +171,8 @@ SELECT
     p.id_secteur AS poste_secteur,
     p.id_competence AS poste_competence,
     p.id_entreprise AS poste_entreprise, 
-    p.nbr_annee_experience AS nbr_annee_experience,
+    p.annee_experience AS nbr_annee_experience,
+    p.annee_formation AS nbr_annee_formation,
     p.age_favorable AS poste_age_favorable,
 
     d.id_diplome,
