@@ -20,9 +20,8 @@ public class Utilisateur {
     Date dateNaissance;
     String adresse;
     String mail;
-    String numeroTelephone;
+    // List<String> numeroTelephone;
     String etat_civil;
-    String profession;
     String photo;
     int point;
     float longitude;
@@ -36,7 +35,7 @@ public class Utilisateur {
     }
 
     public Utilisateur(Long idUser, String nom, String prenom, Date dateNaissance, String adresse, String mail,
-            String numeroTelephone, String etat_civil, String profession, String photo, int point, float longitude,
+            String etat_civil, String photo, int point, float longitude,
             float latitude, String motdepasse) {
         this.idUser = idUser;
         this.nom = nom;
@@ -44,9 +43,8 @@ public class Utilisateur {
         this.dateNaissance = dateNaissance;
         this.adresse = adresse;
         this.mail = mail;
-        this.numeroTelephone = numeroTelephone;
+        // this.numeroTelephone = numeroTelephone;
         this.etat_civil = etat_civil;
-        this.profession = profession;
         this.photo = photo;
         this.point = point;
         this.longitude = longitude;
@@ -79,16 +77,12 @@ public class Utilisateur {
         this.mail = mail;
     }
 
-    public void setNumeroTelephone(String numeroTelephone) {
-        this.numeroTelephone = numeroTelephone;
-    }
+    // public void setNumeroTelephone(String numeroTelephone) {
+    // this.numeroTelephone = numeroTelephone;
+    // }
 
     public void setEtat_civil(String etat_civil) {
         this.etat_civil = etat_civil;
-    }
-
-    public void setProfession(String profession) {
-        this.profession = profession;
     }
 
     public void setPhoto(String photo) {
@@ -137,16 +131,12 @@ public class Utilisateur {
         return mail;
     }
 
-    public String getNumeroTelephone() {
-        return numeroTelephone;
-    }
+    // public String getNumeroTelephone() {
+    // return numeroTelephone;
+    // }
 
     public String getEtat_civil() {
         return etat_civil;
-    }
-
-    public String getProfession() {
-        return profession;
     }
 
     public String getPhoto() {

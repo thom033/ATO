@@ -1,71 +1,96 @@
--- Insert data into Utilisateur
-INSERT INTO Utilisateur (nom, prenom, date_naissance, adresse, mail, numero_telephone, etat_civil, profession, photo, point, latitude, longitude, motdepasse)
-VALUES
-('Doe', 'John', '1985-06-15', '123 Main St', 'john.doe@example.com', '1234567890', 'Single', 'Software Engineer', 'john_doe.jpg', 100, 40.7128, -74.0060, 'password123'),
-('Smith', 'Jane', '1990-08-25', '456 Oak Ave', 'jane.smith@example.com', '0987654321', 'Married', 'Data Scientist', 'jane_smith.jpg', 200, 34.0522, -118.2437, 'securepassword');
+-- Table Utilisateur
+INSERT INTO Utilisateur (nom, prenom, date_naissance, adresse, mail, etat_civil, photo, point, latitude, longitude, motdepasse) 
+VALUES 
+('Doe', 'John', '1990-01-01', '123 Main St', 'john.doe@example.com', 'Single', 'john_photo.png', 100, 40.7128, -74.0060, 'password123'),
+('Smith', 'Jane', '1985-05-15', '456 Elm St', 'jane.smith@example.com', 'Married', 'jane_photo.png', 200, 34.0522, -118.2437, 'securepassword');
 
--- Insert data into Secteur
-INSERT INTO Secteur (nom_secteur)
-VALUES
-('Information Technology'),
+-- Table Secteur
+INSERT INTO Secteur (secteur) 
+VALUES 
+('Technology'), 
 ('Healthcare');
 
--- Insert data into Diplome
-INSERT INTO Diplome (diplome, id_secteur)
-VALUES
-('Bachelor of Science in Computer Science', 1),
-('Master of Public Health', 2);
+-- Table Diplome
+INSERT INTO Diplome (diplome, niveau) 
+VALUES 
+('Bachelor of Science', 1), 
+('Master of Arts', 2);
 
--- Insert data into Entreprise
-INSERT INTO Entreprise (entreprise, point, type, date_creation, adresse, site_web, mail, num_telephone, latitude, longitude, image)
-VALUES
-('Tech Innovators', 500, 'Technology', '2010-04-25', '789 Tech Plaza', 'www.techinnovators.com', 'info@techinnovators.com', '1112223333', 37.7749, -122.4194, 'tech_innovators.jpg'),
-('Health Solutions', 300, 'Healthcare', '2012-09-15', '321 Health Blvd', 'www.healthsolutions.com', 'contact@healthsolutions.com', '4445556666', 34.0522, -118.2437, 'health_solutions.jpg');
+-- Table Entreprise
+INSERT INTO Entreprise (entreprise, point, type, date_creation, adresse, site_web, mail, latitude, longitude, image) 
+VALUES 
+('TechCorp', 500, 'Technology', '2000-01-01', '789 Oak St', 'http://techcorp.com', 'contact@techcorp.com', 37.7749, -122.4194, 'techcorp.png'),
+('HealthInc', 300, 'Healthcare', '1995-06-15', '101 Maple St', 'http://healthinc.com', 'info@healthinc.com', 51.5074, -0.1278, 'healthinc.png');
 
--- Insert data into poste
-INSERT INTO poste (description, salaire, titre, id_diplome, id_entreprise)
-VALUES
-('Develop software solutions', 80000, 'Software Developer', 1, 1),
-('Manage healthcare projects', 70000, 'Project Manager', 2, 2);
+-- Table poste
+INSERT INTO poste (description, salaire, titre, annee_experience, annee_formation, age_min, age_max, id_diplome, id_entreprise) 
+VALUES 
+('Software Developer', 70000.00, 'Developer', 2, 4, 22, 35, 1, 1),
+('Nurse', 50000.00, 'Registered Nurse', 3, 4, 25, 40, 2, 2);
 
--- Insert data into competence
-INSERT INTO competence (competence, description, id_utilisateur)
-VALUES
-('Java Programming', 'Expert in Java and related technologies', 1),
-('Data Analysis', 'Skilled in data analysis and visualization', 2);
+-- Table competence
+INSERT INTO competence (competence, description, id_utilisateur) 
+VALUES 
+('Java Programming', 'Proficient in Java development', 1),
+('Patient Care', 'Experienced in patient care and nursing', 2);
 
--- Insert data into experience
-INSERT INTO experience (date_debut, date_fin, description, id_utilisateur)
-VALUES
-('2015-01-01', '2018-12-31', 'Worked as a junior developer', 1),
-('2016-06-01', '2020-05-31', 'Worked as a data analyst', 2);
+-- Table experience
+INSERT INTO experience (date_debut, date_fin, description, id_utilisateur) 
+VALUES 
+('2015-01-01', '2018-12-31', 'Worked as a software developer at TechCorp', 1),
+('2010-03-01', '2015-03-31', 'Worked as a nurse at HealthInc', 2);
 
--- Insert data into Formation
-INSERT INTO Formation (date_debut, date_fin, description, id_utilisateur)
-VALUES
-('2011-09-01', '2015-06-01', 'Completed Bachelor of Science in Computer Science', 1),
-('2012-09-01', '2014-05-15', 'Completed Master of Public Health', 2);
+-- Table Formation
+INSERT INTO Formation (date_debut, description, date_fin, id_utilisateur) 
+VALUES 
+('2014-09-01', 'Completed Bachelor s degree in Computer Science', '2018-06-01', 1),
+('2008-09-01', 'Completed Bachelor s degree in Nursing', '2012-06-01', 2);
 
--- Insert data into Notification
-INSERT INTO Notification (message, date_notification, date_lu, id_utilisateur)
-VALUES
-('Welcome to our platform, John!', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1),
-('Welcome to our platform, Jane!', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2);
+-- Table Question
+INSERT INTO Question (question) 
+VALUES 
+('What is your primary skill set?'),
+('What is your highest level of education?');
 
--- Insert data into Question
-INSERT INTO Question (question)
-VALUES
-('What is the capital of France?'),
-('What is the largest planet in our solar system?');
+-- Table Reponse
+INSERT INTO Reponse (reponse, id_question) 
+VALUES 
+('Java Programming', 1),
+('Bachelor of Science', 2);
 
--- Insert data into Reponse
-INSERT INTO Reponse (reponse, id_question)
-VALUES
-('Paris', 1),
-('Jupiter', 2);
+-- Table type_notification
+INSERT INTO type_notification (poste, point) 
+VALUES 
+(1, TRUE), 
+(2, FALSE);
+-- mila asina id_point aleha
 
--- Insert data into diplome_utilisateur
-INSERT INTO diplome_utilisateur (id_utilisateur, id_diplome)
-VALUES
+-- Table Contact
+INSERT INTO Contact (num_telephone, id_entreprise, id_utilisateur) 
+VALUES 
+('123-456-7890', 1, 1),
+('987-654-3210', 2, 2);
+
+-- Table Notification
+INSERT INTO Notification (message, date_notification, id_type_notification, id_utilisateur) 
+VALUES 
+('Your profile has been updated', '2023-06-01 10:00:00', 1, 1),
+('You have a new job offer', '2023-06-02 12:00:00', 2, 2);
+
+-- Table diplome_utilisateur
+INSERT INTO diplome_utilisateur (id_utilisateur, id_diplome) 
+VALUES 
+(1, 1),
+(2, 2);
+
+-- Table secteur_diplome
+INSERT INTO secteur_diplome (id_secteur, id_diplome) 
+VALUES 
+(1, 1),
+(2, 2);
+
+-- Table competence_secteur
+INSERT INTO competence_secteur (id_secteur, id_competence) 
+VALUES 
 (1, 1),
 (2, 2);

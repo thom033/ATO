@@ -104,10 +104,12 @@ CREATE TABLE Reponse(
 
 CREATE TABLE type_notification(
    id_type_notification SERIAL,
-   poste INTEGER REFERENCES poste(id_poste),
+   poste INTEGER,
    point BOOLEAN,
+   FOREIGN KEY(poste) REFERENCES poste(id_poste),
    PRIMARY KEY(id_type_notification)
 );
+-- nosoloiko foreign key
 
 CREATE TABLE Contact(
    id_contact SERIAL,
@@ -123,14 +125,15 @@ CREATE TABLE Contact(
 CREATE TABLE Notification(
    id_notification SERIAL,
    message TEXT NOT NULL,
-   date_notification TIMESTAMP NOT NULL DEFAULT CURRRENT_DATE,
-   date_lu TIMESTAMP DEFAULT CURRENT_DATE,
+   date_notification TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
+   date_lu TIMESTAMP,
    id_type_notification INTEGER NOT NULL,
    id_utilisateur INTEGER NOT NULL,
    PRIMARY KEY(id_notification),
    FOREIGN KEY(id_type_notification) REFERENCES type_notification(id_type_notification),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
+-- enlevé le default date_lu = current_date
 
 CREATE TABLE diplome_utilisateur(
    id_utilisateur INTEGER,
