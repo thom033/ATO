@@ -174,7 +174,6 @@ SELECT
     p.salaire AS poste_salaire,
     p.titre AS poste_titre,
     p.id_diplome AS poste_diplome,
-    p.id_competence AS poste_competence,
     p.id_entreprise AS poste_entreprise, 
     p.annee_experience AS nbr_annee_experience,
     p.annee_formation AS nbr_annee_formation,
@@ -183,9 +182,8 @@ SELECT
 
     d.id_diplome,
     d.diplome AS diplome_nom,
-    d.niveau AS diplome_niveau
+    d.niveau AS diplome_niveau,
 
-    e.id_entreprise,
     e.entreprise AS entreprise_nom,
     e.point AS entreprise_point,
     e.type AS entreprise_type,
@@ -195,25 +193,51 @@ SELECT
     e.mail AS entreprise_mail,
     e.latitude AS entreprise_latitude,
     e.longitude AS entreprise_longitude,
-    e.image AS entreprise_image,
-    
-    c.id_competence ,
-    c.competence AS competence_requise,
-    c.description AS competence_description
-
-    s.id_secteur,
-    s.secteur AS secteur_nom,
-
-    sD.id_secteur,
-    sD.id_diplome
+    e.image AS entreprise_image
 FROM 
    poste p
 JOIN 
    diplome d ON p.id_diplome = d.id_diplome
 JOIN 
-   entreprise e ON p.id_entreprise = e.id_entreprise
-JOIN
-   competence c ON p.id_competence = c.id_competence;
-JOIN
-   secteur_diplome sD ON p.id_diplome = sD.id_diplome
+   entreprise e ON p.id_entreprise = e.id_entreprise;
+
+CREATE VIEW utilisateur_details AS
+SELECT
+    u.id_utilisateur,
+    u.nom,
+    u.prenom,
+    u.date_naissance,
+    u.adresse,
+    u.mail,
+    u.etat_civil,
+    u.photo,
+    u.point,
+    u.latitude,
+    u.longitude,
+    u.motdepasse,
+
+    e.id_experiecne,
+    e.date_debut AS experience_date_debut,
+    e.date_fin AS experience_date_fin,
+    e.description AS experience_description,
+
+    f.id_formation,
+    f.date_debut AS formation_date_debut,
+    f.date_fin AS formation_date_fin,
+    f.description AS formation_description,
+
+    cu.id_competence,
+    
+    d.id_diplome
+FROM
+    Utilisateur u
+LEFT JOIN experience e ON u.id_utilisateur = e.id_utilisateur
+LEFT JOIN Formation f ON u.id_utilisateur = f.id_utilisateur
+LEFT JOIN competence_utilisateur cu ON u.id_utilisateur = cu.id_utilisateur
+LEFT JOIN diplome_utilisateur du ON u.id_utilisateur = du.id_utilisateur
+LEFT JOIN competence c ON cu.id_competence = c.id_competence
+LEFT JOIN Diplome d ON du.id_diplome = d.id_diplome;
+
+
+
 
