@@ -1,0 +1,88 @@
+
+.box_name {
+    margin-top: 2%;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+}
+
+.percent {
+    color: aqua;
+    font-weight: 700 !important;
+    position: absolute;
+    right: 5%;
+}
+
+.img_box {
+    width: 100%;
+    height: 330px;
+    overflow: hidden;
+    position: relative;
+}
+
+.img_box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    border: 2px solid #000000;
+    border-radius: 10px;
+}
+
+.card-body h3, .card-body p {
+    margin-left: 10%;
+}
+
+.card-body button {
+    color: aqua;
+    background-color: aliceblue;
+    border-radius: 20px;
+    border-color: aqua;
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+}
+.card-body button:hover {
+    background-color: aqua;
+    color: aliceblue;
+    border-color: aqua;
+}
+
+
+.img_fluid{
+    width: fit-content;
+}
+
+
+.pagination .page-link {
+    background-color: transparent;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: aqua;
+    border-color: aqua;
+}
+
+.pagination .page-link:hover {
+    color: #fff;
+    background-color: aqua;
+    border-color: aqua;
+}
+
+.text-muted{
+    font-size: 20px;
+    text-align: center;
+    padding-right: 10%;
+    
+}
+
+.fw-bold{
+    font-size: 100px;
+    text-align: center;
+}
+
+.btn-light:hover {
+    background-color: #ffffff;
+    border-color: #000000;
+}
