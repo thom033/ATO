@@ -193,13 +193,18 @@ SELECT
     e.mail AS entreprise_mail,
     e.latitude AS entreprise_latitude,
     e.longitude AS entreprise_longitude,
-    e.image AS entreprise_image
+    e.image AS entreprise_image,
+
+    sd.id_secteur,
+    sd.id_diplome AS secteur_diplome_id_diplome
 FROM 
    poste p
 JOIN 
    diplome d ON p.id_diplome = d.id_diplome
 JOIN 
-   entreprise e ON p.id_entreprise = e.id_entreprise;
+   entreprise e ON p.id_entreprise = e.id_entreprise
+JOIN 
+   secteur_diplome sd ON d.id_diplome = sd.id_diplome;
 
 CREATE VIEW utilisateur_details AS
 SELECT
