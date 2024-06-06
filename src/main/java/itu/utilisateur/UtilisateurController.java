@@ -1,4 +1,4 @@
-package itu.user;
+package itu.utilisateur;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,22 @@ public class UtilisateurController {
     HttpSession httpSession;
 
     @GetMapping("/")
-    public String loginPage() {
+    public ModelAndView splashscreen() {
+        ModelAndView mv = new ModelAndView("template");
+        mv.addObject("page", "splashScreen/index.jsp");
+        return mv;
+    }
+
+    @GetMapping("/utilisateur/deconnexion")
+    public ModelAndView deconnexion() {
+        httpSession.removeAttribute("utilisateur");
+        ModelAndView mv = new ModelAndView("template");
+        mv.addObject("page", "splashScreen/index.jsp");
+        return mv;
+    }
+
+    @GetMapping("/login")
+    public String getMethodName() {
         return "login/login-register";
     }
 
@@ -47,12 +62,13 @@ public class UtilisateurController {
         validite = recherche.size() == 1;
 
         if (validite) {
-            ModelAndView mv = new ModelAndView("splashScreen/index");
+            ModelAndView mv = new ModelAndView("template");
 
             Utilisateur user = recherche.get(0);
-            httpSession.setAttribute("user", user);
+            httpSession.setAttribute("utilisateur", user);
 
-            mv.addObject("user", user);
+            mv.addObject("utilisateur", user);
+            mv.addObject("page", "splashScreen/index.jsp");
             return mv;
         } else {
             ModelAndView mv = new ModelAndView("login/login-register");
