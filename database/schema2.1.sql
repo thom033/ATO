@@ -66,9 +66,7 @@ CREATE TABLE competence(
    id_competence SERIAL,
    competence VARCHAR(255)  NOT NULL,
    description TEXT,
-   id_utilisateur INTEGER NOT NULL,
-   PRIMARY KEY(id_competence),
-   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+   PRIMARY KEY(id_competence)
 );
 
 CREATE TABLE experience(
@@ -135,6 +133,14 @@ CREATE TABLE Notification(
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
+CREATE TABLE competence_utilisateur(
+   id_utilisateur INTEGER,
+   id_competence INTEGER,
+   PRIMARY KEY(id_utilisateur, id_competence),
+   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur),
+   FOREIGN KEY(id_competence) REFERENCES competence(id_competence)
+);
+
 CREATE TABLE diplome_utilisateur(
    id_utilisateur INTEGER,
    id_diplome INTEGER,
@@ -177,11 +183,7 @@ SELECT
 
     d.id_diplome,
     d.diplome AS diplome_nom,
-    d.niveau AS diplome_niveau,
-    d.id_secteur AS diplome_id_secteur,
-
-    s.id_secteur,
-    s.secteur AS secteur_nom,
+    d.niveau AS diplome_niveau
 
     e.id_entreprise,
     e.entreprise AS entreprise_nom,
@@ -191,22 +193,27 @@ SELECT
     e.adresse AS entreprise_adresse,
     e.site_web AS entreprise_site_web,
     e.mail AS entreprise_mail,
-   --  e.num_telephone AS entreprise_num_telephone,
     e.latitude AS entreprise_latitude,
     e.longitude AS entreprise_longitude,
     e.image AS entreprise_image,
     
     c.id_competence ,
     c.competence AS competence_requise,
-    c.description AS competence_description,
-    c.id_secteur AS competence_secteur
+    c.description AS competence_description
+
+    s.id_secteur,
+    s.secteur AS secteur_nom,
+
+    sD.id_secteur,
+    sD.id_diplome
 FROM 
    poste p
 JOIN 
    diplome d ON p.id_diplome = d.id_diplome
 JOIN 
-   secteur s ON d.id_secteur = s.id_secteur
-JOIN 
    entreprise e ON p.id_entreprise = e.id_entreprise
 JOIN
    competence c ON p.id_competence = c.id_competence;
+JOIN
+   secteur_diplome sD ON p.id_diplome = sD.id_diplome
+
