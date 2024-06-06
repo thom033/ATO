@@ -1,4 +1,4 @@
-package itu.user;
+package itu.utilisateur;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

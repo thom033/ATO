@@ -2,7 +2,9 @@
 <%@ page import="itu.user.Utilisateur" %>
 <%@ page import="java.util.List" %>
 <%
-
+    // List<Utilisateur> utilisateurList = (List<Utilisateur>) request.getAttribute("listeUtilisateur");
+    // Utilisateur user = request.getAttribut("user");
+    // out.print(user.getNom());
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -12,7 +14,6 @@
     <title>Home Page</title>
 </head>
 <body>
-    <h1>Welcome to ATO</h1>
-    <h2>Vous etes sur splash screen</h2>
+    <h1>Welcome to ATO000</h1>
 </body>
 </html>
