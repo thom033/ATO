@@ -52,11 +52,11 @@ public class UtilisateurController {
     @PostMapping("/login/test")
     public ModelAndView verificationLogin(@RequestParam HashMap<String, Object> login) {
         boolean validite = true;
-        itu.user.Utilisateur utilisateur = new itu.user.Utilisateur();
+        Utilisateur utilisateur = new Utilisateur();
         utilisateur.setMail((String) login.get("mail"));
         utilisateur.setMotdepasse((String) login.get("mdp"));
 
-        List<itu.user.Utilisateur> recherche = utilisateurRepository.getUtilisateur(utilisateur.getMail(),
+        List<Utilisateur> recherche = utilisateurRepository.getUtilisateur(utilisateur.getMail(),
                 utilisateur.getMotdepasse());
         validite = recherche.size() == 1;
 
@@ -77,7 +77,7 @@ public class UtilisateurController {
 
     @PostMapping("/utilisateur/inscription")
     public String inscription(@RequestParam HashMap<String, Object> login) {
-        itu.user.Utilisateur utilisateur = new itu.user.Utilisateur();
+        Utilisateur utilisateur = new Utilisateur();
         try {
             utilisateur.setNom((String) login.get("nom"));
             utilisateur.setPrenom((String) login.get("prenom"));

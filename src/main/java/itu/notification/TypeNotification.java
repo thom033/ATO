@@ -1,7 +1,7 @@
 package itu.notification;
 
 import itu.poste.Poste;
-import itu.user.Utilisateur;
+import itu.utilisateur.Utilisateur;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,41 +18,42 @@ public class TypeNotification {
     @JoinColumn(name = "id_utilisateur")
     Utilisateur utilisateur;
 
-
     /* --- ---- CONTRUCTEURS------ */
-        public TypeNotification(Long id_type_notification, Poste poste, Utilisateur utilisateur) {
-            this.id_type_notification = id_type_notification;
-            this.poste = poste;
-            this.utilisateur = utilisateur;
-        }
+    public TypeNotification(Long id_type_notification, Poste poste, Utilisateur utilisateur) {
+        this.id_type_notification = id_type_notification;
+        this.poste = poste;
+        this.utilisateur = utilisateur;
+    }
 
-        public TypeNotification() {
-        }
+    public TypeNotification() {
+    }
     /* --- ---- ------------------ */
 
-
     /* ---- SETTERS ---------- */
-        public void setId_type_notification(Long id_type_notification) {
-            this.id_type_notification = id_type_notification;
-        }
-        public void setPoste(Poste poste) {
-            this.poste = poste;
-        }
-        public void setUtilisateur(Utilisateur utilisateur) {
-            this.utilisateur = utilisateur;
-        }
+    public void setId_type_notification(Long id_type_notification) {
+        this.id_type_notification = id_type_notification;
+    }
+
+    public void setPoste(Poste poste) {
+        this.poste = poste;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
     /* ---- ------- ---------- */
 
-
     /* ---- GETTERS ---------- */
-        public Long getId_type_notification() {
-            return id_type_notification;
-        }
-        public Poste getPoste() {
-            return poste;
-        }
-        public Utilisateur getUtilisateur() {
-            return utilisateur;
-        }
+    public Long getId_type_notification() {
+        return id_type_notification;
+    }
+
+    public Poste getPoste() {
+        return poste;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
     /* ---- ------- ---------- */
 }
