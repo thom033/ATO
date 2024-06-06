@@ -1,28 +1,31 @@
 package itu.notification;
 
+import java.util.List;
+
 import itu.poste.Poste;
 import itu.utilisateur.Utilisateur;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "typeNotification")
+@Table(name = "type_notification")
 public class TypeNotification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_type_notification")
     private Long id_type_notification;
-    @ManyToOne
+
+    @OneToMany
     @JoinColumn(name = "id_poste")
-    Poste poste;
-    @ManyToOne
-    @JoinColumn(name = "id_utilisateur")
-    Utilisateur utilisateur;
+    List<Poste> poste;
+
+    @OneToMany
+    @JoinColumn(name = "id_notification")
+    List<Notification> notification;
 
     /* --- ---- CONTRUCTEURS------ */
-    public TypeNotification(Long id_type_notification, Poste poste, Utilisateur utilisateur) {
+    public TypeNotification(Long id_type_notification, List<Poste> postes) {
         this.id_type_notification = id_type_notification;
-        this.poste = poste;
-        this.utilisateur = utilisateur;
+        this.poste = postes;
     }
 
     public TypeNotification() {
@@ -34,13 +37,10 @@ public class TypeNotification {
         this.id_type_notification = id_type_notification;
     }
 
-    public void setPoste(Poste poste) {
+    public void setPoste(List<Poste> poste) {
         this.poste = poste;
     }
 
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
-    }
     /* ---- ------- ---------- */
 
     /* ---- GETTERS ---------- */
@@ -48,12 +48,9 @@ public class TypeNotification {
         return id_type_notification;
     }
 
-    public Poste getPoste() {
+    public List<Poste> getPoste() {
         return poste;
     }
 
-    public Utilisateur getUtilisateur() {
-        return utilisateur;
-    }
     /* ---- ------- ---------- */
 }

@@ -14,11 +14,15 @@ public class Notification {
     @Id
     @Column(name = "id_notification")
     private Long idNotification;
+
     String message;
+
     @Column(name = "date_notification")
     LocalDateTime dateNotification;
+
     @Column(name = "date_lu")
     LocalDateTime dateLu;
+
     @ManyToOne
     @JoinColumn(name = "id_utilisateur")
     Utilisateur utilisateur;
