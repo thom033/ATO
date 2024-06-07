@@ -18,6 +18,7 @@ import itu.diplome.Diplome;
 import itu.diplome.DiplomeUtilisateur;
 import itu.diplome.DiplomeUtilisateurRepository;
 import itu.experience.Experience;
+import itu.competence.*;
 import itu.experience.ExperienceRepository;
 import jakarta.servlet.http.HttpSession;
 
@@ -34,6 +35,10 @@ public class UtilisateurController {
 
     @Autowired
     DiplomeUtilisateurRepository diplomeUtilisateurRepository;
+
+    
+    @Autowired
+    CompetenceRepository competenceRepository;
 
     @GetMapping("/")
     public ModelAndView splashscreen() {
@@ -109,19 +114,25 @@ public class UtilisateurController {
         Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
         List<Experience> experiences = new ArrayList<>();
         List<Diplome> diplomes = new ArrayList<>();
-    
+        List<Competence> competences = new ArrayList<>();
+        int age = 0;
+
         if (user != null) {
             experiences = experienceRepository.findByUtilisateurId(user.getid());
             List<DiplomeUtilisateur> diplomeUtilisateurs = diplomeUtilisateurRepository.findByUtilisateur(user);
             for (DiplomeUtilisateur du : diplomeUtilisateurs) {
                 diplomes.add(du.getDiplome());
             }
+            competences = competenceRepository.findByUtilisateurId(user.getid());
+            age = user.calculateAge();
         }
-    
+
         model.addAttribute("utilisateur", user);
         model.addAttribute("experiences", experiences);
         model.addAttribute("diplomes", diplomes);
-    
+        model.addAttribute("competences", competences);
+        model.addAttribute("age", age);
+
         return "profil/profil";
     }
     
