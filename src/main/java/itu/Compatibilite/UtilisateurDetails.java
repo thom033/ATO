@@ -9,10 +9,11 @@ import java.time.ZoneId;
 import jakarta.persistence.*;
 
 @Entity
-
+@Table(name = "utilisateur_details")
 public class UtilisateurDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_utilisateur")
     private Integer idUtilisateur;
     private String nom;
     private String prenom;
