@@ -183,11 +183,61 @@ public class PosteDetails {
         return R * c; // Distance en kilomètres
     }
 
-    // public double getCompatibility(UtilisateurDetails u){
-    //     double val;
+    public int pointDistance(UtilisateurDetails u){
+        double distance = this.calculateDistance(u);
 
-    //     int uAge = u.calculateAge();
-        
-    //     return val;
-    // }
+        if (distance > 10) {
+            return 10;
+        }
+        else if(distance >100){
+            return 100;
+        }
+        else if (distance >1000) {
+            return 1000;
+        }
+
+        return 0;
+    }
+    
+    // Regle de coefficient
+    // Age => 3
+    // Exp => 5
+    // Formation => 2
+    // diplome => 5
+    // Distance => 5
+
+    public int getPointTotal(UtilisateurDetails u){
+        int point = 0;
+
+        if (this.checkAge(u)) {
+            point += 3;
+        }
+        if (this.checkExp(u)) {
+            point +=5;
+        }
+        if(this.checkFormation(u)){
+            point +=2;
+        }
+        if (this.checkDiplome(u)) {
+            point +=5;
+        }
+        if (this.calculateDistance(u) > 0) {
+            int pt_distance = this.pointDistance(u);
+            if (pt_distance == 10) {
+                point += 4;
+            }else if (pt_distance == 100) {
+                point +=3;
+            }else if (pt_distance == 1000){
+                point += 2;
+            }else{
+                point += 5;
+            }
+        }
+        return point;
+    }
+
+    public double getCompatibilityPourcentage(UtilisateurDetails u){
+        int point = this.getPointTotal(u);
+        return (point/20)*100;
+    }
 }

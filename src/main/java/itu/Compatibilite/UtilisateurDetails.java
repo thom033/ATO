@@ -14,31 +14,43 @@ public class UtilisateurDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_utilisateur")
-    private Integer idUtilisateur;
+    private Long idUtilisateur;
     private String nom;
     private String prenom;
+    @Column(name = "date_naissance")
     private Date dateNaissance;
     private String adresse;
     private String mail;
+    @Column(name = "etat_civil")
     private String etatCivil;
     private String photo;
     private int point;
-    private BigDecimal latitude;
-    private BigDecimal longitude;
+    private double latitude;
+    private double longitude;
     private String motdepasse;
 
+    @Column(name = "id_experience")
     private Long idExperience;
+    @Column(name = "experience_date_debut")
     private Date experienceDateDebut;
+    @Column(name = "experience_date_fin")
     private Date experienceDateFin;
+    @Column(name = "experience_description")
     private String experienceDescription;
 
+    @Column(name = "id_formation")
     private Long idFormation;
+    @Column(name = "formation_date_debut")
     private Date formationDateDebut;
+    @Column(name = "formation_date_fin")
     private Date formationDateFin;
+    @Column(name = "formation_description")
     private String formationDescription;
 
+    @Column(name = "id_competence")
     private Long idCompetence;
 
+    @Column(name = "id_diplome")
     private Long idDiplome;
 
     // Getters and setters
@@ -107,21 +119,21 @@ public class UtilisateurDetails {
         this.point = point;
     }
 
-    // public double getLatitude() {
-    //     return latitude;
-    // }
+    public double getLatitude() {
+        return latitude;
+    }
 
-    // public void setLatitude(double latitude) {
-    //     this.latitude = latitude;
-    // }
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
 
-    // public double getLongitude() {
-    //     return longitude;
-    // }
+    public double getLongitude() {
+        return longitude;
+    }
 
-    // public void setLongitude(double longitude) {
-    //     this.longitude = longitude;
-    // }
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 
     public String getMotdepasse() {
         return motdepasse;
@@ -235,5 +247,13 @@ public class UtilisateurDetails {
         LocalDate startDate = formationDateDebut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate endDate = formationDateFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         return Period.between(startDate, endDate).getYears();
+    }
+
+    public double[] ListCompatibility(PosteDetails[] p){
+        double[] compatibility = new double[p.length];
+        for (int i = 0; i < p.length; i++) {
+            compatibility[i] = p[i].getCompatibilityPourcentage(this);
+        }
+        return compatibility;
     }
 }
