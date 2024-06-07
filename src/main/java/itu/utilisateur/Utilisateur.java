@@ -3,6 +3,9 @@ package itu.utilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.regex.Pattern;
 
@@ -157,5 +160,14 @@ public class Utilisateur {
 
     public String getMotdepasse() {
         return motdepasse;
+    }
+    
+    public int calculateAge() {
+        if (this.dateNaissance == null) {
+            return 0;
+        }
+        LocalDate birthDate = this.dateNaissance.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate currentDate = LocalDate.now();
+        return Period.between(birthDate, currentDate).getYears();
     }
 }
