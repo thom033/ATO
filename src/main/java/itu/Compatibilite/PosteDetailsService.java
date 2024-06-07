@@ -1,7 +1,7 @@
 package itu.Compatibilite;
 
-import itu.PosteDetails;
-import itu.PosteDetailsRepository;
+import itu.Compatibilite.PosteDetails;
+import itu.Compatibilite.PosteDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
