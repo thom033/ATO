@@ -13,6 +13,8 @@ CREATE TABLE Utilisateur(
    motdepasse VARCHAR(255)  NOT NULL,
    PRIMARY KEY(id_utilisateur)
 );
+-- date naissance, photo,  peut etre null
+-- mail unique
 
 CREATE TABLE Secteur(
    id_secteur SERIAL,
