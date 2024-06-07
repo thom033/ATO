@@ -2,17 +2,19 @@ CREATE TABLE Utilisateur(
    id_utilisateur SERIAL,
    nom VARCHAR(255)  NOT NULL,
    prenom VARCHAR(255)  NOT NULL,
-   date_naissance DATE NOT NULL CHECK(date_naissance < CURRENT_DATE),
+   date_naissance DATE CHECK(date_naissance < CURRENT_DATE),
    adresse VARCHAR(255) ,
-   mail VARCHAR(255)  NOT NULL,
+   mail VARCHAR(255)  NOT NULL UNIQUE,
    etat_civil VARCHAR(255) ,
-   photo VARCHAR(255)  NOT NULL,
+   photo VARCHAR(255)  ,
    point BIGINT NOT NULL DEFAULT 0 CHECK(point >= 0 ),
    latitude NUMERIC(15,2)  ,
    longitude NUMERIC(15,2)  ,
    motdepasse VARCHAR(255)  NOT NULL,
    PRIMARY KEY(id_utilisateur)
 );
+-- date naissance, photo,  peut etre null
+-- mail unique
 
 CREATE TABLE Secteur(
    id_secteur SERIAL,
