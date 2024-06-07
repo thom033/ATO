@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import itu.diplome.Diplome;
+import itu.diplome.DiplomeUtilisateur;
+import itu.diplome.DiplomeUtilisateurRepository;
+import itu.experience.Experience;
+import itu.experience.ExperienceRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -22,6 +28,12 @@ public class UtilisateurController {
 
     @Autowired
     HttpSession httpSession;
+
+    @Autowired
+    ExperienceRepository experienceRepository;
+
+    @Autowired
+    DiplomeUtilisateurRepository diplomeUtilisateurRepository;
 
     @GetMapping("/")
     public ModelAndView splashscreen() {
@@ -92,12 +104,25 @@ public class UtilisateurController {
         return "login/login-register";
     }
 
-    @PostMapping("/utilisateur/profil")
-    public ModelAndView Profil(@RequestParam HashMap<String, Object> login) {
+    @GetMapping("/utilisateur/profil")
+    public String Profil(Model model) {
         Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
-        ModelAndView mv = new ModelAndView("profil/index.jsp");
-        mv.addObject("utilisateur", user);
-        return mv;
-    }
+        List<Experience> experiences = new ArrayList<>();
+        List<Diplome> diplomes = new ArrayList<>();
     
+        if (user != null) {
+            experiences = experienceRepository.findByUtilisateurId(user.getIdUser());
+            List<DiplomeUtilisateur> diplomeUtilisateurs = diplomeUtilisateurRepository.findByUtilisateur(user);
+            for (DiplomeUtilisateur du : diplomeUtilisateurs) {
+                diplomes.add(du.getDiplome());
+            }
+        }
+    
+        model.addAttribute("utilisateur", user);
+        model.addAttribute("experiences", experiences);
+        model.addAttribute("diplomes", diplomes); // Ajouter les diplômes à l'objet modèle
+    
+        return "profil/index";
+    }
+     
 }

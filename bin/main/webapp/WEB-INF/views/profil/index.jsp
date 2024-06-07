@@ -1,3 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="itu.utilisateur.Utilisateur"%>
+<%@ page import="itu.experience.Experience"%>
+<%@ page import="itu.diplome.Diplome"%>
+<%@ page import="java.util.List" %>
+<%
+Utilisateur user = (Utilisateur) request.getAttribute("utilisateur");
+List<Experience> exp = (List<Experience>) request.getAttribute("experiences");
+List<Diplome> dip = (List<Diplome>) request.getAttribute("diplomes");
+
+%> 
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -6,10 +17,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>profile</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assetsProfil/bootstrap/css/pikaday.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assetsProfil/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assetsProfil/css/Login-Form-Basic-icons.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assetsProfil/css/profile.css">
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/pikaday.min.css">
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="/public/assets/css/profile.css">
 </head>
 
 <body>
@@ -19,14 +30,14 @@
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
-                            <img class="avatar" src="${pageContext.request.contextPath}/assetsProfil/img/avatars/avatar.jpg" alt="">
+                            <img class="avatar" src="/public/assets/img/avatars/avatar.jpg" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="contact">
                     <div class="info-perso">
                         <div class="svg">
-                            <img class="icon" src="${pageContext.request.contextPath}/assetsProfil/img/icon/fi-rr-phone-flip.svg">
+                            <img class="icon" src="/public/assets/img/icon/fi-rr-phone-flip.svg">
                         </div>
                         <div>
                             <p>034 56 556 56</p>
@@ -34,10 +45,10 @@
                     </div>
                     <div class="info-perso">
                         <div class="svg">
-                            <img class="icon" src="${pageContext.request.contextPath}/assetsProfil/img/icon/fi-rr-envelope.svg">
+                            <img class="icon" src="/public/assets/img/icon/fi-rr-envelope.svg">
                         </div>
                         <div>
-                            <p>dhrstnsgnr@gmail.com</p>
+                            <p><%= user.getMail()%></p>
                         </div>
                     </div>
                 </div>
@@ -51,7 +62,7 @@
                             <div class="row mb-5">
                                 <div class="info-perso">
                                     <div  class="svg">
-                                        <img class="icon" src="${pageContext.request.contextPath}/assetsProfil/img/icon/fi-rr-user.svg" style="margin-top: -10px; width: 25px; height: 25px">
+                                        <img class="icon" src="/public/assets/img/icon/fi-rr-user.svg" style="margin-top: -10px; width: 25px; height: 25px">
                                     </div>
                                     <div>
                                         <h4>INFORMATIONS PERSONNELLES :</h4>
@@ -63,7 +74,7 @@
                                             <p>Nom</p>
                                         </div>
                                         <div class="variable">
-                                            <p>KAZAMA</p>
+                                            <p><%= user.getNom() %></p>
                                         </div>
                                     </div>
                                     <div class="input">
@@ -71,7 +82,7 @@
                                             <p>Prenom(s)</p>
                                         </div>
                                         <div class="variable">
-                                            <p>Jin</p>
+                                            <p><%= user.getPrenom() %></p>
                                         </div>
                                     </div>
                                     <div class="input">
@@ -79,7 +90,7 @@
                                             <p>Adresse</p>
                                         </div>
                                         <div class="variable">
-                                            <p>Lot UL 4545 Pas Tres loin d'ITU</p>
+                                            <p><%= user.getAdresse() %></p>
                                         </div>
                                     </div>
                                     <div class="input">
@@ -87,7 +98,7 @@
                                             <p>Secteur</p>
                                         </div>
                                         <div class="variable">
-                                            <p>Informatique</p>
+                                            <p><%= user.getNom() %></p>
                                             <p class="input">Lorem ipsum dolor sit amet.</p>
                                         </div>
                                     </div>
@@ -96,7 +107,7 @@
                                             <p>Age</p>
                                         </div>
                                         <div class="variable">
-                                            <p>25 ans</p>
+                                            <p><%= user.getNom() %></p>
                                         </div>
                                     </div>
                                     <div class="input">
@@ -104,7 +115,7 @@
                                             <p>Coordonnées</p>
                                         </div>
                                         <div class="variable">
-                                            <p>19° 32°</p>
+                                            <p><%= user.getLongitude() %><%= user.getLatitude() %></p>
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +125,7 @@
                             <div class="row mb-5">
                                 <div class="info-perso">
                                     <div  class="svg">
-                                        <img class="icon" src="${pageContext.request.contextPath}/assetsProfil/img/icon/fi-rr-building.svg" style="margin-top: -10px; width: 25px; height: 25px">
+                                        <img class="icon" src="/public/assets/img/icon/fi-rr-building.svg" style="margin-top: -10px; width: 25px; height: 25px">
                                     </div>
                                     <div>
                                         <h4>INFORMATIONS PROFESSIONNELLES :</h4>
@@ -136,8 +147,12 @@
                                             <p>Expérience(s)</p>
                                         </div>
                                         <div class="variable">
-                                            <p>Lorem, ipsum. - 1ans</p>
-                                            <p class="input">Lorem, ipsum. - 5ans</p>
+                                            <p th:each="experience : ${experiences}">
+                                                <span th:text="${experience.description}">Description placeholder</span> - 
+                                                <span th:text="${#dates.format(experience.date_debut, 'dd/MM/yyyy')}">Date début placeholder</span>
+                                                <span th:if="${experience.date_fin != null}"> - <span th:text="${#dates.format(experience.date_fin, 'dd/MM/yyyy')}">Date fin placeholder</span></span>
+                                                <span th:if="${experience.date_fin == null}"> - Présent</span>
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="input">
@@ -168,9 +183,9 @@
             </div>
         </div>
     </div>
-    <script src="${pageContext.request.contextPath}/assetsProfil/bootstrap/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assetsProfil/bootstrap/js/pikaday.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assetsProfil/bootstrap/js/theme.js"></script>
+    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/public/assets/bootstrap/js/pikaday.min.js"></script>
+    <script src="/public/assets/bootstrap/js/theme.js"></script>
 </body>
 
 </html>
