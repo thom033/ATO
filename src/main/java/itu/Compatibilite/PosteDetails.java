@@ -183,11 +183,11 @@ public class PosteDetails {
         return R * c; // Distance en kilomètres
     }
 
-    public double getCompatibility(UtilisateurDetails u){
-        double val;
+    // public double getCompatibility(UtilisateurDetails u){
+    //     double val;
 
-        int uAge = u.calculateAge();
+    //     int uAge = u.calculateAge();
         
-        return val;
-    }
+    //     return val;
+    // }
 }

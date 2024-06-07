@@ -12,9 +12,9 @@ public class PosteDetailsService {
     private PosteDetailsRepository posteDetailsRepository;
 
     // Méthode pour récupérer tous les détails des postes
-    public List<PosteDetails> getAllinSecteur(int id_secteur) {
-        return posteDetailsRepository.getPosteDetails(id_secteur);
-    }
+    // public List<PosteDetails> getAllinSecteur(int id_secteur) {
+    //     return posteDetailsRepository.getPosteDetails(id_secteur);
+    // }
 
     // Méthode pour calculer la compatibilité entre un poste et un utilisateur
 }

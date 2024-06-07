@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UtilisateurDetailsRepository extends JpaRepository<UtilisateurDetails, Long> {
-
+public interface UtilisateurDetailsRepository extends JpaRepository<UtilisateurDetails, Integer> {
     @Query("select u from utilisateur_details u where id_utilisateur= :id_user")
     List<PosteDetails> getPosteDetails(int id_user);
 }

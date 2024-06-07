@@ -243,6 +243,17 @@ LEFT JOIN diplome_utilisateur du ON u.id_utilisateur = du.id_utilisateur
 LEFT JOIN competence c ON cu.id_competence = c.id_competence
 LEFT JOIN Diplome d ON du.id_diplome = d.id_diplome;
 
+drop VIEW utilisateur_details;
+
+ALTER TABLE Utilisateur ALTER COLUMN id_utilisateur SET DATA TYPE bigint;
+ALTER TABLE Utilisateur ALTER COLUMN id_utilisateur SET DATA TYPE INTEGER;
+ALTER TABLE Utilisateur ALTER COLUMN date_naissance SET DATA TYPE TIMESTAMP;
+
+ALTER TABLE utilisateur
+ALTER COLUMN latitude TYPE numeric(18,4),
+ALTER COLUMN longitude TYPE numeric(18,4);
+
+
 
 
 

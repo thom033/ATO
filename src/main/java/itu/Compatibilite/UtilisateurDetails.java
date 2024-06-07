@@ -1,7 +1,7 @@
 package itu.Compatibilite;
 
 import java.util.Date;
-
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -9,9 +9,11 @@ import java.time.ZoneId;
 import jakarta.persistence.*;
 
 @Entity
+
 public class UtilisateurDetails {
     @Id
-    private Long idUtilisateur;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idUtilisateur;
     private String nom;
     private String prenom;
     private Date dateNaissance;
@@ -20,8 +22,8 @@ public class UtilisateurDetails {
     private String etatCivil;
     private String photo;
     private int point;
-    private double latitude;
-    private double longitude;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
     private String motdepasse;
 
     private Long idExperience;
@@ -39,14 +41,6 @@ public class UtilisateurDetails {
     private Long idDiplome;
 
     // Getters and setters
-
-    public Long getIdUtilisateur() {
-        return idUtilisateur;
-    }
-
-    public void setIdUtilisateur(Long idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
-    }
 
     public String getNom() {
         return nom;
@@ -112,21 +106,21 @@ public class UtilisateurDetails {
         this.point = point;
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
+    // public double getLatitude() {
+    //     return latitude;
+    // }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
+    // public void setLatitude(double latitude) {
+    //     this.latitude = latitude;
+    // }
 
-    public double getLongitude() {
-        return longitude;
-    }
+    // public double getLongitude() {
+    //     return longitude;
+    // }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
+    // public void setLongitude(double longitude) {
+    //     this.longitude = longitude;
+    // }
 
     public String getMotdepasse() {
         return motdepasse;
