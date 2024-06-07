@@ -8,7 +8,8 @@ import java.util.List;
 
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification, Long> {
-    @Query("SELECT * FROM Notification WHERE id_utilisateur = :id_utilisateur ORDER BY date_notification DESC")
-    List<Notification> getNotifByUtilisateur(String id_utilisateur);
+
+    @Query("SELECT n FROM Notification n WHERE utilisateur= :idUtilisateur ORDER BY dateNotification DESC")
+    List<Notification> getNotifByUtilisateur(String idUtilisateur);
 
 }

@@ -4,3 +4,14 @@
 .bi :hover{
     transform: scale(2);
 }
+
+.btn-light:hover {
+    background-color: #f8f9fa;
+    color: #0280ff;
+}
+.btn-dark:hover {
+    background-color: #f8f9fa;
+    color: #0280ff;
+    border-color: #f8f9fa;
+}
+
