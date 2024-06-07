@@ -2,11 +2,9 @@ package itu.Compatibilite;
 
 import java.util.Date;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.Date;
-import java.util.regex.Pattern;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 
 import jakarta.persistence.*;
 
@@ -22,8 +20,8 @@ public class UtilisateurDetails {
     private String etatCivil;
     private String photo;
     private int point;
-    private Float latitude;
-    private Float longitude;
+    private double latitude;
+    private double longitude;
     private String motdepasse;
 
     private Long idExperience;
@@ -114,19 +112,19 @@ public class UtilisateurDetails {
         this.point = point;
     }
 
-    public Float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Float latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public Float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Float longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
@@ -216,5 +214,31 @@ public class UtilisateurDetails {
 
     public void setIdDiplome(Long idDiplome) {
         this.idDiplome = idDiplome;
+    }
+
+    public int calculateAge() {
+        if (this.getDateNaissance() == null) {
+            return 0;
+        }
+        LocalDate birthDate = this.getDateNaissance().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return Period.between(birthDate, LocalDate.now()).getYears();
+    }
+
+    public int calculateExperienceYears() {
+        if (this.getExperienceDateDebut() == null || this.getExperienceDateFin() == null) {
+            return 0;
+        }
+        LocalDate startDate = this.getExperienceDateDebut().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate endDate = this.getExperienceDateFin().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return Period.between(startDate, endDate).getYears();
+    }
+
+    public int calculateFormationYears() {
+        if (this.getFormationDateDebut() == null || this.getFormationDateFin() == null) {
+            return 0;
+        }
+        LocalDate startDate = formationDateDebut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate endDate = formationDateFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return Period.between(startDate, endDate).getYears();
     }
 }
