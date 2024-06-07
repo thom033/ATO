@@ -92,4 +92,12 @@ public class UtilisateurController {
         return "login/login-register";
     }
 
+    @PostMapping("/utilisateur/profil")
+    public ModelAndView Profil(@RequestParam HashMap<String, Object> login) {
+        Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
+        ModelAndView mv = new ModelAndView("profil/index.jsp");
+        mv.addObject("utilisateur", user);
+        return mv;
+    }
+    
 }
