@@ -7,12 +7,11 @@
 Utilisateur user = (Utilisateur) request.getAttribute("utilisateur");
 List<Experience> exp = (List<Experience>) request.getAttribute("experiences");
 List<Diplome> dip = (List<Diplome>) request.getAttribute("diplomes");
-
 %> 
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
-<head>
+<head> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>profile</title>
@@ -147,12 +146,11 @@ List<Diplome> dip = (List<Diplome>) request.getAttribute("diplomes");
                                             <p>Expérience(s)</p>
                                         </div>
                                         <div class="variable">
-                                            <p th:each="experience : ${experiences}">
-                                                <span th:text="${experience.description}">Description placeholder</span> - 
-                                                <span th:text="${#dates.format(experience.date_debut, 'dd/MM/yyyy')}">Date début placeholder</span>
-                                                <span th:if="${experience.date_fin != null}"> - <span th:text="${#dates.format(experience.date_fin, 'dd/MM/yyyy')}">Date fin placeholder</span></span>
-                                                <span th:if="${experience.date_fin == null}"> - Présent</span>
-                                            </p>
+                                        <% 
+                                            for(Experience experience : exp) {
+                                        %>
+                                        <p><%= experience.getDescription() %> : <%= experience.getDate_debut() %> au <%= experience.getDate_fin() %></p>
+                                        <% } %>
                                         </div>
                                     </div>
                                     <div class="input">

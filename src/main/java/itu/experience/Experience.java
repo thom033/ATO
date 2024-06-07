@@ -10,6 +10,7 @@ public class Experience {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_experiecne")
     Long id_experience;
     
     @Column(nullable = false)
@@ -20,7 +21,7 @@ public class Experience {
     @Column(nullable = false)
     String description;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_utilisateur", nullable = false)
     Utilisateur utilisateur;
 

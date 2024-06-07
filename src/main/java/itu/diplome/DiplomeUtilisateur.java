@@ -6,9 +6,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "diplome_utilisateur")
 public class DiplomeUtilisateur {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
 
     @ManyToOne
     @JoinColumn(name = "id_utilisateur")

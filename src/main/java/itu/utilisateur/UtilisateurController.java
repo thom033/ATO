@@ -10,8 +10,8 @@ import java.util.List;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import itu.diplome.Diplome;
@@ -105,13 +105,13 @@ public class UtilisateurController {
     }
 
     @GetMapping("/utilisateur/profil")
-    public String Profil(Model model) {
+    public String profil(Model model) {
         Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
         List<Experience> experiences = new ArrayList<>();
         List<Diplome> diplomes = new ArrayList<>();
     
         if (user != null) {
-            experiences = experienceRepository.findByUtilisateurId(user.getIdUser());
+            experiences = experienceRepository.findByUtilisateurId(user.getid());
             List<DiplomeUtilisateur> diplomeUtilisateurs = diplomeUtilisateurRepository.findByUtilisateur(user);
             for (DiplomeUtilisateur du : diplomeUtilisateurs) {
                 diplomes.add(du.getDiplome());
@@ -120,9 +120,11 @@ public class UtilisateurController {
     
         model.addAttribute("utilisateur", user);
         model.addAttribute("experiences", experiences);
-        model.addAttribute("diplomes", diplomes); // Ajouter les diplômes à l'objet modèle
+        model.addAttribute("diplomes", diplomes);
     
-        return "profil/index";
+        return "profil/profil";
     }
+    
+    
      
 }
