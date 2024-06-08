@@ -34,7 +34,7 @@
                             <p class="description">Quantité de points</p>
                             <form class="form-quantite" method="get" action="/utilisateur/achat">
                                 <div class="input-group">
-                                    <input type="number" id="quantite" name="quantite" autocomplete="off" class="input" style="border-radius: 15px;">
+                                    <input required type="number" id="quantite" name="quantite" autocomplete="off" class="input" style="border-radius: 15px;">
                                     <label class="user-label">Quantité</label>
                                 </div>
                                 <div class="my-2" style="margin-left: 20px;"><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" type="submit">Valider</button></div>
@@ -68,6 +68,8 @@
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <form action="/utilisateur/achat" method="get">
+                                                                        <input required type="hidden" name="quantite" id="quantite" value="5">
+                                                                        <input type="hidden" name="reduction" id="reduction" value="reduction">
                                                                         <button type="submit" class="btn-svg">
                                                                             <svg id="titre" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                                                                                 <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
@@ -106,12 +108,14 @@
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <form action="/utilisateur/achat" method="get">
+                                                                        <input required type="hidden" name="quantite" id="quantite" value="10">
+                                                                        <input type="hidden" name="reduction" id="reduction" value="reduction">
                                                                         <button class="btn-svg" style="background-color: #79A3C1;">
                                                                             <svg id="titre" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                                                                                 <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
                                                                             </svg>
                                                                         </button>
-                                                                    </form>
+                                                                    </form>                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>

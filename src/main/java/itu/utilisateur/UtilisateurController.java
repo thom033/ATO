@@ -98,22 +98,4 @@ public class UtilisateurController {
         return "login/login-register";
     }
 
-    @GetMapping("/achat")
-    public ModelAndView getPageAchat() {
-        ModelAndView mv = new ModelAndView("achat/achat");
-
-        return mv;
-    }
-
-
-    @GetMapping("/utilisateur/achat")
-    public ModelAndView achatPointUtilisateur() {
-        Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
-
-
-        ModelAndView mv = new ModelAndView("achat/achat");
-        
-        return mv;
-    }
-
 }
