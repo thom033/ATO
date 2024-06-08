@@ -3,8 +3,8 @@
     text-align: center;
 }
 .notification-item {
-    border-bottom: 1px solid #ddd;
-    padding: 5px 5px;
+    border-bottom: 1px solid #707070;
+    padding: 1.4em 0em;
 }
 .notification-icon {
     font-size: 1.5rem;
@@ -14,13 +14,18 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    margin: auto;
     color: black;
 }
 .notification-icon.download {
-    border: 2px solid green;
+    width: 3.2rem;
+    height: 3.2rem;
+    border: 3.5px solid green;
 }
 .notification-icon.garbage {
-    border: 2px solid red;
+    width: 3.2rem;
+    height: 3.2rem;
+    border: 3.5px solid red;
 }
 .notification-icon.chevron {
     border: 2px solid black;
@@ -28,21 +33,31 @@
     height: 25px;
 }
 .notification-time {
-    color: gray;
+    color: #707070;
 }
 .container {
     position: relative;
     margin-top: -50px;
+    overflow-y: scroll;
 }
-.container::before,
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    max-height: 25.4em;
+    border-top: 0.4rem solid #707070;
+    border-bottom: 0.4rem solid #707070;
+}
+/* .container::before,
 .container::after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
     height: 5px;
-    background-color: grey;
-}
+    background-color: #707070;
+} */
 .container::before {
     top: 0;
 }
@@ -53,5 +68,11 @@
     font-family: Helvetica, sans-serif;
     font-size: 100px;
     font-weight: bold;
-    color: grey;
+    color: #707070;
+}
+
+
+/* Nicolas */
+.nicolas-message {
+    font-weight: 600;
 }
