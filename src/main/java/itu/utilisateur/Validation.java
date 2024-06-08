@@ -1,4 +1,4 @@
-package itu.user;
+package itu.utilisateur;
 
 public class Validation {
     public static boolean isEmpty(String value) throws Exception {
