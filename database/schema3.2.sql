@@ -43,6 +43,7 @@ CREATE TABLE Entreprise(
    image VARCHAR(255)  NOT NULL,
    PRIMARY KEY(id_entreprise)
 );
+-- pourquoi il n'y a pas de secteur
 
 CREATE TABLE poste(
    id_poste SERIAL,
@@ -60,6 +61,7 @@ CREATE TABLE poste(
    FOREIGN KEY(id_diplome) REFERENCES Diplome(id_diplome),
    FOREIGN KEY(id_entreprise) REFERENCES Entreprise(id_entreprise)
 );
+-- ajouter cout de postulation
 
 CREATE TABLE competence(
    id_competence SERIAL,
