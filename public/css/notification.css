@@ -1,0 +1,57 @@
+.notification-header {
+    font-size: 100px;
+    text-align: center;
+}
+.notification-item {
+    border-bottom: 1px solid #ddd;
+    padding: 5px 5px;
+}
+.notification-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: black;
+}
+.notification-icon.download {
+    border: 2px solid green;
+}
+.notification-icon.garbage {
+    border: 2px solid red;
+}
+.notification-icon.chevron {
+    border: 2px solid black;
+    width: 25px;
+    height: 25px;
+}
+.notification-time {
+    color: gray;
+}
+.container {
+    position: relative;
+    margin-top: -50px;
+}
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-color: grey;
+}
+.container::before {
+    top: 0;
+}
+.container::after {
+    bottom: 0;
+}
+.custom-h2 {
+    font-family: Helvetica, sans-serif;
+    font-size: 100px;
+    font-weight: bold;
+    color: grey;
+}
