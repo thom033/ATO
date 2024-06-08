@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,12 +14,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import itu.achat.Argent;
+import itu.achat.ArgentRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UtilisateurController {
     @Autowired
     UtilisateurRepository utilisateurRepository;
+
+    @Autowired
+    ArgentRepository argentRepository;
 
     @Autowired
     HttpSession httpSession;
@@ -90,6 +96,24 @@ public class UtilisateurController {
         utilisateurRepository.save(utilisateur);
 
         return "login/login-register";
+    }
+
+    @GetMapping("/achat")
+    public ModelAndView getPageAchat() {
+        ModelAndView mv = new ModelAndView("achat/achat");
+
+        return mv;
+    }
+
+
+    @GetMapping("/utilisateur/achat")
+    public ModelAndView achatPointUtilisateur() {
+        Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
+
+
+        ModelAndView mv = new ModelAndView("achat/achat");
+        
+        return mv;
     }
 
 }

@@ -97,3 +97,10 @@ INSERT INTO competence_secteur (id_secteur, id_competence)
 VALUES 
 (1, 1),
 (2, 2);
+
+-- Insérer des données de test dans la table argent
+INSERT INTO argent (solde, id_utilisateur)
+VALUES (1000.00, 1);
+
+INSERT INTO argent (solde, id_utilisateur)
+VALUES (2000.00, 2);
