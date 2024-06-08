@@ -18,6 +18,9 @@ public class AchatController {
 
     @Autowired
     private UtilisateurRepository utilisateurRepository; 
+
+    @Autowired
+    private ArgentRepository argentRepository; 
     
     @GetMapping("/achat")
     public ModelAndView getPageAchat() {
@@ -50,6 +53,8 @@ public class AchatController {
             utilisateur.setPoint(utilisateur.getPoint() + quantite);
 
             utilisateurRepository.updatePoints(utilisateur.getIdUser(), quantite);
+            argentRepository.updateArgentUser(utilisateur.getIdUser(), montantTotal);
+
             // Enregistrer l'utilisateur mis à jour dans la session
             httpSession.setAttribute("utilisateur", utilisateur);
         }

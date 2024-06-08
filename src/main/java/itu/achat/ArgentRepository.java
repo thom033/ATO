@@ -1,8 +1,15 @@
 package itu.achat;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.Optional;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+
+import jakarta.transaction.Transactional;
+
 
 public interface ArgentRepository extends JpaRepository<Argent, Integer> {
-    Optional<Argent> findByIdUtilisateur(Long long1);
+    @Modifying
+    @Transactional
+    @Query("UPDATE Argent a SET a.solde = a.solde - :montant WHERE a.idUtilisateur = :utilisateurId")
+    void updateArgentUser(Long utilisateurId, double montant);
 }

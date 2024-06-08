@@ -14,7 +14,7 @@ public class Argent {
     Double solde;
 
     @Column(name = "id_utilisateur")
-    int idUtilisateur;
+    Long idUtilisateur;
 
     // Getters and Setters
     public int getId() {
@@ -33,11 +33,11 @@ public class Argent {
         this.solde = solde;
     }
 
-    public int getIdUtilisateur() {
+    public Long getIdUtilisateur() {
         return idUtilisateur;
     }
 
-    public void setIdUtilisateur(int idUtilisateur) {
+    public void setIdUtilisateur(Long idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
     }
 }
