@@ -2,20 +2,19 @@ CREATE TABLE Utilisateur(
    id_utilisateur SERIAL,
    nom VARCHAR(255)  NOT NULL,
    prenom VARCHAR(255)  NOT NULL,
-   date_naissance DATE CHECK(date_naissance < CURRENT_DATE),
+   date_naissance DATE NOT NULL CHECK(date_naissance < CURRENT_DATE),
    adresse VARCHAR(255) ,
-   mail VARCHAR(255)  NOT NULL UNIQUE,
+   mail VARCHAR(255)  NOT NULL,
    etat_civil VARCHAR(255) ,
-   photo VARCHAR(255)  ,
+   photo VARCHAR(255)  NOT NULL,
    point BIGINT NOT NULL DEFAULT 0 CHECK(point >= 0 ),
    latitude NUMERIC(15,2)  ,
    longitude NUMERIC(15,2)  ,
    motdepasse VARCHAR(255)  NOT NULL,
+   description TEXT,
+   salaire_recherche NUMERIC(15,2)   DEFAULT 0,
    PRIMARY KEY(id_utilisateur)
 );
--- date naissance, photo,  peut etre null
--- mail unique
--- ajouter nationalite?
 
 CREATE TABLE Secteur(
    id_secteur SERIAL,
@@ -44,7 +43,6 @@ CREATE TABLE Entreprise(
    image VARCHAR(255)  NOT NULL,
    PRIMARY KEY(id_entreprise)
 );
--- pourquoi il n'y a pas de secteur
 
 CREATE TABLE poste(
    id_poste SERIAL,
@@ -56,31 +54,28 @@ CREATE TABLE poste(
    annee_formation INTEGER DEFAULT 0,
    age_min INTEGER,
    age_max INTEGER,
+   image VARCHAR(250) ,
    id_diplome INTEGER NOT NULL,
    id_entreprise INTEGER NOT NULL,
    PRIMARY KEY(id_poste),
    FOREIGN KEY(id_diplome) REFERENCES Diplome(id_diplome),
    FOREIGN KEY(id_entreprise) REFERENCES Entreprise(id_entreprise)
 );
--- ajouter cout de postulation
--- disponibilite boolean
 
 CREATE TABLE competence(
    id_competence SERIAL,
    competence VARCHAR(255)  NOT NULL,
    description TEXT,
-   id_utilisateur INTEGER NOT NULL,
-   PRIMARY KEY(id_competence),
-   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+   PRIMARY KEY(id_competence)
 );
 
 CREATE TABLE experience(
-   id_experiecne SERIAL,
+   id_experience SERIAL,
    date_debut DATE NOT NULL,
    date_fin DATE,
    description TEXT NOT NULL,
    id_utilisateur INTEGER NOT NULL,
-   PRIMARY KEY(id_experiecne),
+   PRIMARY KEY(id_experience),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
@@ -99,7 +94,6 @@ CREATE TABLE Question(
    question TEXT NOT NULL,
    PRIMARY KEY(id_question)
 );
--- ajouter nbre de fois posée
 
 CREATE TABLE Reponse(
    id_reponse SERIAL,
@@ -111,12 +105,10 @@ CREATE TABLE Reponse(
 
 CREATE TABLE type_notification(
    id_type_notification SERIAL,
-   poste INTEGER,
+   poste INTEGER REFERENCES poste(id_poste),
    point BOOLEAN,
-   FOREIGN KEY(poste) REFERENCES poste(id_poste),
    PRIMARY KEY(id_type_notification)
 );
--- nosoloiko foreign key
 
 CREATE TABLE Contact(
    id_contact SERIAL,
@@ -129,18 +121,40 @@ CREATE TABLE Contact(
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
+CREATE TABLE administrateur(
+   id_administrateur SERIAL,
+   mail VARCHAR(250)  NOT NULL,
+   mot_de_passe VARCHAR(250)  NOT NULL,
+   PRIMARY KEY(id_administrateur)
+);
+
+CREATE TABLE argent(
+   id_argent SERIAL,
+   solde NUMERIC(15,2)   NOT NULL DEFAULT 0,
+   id_utilisateur INTEGER NOT NULL,
+   PRIMARY KEY(id_argent),
+   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+);
+
 CREATE TABLE Notification(
    id_notification SERIAL,
    message TEXT NOT NULL,
-   date_notification TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
-   date_lu TIMESTAMP,
+   date_notification TIMESTAMP NOT NULL DEFAULT CURRRENT_DATE,
+   date_lu TIMESTAMP DEFAULT NULL,
    id_type_notification INTEGER NOT NULL,
    id_utilisateur INTEGER NOT NULL,
    PRIMARY KEY(id_notification),
    FOREIGN KEY(id_type_notification) REFERENCES type_notification(id_type_notification),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
--- enlevé le default date_lu = current_date
+
+CREATE TABLE competence_utilisateur(
+   id_utilisateur INTEGER,
+   id_competence INTEGER,
+   PRIMARY KEY(id_utilisateur, id_competence),
+   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur),
+   FOREIGN KEY(id_competence) REFERENCES competence(id_competence)
+);
 
 CREATE TABLE diplome_utilisateur(
    id_utilisateur INTEGER,
