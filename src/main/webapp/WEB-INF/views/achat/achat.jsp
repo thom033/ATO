@@ -31,11 +31,11 @@
                                         <img src="/public/assetsAchat/bootstrap/icon/fi-rr-shopping-cart.svg" alt="" class="icon-image">
                                 </span>
                             </div>
-                            <p class="description">Quantité de points</p>
+                            <p class="description">Quantite de points</p>
                             <form class="form-quantite" method="get" action="/utilisateur/achat">
                                 <div class="input-group">
                                     <input required type="number" id="quantite" name="quantite" autocomplete="off" class="input" style="border-radius: 15px;">
-                                    <label class="user-label">Quantité</label>
+                                    <label class="user-label">Quantite</label>
                                 </div>
                                 <div class="my-2" style="margin-left: 20px;"><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" type="submit">Valider</button></div>
                             </form>
@@ -153,7 +153,7 @@
                                 <img class="image" src="/public/assetsAchat/img/concept-graphique-performance-gestion-donnees.jpg" alt="">
                             </div>
                             <div id="mot" class="col-md-8">
-                                <h3 class="fw-bold">Utilité des points</h3>
+                                <h3 class="fw-bold">Utilite des points</h3>
                                 <p>Les points permettent de postuler pour un travail dans le site</p>
                             </div>
                         </div>
@@ -163,7 +163,7 @@
                         <div class="row">
                             <div id="mot" class="col-md-8">
                                 <h3 class="fw-bold">Gestion des points</h3>
-                                <p>Les points seront consommés au moment où vous postulez mais sera rendu dans le cas où vous n'obtenez pas le poste</p>
+                                <p>Les points seront consommes au moment ou vous postulez mais sera rendu dans le cas ou vous n'obtenez pas le poste</p>
                             </div>
                             <div class="col-md-4">
                                 <img class="image" src="/public/assetsAchat/img/gros-plan-femme-aide-calculatrice-telephone-intelligent_1262-16076.jpg" alt="">
@@ -182,15 +182,15 @@
             var inputQuantite = document.getElementById("quantite");
             var solde = document.getElementById("solde");
 
-            // Récupérer la valeur de la quantité entrée
+            // Recuperer la valeur de la quantite entree
             var quantite = parseInt(inputQuantite.value) || 0; // Assurez-vous que la valeur est un nombre, sinon, utilisez 0
 
             // Mettre à jour la valeur actuelle
-            var valeurActuelle = quantite * 5000; // Calculer la valeur actuelle en fonction de la quantité
+            var valeurActuelle = quantite * 5000; // Calculer la valeur actuelle en fonction de la quantite
             solde.innerHTML = valeurActuelle + " Ar";
         }
 
-        // Attacher un événement d'entrée à l'input de quantité pour mettre à jour la valeur actuelle en temps réel
+        // Attacher un evenement d'entree à l'input de quantite pour mettre à jour la valeur actuelle en temps reel
         document.getElementById("quantite").addEventListener("input", updateCurrentValue);
 
         window.onload = function() {
