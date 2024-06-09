@@ -13,6 +13,7 @@ public class AtoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtoApplication.class, args);
+		System.out.println("MANDEHA ATOO!!!");
 	}
 
 	private static final Logger log = LoggerFactory.getLogger(AtoApplication.class);
