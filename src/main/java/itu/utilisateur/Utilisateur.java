@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
+
+import itu.notification.*;
 
 import jakarta.persistence.*;
 
@@ -14,12 +17,16 @@ public class Utilisateur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_utilisateur")
-    private Long idUser;
+    private Long id;
     String nom;
     String prenom;
     Date dateNaissance;
     String adresse;
     String mail;
+
+    @OneToMany(mappedBy = "utilisateur")
+    List<Notification> notifications;
+
     // List<String> numeroTelephone;
     String etat_civil;
     String photo;
@@ -37,7 +44,7 @@ public class Utilisateur {
     public Utilisateur(Long idUser, String nom, String prenom, Date dateNaissance, String adresse, String mail,
             String etat_civil, String photo, int point, float longitude,
             float latitude, String motdepasse) {
-        this.idUser = idUser;
+        this.id = idUser;
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
@@ -54,7 +61,7 @@ public class Utilisateur {
 
     // ------- setters -------------
     public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+        this.id = idUser;
     }
 
     public void setNom(String nom) throws Exception {
@@ -108,7 +115,7 @@ public class Utilisateur {
 
     // ------ gettters ------- ---------
     public Long getIdUser() {
-        return idUser;
+        return id;
     }
 
     public String getNom() {

@@ -20,21 +20,21 @@ public class UtilisateurController {
     @Autowired
     UtilisateurRepository utilisateurRepository;
 
-    @Autowired
-    HttpSession httpSession;
+    // @Autowired
+    // HttpSession httpSession;
 
     @GetMapping("/")
     public ModelAndView splashscreen() {
         ModelAndView mv = new ModelAndView("template");
-        mv.addObject("page", "splashScreen/index.jsp");
+        mv.addObject("page", "splashScreen/index");
         return mv;
     }
 
     @GetMapping("/utilisateur/deconnexion")
-    public ModelAndView deconnexion() {
+    public ModelAndView deconnexion(HttpSession httpSession) {
         httpSession.removeAttribute("utilisateur");
         ModelAndView mv = new ModelAndView("template");
-        mv.addObject("page", "splashScreen/index.jsp");
+        mv.addObject("page", "splashScreen/index");
         return mv;
     }
 
@@ -50,7 +50,7 @@ public class UtilisateurController {
     }
 
     @PostMapping("/login/test")
-    public ModelAndView verificationLogin(@RequestParam HashMap<String, Object> login) {
+    public ModelAndView verificationLogin(@RequestParam HashMap<String, Object> login, HttpSession httpSession) {
         boolean validite = true;
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setMail((String) login.get("mail"));
@@ -66,8 +66,7 @@ public class UtilisateurController {
             Utilisateur user = recherche.get(0);
             httpSession.setAttribute("utilisateur", user);
 
-            mv.addObject("utilisateur", user);
-            mv.addObject("page", "splashScreen/index.jsp");
+            mv.addObject("page", "splashScreen/index");
             return mv;
         } else {
             ModelAndView mv = new ModelAndView("login/login-register");
