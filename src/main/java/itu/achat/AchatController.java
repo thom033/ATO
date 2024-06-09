@@ -52,8 +52,8 @@ public class AchatController {
 
             utilisateur.setPoint(utilisateur.getPoint() + quantite);
 
-            utilisateurRepository.updatePoints(utilisateur.getIdUser(), quantite);
-            argentRepository.updateArgentUser(utilisateur.getIdUser(), montantTotal);
+            utilisateurRepository.updatePoints(utilisateur.getId(), quantite);
+            argentRepository.updateArgentUser(utilisateur.getId(), montantTotal);
 
             // Enregistrer l'utilisateur mis à jour dans la session
             httpSession.setAttribute("utilisateur", utilisateur);

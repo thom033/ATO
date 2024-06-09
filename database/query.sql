@@ -1,8 +1,7 @@
--- Table Utilisateur
-INSERT INTO Utilisateur (nom, prenom, date_naissance, adresse, mail, etat_civil, photo, point, latitude, longitude, motdepasse) 
+INSERT INTO Utilisateur (nom, prenom, date_naissance, adresse, mail, etat_civil, photo, point, latitude, longitude, motdepasse, description, salaire_recherche)
 VALUES 
-('Doe', 'John', '1990-01-01', '123 Main St', 'john.doe@example.com', 'Single', 'john_photo.png', 100, 40.7128, -74.0060, 'password123'),
-('Smith', 'Jane', '1985-05-15', '456 Elm St', 'jane.smith@example.com', 'Married', 'jane_photo.png', 200, 34.0522, -118.2437, 'securepassword');
+('Dupont', 'Jean', '1985-05-20', '123 Rue de la République, Paris', 'jean.dupont@example.com', 'Célibataire', 'photo.jpg', 100, 48.8566, 2.3522, 'password123', 'Développeur expérimenté', 4000.00),
+('Doe', 'John', '1990-01-01', '123 Main St, Paris, France', 'john.doe@example.com', 'Single', 'john_photo.png', 100, 40.7128, -74.0060, 'password', 'Chef de projet tres important', 5000.00);
 
 -- Table Admin
 INSERT INTO administrateur(mail,mot_de_passe) VALUES('Ryan@gmail.com','1234');
@@ -31,11 +30,11 @@ VALUES
 ('Software Developer', 70000.00, 'Developer', 2, 4, 22, 35, 1, 1),
 ('Nurse', 50000.00, 'Registered Nurse', 3, 4, 25, 40, 2, 2);
 
--- Table competence
-INSERT INTO competence (competence, description, id_utilisateur) 
-VALUES 
-('Java Programming', 'Proficient in Java development', 1),
-('Patient Care', 'Experienced in patient care and nursing', 2);
+-- Insertion de données de test pour la table Competence
+INSERT INTO Competence (competence, description) VALUES
+('Java', 'Maîtrise du langage de programmation Java'),
+('Spring Boot', 'Développement d applications avec Spring Boot'),
+('SQL', 'Connaissance avancée des bases de données SQL');
 
 -- Table experience
 INSERT INTO experience (date_debut, date_fin, description, id_utilisateur) 
@@ -104,3 +103,10 @@ VALUES (1000.00, 1);
 
 INSERT INTO argent (solde, id_utilisateur)
 VALUES (2000.00, 2);
+
+-- Insertion de données de test pour la table CompetenceUtilisateur
+INSERT INTO competence_utilisateur (id_utilisateur, id_competence) VALUES
+(1, 1),
+(1, 2), 
+(2, 2), 
+(2, 3); 

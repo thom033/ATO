@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import jakarta.transaction.Transactional;
 
-
 public interface ArgentRepository extends JpaRepository<Argent, Integer> {
     @Modifying
     @Transactional
