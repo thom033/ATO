@@ -7,8 +7,10 @@ import java.time.Period;
 import java.time.ZoneId;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
 @Entity
+@Component
 @Table(name = "utilisateur_details")
 public class UtilisateurDetails {
     @Id

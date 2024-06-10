@@ -102,7 +102,6 @@ VALUES
 ('2008-09-01', 'Completed Bachelor s degree in Nursing', '2012-06-01', 2),
 ('2014-09-01', 'Completed Bachelor s degree in Finance', '2018-06-01', 3),
 ('2009-09-01', 'Completed Bachelor s degree in Education', '2013-06-01', 4),
-('2014-09-01', 'Completed Bachelor s degree in Business Administration', '2018-06-01', 5),
 ('2018-09-01', 'Completed Master s degree in Computer Science', '2020-06-01', 1),
 ('2012-09-01', 'Completed Master s degree in Nursing', '2014-06-01', 2),
 ('2018-09-01', 'Completed Master s degree in Finance', '2020-06-01', 3),
@@ -145,9 +144,7 @@ VALUES
 (1, 16),
 (2, 17),
 (3, 18),
-(4, 19),
-(5, 20);
-
+(4, 19);
 -- Table secteur_diplome
 INSERT INTO secteur_diplome (id_secteur, id_diplome) 
 VALUES 

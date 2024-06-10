@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,7 +24,7 @@ public class UtilisateurController {
 
     @GetMapping("/")
     public ModelAndView splashscreen() {
-        ModelAndView mv = new ModelAndView("template");
+        ModelAndView mv = new ModelAndView("index");
         mv.addObject("page", "splashScreen/index.jsp");
         return mv;
     }
@@ -33,7 +32,7 @@ public class UtilisateurController {
     @GetMapping("/utilisateur/deconnexion")
     public ModelAndView deconnexion() {
         httpSession.removeAttribute("utilisateur");
-        ModelAndView mv = new ModelAndView("template");
+        ModelAndView mv = new ModelAndView("index");
         mv.addObject("page", "splashScreen/index.jsp");
         return mv;
     }
@@ -42,6 +41,7 @@ public class UtilisateurController {
     public String getMethodName() {
         return "login/login-register";
     }
+
 
     @GetMapping("/utilisateur/liste")
     public String lister(Model model) {
@@ -61,7 +61,7 @@ public class UtilisateurController {
         validite = recherche.size() == 1;
 
         if (validite) {
-            ModelAndView mv = new ModelAndView("template");
+            ModelAndView mv = new ModelAndView("index");
 
             Utilisateur user = recherche.get(0);
             httpSession.setAttribute("utilisateur", user);
