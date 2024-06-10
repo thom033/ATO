@@ -82,7 +82,6 @@ public class RechercheController {
             sql.append(" AND poste_salaire <= ?");
         }
         if (distance != null && !distance.isEmpty()) {
-            // Assuming there is a distance field or logic to calculate it
             sql.append(" AND distance <= ?");
         }
         if (anneeExperience != null && !anneeExperience.isEmpty()) {
@@ -92,7 +91,7 @@ public class RechercheController {
         List<Map<String, Object>> results = jdbcTemplate.queryForList(sql.toString(), getSqlParameters(params, title, diplome, secteur, competence, ageMin, ageMax, salaireMin, salaireMax, distance, anneeExperience));
         model.addAttribute("results", results);
         
-        return "splashScreen/splash"; // the name of the result JSP page
+        return "splashScreen/splash"; 
     }
 
     private Object[] getSqlParameters(Map<String, String> params, String... dynamicParams) {

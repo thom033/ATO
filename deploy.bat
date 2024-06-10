@@ -2,7 +2,7 @@
 REM Define variables
 set MAVEN_HOME=C:\Program Files\Apache Software Foundation\apache-maven-3.8.8
 set TOMCAT_HOME=C:\Program Files\Apache Software Foundation\Tomcat 10.1
-set PROJECT_DIR=D:\GitHub\ATO
+set PROJECT_DIR=D:\WORK\ATO
 
 REM Navigate to the project directory
 cd %PROJECT_DIR%
