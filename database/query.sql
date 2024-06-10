@@ -6,6 +6,9 @@ VALUES
 ('Brown', 'Alice', '1995-10-20', '789 Pine St', 'alice.brown@example.com', 'Single', 'alice_photo.png', 300, 51.5074, -0.1278, 'password1234'),
 ('Wilson', 'Bob', '1980-03-10', '101 Oak St', 'bob.wilson@example.com', 'Married', 'bob_photo.png', 400, 37.7749, -122.4194, 'securepassword123');
 
+-- Table Admin
+INSERT INTO administrateur(mail,mot_de_passe) VALUES('Ryan@gmail.com','1234');
+
 -- Table Secteur
 INSERT INTO Secteur (secteur) 
 VALUES 
