@@ -121,3 +121,9 @@
 .btn-nicolas {
     
 }
+
+.nicolas-button {
+    padding: 0.4em 1em;
+    border: solid;
+    margin-right: 0.3em;
+}
