@@ -35,10 +35,16 @@
     margin-right: 20px;
 }
 
-.icon {
+.icon-contact {
     width: 16px;
     height: 16px;
     margin-top: -25px;
+}
+
+.icon {
+    margin-top: -10px;
+    width: 25px;
+    height: 25px;
 }
 
 .information {
@@ -74,9 +80,8 @@
 .row {
     display: flex;
 }
-.info-perso {
+.contact .info-perso {
     display: flex;
-    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -87,4 +92,22 @@
 
 .variable p {
     margin: 0 10px 0 0;
+}
+
+.button-info {
+    margin-top: 100px;
+}
+
+.btn {
+    width: 42vh;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.apropos {
+    margin-top: -10px;
+}
+
+.card {
+    border-radius: 15px;
 }

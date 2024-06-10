@@ -25,7 +25,6 @@ import itu.experience.ExperienceRepository;
 import itu.secteur.Secteur;
 import itu.secteur.SecteurDiplome;
 import itu.secteur.SecteurDiplomeRepository;
-import itu.secteur.SecteurRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -120,7 +119,8 @@ public class UtilisateurController {
     }
 
     @GetMapping("/utilisateur/profil")
-    public String profil(Model model) {
+    public ModelAndView profil() {
+        ModelAndView model = new ModelAndView("template");
         Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
         List<Experience> experiences = new ArrayList<>();
         List<Diplome> diplomes = new ArrayList<>();
@@ -142,15 +142,22 @@ public class UtilisateurController {
                 competences.add(cu.getCompetence());
             
             }
+
         }
 
-        model.addAttribute("utilisateur", user);
-        model.addAttribute("experiences", experiences);
-        model.addAttribute("diplomes", diplomes);
-        model.addAttribute("competences", competences);
-        model.addAttribute("secteurs", secteurs);
+        else{     
+            ModelAndView mv = new ModelAndView("login/login-register");
+            return mv;
+        }
 
-        return "profil/profil";
+        model.addObject("utilisateur", user);
+        model.addObject("experiences", experiences);
+        model.addObject("diplomes", diplomes);
+        model.addObject("competences", competences);
+        model.addObject("secteurs", secteurs);            
+        model.addObject("page", "profil/profil.jsp");
+
+        return model;
     }
 }
 

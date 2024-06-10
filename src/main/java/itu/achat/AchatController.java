@@ -25,7 +25,9 @@ public class AchatController {
     
     @GetMapping("/achat")
     public ModelAndView getPageAchat() {
-        ModelAndView mv = new ModelAndView("achat/achat");
+        ModelAndView mv = new ModelAndView("template");
+
+        mv.addObject("page", "achat/achat.jsp");
 
         return mv;
     }
