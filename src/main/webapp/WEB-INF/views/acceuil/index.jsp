@@ -46,10 +46,6 @@ import="itu.Compatibilite.PosteDetails"
 </nav>
 
 <section class="py-5">
-    <form action="/compatibility" method="post">
-        <!-- Ajoutez ici les champs nécessaires pour soumettre les détails de PosteDetails -->
-        <button type="submit">Calculer la compatibilité</button>
-    </form>
     <div class="container py-5 text-center">
         <div class="row mb-4 mb-lg-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
