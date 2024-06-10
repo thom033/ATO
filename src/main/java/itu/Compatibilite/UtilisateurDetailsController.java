@@ -15,24 +15,22 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UtilisateurDetailsController {
     @Autowired
-    UtilisateurRepository utilisateurRepository;
-
+    UtilisateurDetailsRepository utilisateurRepository;
+@Autowired
+PosteDetailsRepository posteDetailsRepository;
     @Autowired
     HttpSession httpSession;
     @Autowired
     private UtilisateurDetails utilisateurDetails;
 
-    @PostMapping("/compatibility")
-    public String calculateCompatibility(@RequestBody PosteDetails[] p, Model model) {
-        double[] compatibility = utilisateurDetails.ListCompatibility(p);
-        model.addAttribute("compatibility", compatibility);
-        return "index"; // Nom de la vue JSP à afficher
-    }
     @GetMapping("/acceuil")
-    public ModelAndView deconnexion() {
-        httpSession.removeAttribute("utilisateur");
-        ModelAndView mv = new ModelAndView("index");
-        mv.addObject("page", "acceuil/index.jsp");
+    public ModelAndView calculateCompatibility() {
+        double[] compatibility = utilisateurDetails.ListCompatibility(posteDetailsRepository.getPosteDetails());
+        ModelAndView mv = new ModelAndView("acceuil/index");
+
+        mv.addObject("compatibility", compatibility);
+        mv.addObject("posteDetails", posteDetailsRepository.getPosteDetails());
         return mv;
     }
+
 }

@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.List;
 
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
@@ -251,10 +252,10 @@ public class UtilisateurDetails {
         return Period.between(startDate, endDate).getYears();
     }
 
-    public double[] ListCompatibility(PosteDetails[] p){
-        double[] compatibility = new double[p.length];
-        for (int i = 0; i < p.length; i++) {
-            compatibility[i] = p[i].getCompatibilityPourcentage(this);
+    public double[] ListCompatibility(List<PosteDetails> p){
+        double[] compatibility = new double[p.size()];
+        for (int i = 0; i < p.size(); i++) {
+            compatibility[i] = p.get(i).getCompatibilityPourcentage(this);
         }
         return compatibility;
     }

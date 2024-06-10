@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    double[] result = (double[]) request.getAttribute("compatibility");
+%>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -38,6 +41,10 @@
 </nav>
 
 <section class="py-5">
+    <form action="/compatibility" method="post">
+        <!-- Ajoutez ici les champs nécessaires pour soumettre les détails de PosteDetails -->
+        <button type="submit">Calculer la compatibilité</button>
+    </form>
     <div class="container py-5 text-center">
         <div class="row mb-4 mb-lg-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
@@ -45,65 +52,60 @@
                 <p class="text-muted">Les suggestions se basent sur les informations que vous avez inséré dans votre profil</p>
             </div>
         </div>
-        <!-- boucle pour afficher les cartes avec le pourcentage de compatibilité -->
-        <div class="row">
-            <div class="col-md-3 col-sm-6 mb-4" th:each="comp, i : ${compatibility}">
-                <div class="card shadow-sm h-100 nicolas-card-1">
-                    <div class="card-body nicolas-card">
-                        <div class="d-flex justify-content-between align-items-center top-card-nicolas">
-                            <h4 class="card-title box_name mb-0">JEPPE</h4>
-                            <!-- Afficher le pourcentage de compatibilité -->
-                            <h4 class="percent mb-0 nicolas-compatibilite" th:text="${comp} + '%'">96.2%</h4>
-                        </div>
-                        <!-- Reste du contenu de la carte -->
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-light me-2" type="button">Best Point</button>
+            <button class="btn btn-light" type="button">Compatibilite</button>
+        </div>
+    </div>
+</section>
+
+<div class="container py-5">
+    <div class="row">
+        <%
+            for (int i = 0; i < result.length; i++) {
+                %>
+        <div class="col-md-3 col-sm-6 mb-4" >
+            <div class="card shadow-sm h-100 nicolas-card-1" >
+                <div class="card-body nicolas-card">
+                    <div class="d-flex justify-content-between align-items-center top-card-nicolas">
+                        <h4 class="card-title box_name mb-0" >JEPPE</h4>
+                        <h4 class="percent mb-0 nicolas-compatibilite" ><%= result[i]%></h4>
+                    </div>
+                    <div class="img_box flex-grow-1">
+                        <img src="/public/img/products/4.jpg" class="img-fluid" alt="">
+                    </div>
+                    <h3 class="mt-3 nicolas-nom-travail">Expert comptable</h3>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <p class="mb-2 nicolas-sous-titre">800 Ar</p>
+                        <button class="btn btn-light me-2">Visiter</button>
                     </div>
                 </div>
             </div>
         </div>
-
+        <%
+            }
+        %>
+        <nav aria-label="Pagination">
+            <ul class="pagination justify-content-center mt-4">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a>
+                </li>
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&raquo;</a>
+                </li>
+            </ul>
+        </nav>
     </div>
-</section>
-
-<footer class="bg-primary-gradient">
-    <div class="container py-4 py-lg-5">
-        <div class="row justify-content-center">
-            <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
-                <h3 class="fs-6 fw-bold">Services</h3>
-                <ul class="list-unstyled">
-                    <li><a class="link-light" href="#">Service 1</a></li>
-                    <li><a class="link-light" href="#">Service 2</a></li>
-                    <li><a class="link-light" href="#">Service 3</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
-                <h3 class="fs-6 fw-bold">About</h3>
-                <ul class="list-unstyled">
-                    <li><a class="link-light" href="#">About Us</a></li>
-                    <li><a class="link-light" href="#">Our Team</a></li>
-                    <li><a class="link-light" href="#">Careers</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
-                <h3 class="fs-6 fw-bold">Contact</h3>
-                <ul class="list-unstyled">
-                    <li><a class="link-light" href="#">Contact Us</a></li>
-                    <li><a class="link-light" href="#">Support</a></li>
-                    <li><a class="link-light" href="#">FAQs</a></li>
-                </ul>
-            </div>
-            <div class="col-12 text-center d-flex justify-content-center align-items-center align-items-lg-center item">
-                <ul class="list-inline mb-3">
-                    <li class="list-inline-item"><a class="link-light" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li class="list-inline-item"><a class="link-light" href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a class="link-light" href="#"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="text-center">
-            <p class="text-light mb-0">© 2023 Company. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+</div>
 
 <script src="/public/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdn.reflowhq.com/v2/toolkit.min.js"></script>
