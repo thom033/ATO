@@ -17,6 +17,8 @@ import java.sql.ResultSetMetaData;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.sql.DriverManager;
+import org.postgresql.util.PGobject;
+
 
 import java.util.ArrayList;
 import java.util.Hashtable;
