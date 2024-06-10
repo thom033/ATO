@@ -245,19 +245,19 @@ public class PosteDetails {
     // diplome => 5
     // Distance => 5
 
-    public int getPointTotal(UtilisateurDetails u){
-        int point = 0;
+    public double getPointTotal(UtilisateurDetails u){
+        double point = 0;
 
-        if (this.checkAge(u)) {
+        if (this.checkAge(u) == true) {
             point += 3;
         }
-        if (this.checkExp(u)) {
+        if (this.checkExp(u) == true) {
             point +=5;
         }
-        if(this.checkFormation(u)){
+        if(this.checkFormation(u) == true){
             point +=2;
         }
-        if (this.checkDiplome(u)) {
+        if (this.checkDiplome(u) == true) {
             point +=5;
         }
         if (this.calculateDistance(u) > 0) {
@@ -272,31 +272,6 @@ public class PosteDetails {
                 point += 5;
             }
         }
-        return point;
-    }
-
-    public double getCompatibilityPourcentage(UtilisateurDetails u){
-        int point = this.getPointTotal(u);
-        return (point/20)*100;
-    }
-
-    public void DisplayPoste(){
-        System.out.println("Poste : " + this.getPosteTitre());
-        System.out.println("Description : " + this.getPosteDescription());
-        System.out.println("Salaire : " + this.getPosteSalaire());
-        System.out.println("Age Min : " + this.getPosteAgeMin());
-        System.out.println("Age Max : " + this.getPosteAgeMax());
-        System.out.println("Experience : " + this.getNbrAnneeExperience());
-        System.out.println("Formation : " + this.getNbrAnneeFormation());
-        System.out.println("Diplome : " + this.getDiplomeNom());
-        System.out.println("Entreprise : " + this.getEntrepriseNom());
-        System.out.println("Type : " + this.getEntrepriseType());
-        System.out.println("Adresse : " + this.getEntrepriseAdresse());
-        System.out.println("Site Web : " + this.getEntrepriseSiteWeb());
-        System.out.println("Mail : " + this.getEntrepriseMail());
-        System.out.println("Latitude : " + this.getEntrepriseLatitude());
-        System.out.println("Longitude : " + this.getEntrepriseLongitude());
-        System.out.println("Image : " + this.getEntrepriseImage());
-        System.out.println("Point : " + this.getEntreprisePoint());
+        return (point/20.0)*100.0;
     }
 }

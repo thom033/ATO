@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page 
+import="itu.Compatibilite.PosteDetails"
+%>
 <%
     double[] result = (double[]) request.getAttribute("compatibility");
+    List<PosteDetails> p = (List<PosteDetails>) request.getAttribute("posteDetails");
 %>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -63,13 +68,14 @@
     <div class="row">
         <%
             for (int i = 0; i < result.length; i++) {
+                PosteDetails pd = p.get(i);
                 %>
         <div class="col-md-3 col-sm-6 mb-4" >
             <div class="card shadow-sm h-100 nicolas-card-1" >
                 <div class="card-body nicolas-card">
                     <div class="d-flex justify-content-between align-items-center top-card-nicolas">
-                        <h4 class="card-title box_name mb-0" >JEPPE</h4>
-                        <h4 class="percent mb-0 nicolas-compatibilite" ><%= result[i]%></h4>
+                        <h4 class="card-title box_name mb-0" ><%= pd.getPosteTitre() %></h4>
+                        <h4 class="percent mb-0 nicolas-compatibilite" ><%= result[i]%> %</h4>
                     </div>
                     <div class="img_box flex-grow-1">
                         <img src="/public/img/products/4.jpg" class="img-fluid" alt="">

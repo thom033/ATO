@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface PosteDetailsRepository extends JpaRepository<PosteDetails, Long> {
 
-    @Query("select p from PosteDetails p where idSecteur= 1")
+    @Query("select p from PosteDetails p where idSecteur= 2")
     List<PosteDetails> getPosteDetails();
 }

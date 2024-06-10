@@ -1,5 +1,6 @@
 package itu.Compatibilite;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -56,6 +57,45 @@ public class UtilisateurDetails {
     @Column(name = "id_diplome")
     private Long idDiplome;
 
+    public UtilisateurDetails(){
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR,1994);
+        cal.set(Calendar.MONTH,7);
+        cal.set(Calendar.DAY_OF_MONTH,3);
+
+        Calendar cal2 = Calendar.getInstance();
+        cal2.set(Calendar.YEAR,2005);
+        cal2.set(Calendar.MONTH,7);
+        cal2.set(Calendar.DAY_OF_MONTH,3);
+
+        Calendar cal3 = Calendar.getInstance();
+        cal3.set(Calendar.YEAR,2005);
+        cal3.set(Calendar.MONTH,7);
+        cal3.set(Calendar.DAY_OF_MONTH,3);
+
+        Calendar cal4 = Calendar.getInstance();
+        cal4.set(Calendar.YEAR,2005);
+        cal4.set(Calendar.MONTH,7);
+        cal4.set(Calendar.DAY_OF_MONTH,3);
+
+        Calendar cal5 = Calendar.getInstance();
+        cal5.set(Calendar.YEAR,2005);
+        cal5.set(Calendar.MONTH,7);
+        cal5.set(Calendar.DAY_OF_MONTH,3);
+
+        this.dateNaissance = cal.getTime();
+        this.experienceDateDebut = cal2.getTime();
+        this.experienceDateFin = cal3.getTime();
+        this.formationDateDebut = cal4.getTime();
+        this.formationDateFin = cal5.getTime();
+        this.idDiplome = (long) 1;
+        this.idExperience =(long) 1;
+        this.idFormation = (long) 1;
+        this.idUtilisateur =(long) 1;
+        this.latitude = 11;
+        this.longitude = 12;
+    }
     // Getters and setters
 
     public String getNom() {
@@ -253,9 +293,12 @@ public class UtilisateurDetails {
     }
 
     public double[] ListCompatibility(List<PosteDetails> p){
+        UtilisateurDetails u = new UtilisateurDetails();
         double[] compatibility = new double[p.size()];
         for (int i = 0; i < p.size(); i++) {
-            compatibility[i] = p.get(i).getCompatibilityPourcentage(this);
+            
+            // compatibility[i] = p.get(i).getCompatibilityPourcentage(u);
+            compatibility[i] = p.get(i).getPointTotal(u);
         }
         return compatibility;
     }
