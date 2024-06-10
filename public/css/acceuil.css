@@ -74,13 +74,11 @@
 
 .text-muted{
     font-size: 20px;
-    text-align: center;
-    padding-right: 10%;
-    
+    text-align: center;    
 }
 
 .fw-bold{
-    font-size: 100px;
+    font-size: 7em;
     text-align: center;
 }
 
@@ -106,6 +104,7 @@
 }
 
 .nicolas-nom-travail {
+    font-weight: bold;
     margin: 3%!important;
     font-size: 1.35em;
 }
@@ -119,11 +118,14 @@
 }
 
 .btn-nicolas {
-    
+    font-size: 1em;
+    font-weight: bold;
+    padding: 1.5% 5%;
+    border: 1px solid;
+    margin-right: 2%;
 }
 
-.nicolas-button {
-    padding: 0.4em 1em;
-    border: solid;
-    margin-right: 0.3em;
+.see-more {
+    text-decoration: underline;
+    color: black;
 }
