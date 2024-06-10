@@ -115,7 +115,7 @@ CREATE TABLE type_notification(
 CREATE TABLE Contact(
    id_contact SERIAL,
    num_telephone VARCHAR(20) ,
-   id_entreprise INTEGER NOT NULL,
+   id_entreprise INTEGER NOT  NULL,
    id_utilisateur INTEGER NOT NULL,
    PRIMARY KEY(id_contact),
    UNIQUE(num_telephone),

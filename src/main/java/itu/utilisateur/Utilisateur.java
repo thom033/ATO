@@ -1,32 +1,34 @@
 package itu.utilisateur;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
-import java.util.regex.Pattern;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "utilisateur")
 public class Utilisateur {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_utilisateur")
-    private Long idUser;
+    Long id;
+
     String nom;
     String prenom;
     Date dateNaissance;
     String adresse;
     String mail;
-    // List<String> numeroTelephone;
-    String etat_civil;
+    String etatCivil;
     String photo;
     int point;
-    float longitude;
     float latitude;
+    float longitude;
     String motdepasse;
+    String description;
+    @Column(columnDefinition = "NUMERIC(15,2) DEFAULT 0")
+    float salaireRecherche;
 
     // ---- ---- CONSTRUCTEURS ------- ------
 
@@ -34,17 +36,16 @@ public class Utilisateur {
 
     }
 
-    public Utilisateur(Long idUser, String nom, String prenom, Date dateNaissance, String adresse, String mail,
+    public Utilisateur(Long id, String nom, String prenom, Date dateNaissance, String adresse, String mail,
             String etat_civil, String photo, int point, float longitude,
             float latitude, String motdepasse) {
-        this.idUser = idUser;
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
         this.adresse = adresse;
         this.mail = mail;
-        // this.numeroTelephone = numeroTelephone;
-        this.etat_civil = etat_civil;
+        this.etatCivil = etat_civil;
         this.photo = photo;
         this.point = point;
         this.longitude = longitude;
@@ -53,8 +54,8 @@ public class Utilisateur {
     }
 
     // ------- setters -------------
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setNom(String nom) throws Exception {
@@ -77,12 +78,8 @@ public class Utilisateur {
         this.mail = mail;
     }
 
-    // public void setNumeroTelephone(String numeroTelephone) {
-    // this.numeroTelephone = numeroTelephone;
-    // }
-
     public void setEtat_civil(String etat_civil) {
-        this.etat_civil = etat_civil;
+        this.etatCivil = etat_civil;
     }
 
     public void setPhoto(String photo) {
@@ -104,11 +101,19 @@ public class Utilisateur {
     public void setMotdepasse(String motdepasse) {
         this.motdepasse = motdepasse;
     }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setSalaireRecherche(float salaireRecherche) {
+        this.salaireRecherche = salaireRecherche;
+    }
     /* ---- ------ FIN CONSTRUCTOR --------- - */
 
     // ------ gettters ------- ---------
-    public Long getIdUser() {
-        return idUser;
+    public Long getId() {
+        return id;
     }
 
     public String getNom() {
@@ -131,12 +136,8 @@ public class Utilisateur {
         return mail;
     }
 
-    // public String getNumeroTelephone() {
-    // return numeroTelephone;
-    // }
-
     public String getEtat_civil() {
-        return etat_civil;
+        return etatCivil;
     }
 
     public String getPhoto() {
@@ -157,5 +158,23 @@ public class Utilisateur {
 
     public String getMotdepasse() {
         return motdepasse;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    
+    public float getSalaireRecherche() {
+        return salaireRecherche;
+    }
+
+    public int calculateAge() {
+        if (this.dateNaissance == null) {
+            return 0;
+        }
+        LocalDate birthDate = this.dateNaissance.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate currentDate = LocalDate.now();
+        return Period.between(birthDate, currentDate).getYears();
     }
 }
