@@ -178,7 +178,7 @@ const formulaire=document.getElementById("form-body");
 var number=0;
 function next(){
     console.log(number)
-    if(number==0){
+    if(number<2){
         buttonNext.type="button";
         buttonNext.innerText="Suivant";
         buttonNext.setAttribute("onclick", "next()");
@@ -187,7 +187,7 @@ function next(){
     let percent=13.75*(number);
     formulaire.style.transition="transform 0.8s cubic-bezier(0.25, 0.1, 0, 1.32) 0s";
     formulaire.style.transform="translateX(-"+percent+"%)";
-    if(number==1){
+    if(number==2){
         buttonNext.innerText=buttonText;
         buttonNext.setAttribute("onclick", "");
         setTimeout(() => {

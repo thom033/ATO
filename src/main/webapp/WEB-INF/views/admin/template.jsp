@@ -24,7 +24,7 @@
                     <li class="nav-item"><a class="nav-link active" href="/entreprise/CRUD" style="font-family: 'Space Grotesk';">Entreprise</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Space Grotesk';">Poste</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/admin/CRUD" style="font-family: 'Space Grotesk';">Admin</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Space Grotesk';">CRUD</a></li>
+                    <li class="nav-item"><a class="nav-link active" style="font-family: 'Space Grotesk';" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">CRUD</a></li>
                 </ul>
             </div>
                 <%

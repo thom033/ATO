@@ -128,6 +128,25 @@
                 </div>
               </div>
             </div>
+            <div class="form-parts">
+              <div class="row mb-3">
+                <div class="col-md-4">
+                  <div class="input-group">
+                      <input required="" type="text" ng-model="entreprise.contact[0]" autocomplete="off" class="input" style=" border-radius: 15px;">
+                      <label class="user-label">Contact</label>
+                  </div>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                  <button class="btn btn-danger">Supprimer</button>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-4">
+                  <button class="btn btn-primary" onclick="ajouterContact()">Ajouter</button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="row">
             <div class="col-md-1"></div>
