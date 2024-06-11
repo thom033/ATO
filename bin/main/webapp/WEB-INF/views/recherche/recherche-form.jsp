@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/input.css">
 </head>
 
-<body style="background-image: url(${pageContext.request.contextPath}/img/recherche.png);">
+<body style="background-image: url(${pageContext.request.contextPath}/img/fond.png);">
     <header class="bg-primary-gradient"  style="font-family: Helvetica;">
         <section style="margin-bottom: -2px;">
             <div class="container">
