@@ -255,5 +255,42 @@ ALTER COLUMN longitude TYPE numeric(18,4);
 
 
 
+-- 
 
+    public int calculateAge() {
+        if (this.getDateNaissance() == null) {
+            return 0;
+        }
+        LocalDate birthDate = this.getDateNaissance().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return Period.between(birthDate, LocalDate.now()).getYears();
+    }
+
+    public int calculateExperienceYears() {
+        if (this.getExperienceDateDebut() == null || this.getExperienceDateFin() == null) {
+            return 0;
+        }
+        LocalDate startDate = this.getExperienceDateDebut().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate endDate = this.getExperienceDateFin().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return Period.between(startDate, endDate).getYears();
+    }
+
+    public int calculateFormationYears() {
+        if (this.getFormationDateDebut() == null || this.getFormationDateFin() == null) {
+            return 0;
+        }
+        LocalDate startDate = formationDateDebut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate endDate = formationDateFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return Period.between(startDate, endDate).getYears();
+    }
+
+    public double[] ListCompatibility(List<PosteDetails> p){
+        UtilisateurDetails u = new UtilisateurDetails();
+        double[] compatibility = new double[p.size()];
+        for (int i = 0; i < p.size(); i++) {
+            
+            // compatibility[i] = p.get(i).getCompatibilityPourcentage(u);
+            compatibility[i] = p.get(i).getPointTotal(u);
+        }
+        return compatibility;
+    }
 
