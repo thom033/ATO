@@ -1,0 +1,90 @@
+.container-principale {
+    margin-left: 50px;
+    width: auto;
+}
+
+.profile {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.div_avatar {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.avatar {
+    width : 200px;
+    height: 200px;
+    border-radius: 100%;
+}
+
+.contact {
+    margin-bottom: 20px;
+}
+
+.info-perso div {
+    display: inline-block;
+}
+
+.info-perso .svg {
+    margin-right: 20px;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    margin-top: -25px;
+}
+
+.information {
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.input div {
+    display: inline-block;
+    position: relative;
+}
+
+.invariable {
+    width: 130px;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.input {
+    margin-top: -10px;
+}
+
+.col-md-2 {
+    margin-top: 50px;
+    font-style: italic;
+}
+
+.container {
+    margin: auto;
+}
+.row {
+    display: flex;
+}
+.info-perso {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.information .input {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.variable p {
+    margin: 0 10px 0 0;
+}
