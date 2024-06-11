@@ -10,23 +10,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import itu.competence.Competence;
 import itu.competence.CompetenceRepository;
 import itu.diplome.Diplome;
 import itu.diplome.DiplomeRepository;
-import itu.secteur.SecteurRepository;
 import itu.secteur.*;
 
 
 
 @Controller
 public class RechercheController {
+    @Autowired
+    SecteurRepository secteurRepository;
 
-    private final SecteurRepository secteurRepository;
-    private final DiplomeRepository diplomeRepository;
-    private final CompetenceRepository competenceRepository;
-    private final JdbcTemplate jdbcTemplate;
+    @Autowired
+    DiplomeRepository diplomeRepository;
+
+    @Autowired
+    CompetenceRepository competenceRepository;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     @Autowired
     public RechercheController(SecteurRepository secteurRepository, DiplomeRepository diplomeRepository, CompetenceRepository competenceRepository, JdbcTemplate jdbcTemplate) {
@@ -37,14 +43,17 @@ public class RechercheController {
     }
 
     @GetMapping("/recherche")
-    public String recherche(Model model) {
+    public ModelAndView recherche() {
+        ModelAndView mv = new ModelAndView("template");
         List<Secteur> allSec = secteurRepository.findAll();
         List<Diplome> allDip = diplomeRepository.findAll();
         List<Competence> allComp = competenceRepository.findAll();
-        model.addAttribute("allSecteurs", allSec);
-        model.addAttribute("allDiplomes", allDip);
-        model.addAttribute("allCompetences", allComp);
-        return "recherche/recherche-form"; // Correspond à /WEB-INF/jsp/recherche/recherche.jsp
+        mv.addObject("allSecteurs", allSec);
+        mv.addObject("allDiplomes", allDip);
+        mv.addObject("allCompetences", allComp);
+
+        mv.addObject("page", "recherche/recherche-form.jsp");
+        return mv;
     }
 
     @GetMapping("/recherche_result")
