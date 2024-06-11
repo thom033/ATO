@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    int type = (int) request.getAttribute("type");
+%>
+
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -17,6 +22,10 @@
             <div class="row">
                 <div class="col-md-6 col-lg-6" style="background-color: rgb(176, 176, 176);">
                     <div class="gauche">
+
+                        <%
+                            if(type==0){
+                        %>
                         <div class="achat">
                             <div class="head">
                                 <span class="icon">
@@ -43,7 +52,45 @@
                                 <p class="tab">Valeur actuelle :</p>
                                 <p id="solde"></p>
                             </div>
+                            <% if (request.getAttribute("error") != null) { %>
+                                <div class="alert alert-danger">
+                                    <%= request.getAttribute("error") %>
+                                </div>
+                            <% } %>
                         </div>
+
+                        <%
+                            }else{
+                        %>
+                        <div class="achat">
+                            <div class="head">
+                                <span class="icon">
+                                    <h3 id="titre" class="fw-bold">Solde</h3>
+                                    <img class="icon-image" src="/public/assetsAchat/bootstrap/icon/fi-rr-coins.svg" alt="">
+                                </span>
+                            </div>
+                            <div class="head" style="margin-top: 30px;">
+                                <span class="icon">
+                                    <h3 id="titre" class="fw-bold">Recharger</h3>
+                                        <img src="/public/assetsAchat/bootstrap/icon/fi-rr-shopping-cart.svg" alt="" class="icon-image">
+                                </span>
+                            </div>
+                            <p class="description">Solde a recharger</p>
+                            <form class="form-quantite" method="get" action="/utilisateur/solde">
+                                <div class="input-group">
+                                    <input required type="text" id="code" name="code" autocomplete="off" class="input" style="border-radius: 15px;">
+                                    <label class="user-label">Code</label>
+                                </div>
+                                <div class="input-group">
+                                    <input required type="text" id="valeur" name="valeur" autocomplete="off" class="input" style="border-radius: 15px;">
+                                    <label class="user-label">Montant</label>
+                                </div>
+                                <div class="my-2" style="margin-left: 20px;"><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" type="submit">Valider</button></div>
+                            </form>
+                        </div>
+                        <%
+                            }
+                        %>
                     </div>
                 </div>
                 <div class="col-md-1 col-lg-1"></div>
