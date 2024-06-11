@@ -98,8 +98,8 @@ VALUES
 (2, 2);
 
 -- Insérer des données de test dans la table argent
-INSERT INTO argent (solde, id_utilisateur)
-VALUES (1000.00, 1);
+INSERT INTO argent (solde,date_modification, id_utilisateur)
+VALUES (1000.00,'2024-06-10 10:00:00', 1);
 
 INSERT INTO argent (solde, id_utilisateur)
 VALUES (2000.00, 2);

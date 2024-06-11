@@ -1,5 +1,7 @@
 package itu.achat;
 
+import java.util.Date;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +17,9 @@ public class Argent {
 
     @Column(name = "id_utilisateur")
     Long idUtilisateur;
+
+    @Column(name = "date_modification")
+    Date dateModification;
 
     // Getters and Setters
     public int getId() {
@@ -39,5 +44,13 @@ public class Argent {
 
     public void setIdUtilisateur(Long idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
+    }
+
+    public Date getDate() {
+        return dateModification;
+    }
+
+    public void setDate(Date date) {
+        this.dateModification = date;
     }
 }

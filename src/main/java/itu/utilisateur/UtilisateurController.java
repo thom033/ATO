@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import itu.achat.Argent;
 import itu.achat.ArgentRepository;
 import itu.competence.Competence;
 import itu.competence.CompetenceUtilisateur;
@@ -126,6 +127,7 @@ public class UtilisateurController {
         List<Diplome> diplomes = new ArrayList<>();
         List<Competence> competences = new ArrayList<>();
         List<Secteur> secteurs = new ArrayList<>();
+        Argent argentUser = new Argent();
 
         if (user != null) {
             experiences = experienceRepository.findByUtilisateurId(user.getId());
@@ -143,6 +145,7 @@ public class UtilisateurController {
             
             }
 
+            argentUser = argentRepository.getArgentUser(user.getId());
         }
 
         else{     
@@ -154,7 +157,8 @@ public class UtilisateurController {
         model.addObject("experiences", experiences);
         model.addObject("diplomes", diplomes);
         model.addObject("competences", competences);
-        model.addObject("secteurs", secteurs);            
+        model.addObject("secteurs", secteurs);
+        model.addObject("argent", argentUser);            
         model.addObject("page", "profil/profil.jsp");
 
         return model;

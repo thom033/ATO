@@ -4,6 +4,7 @@
 <%@ page import="itu.diplome.Diplome"%>
 <%@ page import="itu.competence.Competence"%>
 <%@ page import="itu.secteur.Secteur"%>
+<%@ page import="itu.achat.Argent"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
@@ -13,7 +14,7 @@
     List<Diplome> dip = (List<Diplome>) request.getAttribute("diplomes");
     List<Competence> comp = (List<Competence>) request.getAttribute("competences");
     List<Secteur> sect = (List<Secteur>) request.getAttribute("secteurs");
-
+    Argent arg = (Argent) request.getAttribute("argent");
 %>
 
 <!DOCTYPE html>
@@ -130,8 +131,8 @@
                                             <p>Coordonnées</p>
                                         </div>
                                         <div class="variable">
-                                            <p>Longitude: <%= user.getLongitude() %>°</p> 
-                                            <p>Latitude: <%= user.getLatitude() %>°</p>
+                                            <p>Longitude : <%= user.getLongitude() %>°</p> 
+                                            <p>Latitude : <%= user.getLatitude() %>°</p>
                                         </div>
                                     </div>
                                 </div>
@@ -226,11 +227,12 @@
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <form action="/achat" method="get">
-                                                                    <button type="submit" class="btn-svg">
-                                                                        <svg id="titre" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                                                                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
-                                                                        </svg>
-                                                                    </button>
+                                                                        <input type="hidden" name="type" value="0" />
+                                                                        <button type="submit" class="btn-svg">
+                                                                            <svg id="titre" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                                                                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                                                                            </svg>
+                                                                        </button>
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -242,10 +244,7 @@
                                                         <div class="desc">
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <p class="description">More</p>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <p class="description">Achat ++</p>
+                                                                    <p class="description">Achetes</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -264,26 +263,30 @@
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <form action="/achat" method="get">
-                                                                    <button type="submit" class="btn-svg" style="background-color: #79A3C1; color: #fff;">
-                                                                        <svg id="titre" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                                                                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
-                                                                        </svg>
-                                                                    </button>
+                                                                        <input type="hidden" name="type" value="1" />
+                                                                        <button type="submit" class="btn-svg" style="background-color: #79A3C1; color: #fff;">
+                                                                            <svg id="titre" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                                                                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                                                                            </svg>
+                                                                        </button>
                                                                     </form>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            <p class="montant">48 000 Ar</p>
+                                                            <p class="montant"><%= arg.getSolde() %> Ar</p>
                                                         </div>
                                                         <hr>
                                                         <div class="desc">
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <p class="description">Recharge</p>
+                                                                    <p class="description">Date</p>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <p class="description">Solde</p>
+                                                                    <%
+                                                                    String date = sdf.format(arg.getDate());
+                                                                    %>
+                                                                    <p class="description"><%= date %></p>
                                                                 </div>
                                                             </div>
                                                         </div>

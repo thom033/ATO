@@ -24,9 +24,13 @@ public class AchatController {
     private ArgentRepository argentRepository; 
     
     @GetMapping("/achat")
-    public ModelAndView getPageAchat() {
+    public ModelAndView getPageAchat(@RequestParam(name = "type", required = false, defaultValue = "0") int type,
+    @RequestParam(name = "error", required = false) String error) {
         ModelAndView mv = new ModelAndView("template");
-
+        mv.addObject("type", type);
+        if (error != null) {
+            mv.addObject("error", error);
+        }
         mv.addObject("page", "achat/achat.jsp");
 
         return mv;
@@ -38,6 +42,7 @@ public class AchatController {
         @RequestParam(name = "reduction", required = false, defaultValue = "") String reduction) {
 
         Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
+        RedirectView redirectView = new RedirectView();
 
         if (utilisateur != null && quantite > 0) {
             double montantTotal;
@@ -52,17 +57,38 @@ public class AchatController {
                 montantTotal = quantite * 5000;
             }
 
-            utilisateur.setPoint(utilisateur.getPoint() + quantite);
+            Argent arg = argentRepository.getArgentUser(utilisateur.getId());
 
-            utilisateurRepository.updatePoints(utilisateur.getId(), quantite);
-            argentRepository.updateArgentUser(utilisateur.getId(), montantTotal);
-
-            // Enregistrer l'utilisateur mis à jour dans la session
-            httpSession.setAttribute("utilisateur", utilisateur);
+            if (arg.getSolde() < montantTotal) {
+                redirectView.setUrl("/achat?error=Votre + Solde + est + insuffisant");
+                return redirectView;
+            }
+            else{
+                utilisateur.setPoint(utilisateur.getPoint() + quantite);
+                utilisateurRepository.updatePoints(utilisateur.getId(), quantite);
+                argentRepository.updateArgentUser(utilisateur.getId(), montantTotal);
+                // Enregistrer l'utilisateur mis à jour dans la session
+                httpSession.setAttribute("utilisateur", utilisateur);
+                redirectView.setUrl("/utilisateur/profil");
+            }
         }
 
+        return redirectView;
+    }
+
+    @GetMapping("/utilisateur/solde")
+    public RedirectView rechargeSoldeUtilisateur(
+        @RequestParam(name = "valeur", required = false, defaultValue = "0") double montant,
+        @RequestParam(name = "reduction", required = false, defaultValue = "") String reduction) {
+
+        Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
         RedirectView redirectView = new RedirectView();
+
+        argentRepository.rechargeSoldeUser(utilisateur.getId(), montant);
+        // Enregistrer l'utilisateur mis à jour dans la session
+        httpSession.setAttribute("utilisateur", utilisateur);
         redirectView.setUrl("/utilisateur/profil");
+
         return redirectView;
     }
 }
