@@ -1,7 +1,5 @@
 CREATE DATABASE ATO;
 
-\c ATO
-
 CREATE TABLE Utilisateur
 (
     id_utilisateur   SERIAL,
