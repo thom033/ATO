@@ -18,6 +18,9 @@ import itu.achat.ArgentRepository;
 import itu.competence.Competence;
 import itu.competence.CompetenceUtilisateur;
 import itu.competence.CompetenceUtilisateurRepository;
+import itu.contact.Contact;
+import itu.contact.UtilisateurContact;
+import itu.contact.UtilisateurContactRepository;
 import itu.diplome.Diplome;
 import itu.diplome.DiplomeUtilisateur;
 import itu.diplome.DiplomeUtilisateurRepository;
@@ -44,6 +47,9 @@ public class UtilisateurController {
 
     @Autowired
     CompetenceUtilisateurRepository competenceUtilisateurRepository;
+
+    @Autowired
+    UtilisateurContactRepository utilisateurContactRepository;
 
     @Autowired
     SecteurDiplomeRepository secteurDiplomeRepository;
@@ -127,6 +133,7 @@ public class UtilisateurController {
         List<Diplome> diplomes = new ArrayList<>();
         List<Competence> competences = new ArrayList<>();
         List<Secteur> secteurs = new ArrayList<>();
+        List<Contact> contacts = new ArrayList<>();
         Argent argentUser = new Argent();
 
         if (user != null) {
@@ -142,7 +149,10 @@ public class UtilisateurController {
             List<CompetenceUtilisateur> competencesUtilisateurs = competenceUtilisateurRepository.findByUtilisateurId(user.getId());
             for (CompetenceUtilisateur cu : competencesUtilisateurs) {
                 competences.add(cu.getCompetence());
-            
+            }
+            List<UtilisateurContact> usercontacts = utilisateurContactRepository.findByUtilisateurId(user.getId());
+            for (UtilisateurContact uc : usercontacts) {
+                contacts.add(uc.getContact());
             }
 
             argentUser = argentRepository.getArgentUser(user.getId());
@@ -158,7 +168,8 @@ public class UtilisateurController {
         model.addObject("diplomes", diplomes);
         model.addObject("competences", competences);
         model.addObject("secteurs", secteurs);
-        model.addObject("argent", argentUser);            
+        model.addObject("argent", argentUser);   
+        model.addObject("contacts", contacts);         
         model.addObject("page", "profil/profil.jsp");
 
         return model;
