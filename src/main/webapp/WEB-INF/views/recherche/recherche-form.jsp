@@ -4,9 +4,9 @@
 <%@ page import="itu.diplome.Diplome" %>
 <%@ page import="itu.competence.Competence" %>
 <%
-List<Secteur> secteurs = (List<Secteur>) request.getAttribute("allSecteurs");
-List<Competence> competences = (List<Competence>) request.getAttribute("allCompetences");
-List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
+    List<Secteur> secteurs = (List<Secteur>) request.getAttribute("allSecteurs");
+    List<Competence> competences = (List<Competence>) request.getAttribute("allCompetences");
+    List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
 %>    
 
 <!DOCTYPE html>
@@ -19,9 +19,6 @@ List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
     <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/stylesRecherche.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/input.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aleo&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Grotesk:300,400&amp;display=swap">
 </head>
 
 <body style="background-image: url(${pageContext.request.contextPath}/img/recherche.png);">

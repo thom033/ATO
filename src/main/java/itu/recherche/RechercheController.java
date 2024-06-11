@@ -18,8 +18,6 @@ import itu.diplome.Diplome;
 import itu.diplome.DiplomeRepository;
 import itu.secteur.*;
 
-
-
 @Controller
 public class RechercheController {
     @Autowired

@@ -11,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Achat points</title>
     <link rel="stylesheet" href="/public/assetsAchat/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
     <link rel="stylesheet" href="/public/assetsAchat/css/input.css">
     <link rel="stylesheet" href="/public/assetsAchat/css/achat.css">
 </head>
