@@ -1,5 +1,6 @@
 package itu.recherche;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -54,47 +55,52 @@ public class RechercheController {
         String anneeExperience = params.get("anneeExperience");
 
         StringBuilder sql = new StringBuilder("SELECT * FROM postes_details WHERE 1=1");
-        
+        List<Object> paramsList = new ArrayList<>();
+
         if (title != null && !title.isEmpty()) {
             sql.append(" AND poste_titre LIKE ?");
-            title = "%" + title + "%";
+            paramsList.add("%" + title + "%");
         }
         if (diplome != null && !diplome.isEmpty()) {
             sql.append(" AND id_diplome = ?");
+            paramsList.add(diplome);
         }
         if (secteur != null && !secteur.isEmpty()) {
             sql.append(" AND id_secteur = ?");
+            paramsList.add(secteur);
         }
         if (competence != null && !competence.isEmpty()) {
             sql.append(" AND competence_requise LIKE ?");
-            competence = "%" + competence + "%";
+            paramsList.add("%" + competence + "%");
         }
         if (ageMin != null && !ageMin.isEmpty()) {
             sql.append(" AND age_requise >= ?");
+            paramsList.add(ageMin);
         }
         if (ageMax != null && !ageMax.isEmpty()) {
             sql.append(" AND age_requise <= ?");
+            paramsList.add(ageMax);
         }
         if (salaireMin != null && !salaireMin.isEmpty()) {
             sql.append(" AND poste_salaire >= ?");
+            paramsList.add(salaireMin);
         }
         if (salaireMax != null && !salaireMax.isEmpty()) {
             sql.append(" AND poste_salaire <= ?");
+            paramsList.add(salaireMax);
         }
         if (distance != null && !distance.isEmpty()) {
             sql.append(" AND distance <= ?");
+            paramsList.add(distance);
         }
         if (anneeExperience != null && !anneeExperience.isEmpty()) {
             sql.append(" AND nbr_annee_experience >= ?");
+            paramsList.add(anneeExperience);
         }
 
-        List<Map<String, Object>> results = jdbcTemplate.queryForList(sql.toString(), getSqlParameters(params, title, diplome, secteur, competence, ageMin, ageMax, salaireMin, salaireMax, distance, anneeExperience));
+        List<Map<String, Object>> results = jdbcTemplate.queryForList(sql.toString(), paramsList.toArray());
         model.addAttribute("results", results);
-        
-        return "splashScreen/splash"; 
-    }
 
-    private Object[] getSqlParameters(Map<String, String> params, String... dynamicParams) {
-        return dynamicParams;
+        return "recherche/resultat";
     }
 }
