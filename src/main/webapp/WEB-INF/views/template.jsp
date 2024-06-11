@@ -57,28 +57,28 @@
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">Team</h3>
                     <ul class="list-unstyled">
-                        <li style="color: var(--bs-body-color);"><a href="#" style="color: var(--bs-emphasis-color);">ANDRIAMITAHANTSOA&nbsp; Stefan Fiderana</a></li>
-                        <li style="color: var(--bs-emphasis-color);">ANDRIANAHERISOA Jaiela Matehotia</li>
-                        <li style="color: var(--bs-body-color);"><a href="#" style="color: var(--bs-emphasis-color);">NAMBININTSOA Tahianjanahary</a></li>
-                        <li><a href="#" style="color: var(--bs-emphasis-color);">RABENARIVO Ryan Lizka</a></li>
+                        <li style="color: var(--bs-body-color);">ANDRIAMITAHANTSOA Stefan Fiderana</li>
+                        <li style="color: var(--bs-emphasis-color);">ANDRIANAHERISOA Jaela Matehotia</li>
+                        <li style="color: var(--bs-body-color);">NAMBININTSOA Tahianjanahary Julien</li>
+                        <li style="color: var(--bs-body-color);">RABENARIVO Ryan Lizka</li>
                     </ul>
                 </div>
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">Team</h3>
                     <ul class="list-unstyled">
                         <li style="color: var(--bs-emphasis-color);">RAKOTOMANJATO Nekena Prisila</li>
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RAMANJATOMANITRA Ony Herilaza&nbsp;</a></li>
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</a></li>
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</a></li>
+                        <li style="color: var(--bs-emphasis-color);">RAMANJATOMANITRA Ony Herilaza&nbsp;</li>
+                        <li style="color: var(--bs-emphasis-color);">RAVONIHANITRARIVO Aina Tiana Manampisoa</li>
+                        <li style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</li>
                     </ul>
                 </div>
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">Team</h3>
                     <ul class="list-unstyled">
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</a></li>
-                        <li><a href="#" style="color: var(--bs-emphasis-color);">RASOLOFONJATOVO Hasimanarivo Loïc</a></li>
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RASOLOMANDIMBY Nomenjanahary Thomis&nbsp;</a></li>
-                        <li style="color: var(--bs-emphasis-color);">RAVONIHANITRARIVO Aina Tiana Manampisoa</li>
+                        <li style="color: var(--bs-body-color);">RASOLOFONJATOVO Hasimanarivo Loïc</li>
+                        <li style="color: var(--bs-emphasis-color);">RASOLOMANDIMBY Nomenjanahary Thomis</li>
+                        <li style="color: var(--bs-emphasis-color);">RAHARISON Christian Sanja</li>
+                        <li style="color: var(--bs-body-color);">RAKOTOARIMANANA Tojo</li>
                     </ul>
                 </div>
                 <div class="col-lg-3 text-center text-lg-start d-flex flex-column align-items-center order-first align-items-lg-start order-lg-last"><img src="/public/img/rohy2.png" style="width: 200px;margin-left: 32px;margin-top: 34px;">
