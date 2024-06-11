@@ -11,8 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import itu.model.*;
-import itu.repository.*;
+import itu.competence.Competence;
+import itu.competence.CompetenceRepository;
+import itu.diplome.Diplome;
+import itu.diplome.DiplomeRepository;
+import itu.secteur.SecteurRepository;
+import itu.secteur.*;
+
+
 
 @Controller
 public class RechercheController {
