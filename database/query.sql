@@ -195,3 +195,255 @@ VALUES
 (3, 18),
 (4, 19),
 (5, 20);
+
+SELECT AGE(CURRENT_DATE, date_of_birth) AS age
+FROM your_table;
+
+SELECT EXTRACT(YEAR FROM AGE(CURRENT_DATE, date_naissance)) AS age
+FROM utilisateur_details;
+
+SELECT EXTRACT(YEAR FROM AGE(CURRENT_DATE, date_naissance)) AS age1,EXTRACT(YEAR FROM AGE(CURRENT_DATE, date_naissance))AS age2
+FROM utilisateur_details;
+
+CREATE OR REPLACE FUNCTION check_age(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+DECLARE
+    u_age INT;
+    age_min INT;
+    age_max INT;
+    date_naissance DATE;
+BEGIN
+    -- Récupérer la date de naissance de l'utilisateur
+    SELECT date_naissance INTO date_naissance
+    FROM utilisateur_details
+    WHERE id_utilisateur = user_id;
+
+    -- Calculer l'âge de l'utilisateur
+    SELECT EXTRACT(YEAR FROM AGE(CURRENT_DATE, date_naissance)) INTO u_age;
+
+    -- Récupérer les âges minimum et maximum pour le poste
+    SELECT poste_age_min, poste_age_max INTO age_min, age_max
+    FROM poste_details
+    WHERE id_poste = poste_id;
+
+    -- Vérifier si l'âge de l'utilisateur est dans la plage requise
+    IF u_age >= age_min AND u_age <= age_max THEN
+        RETURN TRUE;
+    ELSE
+        RETURN FALSE;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION check_experience(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+DECLARE
+    u_exp INT;
+    exp_min INT;
+    date_debut_experience DATE;
+BEGIN
+    -- Récupérer la date de début de l'expérience de l'utilisateur
+    SELECT date_debut_experience INTO date_debut_experience
+    FROM utilisateur_details
+    WHERE id_utilisateur = user_id;
+
+    -- Calculer les années d'expérience de l'utilisateur
+    SELECT EXTRACT(YEAR FROM AGE(CURRENT_DATE, date_debut_experience)) INTO u_exp;
+
+    -- Récupérer le nombre d'années d'expérience minimum requis pour le poste
+    SELECT nbr_annee_experience INTO exp_min
+    FROM poste_details
+    WHERE id_poste = poste_id;
+
+    -- Vérifier si les années d'expérience de l'utilisateur sont suffisantes
+    IF u_exp >= exp_min THEN
+        RETURN TRUE;
+    ELSE
+        RETURN FALSE;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION check_formation(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+DECLARE
+    u_form INT;
+    form_min INT;
+    date_debut_formation DATE;
+BEGIN
+    -- Récupérer la date de début de la formation de l'utilisateur
+    SELECT date_debut_formation INTO date_debut_formation
+    FROM utilisateur_details
+    WHERE id_utilisateur = user_id;
+
+    -- Calculer les années de formation de l'utilisateur
+    SELECT EXTRACT(YEAR FROM AGE(CURRENT_DATE, date_debut_formation)) INTO u_form;
+
+    -- Récupérer le nombre d'années de formation minimum requis pour le poste
+    SELECT nbr_annee_formation INTO form_min
+    FROM poste_details
+    WHERE id_poste = poste_id;
+
+    -- Vérifier si les années de formation de l'utilisateur sont suffisantes
+    IF u_form >= form_min THEN
+        RETURN TRUE;
+    ELSE
+        RETURN FALSE;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION check_diplome(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+DECLARE
+    user_diplome INT;
+    poste_diplome INT;
+BEGIN
+    -- Récupérer le diplôme de l'utilisateur
+    SELECT id_diplome INTO user_diplome
+    FROM utilisateur_details
+    WHERE id_utilisateur = user_id;
+
+    -- Récupérer le diplôme requis pour le poste
+    SELECT id_diplome INTO poste_diplome
+    FROM poste_details
+    WHERE id_poste = poste_id;
+
+    -- Vérifier si le diplôme de l'utilisateur correspond au diplôme requis
+    IF user_diplome = poste_diplome THEN
+        RETURN TRUE;
+    ELSE
+        RETURN FALSE;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION calculate_distance(
+    u_latitude DOUBLE PRECISION,
+    u_longitude DOUBLE PRECISION,
+    p_latitude DOUBLE PRECISION,
+    p_longitude DOUBLE PRECISION
+) RETURNS DOUBLE PRECISION AS $$
+DECLARE
+    R CONSTANT DOUBLE PRECISION := 6371; -- Rayon de la Terre en kilomètres
+    lat_distance DOUBLE PRECISION;
+    lon_distance DOUBLE PRECISION;
+    a DOUBLE PRECISION;
+    c DOUBLE PRECISION;
+BEGIN
+    -- Calculer les différences en radians
+    lat_distance := RADIANS(u_latitude - p_latitude);
+    lon_distance := RADIANS(u_longitude - p_longitude);
+
+    -- Formule de Haversine pour calculer la distance
+    a := SIN(lat_distance / 2) * SIN(lat_distance / 2)
+        + COS(RADIANS(p_latitude)) * COS(RADIANS(u_latitude))
+        * SIN(lon_distance / 2) * SIN(lon_distance / 2);
+    c := 2 * ATAN2(SQRT(a), SQRT(1 - a));
+
+    -- Retourner la distance en kilomètres
+    RETURN R * c;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION point_distance(
+    u_latitude DOUBLE PRECISION,
+    u_longitude DOUBLE PRECISION,
+    p_latitude DOUBLE PRECISION,
+    p_longitude DOUBLE PRECISION
+) RETURNS INTEGER AS $$
+DECLARE
+    distance DOUBLE PRECISION;
+BEGIN
+    -- Calculer la distance en utilisant la fonction calculate_distance
+    distance := calculate_distance(u_latitude, u_longitude, p_latitude, p_longitude);
+
+    -- Déterminer les points en fonction de la distance
+    IF distance > 50 THEN
+        RETURN 50;
+    ELSIF distance > 25 THEN
+        RETURN 25;
+    ELSIF distance > 5 THEN
+        RETURN 5;
+    ELSE
+        RETURN 0;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_point_total(
+    u_latitude numeric(15,2),
+    u_longitude numeric(15,2),
+    p_latitude numeric(15,2),
+    p_longitude numeric(15,2),
+    u_age INTEGER,
+    u_experience INTEGER,
+    u_formation INTEGER,
+    u_diplome INTEGER
+) RETURNS DOUBLE PRECISION AS $$
+DECLARE
+    point DOUBLE PRECISION := 0;
+    distance DOUBLE PRECISION;
+    distance_points INTEGER;
+BEGIN
+    -- Vérifier l'âge de l'utilisateur
+    IF u_age >= poste_age_min AND u_age <= poste_age_max THEN
+        point := point + 3;
+    END IF;
+
+    -- Vérifier l'expérience de l'utilisateur
+    IF u_experience >= nbr_annee_experience THEN
+        point := point + 5;
+    END IF;
+
+    -- Vérifier la formation de l'utilisateur
+    IF u_formation >= nbr_annee_formation THEN
+        point := point + 2;
+    END IF;
+
+    -- Vérifier le diplôme de l'utilisateur
+    IF u_diplome = id_diplome THEN
+        point := point + 5;
+    END IF;
+
+    -- Calculer la distance entre l'utilisateur et le poste
+    distance := calculate_distance(u_latitude, u_longitude, p_latitude, p_longitude);
+
+    -- Calculer les points en fonction de la distance
+    IF distance > 0 THEN
+        distance_points := point_distance(u_latitude, u_longitude, p_latitude, p_longitude);
+        CASE
+            WHEN distance_points = 5 THEN point := point + 5;
+            WHEN distance_points = 25 THEN point := point + 2.5; -- 5 / 2
+            WHEN distance_points = 50 THEN point := point + 1.25; -- 5 / 4
+            ELSE point := point + 0;
+        END CASE;
+    END IF;
+
+    -- Retourner le nombre total de points
+    RETURN (point / 20.0) * 100.0;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT get_point_total(
+    u.latitude, 
+    u.longitude, 
+    p.entreprise_latitude, 
+    p.entreprise_longitude,
+    u.age,
+    u.experience,
+    u.formation,
+    u.diplome
+) AS total_points
+FROM utilisateur_details u, poste_details p
+WHERE u.id_utilisateur = :user_id AND p.id_poste = :poste_id;
+
+SELECT get_point_total(
+    u.latitude, --num
+    u.longitude, --num
+    p.entreprise_latitude, --double
+    p.entreprise_longitude, --double
+    EXTRACT(YEAR FROM AGE(CURRENT_DATE, u.date_naissance)), --double
+    EXTRACT(YEAR FROM AGE(u.experience_date_debut, u.experience_date_fin)), --double
+    EXTRACT(YEAR FROM AGE(u.formation_date_debut, u.formation_date_fin)), --double
+    u.id_diplome --integer
+) AS total_points
+FROM utilisateur_details u, postes_details p
+WHERE u.id_utilisateur = 1 AND p.id_poste = 1;
+
