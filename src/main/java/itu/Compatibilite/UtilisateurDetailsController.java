@@ -26,10 +26,15 @@ PosteDetailsRepository posteDetailsRepository;
     @GetMapping("/acceuil")
     public ModelAndView calculateCompatibility() {
         double[] compatibility = utilisateurDetails.ListCompatibility(posteDetailsRepository.getPosteDetails());
-        ModelAndView mv = new ModelAndView("acceuil/index");
-
+        ModelAndView mv = new ModelAndView("/template");
+        String pages = "acceuil/index.jsp";
         mv.addObject("compatibility", compatibility);
         mv.addObject("posteDetails", posteDetailsRepository.getPosteDetails());
+        
+        mv.addObject("page", pages);
+    
+        // Debug log to check the value
+        System.out.println("Pages value: " + pages);
         return mv;
     }
 

@@ -102,7 +102,7 @@ public class PosteDetails {
     public String getPosteDateInsertion() { return posteDateInsertion; }
     public void setPosteDateInsertion(String posteDateInsertion) { this.posteDateInsertion = posteDateInsertion; }
 
-    public double getPosteSalaire() { return posteSalaire; }
+    public int getPosteSalaire() { return (int)posteSalaire; }
     public void setPosteSalaire(double posteSalaire) { this.posteSalaire = posteSalaire; }
 
     public String getPosteTitre() { return posteTitre; }

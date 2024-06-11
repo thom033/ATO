@@ -4,17 +4,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - Brand</title>
-    <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/css/Splash.css">
-    <link rel="stylesheet" href="/public/css/Header.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aleo&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Grotesk:300,400&amp;display=swap">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>ATO</title>
+        <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.reflowhq.com/v2/toolkit.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aleo&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Grotesk:300,400&amp;display=swap">
+        <link rel="stylesheet" href="public/css/Header.css">
+        <link rel="stylesheet" href="public/css/product.css">
+        <link rel="stylesheet" href="public/css/acceuil.css">
+    </head>
 
 <body style="background: var(--bs-body-bg);">
     <nav class="navbar navbar-expand-md sticky-top navbar-shrink py-3 navbar-light" id="mainNav" style="margin-bottom: -1px;padding-bottom: 30px;padding-top: 0px;">
@@ -49,8 +51,13 @@
         </div>
     </nav>
 
-    <jsp:include page="<%= pages %>" />
-
+    <% 
+    if (pages != null) {
+        %><jsp:include page="<%= pages %>" /><%
+    } else {
+        %><p>Error: Page not found!</p><%
+    }
+%>
     <footer class="bg-primary-gradient">
         <div class="container py-4 py-lg-5">
             <div class="row justify-content-center">
