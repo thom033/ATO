@@ -110,3 +110,17 @@ INSERT INTO competence_utilisateur (id_utilisateur, id_competence) VALUES
 (1, 2), 
 (2, 2), 
 (2, 3); 
+
+-- Insert test data into Contact table
+INSERT INTO Contact (num_telephone) VALUES ('+1234567890');
+INSERT INTO Contact (num_telephone) VALUES ('+0987654321');
+INSERT INTO Contact (num_telephone) VALUES ('+1122334455');
+INSERT INTO Contact (num_telephone) VALUES ('+5566778899');
+INSERT INTO Contact (num_telephone) VALUES ('+6677889900');
+
+-- Insert test data into utilisateur_contact table
+INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (1, 1);
+INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (1, 2);
+INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 3);
+INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 4);
+INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 5);

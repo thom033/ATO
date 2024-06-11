@@ -78,10 +78,6 @@
                             <p class="description">Solde a recharger</p>
                             <form class="form-quantite" method="get" action="/utilisateur/solde">
                                 <div class="input-group">
-                                    <input required type="text" id="code" name="code" autocomplete="off" class="input" style="border-radius: 15px;">
-                                    <label class="user-label">Code</label>
-                                </div>
-                                <div class="input-group">
                                     <input required type="text" id="valeur" name="valeur" autocomplete="off" class="input" style="border-radius: 15px;">
                                     <label class="user-label">Montant</label>
                                 </div>

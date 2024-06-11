@@ -4,6 +4,7 @@
 <%@ page import="itu.diplome.Diplome"%>
 <%@ page import="itu.competence.Competence"%>
 <%@ page import="itu.secteur.Secteur"%>
+<%@ page import="itu.contact.Contact"%>
 <%@ page import="itu.achat.Argent"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
@@ -14,6 +15,7 @@
     List<Diplome> dip = (List<Diplome>) request.getAttribute("diplomes");
     List<Competence> comp = (List<Competence>) request.getAttribute("competences");
     List<Secteur> sect = (List<Secteur>) request.getAttribute("secteurs");
+    List<Contact> contacts = (List<Contact>) request.getAttribute("contacts");
     Argent arg = (Argent) request.getAttribute("argent");
 %>
 
@@ -48,8 +50,11 @@
                             <img class="icon-contact" src="/public/assetsProfil/img/icon/fi-rr-phone-flip.svg">
                         </div>
                         <div class="apropos">
-                            <p>+261 034 56 556 56</p>
-                            <p class="input">+261 033 22 777 44</p> <!-- Zay <p> farany asiana class="input" -->
+                            <% 
+                                for(Contact contact : contacts) {
+                            %>
+                            <p><%= contact.getNumTelephone() %></p>
+                            <% } %>
                         </div>
                     </div>
                     <div class="info-perso">
