@@ -1,0 +1,110 @@
+.form-quantite div, .valeur p, .element .point, .desc .description {
+    display: inline;
+}
+
+.form-quantite {
+    margin-top: -10px;
+}
+
+.my-1 {
+    font-size: 15px;
+}
+
+.main {
+    margin-top: 50px;
+}
+
+.card {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(71, 70, 70, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.description {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.head {
+    margin-top: 10px;
+}
+
+.point {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.montant {
+    font-size: 30px;
+    font-weight: bold;
+    height: 30px;
+}
+
+.head #titre {
+    display: inline;
+    margin-top: -10px;
+}
+
+.head .icon {
+    margin-right: 10px;
+}
+
+
+.element {
+    margin-top: -10px;
+    height: 30px;
+}
+
+.desc {
+    height: 10px;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+.valeur {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.tab {
+    margin-right: 40px;
+}
+
+.card-body {
+    border-radius: 15px
+}
+
+.image {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    border-style: solid;
+    border-color: rgb(118, 119, 119);
+}
+
+#mot {
+    margin-top: 20px;
+}
+
+.gauche {
+    margin-left: -15px;
+    margin-top: -15px;
+    background-color: white;
+    width: 104%;
+    height: 104%;
+}
+
+.ligne {
+    margin-top: 50px;
+}
+
+.btn-svg {
+    border: transparent;
+    border-radius: 100%;
+}
+
+.icon-image {
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+}

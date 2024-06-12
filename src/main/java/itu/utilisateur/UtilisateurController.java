@@ -4,21 +4,55 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import itu.achat.Argent;
+import itu.achat.ArgentRepository;
+import itu.competence.Competence;
+import itu.competence.CompetenceUtilisateur;
+import itu.competence.CompetenceUtilisateurRepository;
+import itu.contact.Contact;
+import itu.contact.UtilisateurContact;
+import itu.contact.UtilisateurContactRepository;
+import itu.diplome.Diplome;
+import itu.diplome.DiplomeUtilisateur;
+import itu.diplome.DiplomeUtilisateurRepository;
+import itu.experience.Experience;
+import itu.experience.ExperienceRepository;
+import itu.secteur.Secteur;
+import itu.secteur.SecteurDiplome;
+import itu.secteur.SecteurDiplomeRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UtilisateurController {
     @Autowired
     UtilisateurRepository utilisateurRepository;
+
+    @Autowired
+    ArgentRepository argentRepository;
+
+    @Autowired
+    ExperienceRepository experienceRepository;
+
+    @Autowired
+    DiplomeUtilisateurRepository diplomeUtilisateurRepository;
+
+    @Autowired
+    CompetenceUtilisateurRepository competenceUtilisateurRepository;
+
+    @Autowired
+    UtilisateurContactRepository utilisateurContactRepository;
+
+    @Autowired
+    SecteurDiplomeRepository secteurDiplomeRepository;
 
     @Autowired
     HttpSession httpSession;
@@ -87,11 +121,10 @@ public class UtilisateurController {
         utilisateur.setMail((String) login.get("mail"));
         utilisateur.setMotdepasse((String) login.get("mdp"));
 
-        utilisateurRepository.save(utilisateur);
-
+        utilisateurRepository.save(utilisateur); 
         return "login/login-register";
     }
-    
+
     @GetMapping("/utilisateur/profil")
     public ModelAndView profil() {
         ModelAndView model = new ModelAndView("template");
@@ -141,20 +174,5 @@ public class UtilisateurController {
 
         return model;
     }
-
-    @GetMapping("/utilisateur/modify")
-    public ModelAndView modify() {
-        ModelAndView mv=new ModelAndView("template");
-        mv.addObject("page", "profil/modify.jsp");
-        return mv;
-    }
-    
-    @GetMapping("/utilisateur/diplome")
-    public ModelAndView modifyDiplome() {
-        ModelAndView mv=new ModelAndView("template");
-        Utilisateur utilisateur=(Utilisateur)httpSession.getAttribute("utilisateur");
-        mv.addObject("utilisateur", utilisateur);
-        mv.addObject("page", "profil/modifyDiplome.jsp");
-        return mv;
-    } 
 }
+
