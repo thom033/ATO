@@ -12,18 +12,18 @@
 </style>
 <script src="../../../../../public/js/angular.min.js"></script>
 <div class="container">
-  <div class="row" ng-app="AdminApp" ng-controller="tableController">
+  <div class="row" ng-app="DiplomeUtilisateurApp" ng-controller="tableController">
     <div class="col-md-6">
       <div class="form">
         <form id="formulaire" ng-submit="submitForm()">
           <div class="container">
-            <h5>Administrateur</h5>
+            <h5>Diplome de l'utilisateur</h5>
             <hr>
           </div>
           <div class="row mb-3">
             <div class="col-md-5">
               <div class="input-group">
-                  <input required="" type="text" ng-model="admin.mail" auto complete="off" class="input" style=" border-radius: 15px;">
+                  <input required="" type="text" ng-model="diplomeUtilisateur.mail" auto complete="off" class="input" style=" border-radius: 15px;">
                   <label class="user-label">Mail</label>
               </div>
             </div>
@@ -31,7 +31,7 @@
           <div class="row mb-3">
             <div class="col-md-5">
               <div class="input-group">
-                  <input required="" type="password" ng-model="admin.motDePasse" name="password1" autocomplete="off" class="input" style=" border-radius: 15px;">
+                  <input required="" type="password" ng-model="diplomeUtilisateur.motDePasse" name="password1" autocomplete="off" class="input" style=" border-radius: 15px;">
                   <label class="user-label">Mot de passe</label>
               </div>
             </div>
@@ -58,22 +58,22 @@
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Mail</th>
+                <th scope="col">Diplome</th>
+                <th scope="col">Niveau</th>
                 <th scope="col">Modifier</th>
-                <th scope="col">Renvoyer</th>
+                <th scope="col">Supprimer</th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="admin in admins">
-                <th scope="row">{{admin.idAdmin}}</th>
-                <td>{{admin.mail}}</td>
-                <td><button class="btn btn-warning" ng-click="modify(admin.idAdmin)">Modifier</button></td>
-                <td><button class="btn btn-danger" ng-click="delete(admin.idAdmin)">Renvoyer</button></td>
+              <tr ng-repeat="diplomeUtilisateur in diplomeUtilisateurs">
+                <td scope="row">{{diplomeUtilisateur.diplome.diplome}}</td>
+                <td>{{diplomeUtilisateur.diplome.niveau}}</td>
+                <td><button class="btn btn-warning" ng-click="modify(diplomeUtilisateur.id.diplome,diplomeUtilisateur.id.utilisateur)">Modifier</button></td>
+                <td><button class="btn btn-danger" ng-click="delete(diplomeUtilisateur.id.diplome,diplomeUtilisateur.id.utilisateur)">Supprimer</button></td>
               </tr>
             </tbody>
           </table>
     </div>
   </div>
 </div>
-<script src="../../../../public/js/crud/Admin.js"></script>
+<script src="../../../../public/js/crud/DiplomeUtilisateur.js"></script>

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import itu.diplome.DiplomeUtilisateur;
 import itu.utilisateur.Utilisateur;
 import jakarta.servlet.http.HttpSession;
 
@@ -17,9 +16,6 @@ import jakarta.servlet.http.HttpSession;
 public class DiplomeUtilisateurJSONController {
     @Autowired
     DiplomeUtilisateurRepository diplomeUtilisateurRepository;
-
-    @Autowired
-    DiplomeUtilisateurIdRepository diplomeUtilisateurIdRepository;
     
     @GetMapping("/diplomeUtilisateur/liste")
     public List<DiplomeUtilisateur> liste(HttpSession session) {
@@ -34,20 +30,21 @@ public class DiplomeUtilisateurJSONController {
     }
 
     @GetMapping("/diplomeUtilisateur/delete")
-    public List<DiplomeUtilisateur> delete(@RequestParam("idDiplomeUtilisateur") Long id,HttpSession session) {
-        diplomeUtilisateurIdRepository.deleteById(id);
-        Utilisateur utilisateur=(Utilisateur)session.getAttribute("utilisateur");
-        return diplomeUtilisateurRepository.findByUtilisateurId(utilisateur.getId());
+    public List<DiplomeUtilisateur> delete(@RequestParam("idDiplome") Long idDiplome
+                                            ,@RequestParam("idUtilisateur") Long idUtilisateur) {
+        DiplomeUtilisateurId diplomeUtilisateurId=new DiplomeUtilisateurId(idUtilisateur,idDiplome);
+        diplomeUtilisateurRepository.deleteById(diplomeUtilisateurId);
+        return diplomeUtilisateurRepository.findByUtilisateurId(idUtilisateur);
     }
 
     @GetMapping("/diplomeUtilisateur/information")
-    public DiplomeUtilisateur getUtilisateur(@RequestParam("idDiplomeUtilisateur") DiplomeUtilisateurId diplomeUtilisateurId) {
+    public DiplomeUtilisateur getUtilisateur(@RequestBody DiplomeUtilisateurId diplomeUtilisateurId) {
         return diplomeUtilisateurRepository.findById(diplomeUtilisateurId).get();
     }
     
     @PostMapping("/diplomeUtilisateur/update")
     public List<DiplomeUtilisateur> modifier(@RequestBody DiplomeUtilisateur diplomeUtilisateur) {
         diplomeUtilisateurRepository.save(diplomeUtilisateur);
-        return diplomeUtilisateurRepository.findAll();
+        return diplomeUtilisateurRepository.findByUtilisateurId(diplomeUtilisateur.getUtilisateur().getId());
     }
 }
