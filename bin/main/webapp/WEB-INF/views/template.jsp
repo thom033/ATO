@@ -40,10 +40,10 @@
                         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"></path>
                     </svg></span></a>
                     
-                    <a class="navbar-brand d-flex align-items-center" href="/"><span class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon" style="background: var(--bs-secondary-bg);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search" style="color: var(--bs-navbar-active-color);">
+                    <a class="navbar-brand d-flex align-items-center" href="/recherche"><span class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon" style="background: var(--bs-secondary-bg);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search" style="color: var(--bs-navbar-active-color);">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
                     </svg></span></a>
-                    <a class="navbar-brand d-flex align-items-center" href="/">
+                    <a class="navbar-brand d-flex align-items-center" href="/utilisateur/profil">
                     <img style="width: 30px;height: 30px;border-radius: 100px;" src="/public/img/branch.jpeg">
                     </a>
         </div>
@@ -57,28 +57,28 @@
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">Team</h3>
                     <ul class="list-unstyled">
-                        <li style="color: var(--bs-body-color);"><a href="#" style="color: var(--bs-emphasis-color);">ANDRIAMITAHANTSOA&nbsp; Stefan Fiderana</a></li>
-                        <li style="color: var(--bs-emphasis-color);">ANDRIANAHERISOA Jaiela Matehotia</li>
-                        <li style="color: var(--bs-body-color);"><a href="#" style="color: var(--bs-emphasis-color);">NAMBININTSOA Tahianjanahary</a></li>
-                        <li><a href="#" style="color: var(--bs-emphasis-color);">RABENARIVO Ryan Lizka</a></li>
+                        <li style="color: var(--bs-body-color);">ANDRIAMITAHANTSOA Stefan Fiderana</li>
+                        <li style="color: var(--bs-emphasis-color);">ANDRIANAHERISOA Jaela Matehotia</li>
+                        <li style="color: var(--bs-body-color);">NAMBININTSOA Tahianjanahary Julien</li>
+                        <li style="color: var(--bs-body-color);">RABENARIVO Ryan Lizka</li>
                     </ul>
                 </div>
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">Team</h3>
                     <ul class="list-unstyled">
                         <li style="color: var(--bs-emphasis-color);">RAKOTOMANJATO Nekena Prisila</li>
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RAMANJATOMANITRA Ony Herilaza&nbsp;</a></li>
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</a></li>
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</a></li>
+                        <li style="color: var(--bs-emphasis-color);">RAMANJATOMANITRA Ony Herilaza&nbsp;</li>
+                        <li style="color: var(--bs-emphasis-color);">RAVONIHANITRARIVO Aina Tiana Manampisoa</li>
+                        <li style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</li>
                     </ul>
                 </div>
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">Team</h3>
                     <ul class="list-unstyled">
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</a></li>
-                        <li><a href="#" style="color: var(--bs-emphasis-color);">RASOLOFONJATOVO Hasimanarivo Loïc</a></li>
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RASOLOMANDIMBY Nomenjanahary Thomis&nbsp;</a></li>
-                        <li style="color: var(--bs-emphasis-color);">RAVONIHANITRARIVO Aina Tiana Manampisoa</li>
+                        <li style="color: var(--bs-body-color);">RASOLOFONJATOVO Hasimanarivo Loïc</li>
+                        <li style="color: var(--bs-emphasis-color);">RASOLOMANDIMBY Nomenjanahary Thomis</li>
+                        <li style="color: var(--bs-emphasis-color);">RAHARISON Christian Sanja</li>
+                        <li style="color: var(--bs-body-color);">RAKOTOARIMANANA Tojo</li>
                     </ul>
                 </div>
                 <div class="col-lg-3 text-center text-lg-start d-flex flex-column align-items-center order-first align-items-lg-start order-lg-last"><img src="/public/img/rohy2.png" style="width: 200px;margin-left: 32px;margin-top: 34px;">

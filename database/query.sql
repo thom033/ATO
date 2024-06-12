@@ -130,3 +130,32 @@ VALUES
 (1, 1),
 (2, 2),
 (3, 3);
+(2, 2);
+
+-- Insérer des données de test dans la table argent
+INSERT INTO argent (solde,date_modification, id_utilisateur)
+VALUES (1000.00,'2024-06-10 10:00:00', 1);
+
+INSERT INTO argent (solde, id_utilisateur)
+VALUES (2000.00, 2);
+
+-- Insertion de données de test pour la table CompetenceUtilisateur
+INSERT INTO competence_utilisateur (id_utilisateur, id_competence) VALUES
+(1, 1),
+(1, 2), 
+(2, 2), 
+(2, 3); 
+
+-- Insert test data into Contact table
+INSERT INTO Contact (num_telephone) VALUES ('+1234567890');
+INSERT INTO Contact (num_telephone) VALUES ('+0987654321');
+INSERT INTO Contact (num_telephone) VALUES ('+1122334455');
+INSERT INTO Contact (num_telephone) VALUES ('+5566778899');
+INSERT INTO Contact (num_telephone) VALUES ('+6677889900');
+
+-- Insert test data into utilisateur_contact table
+INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (1, 1);
+INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (1, 2);
+INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 3);
+INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 4);
+INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 5);

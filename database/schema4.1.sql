@@ -6,7 +6,7 @@ CREATE TABLE Utilisateur(
    adresse VARCHAR(255) ,
    mail VARCHAR(255)  NOT NULL,
    etat_civil VARCHAR(255) ,
-   photo VARCHAR(255) ,
+   photo VARCHAR(255)  DEFAULT 'none.jpg',
    point BIGINT NOT NULL DEFAULT 0 CHECK(point >= 0 ),
    latitude NUMERIC(15,2)  ,
    longitude NUMERIC(15,2)  ,
@@ -41,7 +41,7 @@ CREATE TABLE Entreprise(
    mail VARCHAR(255)  NOT NULL,
    latitude NUMERIC(15,2)  ,
    longitude NUMERIC(15,2)  ,
-   image VARCHAR(255)  NOT NULL,
+   image VARCHAR(255)  DEFAULT 'none.jpg',
    PRIMARY KEY(id_entreprise),
    UNIQUE(mail)
 );
@@ -57,6 +57,8 @@ CREATE TABLE poste(
    age_min INTEGER,
    age_max INTEGER,
    image VARCHAR(250) ,
+   cout INTEGER NOT NULL,
+   disponibilite BOOLEAN NOT NULL,
    id_diplome INTEGER NOT NULL,
    id_entreprise INTEGER NOT NULL,
    PRIMARY KEY(id_poste),
@@ -118,12 +120,8 @@ CREATE TABLE Reponse(
 CREATE TABLE Contact(
    id_contact SERIAL,
    num_telephone VARCHAR(20) ,
-   id_entreprise INTEGER NOT NULL,
-   id_utilisateur INTEGER NOT NULL,
    PRIMARY KEY(id_contact),
-   UNIQUE(num_telephone),
-   FOREIGN KEY(id_entreprise) REFERENCES Entreprise(id_entreprise),
-   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+   UNIQUE(num_telephone)
 );
 
 CREATE TABLE administrateur(
@@ -136,8 +134,18 @@ CREATE TABLE administrateur(
 CREATE TABLE argent(
    id_argent SERIAL,
    solde NUMERIC(15,2)   NOT NULL DEFAULT 0,
+   date_modification TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
    id_utilisateur INTEGER NOT NULL,
    PRIMARY KEY(id_argent),
+   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+);
+
+CREATE TABLE historique_question(
+   id_historique SERIAL,
+   id_question INTEGER NOT NULL,
+   id_utilisateur INTEGER NOT NULL,
+   PRIMARY KEY(id_historique),
+   FOREIGN KEY(id_question) REFERENCES Question(id_question),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
@@ -186,4 +194,20 @@ CREATE TABLE competence_secteur(
    PRIMARY KEY(id_secteur, id_competence),
    FOREIGN KEY(id_secteur) REFERENCES Secteur(id_secteur),
    FOREIGN KEY(id_competence) REFERENCES competence(id_competence)
+);
+
+CREATE TABLE utilisateur_contact(
+   id_utilisateur INTEGER,
+   id_contact INTEGER,
+   PRIMARY KEY(id_utilisateur, id_contact),
+   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur),
+   FOREIGN KEY(id_contact) REFERENCES Contact(id_contact)
+);
+
+CREATE TABLE entreprise_contact(
+   id_entreprise INTEGER,
+   id_contact INTEGER,
+   PRIMARY KEY(id_entreprise, id_contact),
+   FOREIGN KEY(id_entreprise) REFERENCES Entreprise(id_entreprise),
+   FOREIGN KEY(id_contact) REFERENCES Contact(id_contact)
 );
