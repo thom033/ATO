@@ -128,13 +128,12 @@ CREATE TABLE administrateur(
    PRIMARY KEY(id_administrateur)
 );
 
-CREATE TABLE argent(
-   id_argent SERIAL,
-   solde NUMERIC(15,2)   NOT NULL DEFAULT 0,
-   date_modification TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
-   id_utilisateur INTEGER NOT NULL,
-   PRIMARY KEY(id_argent),
-   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+CREATE TABLE argent (
+   id_argent SERIAL PRIMARY KEY,
+   solde NUMERIC(15,2) NOT NULL DEFAULT 0.0,
+   date_modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   id_utilisateur INTEGER DEFAULT 0,
+   FOREIGN KEY (id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
 CREATE TABLE historique_question(
