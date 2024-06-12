@@ -27,11 +27,11 @@ VALUES
 ('MarketLLC', 200, 'Marketing', '2010-09-10', '56 Rue Market, Marseille', 'https://marketllc.com', 'contact@marketllc.com', 43.2965, 5.3698, 'marketllc.jpg');
 
 -- Données pour la table poste
-INSERT INTO poste (description, date_insertion, salaire, titre, annee_experience, annee_formation, age_min, age_max, image, id_diplome, id_entreprise)
+INSERT INTO poste (description, date_insertion, salaire, titre, annee_experience, annee_formation, age_min, age_max, image, id_diplome, id_entreprise,cout, disponibilite)
 VALUES
-('Développement de logiciels', CURRENT_DATE, 40000, 'Développeur', 2, 4, 25, 35, 'poste1.jpg', 2, 1),
-('Analyse financière', CURRENT_DATE, 50000, 'Analyste', 3, 5, 30, 40, 'poste2.jpg', 3, 2),
-('Gestion de projet marketing', CURRENT_DATE, 45000, 'Chef de Projet', 4, 6, 28, 38, 'poste3.jpg', 2, 3);
+('Développement de logiciels', CURRENT_DATE, 40000, 'Développeur', 2, 4, 25, 35, 'poste1.jpg', 2, 1,3, FALSE),
+('Analyse financière', CURRENT_DATE, 50000, 'Analyste', 3, 5, 30, 40, 'poste2.jpg', 3, 2,2, FALSE),
+('Gestion de projet marketing', CURRENT_DATE, 45000, 'Chef de Projet', 4, 6, 28, 38, 'poste3.jpg', 2, 3,5, TRUE);
 
 -- Données pour la table competence
 INSERT INTO competence (competence, description)
@@ -89,13 +89,6 @@ VALUES
 ('admin2@example.com', 'adminpass2'),
 ('admin3@example.com', 'adminpass3');
 
--- Données pour la table argent
-INSERT INTO argent (solde, id_utilisateur)
-VALUES
-(1000.00, 1),
-(2000.00, 2),
-(1500.00, 3);
-
 -- Données pour la table Notification
 INSERT INTO Notification (message, date_notification, date_lu, id_utilisateur,id_poste, point)
 VALUES
@@ -130,7 +123,6 @@ VALUES
 (1, 1),
 (2, 2),
 (3, 3);
-(2, 2);
 
 -- Insérer des données de test dans la table argent
 INSERT INTO argent (solde,date_modification, id_utilisateur)

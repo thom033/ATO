@@ -20,9 +20,9 @@
                 </div>
             </div>
     </section>
-    <button ng-click="getData()">Rafraichir</button>
+    
     <div class="notification-container" ng-app="frontApp" ng-controller="notificationController" >
-
+        <button ng-click="getData()">Rafraichir</button>
         <% for (Notification notif  : notifications) { %>
             <div class="notification-item row align-items-center" style="padding-top: 20px;">
                 <div class="col-1 text-center pl">

@@ -34,9 +34,9 @@ public class NotificationController {
         } else {
             mv.setViewName("template");
             List<Notification> notifications = notificationRepository
-                    .findByUtilisateurId(utilisateur.getIdUser());
+                    .findByUtilisateurId(utilisateur.getId());
             mv.addObject("notifications", notifications);
-            mv.addObject("id", utilisateur.getIdUser());
+            mv.addObject("id", utilisateur.getId());
             mv.addObject("page", "notification/notification");
         }
         return mv;

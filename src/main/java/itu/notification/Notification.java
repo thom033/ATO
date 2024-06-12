@@ -110,6 +110,7 @@ public class Notification {
     public Utilisateur getUtilisateur() {
         return utilisateur;
     }
+
     /* ----- ----- ------- --------- */
 
     public String stringDateNotif() {
@@ -152,13 +153,14 @@ public class Notification {
         return message;
     }
 
-    public Boolean estDynamique() {
+    public int estDynamique() {
         if (getPoste() != null) {
-            return true;
+            // return getPoste().getId();
+            return 0;
         } else if (getPoint()) {
-            return true;
+            return -1;
         }
-        return false;
+        return -2;
     }
 
     /* ---- ------------------------------------------ --- */
