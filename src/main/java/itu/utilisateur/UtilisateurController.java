@@ -91,9 +91,7 @@ public class UtilisateurController {
 
         return "login/login-register";
     }
-
-<<<<<<< Updated upstream
-=======
+    
     @GetMapping("/utilisateur/profil")
     public ModelAndView profil() {
         ModelAndView model = new ModelAndView("template");
@@ -143,6 +141,7 @@ public class UtilisateurController {
 
         return model;
     }
+
     @GetMapping("/utilisateur/modify")
     public ModelAndView modify() {
         ModelAndView mv=new ModelAndView("template");
@@ -157,7 +156,5 @@ public class UtilisateurController {
         mv.addObject("utilisateur", utilisateur);
         mv.addObject("page", "profil/modifyDiplome.jsp");
         return mv;
-    }
-    
->>>>>>> Stashed changes
+    } 
 }
