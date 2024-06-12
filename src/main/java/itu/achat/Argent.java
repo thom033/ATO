@@ -12,14 +12,15 @@ public class Argent {
     @Column(name = "id_argent")
     int id;
 
-    @Column(name = "solde")
-    Double solde;
-
+    @Column(name = "solde", nullable = false, columnDefinition = "NUMERIC(15,2) DEFAULT 0.0")
+    Double solde = 0.0;
+    
     @Column(name = "id_utilisateur")
     Long idUtilisateur;
 
-    @Column(name = "date_modification")
-    Date dateModification;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date_modification", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    Date dateModification = new Date();
 
     // Getters and Setters
     public int getId() {

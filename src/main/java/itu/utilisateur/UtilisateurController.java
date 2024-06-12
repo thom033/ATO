@@ -112,6 +112,7 @@ public class UtilisateurController {
     @PostMapping("/utilisateur/inscription")
     public String inscription(@RequestParam HashMap<String, Object> login) {
         Utilisateur utilisateur = new Utilisateur();
+        Argent argUser = new Argent();
         try {
             utilisateur.setNom((String) login.get("nom"));
             utilisateur.setPrenom((String) login.get("prenom"));
@@ -121,7 +122,10 @@ public class UtilisateurController {
         utilisateur.setMail((String) login.get("mail"));
         utilisateur.setMotdepasse((String) login.get("mdp"));
 
-        utilisateurRepository.save(utilisateur); 
+        Utilisateur savedUtilisateur = utilisateurRepository.save(utilisateur); 
+        argUser.setIdUtilisateur(savedUtilisateur.getId());
+        argentRepository.save(argUser);
+         
         return "login/login-register";
     }
 
