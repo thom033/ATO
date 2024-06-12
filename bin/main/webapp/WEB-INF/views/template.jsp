@@ -1,3 +1,4 @@
+<%@ page import="itu.utilisateur.Utilisateur"%>
 <%
     String pages = (String) request.getAttribute("page");
 %>
@@ -43,15 +44,18 @@
                     <a class="navbar-brand d-flex align-items-center" href="/recherche"><span class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon" style="background: var(--bs-secondary-bg);"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search" style="color: var(--bs-navbar-active-color);">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
                     </svg></span></a>
-                    <a class="navbar-brand d-flex align-items-center" href="/utilisateur/profil">
-                    <img style="width: 30px;height: 30px;border-radius: 100px;" src="/public/img/branch.jpeg">
-                    </a>
+                    <% if (session.getAttribute("utilisateur") != null) { 
+                        Utilisateur user = (Utilisateur) session.getAttribute("utilisateur"); %>
+                        <a class="navbar-brand d-flex align-items-center" href="/utilisateur/profil">
+                            <img style="width: 30px;height: 30px;border-radius: 100px;" src="/public/img/avatars/<%= user.getPhoto() %>">
+                        </a>
+                    <% } %>
         </div>
     </nav>
 
     <jsp:include page="<%= pages %>" />
 
-    <footer class="bg-primary-gradient">
+    <!-- <footer class="bg-primary-gradient">
         <div class="container py-4 py-lg-5">
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
@@ -102,10 +106,9 @@
                 </ul>
             </div>
         </div>
-    </footer>
+    </footer> -->
     <script src="/public/bootstrap/js/bootstrap.min.js"></script>
     <script src="/public/js/bs-init.js"></script>
     <script src="/public/js/bold-and-bright.js"></script>
 </body>
-
 </html>

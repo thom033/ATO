@@ -15,7 +15,7 @@ public class Entreprise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_entreprise")
-    private Long idEntreprise;
+    private Long id;
     String entreprise;
     String mail;
     int point;
@@ -28,9 +28,10 @@ public class Entreprise {
     double latitude;
     double longitude;
     String image;
-    public Entreprise(Long idEntreprise, String entreprise, String mail, int point, String type, Timestamp dateCreation,
+    
+    public Entreprise(Long id, String entreprise, String mail, int point, String type, Timestamp dateCreation,
             String adresse, String siteWeb, double latitude, double longitude, String image) {
-        this.idEntreprise = idEntreprise;
+        this.id = id;
         this.entreprise = entreprise;
         this.mail = mail;
         this.point = point;
@@ -56,9 +57,9 @@ public class Entreprise {
         this.longitude = longitude;
         this.image = image;
     }
-    public Entreprise(Long idEntreprise, String entreprise, int point, String type, Timestamp dateCreation,
+    public Entreprise(Long id, String entreprise, int point, String type, Timestamp dateCreation,
             String adresse, String siteWeb, double latitude, double longitude, String image) {
-        this.idEntreprise = idEntreprise;
+        this.id = id;
         this.entreprise = entreprise;
         this.point = point;
         this.type = type;
@@ -69,11 +70,11 @@ public class Entreprise {
         this.longitude = longitude;
         this.image = image;
     }
-    public Long getIdEntreprise() {
-        return idEntreprise;
+    public Long getid() {
+        return id;
     }
-    public void setIdEntreprise(Long idEntreprise) {
-        this.idEntreprise = idEntreprise;
+    public void setid(Long id) {
+        this.id = id;
     }
     public String getEntreprise() {
         return entreprise;

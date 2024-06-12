@@ -19,34 +19,31 @@
     Argent arg = (Argent) request.getAttribute("argent");
 %>
 
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>profile</title>
-    <link rel="stylesheet" href="/public/assetsProfil/bootstrap/css/pikaday.min.css">
-    <link rel="stylesheet" href="/public/assetsProfil/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/assetsProfil/css/profile.css">
-    <link rel="stylesheet" href="/public/assetsProfil/css/achat.css">
+    <link rel="stylesheet" href="/public/bootstrap/css/pikaday.min.css">
+    <link rel="stylesheet" href="/public/css/profile.css">
+    <link rel="stylesheet" href="/public/css/achat.css">
 </head>
 
 <body>
     <div class="container-principale">
         <div class="row">
-            <div class="col-md-3 col-lg-3">
+            <div class="col-md-3 fixed-top" style="margin-left: 20px;">
+                <div class="sticky-top">
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
-                            <img class="avatar" src="/public/assetsProfil/img/avatars/avatar.jpg" alt="">
+                            <img class="avatar" src="/public/img/avatars/<%= user.getPhoto() %>" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="contact">
                     <div class="info-perso">
                         <div class="svg">
-                            <img class="icon-contact" src="/public/assetsProfil/img/icon/fi-rr-phone-flip.svg">
+                            <img class="icon-contact" src="/public/img/icon/fi-rr-phone-flip.svg">
                         </div>
                         <div class="apropos">
                             <% 
@@ -58,7 +55,7 @@
                     </div>
                     <div class="info-perso">
                         <div class="svg">
-                            <img class="icon-contact" src="/public/assetsProfil/img/icon/fi-rr-envelope.svg">
+                            <img class="icon-contact" src="/public/img/icon/fi-rr-envelope.svg">
                         </div>
                         <div class="apropos">
                             <p><%= user.getMail()%></p>
@@ -70,8 +67,9 @@
                     <div class="my-2"><button style="background-color: #fff; border-color: #000; color: #000;" class="btn btn-primary shadow" type="submit">Compléter vos informations</button></div>
                     <div class="my-2" ><form action="/utilisateur/deconnexion"><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" type="submit">Deconnexion</button></form></div>
                 </div>
+                </div>
             </div>
-            <div class="col-md-1 col-lg-1"></div>
+            <div class="col-md-1 col-lg-1" style="position:relative; margin-left: auto;"></div>
             <div class="col-md-8 col-lg-8">
                 <div>
                     <section class="position-relative py-4 py-xl-5">
@@ -79,7 +77,7 @@
                             <div class="row mb-2">
                                 <div class="info-perso">
                                     <div  class="svg">
-                                        <img class="icon" src="/public/assetsProfil/img/icon/fi-rr-user.svg">
+                                        <img class="icon" src="/public/img/icon/fi-rr-user.svg">
                                     </div>
                                     <div>
                                         <h4>INFORMATIONS PERSONNELLES :</h4>
@@ -147,7 +145,7 @@
                             <div class="row mb-2">
                                 <div class="info-perso">
                                     <div  class="svg">
-                                        <img class="icon" src="/public/assetsProfil/img/icon/fi-rr-building.svg">
+                                        <img class="icon" src="/public/img/icon/fi-rr-building.svg">
                                     </div>
                                     <div>
                                         <h4>INFORMATIONS PROFESSIONNELLES :</h4>
@@ -212,7 +210,7 @@
                             <div class="row mb-2">
                                 <div class="info-perso">
                                     <div  class="svg">
-                                        <img class="icon" src="/public/assetsProfil/img/icon/fi-rr-wallet.svg">
+                                        <img class="icon" src="/public/img/icon/fi-rr-wallet.svg">
                                     </div>
                                     <div>
                                         <h4>PORTEFEUILLE :</h4>
@@ -290,7 +288,7 @@
                                                                     <%
                                                                     String date = sdf.format(arg.getDate());
                                                                     %>
-                                                                    <p class="description"><%= date %></p>
+                                                                    <p class="description"><%=  date %></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -307,9 +305,7 @@
             </div>
         </div>
     </div>
-    <script src="/public/assetsProfil/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/public/assetsProfil/bootstrap/js/pikaday.min.js"></script>
-    <script src="/public/assetsProfil/bootstrap/js/theme.js"></script>
+    <script src="/public/bootstrap/js/pikaday.min.js"></script>
+    <script src="/public/bootstrap/js/theme.js"></script>
 </body>
-
 </html>

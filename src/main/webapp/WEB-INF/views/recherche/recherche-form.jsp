@@ -9,19 +9,15 @@
     List<Diplome> diplomes = (List<Diplome>) request.getAttribute("allDiplomes");
 %>    
 
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="fr">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - Brand</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/stylesRecherche.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/input.css">
+    <title>Recherche</title>
+    <link rel="stylesheet" href="/public/bootstrap/css/stylesRecherche.css">
+    <link rel="stylesheet" href="/public/bootstrap/css/input.css">
 </head>
 
-<body style="background-image: url(${pageContext.request.contextPath}/img/fond.png);">
+<body>
     <header class="bg-primary-gradient"  style="font-family: Helvetica;">
         <section style="margin-bottom: -2px;">
             <div class="container">
@@ -37,7 +33,7 @@
         </section>
     </header>
 
-    <div class="container" style="font-family:Helvetica">
+    <div class="container" style="font-family:Helvetica" style="background-image: url(/public/img/fond.png);">
         <div class="card">
             <div class="container mt-5">
                 <div class="content">
@@ -159,10 +155,5 @@
             </div>
         </div>
     </div>
-
-    <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bs-init.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bold-and-bright.js"></script>
 </body>
-
 </html>
