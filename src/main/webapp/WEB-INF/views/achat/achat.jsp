@@ -3,16 +3,12 @@
     int type = (int) request.getAttribute("type");
 %>
 
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Achat points</title>
-    <link rel="stylesheet" href="/public/assetsAchat/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/assetsAchat/css/input.css">
-    <link rel="stylesheet" href="/public/assetsAchat/css/achat.css">
+    <link rel="stylesheet" href="/public/css/input.css">
+    <link rel="stylesheet" href="/public/css/achat.css">
 </head>
 
 <body>
@@ -29,14 +25,14 @@
                             <div class="head">
                                 <span class="icon">
                                     <h3 id="titre" class="fw-bold">Notre Tarif</h3>
-                                    <img class="icon-image" src="/public/assetsAchat/bootstrap/icon/fi-rr-coins.svg" alt="">
+                                    <img class="icon-image" src="/public/bootstrap/icon/fi-rr-coins.svg" alt="">
                                 </span>
                             </div>
                             <p class="my-1">1 point : 5 000 Ar</p>
                             <div class="head" style="margin-top: 30px;">
                                 <span class="icon">
                                     <h3 id="titre" class="fw-bold">Achat</h3>
-                                        <img src="/public/assetsAchat/bootstrap/icon/fi-rr-shopping-cart.svg" alt="" class="icon-image">
+                                        <img src="/public/bootstrap/icon/fi-rr-shopping-cart.svg" alt="" class="icon-image">
                                 </span>
                             </div>
                             <p class="description">Quantite de points</p>
@@ -47,15 +43,15 @@
                                 </div>
                                 <div class="my-2" style="margin-left: 20px;"><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" type="submit">Valider</button></div>
                             </form>
+                            <% if (request.getAttribute("error") != null) { %>
+                                <div class="alert alert-danger" style="width: 350px; margin-top: 30px;">
+                                    <%= request.getAttribute("error") %>
+                                </div>
+                            <% } %>
                             <div class="valeur">
                                 <p class="tab">Valeur actuelle :</p>
                                 <p id="solde"></p>
                             </div>
-                            <% if (request.getAttribute("error") != null) { %>
-                                <div class="alert alert-danger">
-                                    <%= request.getAttribute("error") %>
-                                </div>
-                            <% } %>
                         </div>
 
                         <%
@@ -65,13 +61,13 @@
                             <div class="head">
                                 <span class="icon">
                                     <h3 id="titre" class="fw-bold">Solde</h3>
-                                    <img class="icon-image" src="/public/assetsAchat/bootstrap/icon/fi-rr-coins.svg" alt="">
+                                    <img class="icon-image" src="/public/bootstrap/icon/fi-rr-coins.svg" alt="">
                                 </span>
                             </div>
                             <div class="head" style="margin-top: 30px;">
                                 <span class="icon">
                                     <h3 id="titre" class="fw-bold">Recharger</h3>
-                                        <img src="/public/assetsAchat/bootstrap/icon/fi-rr-shopping-cart.svg" alt="" class="icon-image">
+                                        <img src="/public/bootstrap/icon/fi-rr-shopping-cart.svg" alt="" class="icon-image">
                                 </span>
                             </div>
                             <p class="description">Solde a recharger</p>
@@ -192,7 +188,7 @@
                     <div class="col-md-5 col-lg-5">
                         <div class="row">
                             <div class="col-md-4">
-                                <img class="image" src="/public/assetsAchat/img/concept-graphique-performance-gestion-donnees.jpg" alt="">
+                                <img class="image" src="/public/img/concept-graphique-performance-gestion-donnees.jpg" alt="">
                             </div>
                             <div id="mot" class="col-md-8">
                                 <h3 class="fw-bold">Utilite des points</h3>
@@ -208,7 +204,7 @@
                                 <p>Les points seront consommes au moment ou vous postulez mais sera rendu dans le cas ou vous n'obtenez pas le poste</p>
                             </div>
                             <div class="col-md-4">
-                                <img class="image" src="/public/assetsAchat/img/gros-plan-femme-aide-calculatrice-telephone-intelligent_1262-16076.jpg" alt="">
+                                <img class="image" src="/public/img/gros-plan-femme-aide-calculatrice-telephone-intelligent_1262-16076.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -216,8 +212,6 @@
             </div>
         </div>
     </div>
-    <script src="/public/assetsAchat/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/public/assetsAchat/js/bold-and-bright.js"></script>
     <script>
         // Fonction pour mettre à jour la valeur actuelle
         function updateCurrentValue() {
