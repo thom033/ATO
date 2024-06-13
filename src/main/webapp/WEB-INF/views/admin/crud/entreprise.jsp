@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="../../../../public/bootstrap/css/input.css">
 <link rel="stylesheet" href="../../../../public/bootstrap/css/stylesRecherche.css">
 <link rel="stylesheet" href="../../../../public/leaflet/leaflet.css">
@@ -156,12 +157,12 @@
             </thead>
             <tbody>
               <tr ng-repeat="entreprise in entreprises">
-                <th scope="row">{{entreprise.idEntreprise}}</th>
+                <th scope="row">{{entreprise.id}}</th>
                 <td>{{entreprise.entreprise}}</td>
                 <td>{{entreprise.dateCreation.split('T')[0]}}</td>
                 <td>{{entreprise.siteWeb}}</td>
-                <td><button class="btn btn-warning" ng-click="modify(entreprise.idEntreprise)">Modifier</button></td>
-                <td><button class="btn btn-danger" ng-click="delete(entreprise.idEntreprise)">Supprimer</button></td>
+                <td><button class="btn btn-warning" ng-click="modify(entreprise.id)">Modifier</button></td>
+                <td><button class="btn btn-danger" ng-click="delete(entreprise.id)">Supprimer</button></td>
               </tr>
             </tbody>
           </table>

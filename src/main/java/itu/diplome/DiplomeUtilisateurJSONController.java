@@ -1,6 +1,7 @@
 package itu.diplome;
 
 import java.util.List;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,17 @@ import jakarta.servlet.http.HttpSession;
 public class DiplomeUtilisateurJSONController {
     @Autowired
     DiplomeUtilisateurRepository diplomeUtilisateurRepository;
+
+    @Autowired
+    DiplomeRepository diplomeRepository;
     
     @GetMapping("/diplomeUtilisateur/liste")
-    public List<DiplomeUtilisateur> liste(HttpSession session) {
+    public HashMap<String,Object> liste(HttpSession session) {
+        HashMap<String,Object> map=new HashMap<String,Object>();
         Utilisateur utilisateur=(Utilisateur)session.getAttribute("utilisateur");
-        return diplomeUtilisateurRepository.findByUtilisateurId(utilisateur.getId());
+        map.put("diplomeUtilisateurs", diplomeUtilisateurRepository.findByUtilisateurId(utilisateur.getId()));
+        map.put("diplomeExists",diplomeRepository.findAll());
+        return map;
     }
 
     @PostMapping("/diplomeUtilisateur/insert")

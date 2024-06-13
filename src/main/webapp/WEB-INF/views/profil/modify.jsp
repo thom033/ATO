@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="/public/leaflet/leaflet.css" />
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" href="/public/leaflet/leaflet.css"/>
 <link rel="stylesheet" href="/public/bootstrap/css/stylesRecherche.css">
 <link rel="stylesheet" href="/public/bootstrap/css/input.css">
 <style>
@@ -144,7 +145,7 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-4">
-                                    <a href="/utilisateur/diplome" class="btn btn-primary">Diplome</a>
+                                    <a href="/utilisateur/diplome/modify" class="btn btn-primary">Diplome</a>
                                 </div>
                             </div>
                             <div class="row mb-3">

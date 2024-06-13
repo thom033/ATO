@@ -4,7 +4,9 @@ DiplomeUtilisateurApp.controller('tableController', function($scope, $http) {
 
     $http.get("/diplomeUtilisateur/liste")
     .then(function(response) {
-        $scope.diplomeUtilisateurs = response.data;
+        $scope.diplomeUtilisateurs = response.data.diplomeUtilisateurs;
+        $scope.diplomeExists = response.data.diplomeExists;
+        console.log($scope.diplomeUtilisateurs);
         console.log($scope);
     });
 

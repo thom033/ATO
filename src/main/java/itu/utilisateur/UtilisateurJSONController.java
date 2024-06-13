@@ -34,10 +34,10 @@ public class UtilisateurJSONController {
     UtilisateurContactRepository utilisateurContactRepository;
 
     @GetMapping("/utilisateur/parametre/modify")
-    public HashMap<String,Object> parametreGlobal(@Param("idUtilisateur") Long idUtilisateur) {
+    public HashMap<String,Object> parametreGlobal(HttpSession session) {
         HashMap<String,Object> hashMap=new HashMap<String,Object>();
-        Utilisateur utilisateur=utilisateurRepository.findById(idUtilisateur).get();
-        //Utilisateur utilisateur=(Utilisateur)httpSession.getAttribute("utilisateur");
+        //Utilisateur utilisateur=utilisateurRepository.findById(idUtilisateur).get();
+        Utilisateur utilisateur=(Utilisateur)session.getAttribute("utilisateur");
         hashMap.put("utilisateur",utilisateur);
         hashMap.put("diplome",diplomeUtilisateurRepository.findByUtilisateurId(utilisateur.getId()));
         hashMap.put("contact",utilisateurContactRepository.findByUtilisateurId(utilisateur.getId()));

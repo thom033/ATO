@@ -181,5 +181,14 @@ public class UtilisateurController {
         mw.addObject("page", "profil/modify.jsp");
         return mw;
     }
+
+    @GetMapping("/utilisateur/diplome/modify")
+    public ModelAndView modifyDiplome() {
+        ModelAndView mw=new ModelAndView("template");
+        Utilisateur utilisateur=(Utilisateur)httpSession.getAttribute("utilisateur");
+        mw.addObject("utilisateur", utilisateur);
+        mw.addObject("page", "profil/modifyDiplome.jsp");
+        return mw;
+    }
     
 }
