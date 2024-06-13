@@ -65,21 +65,23 @@ public class RechercheController {
         String salaireMax = params.get("salaireMax");
         String distance = params.get("distance");
         String anneeExperience = params.get("anneeExperience");
-
+    
         StringBuilder sql = new StringBuilder("SELECT * FROM postes_details WHERE 1=1");
         List<Object> paramsList = new ArrayList<>();
-
+    
         if (title != null && !title.isEmpty()) {
             sql.append(" AND poste_titre LIKE ?");
             paramsList.add("%" + title + "%");
         }
         if (diplome != null && !diplome.isEmpty()) {
+            // Assuming diplome is a String, convert it to Long (bigint)
             sql.append(" AND id_diplome = ?");
-            paramsList.add(diplome);
+            paramsList.add(Long.parseLong(diplome)); // Convert String to Long
         }
         if (secteur != null && !secteur.isEmpty()) {
+            // Assuming secteur is a String, convert it to Long (bigint)
             sql.append(" AND id_secteur = ?");
-            paramsList.add(secteur);
+            paramsList.add(Long.parseLong(secteur)); // Convert String to Long
         }
         if (competence != null && !competence.isEmpty()) {
             sql.append(" AND competence_requise LIKE ?");
@@ -109,10 +111,11 @@ public class RechercheController {
             sql.append(" AND nbr_annee_experience >= ?");
             paramsList.add(anneeExperience);
         }
-
+    
         List<Map<String, Object>> results = jdbcTemplate.queryForList(sql.toString(), paramsList.toArray());
         model.addAttribute("results", results);
-
+    
         return "recherche/resultat";
     }
+    
 }
