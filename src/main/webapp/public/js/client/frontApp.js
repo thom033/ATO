@@ -1,5 +1,43 @@
 var frontApp = angular.module("frontApp",[]);
 
+// frontApp.component('notification', {
+//     template: `
+//         <div>
+//             <h1>{{ $ctrl.title }}</h1>
+//             <p>{{ $ctrl.description }}</p>
+//         </div>
+//     `,
+//     bindings: {
+//         titler : '@'
+//     }
+//     ,
+//     controller: function() {
+//         // console.log(this.notif);
+//         this.titler = notif;
+//         this.description = 'This is a simple AngularJS component example.';
+//     }
+// })
+
+// Define the component with bindings
+frontApp.component('myComponent', {
+    bindings: {
+        title: '@',
+        description: '@'
+    },
+    template: `
+        <div>
+            <h1>{{ $ctrl.title }}</h1>
+            <p>{{ $ctrl.description }}</p>
+        </div>
+    `,
+    controller: function() {
+        // The controller can use $onInit for initialization
+        this.$onInit = function() {
+            // console.log('Component initialized with title:', this.title);
+        };
+    }
+});
+
 frontApp.controller('notificationController', function($scope, $http) {
 
     $scope.nom = "albert";
@@ -27,31 +65,6 @@ frontApp.controller('notificationController', function($scope, $http) {
     //         });
     // };
 
-    $scope.delete = function(idNotif) {
-        let delUrl = "/notification/delete/" + idNotif;
-        $http({
-            url: delUrl,
-            method: 'GET'
-        })
-            .then(function(response) {
-                $scope.tableData = response.data;
-                console.log(response.data);
-            }, function(error) {
-                console.error('Erreur lors de la récupération des données:', error);
-            });
-
-        $http({
-            url: 'categorie-controller',
-            method: 'GET'
-        })
-            .then(function(response) {
-                $scope.categories = response.data;
-                console.log(response.data);
-            }, function(error) {
-                console.error('Erreur lors de la récupération des données:', error);
-            });
-    };
-
     $scope.getData = function() {
         let aurl = "/notification/liste";
         $http({
@@ -59,19 +72,35 @@ frontApp.controller('notificationController', function($scope, $http) {
             method: 'GET'
         })
         .then(function(response) {
-            $scope.notifications = response.data.notifications;
-            console.log($scope.notifications);
+            $scope.notifications = response.data;
+            // console.log($scope.notifications);
         }, function(error) {
             console.error('Erreur lors de la récupération des données:', error);
         });
     };
 
-    function tempsEcoule(dateNotification) {
+    $scope.delete = function(idNotif) {
+        let delUrl = "/notification/delete/" + idNotif;
+        $http({
+            url: delUrl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            console.log("supprimé avec succes");
+            $scope.getData();
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+
+    };
+
+
+    $scope.tempsEcoule = function(dateNotification) {
         // Obtient la date et l'heure actuelles
         const curDate = new Date();
     
         // Calcule la durée écoulée en millisecondes
-        const duration = curDate - dateNotification;
+        const duration = curDate - new Date(dateNotification);
     
         // Convertit la durée en secondes
         const seconds = Math.floor(duration / 1000);
@@ -94,9 +123,9 @@ frontApp.controller('notificationController', function($scope, $http) {
     
         // Affiche le message
         return message;
-    }
+    };
 
-    function estDynamique(notification) {
+    $scope.estDynamique = function(notification) {
         if (notification.poste != null) {
             return 0;
         }
@@ -104,9 +133,24 @@ frontApp.controller('notificationController', function($scope, $http) {
             return -1;
         }
         return -2
+    };
+
+    $scope.interpreterUrl = function(url) {
+        let valiny = "";
+        if (url == -1) {
+            valiny = "/utilisateur/profil";
+        } else if (url >= 0 ) {
+            valiny = "/utilisateur/inscription";
+        }
+        return valiny;
     }
 
 
     $scope.getData();
-    console.log("Nicolas");
+
+    $scope.formatDate = function (dateNotification) {
+        let date = new Date(dateNotification);
+        const formattedDate = date.toLocaleDateString('fr-FR');
+        return formattedDate;
+    }
 });

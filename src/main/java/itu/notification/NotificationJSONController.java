@@ -1,6 +1,5 @@
 package itu.notification;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +15,7 @@ public class NotificationJSONController {
     NotificationRepository notificationRepository;
 
     @GetMapping("/notification/liste")
-    public HashMap<String, Object> listeNotification(HttpSession session) {
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("notifications", notificationRepository.findAll());
-
-        return map;
+    public List<Notification> listeNotification(HttpSession session) {
+        return notificationRepository.findAll();
     }
 }

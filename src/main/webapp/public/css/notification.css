@@ -10,7 +10,13 @@
     border-bottom: 1px solid #707070;
     padding: 1.4em 0em;
     max-width: 100%;
+    transition: 0.2s;
 }
+
+.notification-item:hover {
+    transform: scale(1.02);
+}
+
 .notification-icon {
     font-size: 1.5rem;
     width: 40px;
@@ -31,7 +37,9 @@
     width: 3.2rem;
     height: 3.2rem;
     border: 3.5px solid red;
+    transition: 0.2s;
 }
+
 .notification-icon.chevron {
     border: 2px solid black;
     width: 25px;

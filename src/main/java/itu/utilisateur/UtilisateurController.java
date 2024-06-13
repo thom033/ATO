@@ -171,7 +171,7 @@ public class UtilisateurController {
         model.addObject("secteurs", secteurs);
         model.addObject("argent", argentUser);
         model.addObject("contacts", contacts);
-        model.addObject("page", "profil/profil");
+        model.addObject("page", "profil/profil.jsp");
 
         return model;
     }

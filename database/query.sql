@@ -92,9 +92,9 @@ VALUES
 -- Données pour la table Notification
 INSERT INTO Notification (message, date_notification, date_lu, id_utilisateur,id_poste, point)
 VALUES
-('Vous avez un nouveau message', CURRENT_TIMESTAMP, NULL, 1,1,FALSE),
+('Nouvelle offre d emploi disponible qui vous corresponds à 85%', CURRENT_TIMESTAMP, NULL, 1,1,FALSE),
 ('Votre profil a ete mis a jour', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1,null,FALSE),
-('Nouvelle offre d emploi disponible', CURRENT_TIMESTAMP, NULL, 1,null,TRUE );
+('Vous avez acheté 25pts', CURRENT_TIMESTAMP, NULL, 1,null,TRUE );
 
 -- Données pour la table competence_utilisateur
 INSERT INTO competence_utilisateur (id_utilisateur, id_competence)
