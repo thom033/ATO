@@ -1,10 +1,13 @@
 package itu.notification;
 
+import itu.poste.Poste;
 import itu.utilisateur.Utilisateur;
 import jakarta.persistence.*;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Entity
@@ -13,7 +16,7 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_notification")
-    private Long idNotification;
+    private Long id;
 
     String message;
 
@@ -28,27 +31,30 @@ public class Notification {
     Utilisateur utilisateur;
 
     @ManyToOne
-    @JoinColumn(name = "id_type_notification")
-    TypeNotification type;
+    @JoinColumn(name = "id_poste")
+    Poste poste;
+
+    Boolean point;
 
     // ---- ---- CONSTRUCTEURS ------- ------
     public Notification() {
     }
 
     public Notification(Long idNotification, String message, LocalDateTime dateNotification, LocalDateTime dateLu,
-            Utilisateur utilisateur, TypeNotification type) {
-        this.idNotification = idNotification;
+            Utilisateur utilisateur, Poste poste, Boolean point) {
+        this.id = idNotification;
         this.message = message;
         this.dateNotification = dateNotification;
         this.dateLu = dateLu;
         this.utilisateur = utilisateur;
-        this.type = type;
+        this.poste = poste;
+        this.point = point;
     }
     // ------- ---------- --------- ------
 
     /* ----- ----- SETTERS --------- */
-    public void setIdNotification(Long idNotification) {
-        this.idNotification = idNotification;
+    public void setId(Long idNotification) {
+        this.id = idNotification;
     }
 
     public void setMessage(String message) {
@@ -67,18 +73,26 @@ public class Notification {
         this.utilisateur = utilisateur;
     }
 
-    public void setType(TypeNotification type) {
-        this.type = type;
+    public void setPoint(Boolean point) {
+        this.point = point;
+    }
+
+    public void setPoste(Poste poste) {
+        this.poste = poste;
     }
     /* ----- ----- ------- --------- */
 
     /* ----- ----- GETTERS --------- */
-    public TypeNotification getType() {
-        return type;
+    public Boolean getPoint() {
+        return point;
     }
 
-    public Long getIdNotification() {
-        return idNotification;
+    public Poste getPoste() {
+        return poste;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getMessage() {
@@ -96,7 +110,16 @@ public class Notification {
     public Utilisateur getUtilisateur() {
         return utilisateur;
     }
+
     /* ----- ----- ------- --------- */
+
+    public String stringDateNotif() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        String formattedDate = getDateNotification().format(formatter);
+
+        return formattedDate;
+    }
 
     /* ---- calcule le temps écoulé d'une notification --- */
     public String tempsEcoule() {
@@ -129,6 +152,17 @@ public class Notification {
         // Affiche le message
         return message;
     }
+
+    public int estDynamique() {
+        if (getPoste() != null) {
+            // return getPoste().getId();
+            return 0;
+        } else if (getPoint()) {
+            return -1;
+        }
+        return -2;
+    }
+
     /* ---- ------------------------------------------ --- */
 
     public static void main(String[] args) {
