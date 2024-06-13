@@ -18,6 +18,7 @@
         <% for (Map<String, Object> result : (List<Map<String, Object>>) request.getAttribute("results")) { %>
             <div>
                 <h5><%= result.get("poste_titre") %></h5>
+                <h5><%= result.get("id_diplome") %></h5>
                 <p><strong>Secteur:</strong> <%= result.get("id_secteur") %></p>
                 <p><strong>Compétence:</strong> <%= result.get("competence_requise") %></p>
                 <p><strong>Âge requis:</strong> <%= result.get("age_requise") %></p>
