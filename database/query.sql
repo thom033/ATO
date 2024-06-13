@@ -42,33 +42,34 @@ VALUES
 ('RetailMart', 50, 'Retail', '1980-08-20', '789 Main St', 'http://retailmart.com', 'rr@rr.com', 40.7128, -74.0060, 'retailmart.png');
 
 -- Table poste
-INSERT INTO poste (description, salaire, titre, annee_experience, annee_formation, age_min, age_max, id_diplome, id_entreprise) 
+INSERT INTO poste (description,date_insertion ,salaire, titre, annee_experience, annee_formation, age_min, age_max,image,cout,disponibilite, id_diplome, id_entreprise) 
 VALUES 
-('Software Developer', 70000.00, 'Developer', 2, 4, 22, 35, 1, 1),
-('Nurse', 50000.00, 'Registered Nurse', 3, 4, 25, 40, 2, 2),
-('Financial Analyst', 80000.00, 'Analyst', 3, 4, 25, 40, 3, 3),
-('Teacher', 60000.00, 'Educator', 3, 4, 25, 40, 1, 4),
-('Sales Associate', 40000.00, 'Associate', 2, 3, 20, 30, 2, 5),
-('Software Engineer', 90000.00, 'Engineer', 4, 5, 25, 40, 3, 1),
-('Nurse Practitioner', 70000.00, 'Practitioner', 4, 5, 25, 40, 1, 2),
-('Financial Advisor', 100000.00, 'Advisor', 5, 6, 30, 45, 2, 3),
-('Professor', 80000.00, 'Professor', 5, 6, 30, 45, 3, 4),
-('Store Manager', 60000.00, 'Manager', 4, 5, 25, 40, 1, 5),
-('Senior Software Developer', 100000.00, 'Senior Developer', 6, 7, 30, 45, 2, 1),
-('Nurse Manager', 80000.00, 'Manager', 6, 7, 30, 45, 3, 2),
-('Financial Manager', 120000.00, 'Manager', 7, 8, 35, 50, 1, 3),
-('Principal', 100000.00, 'Principal', 7, 8, 35, 50, 2, 4),
-('Retail Manager', 70000.00, 'Manager', 6, 7, 30, 45, 3, 5),
-('Lead Software Engineer', 120000.00, 'Lead Engineer', 8, 9, 35, 50, 1, 1),
-('Nurse Supervisor', 90000.00, 'Supervisor', 8, 9, 35, 50, 2, 2),
-('Financial Director', 140000.00, 'Director', 9, 10, 40, 55, 3, 3),
-('Dean', 120000.00, 'Dean', 9, 10, 40, 55, 1, 4),
-('Retail Director', 80000.00, 'Director', 8, 9, 35, 50, 2, 5),
-('Chief Technology Officer', 150000.00, 'CTO', 10, 11, 45, 60, 3, 1),
-('Nurse Director', 100000.00, 'Director', 10, 11, 45, 60, 1, 2),
-('Chief Financial Officer', 160000.00, 'CFO', 11, 12, 50, 65, 2, 3),
-('Provost', 140000.00, 'Provost', 11, 12, 50, 65, 3, 4),
-('Retail Vice President', 90000.00, 'Vice President', 10, 11, 45, 60, 1, 5);
+('Software Developer','2024-01-20', 70000.00, 'Developer', 2, 4, 22, 35,'none.png', 1,TRUE, 1,1),
+('Nurse','2024-01-20', 50000.00, 'Registered Nurse', 3, 4, 25, 40,'none.png', 2,TRUE, 2,2);
+
+-- ('Financial Analyst','2024-01-20', 80000.00, 'Analyst', 3, 4, 25, 40,'none.png', 3,TRUE, 3,1),
+-- ('Teacher','2024-01-20', 60000.00, 'Educator', 3, 4, 25, 40,'none.png', 1,TRUE, 4,1),
+-- ('Sales Associate','2024-01-20', 40000.00, 'Associate', 2, 3, 20, 30,'none.png', 2,TRUE, 5,1),
+-- ('Software Engineer','2024-01-20', 90000.00, 'Engineer', 4, 5, 25, 40,'none.png', 3,TRUE, 1,1),
+-- ('Nurse Practitioner','2024-01-20', 70000.00, 'Practitioner', 4, 5, 25, 40,'none.png', 1,TRUE, 2,1),
+-- ('Financial Advisor','2024-01-20', 100000.00, 'Advisor', 5, 6, 30, 45,'none.png', 2,TRUE, 3,1),
+-- ('Professor','2024-01-20', 80000.00, 'Professor', 5, 6, 30, 45,'none.png', 3,TRUE, 4,1),
+-- ('Store Manager','2024-01-20', 60000.00, 'Manager', 4, 5, 25, 40,'none.png', 1,TRUE, 5,1),
+-- ('Senior Software Developer','2024-01-20', 100000.00, 'Senior Developer', 6, 7, 30, 45,'none.png', 2,TRUE, 1,1),
+-- ('Nurse Manager','2024-01-20', 80000.00, 'Manager', 6, 7, 30, 45,'none.png', 3,TRUE, 2,1),
+-- ('Financial Manager','2024-01-20', 120000.00, 'Manager', 7, 8, 35, 50,'none.png', 1,TRUE, 3,1),
+-- ('Principal','2024-01-20', 100000.00, 'Principal', 7, 8, 35, 50,'none.png', 2,TRUE, 4,1),
+-- ('Retail Manager','2024-01-20', 70000.00, 'Manager', 6, 7, 30, 45,'none.png', 3,TRUE, 5,1),
+-- ('Lead Software Engineer','2024-01-20', 120000.00, 'Lead Engineer', 8, 9, 35, 50,'none.png', 1,TRUE, 1,1),
+-- ('Nurse Supervisor','2024-01-20', 90000.00, 'Supervisor', 8, 9, 35, 50,'none.png', 2,TRUE, 2,1),
+-- ('Financial Director','2024-01-20', 140000.00, 'Director', 9, 10, 40, 55,'none.png', 3,TRUE, 3,1),
+-- ('Dean','2024-01-20', 120000.00, 'Dean', 9, 10, 40, 55,'none.png', 1,TRUE, 4,1),
+-- ('Retail Director','2024-01-20', 80000.00, 'Director', 8, 9, 35, 50,'none.png', 2,TRUE, 5,1),
+-- ('Chief Technology Officer','2024-01-20', 150000.00, 'CTO', 10, 11, 45, 60,'none.png', 3,TRUE, 1,1),
+-- ('Nurse Director','2024-01-20', 100000.00, 'Director', 10, 11, 45, 60,'none.png', 1,TRUE, 2,1),
+-- ('Chief Financial Officer','2024-01-20', 160000.00, 'CFO', 11, 12, 50, 65,'none.png', 2,TRUE, 3,1),
+-- ('Provost','2024-01-20', 140000.00, 'Provost', 11, 12, 50, 65,'none.png', 3,TRUE, 4,1),
+-- ('Retail Vice President','2024-01-20', 90000.00, 'Vice President', 10, 11, 45, 60,'none.png', 1,TRUE, 5,1);
 
 -- Table competence
 INSERT INTO competence (competence, description, id_utilisateur) 
@@ -90,13 +91,7 @@ VALUES
 ('2015-01-01', '2018-12-31', 'Worked as a software developer at TechCorp', 1),
 ('2010-03-01', '2015-03-31', 'Worked as a nurse at HealthInc', 2),
 ('2015-06-01', '2018-09-30', 'Worked as a financial analyst at FinanceCo', 3),
-('2010-09-01', '2015-06-30', 'Worked as a teacher at EduTech', 4),
-('2015-12-01', '2019-12-31', 'Worked as a sales associate at RetailMart', 5),
-('2019-01-01', '2022-12-31', 'Worked as a software engineer at TechCorp', 1),
-('2015-03-01', '2019-03-31', 'Worked as a nurse practitioner at HealthInc', 2),
-('2019-06-01', '2023-09-30', 'Worked as a financial advisor at FinanceCo', 3),
-('2015-09-01', '2019-06-30', 'Worked as a professor at EduTech', 4),
-('2020-01-01', '2023-12-31', 'Worked as a store manager at RetailMart', 5);
+('2010-09-01', '2015-06-30', 'Worked as a teacher at EduTech', 4);
 
 -- Table Formation
 INSERT INTO Formation (date_debut, description, date_fin, id_utilisateur) 
@@ -104,13 +99,7 @@ VALUES
 ('2014-09-01', 'Completed Bachelor s degree in Computer Science', '2018-06-01', 1),
 ('2008-09-01', 'Completed Bachelor s degree in Nursing', '2012-06-01', 2),
 ('2014-09-01', 'Completed Bachelor s degree in Finance', '2018-06-01', 3),
-('2009-09-01', 'Completed Bachelor s degree in Education', '2013-06-01', 4),
-('2018-09-01', 'Completed Master s degree in Computer Science', '2020-06-01', 1),
-('2012-09-01', 'Completed Master s degree in Nursing', '2014-06-01', 2),
-('2018-09-01', 'Completed Master s degree in Finance', '2020-06-01', 3),
-('2013-09-01', 'Completed Master s degree in Education', '2015-06-01', 4),
-('2018-09-01', 'Completed Master s degree in Business Administration', '2020-06-01', 5);
-
+('2009-09-01', 'Completed Bachelor s degree in Education', '2013-06-01', 4);
 
 -- Table Contact
 INSERT INTO Contact (num_telephone, id_entreprise, id_utilisateur) 
@@ -132,29 +121,15 @@ VALUES
 (1, 1),
 (2, 2),
 (3, 3),
-(4, 4),
-(5, 5),
-(1, 6),
-(2, 7),
-(3, 8),
-(4, 9),
-(5, 10),
-(1, 11),
-(2, 12),
-(3, 13),
-(4, 14),
-(5, 15),
-(1, 16),
-(2, 17),
-(3, 18),
-(4, 19);
+(4, 4);
+
 -- Table secteur_diplome
 INSERT INTO secteur_diplome (id_secteur, id_diplome) 
 VALUES 
 (1, 1),
 (2, 2),
 (3, 3),
-(4, 4),
+(4, 4);
 (5, 5),
 (1, 6),
 (2, 7),
