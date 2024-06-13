@@ -155,37 +155,41 @@ CREATE TABLE diplome_utilisateur
 );
 
 CREATE OR REPLACE VIEW postes_details AS
-SELECT p.id_poste,
-       p.description          AS poste_description,
-       p.date_insertion       AS poste_date_insertion,
-       p.salaire              AS poste_salaire,
-       p.titre                AS poste_titre,
-       p.nbr_annee_experience AS nbr_annee_experience,
-       p.nbr_annee_formation  AS nbr_annee_formation,
-       p.age                  AS age_requise,
-       d.id_diplome,
-       d.diplome              AS diplome_nom,
-       s.id_secteur,
-       s.secteur              AS secteur_nom,
-       e.id_entreprise,
-       e.entreprise           AS entreprise_nom,
-       e.point                AS entreprise_point,
-       e.type                 AS entreprise_type,
-       e.date_creation        AS entreprise_date_creation,
-       e.adresse              AS entreprise_adresse,
-       e.site_web             AS entreprise_site_web,
-       e.mail                 AS entreprise_mail,
-       e.num_telephone        AS entreprise_num_telephone,
-       e.latitude             AS entreprise_latitude,
-       e.longitude            AS entreprise_longitude,
-       e.image                AS entreprise_image,
-       c.competence           AS competence_requise
-FROM poste p
-         JOIN
-     diplome d ON p.id_diplome = d.id_diplome
-         JOIN
-     secteur s ON d.id_secteur = s.id_secteur
-         JOIN
-     entreprise e ON p.id_entreprise = e.id_entreprise
-         JOIN
-     competence c ON s.id_secteur = c.id_secteur;
+SELECT
+    p.id_poste,
+    p.description AS poste_description,
+    p.date_insertion AS poste_date_insertion,
+    p.salaire AS poste_salaire,
+    p.titre AS poste_titre,
+    p.id_diplome AS poste_diplome,
+    p.id_entreprise AS poste_entreprise,
+    p.annee_experience AS nbr_annee_experience,
+    p.annee_formation AS nbr_annee_formation,
+    p.age_min AS poste_age_min,
+    p.age_max AS poste_age_max,
+
+    d.id_diplome,
+    d.diplome AS diplome_nom,
+    d.niveau AS diplome_niveau,
+
+    e.entreprise AS entreprise_nom,
+    e.point AS entreprise_point,
+    e.type AS entreprise_type,
+    e.date_creation AS entreprise_date_creation,
+    e.adresse AS entreprise_adresse,
+    e.site_web AS entreprise_site_web,
+    e.mail AS entreprise_mail,
+    e.latitude AS entreprise_latitude,
+    e.longitude AS entreprise_longitude,
+    e.image AS entreprise_image,
+    
+    sd.id_secteur,
+    sd.id_diplome AS secteur_diplome_id_diplome
+FROM
+   poste p
+JOIN
+   diplome d ON p.id_diplome = d.id_diplome
+JOIN
+   entreprise e ON p.id_entreprise = e.id_entreprise
+JOIN
+   secteur_diplome sd ON d.id_diplome = sd.id_diplome;
