@@ -1,4 +1,4 @@
-<footer class="bg-primary-gradient">
+    <footer class="bg-primary-gradient">
         <div class="container py-4 py-lg-5">
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
@@ -53,6 +53,3 @@
     <script src="/public/bootstrap/js/bootstrap.min.js"></script>
     <script src="/public/js/bs-init.js"></script>
     <script src="/public/js/bold-and-bright.js"></script>
-</body>
-
-</html>

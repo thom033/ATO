@@ -1,3 +1,7 @@
+:root {
+    --my-max-width: 80%;
+}
+
 .notification-header {
     font-size: 100px;
     text-align: center;
@@ -5,7 +9,14 @@
 .notification-item {
     border-bottom: 1px solid #707070;
     padding: 1.4em 0em;
+    max-width: 100%;
+    transition: 0.2s;
 }
+
+.notification-item:hover {
+    transform: scale(1.02);
+}
+
 .notification-icon {
     font-size: 1.5rem;
     width: 40px;
@@ -26,7 +37,9 @@
     width: 3.2rem;
     height: 3.2rem;
     border: 3.5px solid red;
+    transition: 0.2s;
 }
+
 .notification-icon.chevron {
     border: 2px solid black;
     width: 25px;
@@ -35,23 +48,33 @@
 .notification-time {
     color: #707070;
 }
-.container {
+.notification-container {
     position: relative;
     margin-top: -50px;
     overflow-y: scroll;
 }
-.container::-webkit-scrollbar {
+.notification-container::-webkit-scrollbar {
     display: none;
 }
 
-.container {
+.notification-container {
+    max-width: 1220px;
+    margin: auto;
     max-height: 25.4em;
+    min-height: 25.4em;
     border-top: 0.4rem solid #707070;
     border-bottom: 0.4rem solid #707070;
     border-radius: 0.4em;
 }
-/* .container::before,
-.container::after {
+
+@media (min-width: 1440) {
+    .notification-container {
+        max-width: 1220px;
+        margin: auto;
+    }
+}
+/* .notification-container::before,
+.notification-container::after {
     content: '';
     position: absolute;
     left: 0;
@@ -59,10 +82,10 @@
     height: 5px;
     background-color: #707070;
 } */
-.container::before {
+.notification-container::before {
     top: 0;
 }
-.container::after {
+.notification-container::after {
     bottom: 0;
 }
 .custom-h2 {
