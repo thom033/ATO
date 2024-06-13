@@ -174,5 +174,12 @@ public class UtilisateurController {
 
         return model;
     }
-}
 
+    @GetMapping("/utilisateur/modify")
+    public ModelAndView modify() {
+        ModelAndView mw=new ModelAndView("template");
+        mw.addObject("page", "profil/modify.jsp");
+        return mw;
+    }
+    
+}

@@ -64,7 +64,7 @@
                 </div>
                     <p><%= user.getDescription() %></p>
                 <div class="button-info">
-                    <div class="my-2"><button style="background-color: #fff; border-color: #000; color: #000;" class="btn btn-primary shadow" type="submit">Compléter vos informations</button></div>
+                    <div class="my-2"><form action="/utilisateur/modify"><input type="hidden" name="idUtilisateur" value="<%= user.getId() %>"><button style="background-color: #fff; border-color: #000; color: #000;" class="btn btn-primary shadow" type="submit">Compléter vos informations</button></div></form>
                     <div class="my-2" ><form action="/utilisateur/deconnexion"><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" type="submit">Deconnexion</button></form></div>
                 </div>
                 </div>

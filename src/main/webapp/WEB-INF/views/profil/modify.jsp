@@ -12,6 +12,7 @@
     }
     .form-body{
         padding: 5%;
+        padding-top: 0%;
         width: 1000%;
         display: flex;
         flex-direction: row;
@@ -42,7 +43,7 @@
         </div>
     </div>
 </div>
-<div class="container" style="font-family:Helvetica;display: flex;justify-content: center;margin-top: 5%;">
+<div class="container" ng-app="UtilisateurApp" ng-controller="parametreController" style="font-family:Helvetica;display: flex;justify-content: center;margin-top: 5%;">
     <div class="row">
         <div class="col-md-5">
             <div class="row">
@@ -70,14 +71,14 @@
                             <div class="row mb-3">
                                 <div class="col-md-5">
                                     <div class="input-group">
-                                        <input required="" type="text" name="nom" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                        <input type="text" autocomplete="on" class="input" style=" border-radius: 15px;" ng-model="utilisateur.nom">
                                         <label class="user-label">Nom</label>
                                     </div>
                                 </div>
                                 <div class="col-md-1"></div>
                                 <div class="col-md-5">
                                     <div class="input-group">
-                                        <input required="" type="text" name="prenom" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                        <input required="" type="text" ng-model="utilisateur.prenom" autocomplete="off" class="input" style=" border-radius: 15px;">
                                         <label class="user-label">Prenom</label>
                                     </div>
                                 </div>
@@ -85,7 +86,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-5">
                                     <div class="input-group">
-                                        <input required="" type="date" name="dateNaissance" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                        <input required="" type="date" autocomplete="off" class="input" style=" border-radius: 15px;">
                                         <label class="user-label">Date de naissance</label>
                                     </div>
                                 </div>
@@ -98,11 +99,9 @@
                                             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1"/>
                                         </svg>
                                     </span>
-                                    <select class="form-select" name="etatCivile" id="etatCivile" style="width: 10%;">
-                                        <option value="">Etat Civile</option>
-                                        <option value="Marié">Marié</option>
-                                        <option value="Celibataire">Celibataire</option>
-                                        <option value="Compliqué">Compliqué</option>
+                                    <select class="form-select" id="etatCivile" style="width: 10%;">
+                                        <option ng-repeat="etatCivil in etatCivils" value="{{etatCivil}}"
+                                         ng-selected="etatCivil == utilisateur.etatCivil">{{etatCivil}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -114,7 +113,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-4">
                                     <div class="input-group">
-                                        <input required="" type="text" name="adresse" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                        <input required="" type="text" ng-model="utilisateur.adresse" autocomplete="off" class="input" style=" border-radius: 15px;">
                                         <label class="user-label">Adresse</label>
                                     </div>
                                 </div>
@@ -122,13 +121,13 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="input-group">
-                                        <input disabled required="" id="latitude" type="number" name="latitude" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                        <input disabled required="" id="latitude" type="number" ng-model="utilisateur.latitude" autocomplete="off" class="input" style=" border-radius: 15px;">
                                         <label id="labelLatitude" class="user-label">latitude</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="input-group">
-                                        <input disabled required="" id="longitude" type="number" name="longitude" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                        <input disabled required="" id="longitude" type="number" ng-model="utilisateur.longitude" autocomplete="off" class="input" style=" border-radius: 15px;">
                                         <label id="labelLongitude" class="user-label">longitude</label>
                                     </div>
                                 </div>
@@ -150,7 +149,7 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="input-group">
-                                    <input required="" type="number" name="adresse" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                    <input required="" type="number" ng-model="utilisateur.salaireRecherche" autocomplete="off" class="input" style=" border-radius: 15px;">
                                     <label class="user-label">Salaire recherché</label>
                                 </div>
                             </div>
@@ -158,7 +157,7 @@
                                 <div class="col-md-6 mb-3">
                                     <div class="input-group">
                                         <span class="input-group-text">Description</span>
-                                        <textarea class="form-control" name="description" aria-label="With textarea"></textarea>
+                                        <textarea class="form-control" ng-model="utilisateur.description" aria-label="With textarea"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -168,22 +167,14 @@
                                 <h6>Confidentialité</h6><hr>
                             </div>
                             <div class="row mb-3">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="input-group">
-                                            <input required="" type="text" name="adresse" autocomplete="off" class="input" style=" border-radius: 15px;">
-                                            <label class="user-label">Numéro téléphone</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-4"><button class="btn btn-primary">Ajouter Contact</button></div>
+                                <div class="col-md-3">
+                                    <a href="/utilisateur/parametre/contact" class="btn btn-primary">Contact</a>                                    
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="input-group">
-                                        <input required="" type="email" name="mail" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                        <input required="" type="email" ng-model="utilisateur.mail" autocomplete="off" class="input" style=" border-radius: 15px;">
                                         <label class="user-label">Email</label>
                                     </div>
                                 </div>
@@ -191,7 +182,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="input-group">
-                                        <input required="" type="password" name="pwd1" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                        <input required="" type="password" ng-model="utilisateur.motdepasse" autocomplete="off" class="input" style=" border-radius: 15px;">
                                         <label class="user-label">Mot de passe</label>
                                     </div>
                                 </div>
@@ -199,7 +190,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="input-group">
-                                        <input required="" type="password" name="pwd2" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                        <input required="" value="{{utilisateur.motdepasse}}" type="password" name="password" autocomplete="off" class="input" style=" border-radius: 15px;">
                                         <label class="user-label">Confirmer votre mot de passe</label>
                                     </div>
                                 </div>
@@ -273,3 +264,5 @@
         const div=document.getElementById("map");
     }
 </script>
+<script src="/public/js/angular.min.js"></script>
+<script src="/public/js/crud/Utilisateur.js"></script>
