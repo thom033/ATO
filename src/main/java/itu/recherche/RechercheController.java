@@ -49,7 +49,7 @@ public class RechercheController {
         mv.addObject("allDiplomes", allDip);
         mv.addObject("allCompetences", allComp);
 
-        mv.addObject("page", "recherche/recherche-form.jsp");
+        mv.addObject("page", "recherche/recherche-form");
         return mv;
     }
 
