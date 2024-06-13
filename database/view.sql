@@ -79,13 +79,17 @@ LEFT JOIN Diplome d ON du.id_diplome = d.id_diplome;
 CREATE OR REPLACE VIEW result_Acceuil AS
 SELECT
    u.id_utilisateur,
+   u.id_diplome,
 
+   p.id_secteur,
    p.id_poste,
    p.poste_salaire,
+   p.poste_description,
+   p.poste_titre,
    p.entreprise_nom,
    get_point_total(u.id_utilisateur,p.id_poste) AS pts_total
 FROM
    utilisateur_details u,
-   postes_details p;
--- ORDER BY pts_total DESC;
+   postes_details p
+ORDER BY pts_total DESC;
 

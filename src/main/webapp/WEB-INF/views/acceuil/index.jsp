@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page 
-import="itu.Compatibilite.PosteDetails"
-%>
+<%@ page import="itu.Compatibilite.ResultAcceuil" %>
 <%
-    double[] result = (double[]) request.getAttribute("compatibility");
-    List<PosteDetails> p = (List<PosteDetails>) request.getAttribute("posteDetails");
+    List<ResultAcceuil> p = (List<ResultAcceuil>) request.getAttribute("data");
 %>
 
 <section class="py-5" style="padding-top: 1rem!important;padding-bottom: 1rem!important;">
@@ -26,22 +23,21 @@ import="itu.Compatibilite.PosteDetails"
 <div class="container py-5" style="padding-top: 1rem!important;">
     <div class="row">
         <%
-            for (int i = 0; i < result.length; i++) {
-                PosteDetails pd = p.get(i);
+            for (int i = 0; i < p.size(); i++) {
                 %>
                 <div class="col-md-3 col-sm-6 mb-4 py-2" >
                     <div class="card shadow-sm h-100 nicolas-card-1" >
                 <div class="card-body nicolas-card">
                     <div class="d-flex justify-content-between align-items-center top-card-nicolas">
-                        <h4 class="card-title box_name mb-0" ><%= pd.getPosteTitre() %></h4>
-                        <h4 class="percent mb-0 nicolas-compatibilite" ><%= result[i]%> %</h4>
+                        <h4 class="card-title box_name mb-0" ><%= p.get(i).getEntrepriseNom()%></h4>
+                        <h4 class="percent mb-0 nicolas-compatibilite" ><%= p.get(i).getPtsTotal() %></h4>
                     </div>
                     <div class="img_box flex-grow-1">
                         <img src="/public/img/products/4.jpg" class="img-fluid" alt="">
                     </div>
-                    <h3 class="mt-3 nicolas-nom-travail"><%= pd.getPosteDescription()%></h3>
+                    <h3 class="mt-3 nicolas-nom-travail"><%= p.get(i).getPosteTitre() %></h3>
                     <div class="d-flex justify-content-between align-items-center">
-                        <p class="mb-2 nicolas-sous-titre"><%= pd.getPosteSalaire()%> Ar</p>
+                        <p class="mb-2 nicolas-sous-titre"><%= p.get(i).getPosteSalaire()%> Ar</p>
                         <button class="btn-nicolas">Visiter</button>
                     </div>
                 </div>

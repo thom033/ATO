@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface ResultAcceuilRepository extends JpaRepository<ResultAcceuil, Long> {
 
-    @Query("select r from ResultAcceuil p where idSecteur= 2")
-    List<PosteDetails> getPosteDetails();
+    @Query(value = "SELECT * FROM result_acceuil", nativeQuery = true)
+    List<ResultAcceuil> getResultAcceuils();
 }

@@ -23,7 +23,7 @@ PosteDetailsRepository posteDetailsRepository;
     @Autowired
     private UtilisateurDetails utilisateurDetails;
 
-    @GetMapping("/acceuil")
+    @GetMapping("/acceuilxxl")
     public ModelAndView calculateCompatibility() {
         double[] compatibility = utilisateurDetails.ListCompatibility(posteDetailsRepository.getPosteDetails());
         ModelAndView mv = new ModelAndView("/template");
