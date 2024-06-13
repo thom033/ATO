@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>profile</title>
     <link rel="stylesheet" href="/public/bootstrap/css/pikaday.min.css">
-    <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/travail.css">
 </head>
 
 <body>
     <div class="container-principale">
         <div class="row">
-            <div class="col-md-3 col-lg-3">
+            <div class="col-md-3 fixed-top" style="margin-left: 20px;">
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
@@ -45,7 +41,7 @@
                     <div class="my-2" ><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" type="submit">Postuler</button></div>
                 </div>
             </div>
-            <div class="col-md-1 col-lg-1"></div>
+            <div class="col-md-1 col-lg-1" style="position:relative; margin-left: auto;"></div>
             <div class="col-md-8 col-lg-8">
                 <div>
                     <section class="position-relative py-4 py-xl-5">
