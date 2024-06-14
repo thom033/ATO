@@ -69,6 +69,17 @@
 			<version>42.3.1</version> <!-- Remplacez par la version souhaitée -->
 		</dependency>
 
+		<dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>kernel</artifactId>
+            <version>7.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>layout</artifactId>
+            <version>7.2.3</version>
+        </dependency>
+
 	</dependencies>
 
 	<build>
