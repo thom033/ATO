@@ -1,3 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="itu.poste.*"%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%
+    List<PosteDetails> postedetails = (List<PosteDetails>) request.getAttribute("details");
+%>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -32,7 +41,7 @@
                             <img class="icon-contact" src="/public/img/icon/fi-rr-envelope.svg">
                         </div>
                         <div class="apropos">
-                            <p>dhrstnsgnr@gmail.com</p>
+                            <p><%= postedetails.getEntrepriseMail() %></p>
                         </div>
                     </div>
                 </div>
@@ -48,8 +57,8 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-8 col-lg-8">
-                                    <p class="W">DESIGNER UI/UX</p>
-                                    <p class="descW">JEPPE</p>
+                                    <p class="W"><%= postedetails.getPosteTitre() %></p>
+                                    <p class="descW"><%= postedetails.getEntrepriseNom() %></p>
                                     <p class="ptsW">3pts</p>
                                 </div>
                                 <div class="col-md-2 col-lg-2" style="margin-top:10px; font-style: normal;">
@@ -77,7 +86,7 @@
                                             <p>Titre</p>
                                         </div>
                                         <div class="variable">
-                                            <p>Designer UI/UX</p>
+                                            <p><%= postedetails.getPosteTitre() %></p>
                                         </div>
                                     </div>
                                     <div class="input">
@@ -85,7 +94,7 @@
                                             <p>Salaire</p>
                                         </div>
                                         <div class="variable">
-                                            <p>3000 Ar</p>
+                                            <p><%= postedetails.getPosteSalaire() %></p>
                                         </div>
                                     </div>
                                     <div class="input">
@@ -93,7 +102,7 @@
                                             <p>Age min-max</p>
                                         </div>
                                         <div class="variable">
-                                            <p>25 - 32 ans</p>
+                                            <p><%= postedetails.getPosteAgeMin() %> - <%= postedetails.getPosteAgeMax() %> ans</p>
                                         </div>
                                     </div>
                                     <div class="input">
@@ -117,11 +126,10 @@
                                     </div>
                                     <div class="input">
                                         <div class="invariable">
-                                            <p>Diplôme(s)</p>
+                                            <p>Diplôme</p>
                                         </div>
                                         <div class="variable">
-                                            <p>Maitrise en Informatique</p>
-                                            <p class="input">Licence en Informatique</p> <!-- Zay <p> farany asiana class="input" -->
+                                            <p class="input"><%= postedetails.getDiplomeNom() %></p> <!-- Zay <p> farany asiana class="input" -->
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +155,7 @@
                                                         <p>Nom</p>
                                                     </div>
                                                     <div class="variable">
-                                                        <p>KAZAMA</p>
+                                                        <p><%= postedetails.getEntrepriseNom() %></p>
                                                     </div>
                                                 </div>
                                                 <div class="input">
@@ -163,7 +171,7 @@
                                                         <p>Site web</p>
                                                     </div>
                                                     <div class="variable">
-                                                        <p>-</p>
+                                                        <p><%= postedetails.getEntrepriseSiteWeb() %></p>
                                                     </div>
                                                 </div>
                                                 <div class="input">
@@ -171,7 +179,7 @@
                                                         <p>Adresse</p>
                                                     </div>
                                                     <div class="variable">
-                                                        <p>Lot UL 4545 Pas Tres loin d'ITU</p>
+                                                        <p><%= postedetails.getEntrepriseAdresse() %></p>
                                                     </div>
                                                 </div>
                                                 <div class="input">
@@ -179,7 +187,7 @@
                                                         <p>Coordonnées</p>
                                                     </div>
                                                     <div class="variable">
-                                                        <p>19° 32°</p>
+                                                        <p><%= postedetails.getEntrepriseLatitude() %>° <%= postedetails.getEntrepriseLongitude() %>°</p>
                                                     </div>
                                                 </div>
                                                 <div class="input">
