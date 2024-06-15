@@ -11,7 +11,7 @@
             <div class="row mb-4 mb-lg-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
                     <h2 class="fw-bold" >Pour vous</h2>
-                    <p class="text-muted">Les suggestions se basent sur les informations que vous avez inséré dans votre profil. <a href="" class="see-more">Aller voir</a></p>
+                    <p class="text-muted">Les suggestions se basent sur les informations que vous avez inséré dans votre profil. <a href="utilisateur/profil" class="see-more">Aller voir</a></p>
                 </div>
             </div>
             <div class="d-flex justify-content-center">
@@ -31,7 +31,7 @@
                 <div class="card-body nicolas-card">
                     <div class="d-flex justify-content-between align-items-center top-card-nicolas">
                         <h4 class="card-title box_name mb-0" ><%= p.get(i).getEntrepriseNom()%></h4>
-                        <h4 class="percent mb-0 nicolas-compatibilite" ><%= p.get(i).getPtsTotal() %></h4>
+                        <h4 class="percent mb-0 nicolas-compatibilite" ><%= p.get(i).getPtsTotal() %>%</h4>
                     </div>
                     <div class="img_box flex-grow-1">
                         <img src="/public/img/products/4.jpg" class="img-fluid" alt="">
