@@ -23,7 +23,7 @@
         <div class="container"><a href="/" style="margin-top: -32px;margin-bottom: -21px;margin-left: -33px;width: 150px;"><img class="img-fluid" src="/public/img/rohy1.jpg" ></a><a class="navbar-brand d-flex align-items-center" href="/"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1" style="font-size: large;margin-bottom: -2px;font-family: Aleo, serif;">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link active" href="/" style="font-family: 'Space Grotesk';">Acceuil</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/acceuil" style="font-family: 'Space Grotesk';">Acceuil</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Space Grotesk';">Statistique</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/notification/index" style="font-family: 'Space Grotesk';">Mes Notifications</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Space Grotesk';">FAQ</a></li>
