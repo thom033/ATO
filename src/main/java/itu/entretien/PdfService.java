@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
 import java.net.MalformedURLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class PdfService {
                 document.add(tableHeader);
 
                 Paragraph title = new Paragraph("Convocation")
-                                .setFontSize(20)
+                                .setFontSize(24)
                                 .setTextAlignment(TextAlignment.CENTER)
                                 .setBold()
                                 .setFontColor(ColorConstants.BLACK);
@@ -65,11 +66,14 @@ public class PdfService {
                 document.add(new Paragraph("\n\n"));
 
                 Paragraph introduction = new Paragraph("Entreprise Rohy\r\n" + //
-                                "Fait à Antananarivo le " + entretien.getDateEnvoi() + "\r\n" + //
+                                "Fait à Antananarivo le "
+                                + entretien.getDateEnvoi().format(DateTimeFormatter.ofPattern("dd-mm-yyyy")) + "\r\n" + //
                                 "\r\n" + //
                                 "Madame / Monsieur " + entretien.getUtilisateur().getNom() + ",\r\n" + //
                                 "\r\n" + //
-                                "Suite à votre candidature pour le poste de [Titre du poste] au sein de notre entreprise [Nom de l'entreprise], nous \r\n"
+                                "Suite à votre candidature pour le poste de " + entretien.getPoste().getPosteTitre()
+                                + " au sein l'entreprise " + entretien.getPoste().getEntrepriseNom()
+                                + ", nous \r\n"
                                 + //
                                 "avons le plaisir de vous informer que votre profil a retenu toute notre attention.\r\n"
                                 + //
@@ -78,9 +82,11 @@ public class PdfService {
                                 + //
                                 "compétences et vos motivations.\r\n" + //
                                 "\r\n" + //
-                                "Date : [Date de l'entretien]\r\n" + //
-                                "Heure : [Heure de l'entretien]\r\n" + //
-                                "Lieu : [Adresse de l'entreprise / Lien pour l'entretien en visioconférence]\r\n" + //
+                                "Date : "
+                                + entretien.getDateEntretien().format(DateTimeFormatter.ofPattern("dd-mm-yyyy"))
+                                + "\r\n" + //
+                                "Heure : " + entretien.getDateEntretien().toLocalTime() + "\r\n" + //
+                                "Lieu : Adresse de l'entreprise Rohy\r\n" + //
                                 "\r\n" + //
                                 "Personne à contacter :\r\n" + //
                                 "Nom : [Nom de la personne chargée de l'entretien]\r\n" + //
@@ -105,10 +111,9 @@ public class PdfService {
                 List<String[]> data = new ArrayList<String[]>();
 
                 // Add space between table and footer
-                document.add(new Paragraph("\n\n\n\n\n\n\n\n\n"));
 
                 // Add director's signature at the bottom right
-                Paragraph directorSignature = new Paragraph("MR le directeur")
+                Paragraph directorSignature = new Paragraph("Agence Rohy")
                                 .setTextAlignment(TextAlignment.RIGHT);
                 document.add(directorSignature);
 

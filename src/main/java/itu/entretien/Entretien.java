@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 
+import itu.Compatibilite.PosteDetails;
 import itu.poste.Poste;
 import itu.utilisateur.Utilisateur;
 import jakarta.persistence.Column;
@@ -36,7 +38,8 @@ public class Entretien {
 
     @ManyToOne
     @JoinColumn(name = "id_poste")
-    Poste poste;
+    PosteDetails poste;
+
     boolean reussite;
 
     // Getter & Setter
@@ -72,11 +75,11 @@ public class Entretien {
         this.utilisateur = utilisateur;
     }
 
-    public Poste getPoste() {
+    public PosteDetails getPoste() {
         return poste;
     }
 
-    public void setPoste(Poste poste) {
+    public void setPoste(PosteDetails poste) {
         this.poste = poste;
     }
 
@@ -91,5 +94,7 @@ public class Entretien {
     // Constructeur
     public Entretien() {
     }
+
+    // fonctions
 
 }

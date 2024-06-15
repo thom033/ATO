@@ -101,10 +101,13 @@ CREATE TABLE Notification(
    point BOOLEAN,
    id_poste INTEGER,
    id_utilisateur INTEGER NOT NULL,
+   id_entretien integer,
    PRIMARY KEY(id_notification),
    FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
+   FOREIGN KEY(id_entretien) REFERENCES entretien(id_entretien),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
+-- ajout de id_entretien
 
 CREATE TABLE Question(
    id_question SERIAL,
@@ -203,11 +206,12 @@ CREATE TABLE entreprise_contact(
 -- modifications
 CREATE TABLE entretien(
    id_entretien SERIAL,
-   date_envoi DATE DEFAULT CURRENT_DATE,
-   date_entretien DATE,
+   date_envoi TIMESTAMP DEFAULT CURRENT_DATE,
+   date_entretien TIMESTAMP,
    id_utilisateur INTEGER,
    id_poste INTEGER,
    reussite BOOLEAN DEFAULT FALSE,
+   PRIMARY KEY(id_entretien),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur),
    FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
 );

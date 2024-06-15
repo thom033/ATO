@@ -90,11 +90,12 @@ VALUES
 ('admin3@example.com', 'adminpass3');
 
 -- Données pour la table Notification
-INSERT INTO Notification (message, date_notification, date_lu, id_utilisateur,id_poste, point)
+INSERT INTO Notification (message, date_notification, date_lu, id_utilisateur,id_poste, point, id_entretien)
 VALUES
-('Nouvelle offre d emploi disponible qui vous corresponds à 85%', CURRENT_TIMESTAMP, NULL, 1,1,FALSE),
-('Votre profil a ete mis a jour', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1,null,FALSE),
-('Vous avez acheté 25pts', CURRENT_TIMESTAMP, NULL, 1,null,TRUE );
+('Nouvelle offre d emploi disponible qui vous corresponds à 85%', CURRENT_TIMESTAMP, NULL, 1,1,FALSE,null),
+('Votre profil a ete mis a jour', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1,null,FALSE,null),
+('Vous avez acheté 25pts', CURRENT_TIMESTAMP, NULL, 1,null,TRUE ,null),
+('Convocation à un entretien d embauche', CURRENT_TIMESTAMP, NULL, 1,null,FALSE, 1 );
 
 -- Données pour la table competence_utilisateur
 INSERT INTO competence_utilisateur (id_utilisateur, id_competence)

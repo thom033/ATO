@@ -36,7 +36,7 @@ public class EntretienController {
     @Autowired
     PdfService pdfService;
 
-    @GetMapping("/generate-pdf/{idEntretien}")
+    @GetMapping("/generer-pdf/{idEntretien}")
     public void generatePdf(HttpServletResponse response, @PathVariable("idEntretien") String idEntretien)
             throws IOException, java.io.IOException {
         // Create a ByteArrayOutputStream to hold the PDF data
@@ -50,7 +50,7 @@ public class EntretienController {
 
         // Set response headers
         response.setContentType("application/pdf");
-        response.setHeader("Content-Disposition", "inline; filename=generated.pdf");
+        response.setHeader("Content-Disposition", "inline; filename=convocation.pdf");
 
         // Write PDF to response output stream
         response.getOutputStream().write(baos.toByteArray());

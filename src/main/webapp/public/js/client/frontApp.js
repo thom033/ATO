@@ -42,29 +42,6 @@ frontApp.controller('notificationController', function($scope, $http) {
 
     $scope.nom = "albert";
 
-    // $scope.submitForm = function () {
-    //     console.log("Championnat")
-    //     console.log($scope.championnat)
-    //     $http({
-    //         url: 'championnat-controller',
-    //         method: 'POST',
-    //         data: $scope.championnat,
-    //         headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
-    //         transformRequest: function(obj) {
-    //             var str = [];
-    //             for (var p in obj)
-    //                 str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-    //             return str.join("&");
-    //         }
-    //     })
-    //         .then(function(response) {
-    //             $scope.submitted = true;
-    //             $scope.tableData = response.data;
-    //         }, function(error) {
-    //             console.error('Erreur lors de l\'envoi des données', error);
-    //         });
-    // };
-
     $scope.getData = function() {
         let aurl = "/notification/liste";
         $http({
@@ -73,7 +50,6 @@ frontApp.controller('notificationController', function($scope, $http) {
         })
         .then(function(response) {
             $scope.notifications = response.data;
-            // console.log($scope.notifications);
         }, function(error) {
             console.error('Erreur lors de la récupération des données:', error);
         });
@@ -128,19 +104,24 @@ frontApp.controller('notificationController', function($scope, $http) {
     $scope.estDynamique = function(notification) {
         if (notification.poste != null) {
             return 0;
+        } else if (notification.entretien != null) {
+            return 1;
         }
         else if(notification.point) {
-            return -1;
+            return 2;
         }
-        return -2
+        return -1;
     };
 
-    $scope.interpreterUrl = function(url) {
+    $scope.interpreterUrl = function(notification) {
         let valiny = "";
-        if (url == -1) {
+        let url = $scope.estDynamique(notification);
+        if (url == 2) {
             valiny = "/utilisateur/profil";
-        } else if (url >= 0 ) {
+        } else if (url == 0 ) {
             valiny = "/utilisateur/inscription";
+        } else if (url == 1) {
+            valiny = "/generer-pdf/" + notification.entretien.id;
         }
         return valiny;
     }
