@@ -29,8 +29,8 @@
                           <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1"/>
                       </svg>
                   </span>
-                  <select class="form-select" ng-model="diplomeUtilsateur.diplome.diplome" style="width: 10%;">
-                      <option ng-repeat="diplomeExist in diplomeExists" value="{{diplomeExist.diplome}}"
+                  <select class="form-select" ng-model="diplomeUtilsateur.diplome.id" style="width: 10%;">
+                      <option ng-repeat="diplomeExist in diplomeExists" value="{{diplomeExist.id}}"
                        ng-selected="diplomeExist.diplome == diplomeUtilsateur.diplome.diplome">{{diplomeExist.diplome}}</option>
                   </select>
               </div>
@@ -56,7 +56,7 @@
           <div class="row">
             <div class="col-md-9"></div>
             <div class="col-md-3">
-              <button id="buttonSubmit" class="btn btn-primary">Ajouter</button>
+              <button id="buttonSubmit" type="submit" class="btn btn-primary">Ajouter</button>
             </div>
           </div>
         </form>
@@ -77,8 +77,8 @@
               <tr ng-repeat="diplomeUtilisateur in diplomeUtilisateurs">
                 <td scope="row">{{diplomeUtilisateur.diplome.diplome}}</td>
                 <td>{{diplomeUtilisateur.diplome.niveau}}</td>
-                <td><button class="btn btn-warning" ng-click="modify({{diplomeUtilisateur.diplome.id}},{{diplomeUtilisateur.utilisateur.id}})">Modifier</button></td>
-                <td><button class="btn btn-danger" ng-click="delete({{diplomeUtilisateur.diplome.id}},{{diplomeUtilisateur.utilisateur.id}})">Supprimer</button></td>
+                <td><button class="btn btn-warning" ng-click="modify(diplomeUtilisateur.diplome.id,diplomeUtilisateur.utilisateur.id)">Modifier</button></td>
+                <td><button class="btn btn-danger" ng-click="delete(diplomeUtilisateur.diplome.id,diplomeUtilisateur.utilisateur.id)">Supprimer</button></td>
               </tr>
             </tbody>
           </table>

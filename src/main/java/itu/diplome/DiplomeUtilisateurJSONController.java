@@ -45,13 +45,16 @@ public class DiplomeUtilisateurJSONController {
     }
 
     @GetMapping("/diplomeUtilisateur/information")
-    public DiplomeUtilisateur getUtilisateur(@RequestBody DiplomeUtilisateurId diplomeUtilisateurId) {
+    public DiplomeUtilisateur getUtilisateur(@RequestParam("idDiplome") Long idDiplome
+                                            ,@RequestParam("idUtilisateur") Long idUtilisateur) {
+        DiplomeUtilisateurId diplomeUtilisateurId=new DiplomeUtilisateurId(idUtilisateur,idDiplome);
         return diplomeUtilisateurRepository.findById(diplomeUtilisateurId).get();
     }
     
     @PostMapping("/diplomeUtilisateur/update")
     public List<DiplomeUtilisateur> modifier(@RequestBody DiplomeUtilisateur diplomeUtilisateur) {
-        diplomeUtilisateurRepository.save(diplomeUtilisateur);
+        diplomeUtilisateurRepository.deleteById(diplomeUtilisateur.getId());
+        //diplomeUtilisateurRepository.save(diplomeUtilisateur);
         return diplomeUtilisateurRepository.findByUtilisateurId(diplomeUtilisateur.getUtilisateur().getId());
     }
 }

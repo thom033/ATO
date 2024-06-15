@@ -21,7 +21,6 @@ DiplomeUtilisateurApp.controller('tableController', function($scope, $http) {
             $scope.diplomeUtilisateur = response.data;
             const submitButton=document.getElementById("buttonSubmit");
             submitButton.innerText="Modifier";
-            document.getElementById("formulaire").setAttribute("ng-submit", "updateForm()");
             console.log($scope.diplomeUtilisateur);
         });
     }
@@ -34,6 +33,17 @@ DiplomeUtilisateurApp.controller('tableController', function($scope, $http) {
     }
 
     $scope.submitForm = function() {
+        const submitButton=document.getElementById("buttonSubmit");
+        if(submitButton.innerText=="Modifier"){
+            $scope.updateForm();
+        }
+        else{
+            $scope.insertForm();
+        }
+    };
+
+    $scope.insertForm=function(){
+        console.log("Insert");
         console.log("Sending data:", JSON.stringify($scope.diplomeUtilisateur)); // Afficher le JSON dans la console
         $http.post('/diplomeUtilisateur/insert', $scope.diplomeUtilisateur)
         .then(function(response) {
@@ -43,11 +53,15 @@ DiplomeUtilisateurApp.controller('tableController', function($scope, $http) {
         }, function(error) {
             $scope.error = error.error || "Une erreur est survenue.";
         });
-    };
+    }
 
     $scope.updateForm = function() {
+        console.log("JSON");
+        // console.log($scope.diplomeUtilsateur.diplome);
+        $scope.diplomeUtilisateur.id.diplome=$scope.diplomeUtilisateur.diplome.id;
+        $scope.diplomeUtilisateur.id.utilisateur=$scope.diplomeUtilisateur.utilisateur.id;
         console.log("Sending data:", JSON.stringify($scope.diplomeUtilisateur)); // Afficher le JSON dans la console
-        $http.post('/diplomeUtilisateur/update/', $scope.diplomeUtilisateur)
+        $http.post('/diplomeUtilisateur/update', $scope.diplomeUtilisateur)
         .then(function(response) {
             $scope.diplomeUtilisateurs = response.data;
             $scope.initialize();
