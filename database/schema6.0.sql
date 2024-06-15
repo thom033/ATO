@@ -199,3 +199,15 @@ CREATE TABLE entreprise_contact(
    FOREIGN KEY(id_entreprise) REFERENCES Entreprise(id_entreprise),
    FOREIGN KEY(id_contact) REFERENCES Contact(id_contact)
 );
+
+-- modifications
+CREATE TABLE entretien(
+   id_entretien SERIAL,
+   date_envoi DATE DEFAULT CURRENT_DATE,
+   date_entretien DATE,
+   id_utilisateur INTEGER,
+   id_poste INTEGER,
+   reussite BOOLEAN DEFAULT FALSE,
+   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur),
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
+);

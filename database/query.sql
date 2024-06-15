@@ -151,3 +151,7 @@ INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (1, 2);
 INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 3);
 INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 4);
 INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 5);
+
+INSERT INTO entretien(date_envoi, date_entretien, id_utilisateur, id_poste) VALUES
+('2024-06-10 10:00:00', '2024-06-15 14:30:00', 1, 3),
+('2024-06-05 08:00:00', '2024-06-13 10:00:00',1, 2);
