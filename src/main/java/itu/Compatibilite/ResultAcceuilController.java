@@ -18,14 +18,13 @@ public class ResultAcceuilController {
 
     @Autowired
     HttpSession httpSession;
-   
 
-        @GetMapping("/acceuil")
+    @GetMapping("/acceuil")
     public ModelAndView calculateCompatibility() {
         ModelAndView mv = new ModelAndView("/template");
-        String pages = "acceuil/index.jsp";
+        String pages = "acceuil/index";
         mv.addObject("data", resultAcceuilService.getAllResults());
-        
+
         mv.addObject("page", pages);
 
         return mv;

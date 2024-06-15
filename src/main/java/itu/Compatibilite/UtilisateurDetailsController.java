@@ -16,8 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class UtilisateurDetailsController {
     @Autowired
     UtilisateurDetailsRepository utilisateurRepository;
-@Autowired
-PosteDetailsRepository posteDetailsRepository;
+    @Autowired
+    PosteDetailsRepository posteDetailsRepository;
     @Autowired
     HttpSession httpSession;
     @Autowired
@@ -27,12 +27,12 @@ PosteDetailsRepository posteDetailsRepository;
     public ModelAndView calculateCompatibility() {
         double[] compatibility = utilisateurDetails.ListCompatibility(posteDetailsRepository.getPosteDetails());
         ModelAndView mv = new ModelAndView("/template");
-        String pages = "acceuil/index.jsp";
+        String pages = "acceuil/index";
         mv.addObject("compatibility", compatibility);
         mv.addObject("posteDetails", posteDetailsRepository.getPosteDetails());
-        
+
         mv.addObject("page", pages);
-    
+
         // Debug log to check the value
         System.out.println("Pages value: " + pages);
         return mv;

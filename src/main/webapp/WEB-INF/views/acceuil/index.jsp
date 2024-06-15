@@ -4,6 +4,7 @@
 <%
     List<ResultAcceuil> p = (List<ResultAcceuil>) request.getAttribute("data");
 %>
+<link rel="stylesheet" href="/public/css/acceuil.css">
 
 <section class="py-5" style="padding-top: 1rem!important;padding-bottom: 1rem!important;">
         <div class="container py-5 text-center">
