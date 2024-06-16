@@ -67,8 +67,5 @@ public class DiplomeUtilisateur {
     public void setDiplome(Diplome diplome) {
         this.diplome = diplome;
     }
-    public DiplomeUtilisateurId getId(){
-        return this.id;
-    }
 }
 

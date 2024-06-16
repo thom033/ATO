@@ -107,12 +107,15 @@ CREATE TABLE Reponse(
    FOREIGN KEY(id_question) REFERENCES Question(id_question)
 );
 
-CREATE TABLE type_notification(
-   id_type_notification SERIAL,
-   poste INTEGER REFERENCES poste(id_poste),
-   point BOOLEAN,
-   PRIMARY KEY(id_type_notification)
-);
+-- CREATE TABLE type_notification(
+--    id_type_notification SERIAL,
+--    poste INTEGER,
+--    point BOOLEAN,
+--    FOREIGN KEY(poste) REFERENCES poste(id_poste),
+--    PRIMARY KEY(id_type_notification)
+-- );
+-- point boolean - default false
+-- foreign key(poste)
 
 CREATE TABLE Contact(
    id_contact SERIAL,
@@ -128,13 +131,12 @@ CREATE TABLE administrateur(
    PRIMARY KEY(id_administrateur)
 );
 
-CREATE TABLE argent(
-   id_argent SERIAL,
-   solde NUMERIC(15,2)   NOT NULL DEFAULT 0,
-   date_modification TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
-   id_utilisateur INTEGER NOT NULL,
-   PRIMARY KEY(id_argent),
-   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+CREATE TABLE argent (
+   id_argent SERIAL PRIMARY KEY,
+   solde NUMERIC(15,2) NOT NULL DEFAULT 0.0,
+   date_modification TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   id_utilisateur INTEGER DEFAULT 0,
+   FOREIGN KEY (id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
 CREATE TABLE historique_question(
@@ -149,14 +151,17 @@ CREATE TABLE historique_question(
 CREATE TABLE Notification(
    id_notification SERIAL,
    message TEXT NOT NULL,
-   date_notification TIMESTAMP NOT NULL DEFAULT CURRRENT_DATE,
+   date_notification TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
    date_lu TIMESTAMP DEFAULT NULL,
-   id_type_notification INTEGER NOT NULL,
    id_utilisateur INTEGER NOT NULL,
+   id_poste INTEGER,
+   point BOOLEAN,
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
    PRIMARY KEY(id_notification),
-   FOREIGN KEY(id_type_notification) REFERENCES type_notification(id_type_notification),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
+-- CURRRENT-date
+-- id_notification degage
 
 CREATE TABLE competence_utilisateur(
    id_utilisateur INTEGER,

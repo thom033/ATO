@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
+import java.util.regex.Pattern;
+
+import itu.notification.*;
 
 import jakarta.persistence.*;
 
@@ -20,6 +24,11 @@ public class Utilisateur {
     Date dateNaissance;
     String adresse;
     String mail;
+
+    @OneToMany(mappedBy = "utilisateur")
+    List<Notification> notifications;
+
+    // List<String> numeroTelephone;
     String etatCivil;
     String photo;
     int point;
@@ -164,7 +173,6 @@ public class Utilisateur {
         return description;
     }
 
-    
     public float getSalaireRecherche() {
         return salaireRecherche;
     }

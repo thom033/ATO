@@ -1,6 +1,5 @@
 package itu.poste;
 
-
 import jakarta.persistence.*;
 
 @Entity
@@ -8,6 +7,7 @@ import jakarta.persistence.*;
 public class Poste {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_notification")
-    long id_poste;
+    @Column(name = "id_poste")
+    long id;
+
 }

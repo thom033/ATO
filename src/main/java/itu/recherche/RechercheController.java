@@ -32,7 +32,8 @@ public class RechercheController {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public RechercheController(SecteurRepository secteurRepository, DiplomeRepository diplomeRepository, CompetenceRepository competenceRepository, JdbcTemplate jdbcTemplate) {
+    public RechercheController(SecteurRepository secteurRepository, DiplomeRepository diplomeRepository,
+            CompetenceRepository competenceRepository, JdbcTemplate jdbcTemplate) {
         this.secteurRepository = secteurRepository;
         this.diplomeRepository = diplomeRepository;
         this.competenceRepository = competenceRepository;
@@ -49,7 +50,7 @@ public class RechercheController {
         mv.addObject("allDiplomes", allDip);
         mv.addObject("allCompetences", allComp);
 
-        mv.addObject("page", "recherche/recherche-form.jsp");
+        mv.addObject("page", "recherche/recherche-form");
         return mv;
     }
 
