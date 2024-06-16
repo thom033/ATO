@@ -94,3 +94,4 @@ FROM
    postes_details p
 ORDER BY pts_total DESC;
 
+SELECT * FROM result_acceuil order by entreprise_point DESC limit 3;

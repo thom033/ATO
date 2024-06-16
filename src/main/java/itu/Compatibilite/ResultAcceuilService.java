@@ -18,4 +18,8 @@ public class ResultAcceuilService {
     public List<ResultAcceuil> getAllResults() {
         return repository.getResultAcceuils();
     }
+
+    public Integer getUserSecteur(Integer idUtilisateur) {
+        return repository.getUserSecteur(idUtilisateur);
+    }
 }
