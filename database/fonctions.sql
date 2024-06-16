@@ -277,3 +277,29 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION get_user_secteur(idU INTEGER) RETURNS INTEGER AS $$
+DECLARE
+    user_secteur_id INTEGER;
+BEGIN
+    -- Récupérer et afficher les informations des diplômes de l'utilisateur
+    RAISE NOTICE 'Récupération des diplômes de l''utilisateur avec id_utilisateur = %', idU;
+
+    -- Sélectionner l'id_secteur correspondant à l'utilisateur
+    SELECT sd.id_secteur
+    INTO user_secteur_id
+    FROM diplome_utilisateur du
+    JOIN secteur_diplome sd ON du.id_diplome = sd.id_diplome
+    WHERE du.id_utilisateur = idU
+    LIMIT 1; -- Ajouter cette ligne si un utilisateur peut avoir plusieurs secteurs et vous voulez en retourner un seul
+
+    -- Vérifier si un id_secteur a été trouvé
+    IF user_secteur_id IS NOT NULL THEN
+        RAISE NOTICE 'Secteur trouvé: id_secteur = %', user_secteur_id;
+    ELSE
+        RAISE NOTICE 'Aucun secteur trouvé pour id_utilisateur = %', idU;
+    END IF;
+
+    RETURN user_secteur_id;
+END;
+$$ LANGUAGE plpgsql;
+
