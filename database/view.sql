@@ -87,6 +87,7 @@ SELECT
    p.poste_description,
    p.poste_titre,
    p.entreprise_nom,
+   p.entreprise_point,
    get_point_total(u.id_utilisateur,p.id_poste) AS pts_total
 FROM
    utilisateur_details u,

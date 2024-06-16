@@ -16,5 +16,9 @@ public class PosteDetailsService {
         return posteDetailsRepository.getPosteDetails();
     }
 
+    public Integer getUserSecteur(Integer idUtilisateur) {
+        return posteDetailsRepository.getUserSecteur(idUtilisateur);
+    }
+
     // Méthode pour calculer la compatibilité entre un poste et un utilisateur
 }
