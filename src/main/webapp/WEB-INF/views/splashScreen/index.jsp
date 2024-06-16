@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <header class="bg-primary-gradient">
+    <header class="">
         <div class="container pt-4 pt-xl-5" style="background: var(--bs-body-bg);">
             <div class="row pt-5" style="background: url('/public/img/acceuil2.jpg') center / cover, var(--bs-body-bg);margin-bottom: -52px;padding-top: 0px;margin-top: -48px;width: 100%;">
                 <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto" style="padding-left: 0px;padding-bottom: 0px;margin-bottom: 56px;padding-right: 0px;">
@@ -45,7 +45,7 @@
         </div>
     </section>
 
-    <footer class="bg-primary-gradient">
+    <footer class="bg-primary-gradient" style="background: white;">
         <div class="container py-4 py-lg-5">
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
