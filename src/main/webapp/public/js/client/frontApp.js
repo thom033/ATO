@@ -115,7 +115,7 @@ frontApp.controller("faqController", function($scope, $http, $location, $anchorS
                 $location.hash('question-' + response.data.retour);
                 // Faire défiler vers l'ancre
                 $anchorScroll();
-            }, 100);
+            }, 0);
 
         }, function(error) {
             console.error('Erreur lors de la récupération des données:', error);

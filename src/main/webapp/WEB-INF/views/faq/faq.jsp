@@ -5,9 +5,9 @@
 <div class="row" ng-app="frontApp" ng-controller="faqController">
     <div class="col-md-6">
         <div class="profile">
-            <img src="assets/img/team/avatar2.jpg" alt="Avatar">
+            <img src="/public/img/avatars/{{ historiqueQuestions[0].utilisateur.photo }}" alt="Avatar">
             <div class="partie">
-                <h5 class="name">Jin Kazama</h5>
+                <h5 class="name">{{ historiqueQuestions[0].utilisateur.nom }} {{ historiqueQuestions[0].utilisateur.prenom }}</h5>
                 <a href="" class="dots"><span ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
                     </svg></span></a>
