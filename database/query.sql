@@ -54,6 +54,14 @@ VALUES
 ('2010-09-01', 'Master en Gestion', '2012-06-30', 2),
 ('2000-09-01', 'Baccalauréat en Économie', '2003-06-30', 3);
 
+-- Données pour la table Reponse
+INSERT INTO Reponse (reponse)
+VALUES
+('Programmation, Gestion de projet'),
+('5 ans en tant que Développeur'),
+('Master en Informatique');
+
+
 -- Données pour la table Question
 INSERT INTO Question (question, id_reponse)
 VALUES
@@ -61,12 +69,9 @@ VALUES
 ('Quel est votre niveau d expérience ?',2),
 ('Quelle est votre formation académique ?',3);
 
--- Données pour la table Reponse
-INSERT INTO Reponse (reponse)
+INSERT INTO historique_question(id_question, id_utilisateur)
 VALUES
-('Programmation, Gestion de projet'),
-('5 ans en tant que Développeur'),
-('Master en Informatique');
+(1,1);
 
 -- Données pour la table type_notification
 -- INSERT INTO type_notification (poste, point)

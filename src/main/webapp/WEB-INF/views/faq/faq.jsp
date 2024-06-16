@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="/public/css/faq.css">
 <div class="container mt-4">
-<div class="row">
+<div class="row" ng-app="frontApp" ng-controller="faqController">
     <div class="col-md-6">
         <div class="profile">
             <img src="assets/img/team/avatar2.jpg" alt="Avatar">
@@ -35,11 +35,9 @@
             </div>  
 
             <div class="questions-container">
-                <button class="btn btn-light btn-question">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida elit sem, vitae convallis ipsum luctus a. </button>
-                <button class="btn btn-light btn-question">Mes suggestions ne dépassent pas 90%</button>
-                <button class="btn btn-light btn-question">Mes suggestions ne dépassent pas 90%</button>
-                <button class="btn btn-light btn-question">Mes suggestions ne dépassent pas 90%</button>
-                <button class="btn btn-light btn-question">Mes suggestions ne dépassent pas 90%</button>
+                <button ng-repeat="fanontaniana in questions" ng-click="poserQuestion(fanontaniana.id)" class="btn btn-light btn-question">
+                    {{ fanontaniana.question }}
+                </button>
             </div>
                     
             <button class="btn btn-light btn-custom">
@@ -83,137 +81,34 @@
                                 <h4>Bienvenu sur l'agence de recrutement ATO, n'hésitez pas à me poser des questions.</h4>
                             </div>
                         </div>
-                    </div>
-                    <div class="chat-message client">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <span class="icon-client-message">
-                                <img src="assets/img/team/avatar2.jpg" alt="Avatar">
-                            </span>
-                            <div class="message-content">
-                                <p>Jin Kazama</p>
-                                <h4>Mes suggestions ne dépassent pas 80%</h4>
+                    </div>   
+                    
+                    <div ng-repeat="fanontaniana in historiqueQuestions" id="question-{{fanontaniana.id}}">
+                        <div class="chat-message client">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <span class="icon-client-message">
+                                    <img src="/public/img/avatars/{{ fanontaniana.utilisateur.photo }}" alt="Avatar">
+                                </span>
+                                <div class="message-content">
+                                    <p>Jin Kazama</p>
+                                    <h4>{{ fanontaniana.question.question }}</h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="chat-message albert">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <span class="icon-albert-message">   
-                                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20">
-                                    <path d="m21,23c0,.553-.448,1-1,1s-1-.447-1-1c0-2.206-1.794-4-4-4h-6c-2.206,0-4,1.794-4,4,0,.553-.448,1-1,1s-1-.447-1-1c0-3.309,2.691-6,6-6h6c3.309,0,6,2.691,6,6Zm1-15.5v2c0,.827-.673,1.5-1.5,1.5h-.5c0,2.206-1.794,4-4,4h-8c-2.206,0-4-1.794-4-4h-.5c-.827,0-1.5-.673-1.5-1.5v-2c0-.827.673-1.5,1.5-1.5h.5c0-2.206,1.794-4,4-4h3v-1c0-.553.448-1,1-1s1,.447,1,1v1h3c2.206,0,4,1.794,4,4h.5c.827,0,1.5.673,1.5,1.5Zm-4-1.5c0-1.103-.897-2-2-2h-8c-1.103,0-2,.897-2,2v5c0,1.103.897,2,2,2h8c1.103,0,2-.897,2-2v-5Zm-8.5,1c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Zm5,0c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Z"/>
-                                </svg>
-                            </span>
-                            <div class="message-content">
-                                <p>Albert</p>
-                                <h4>Bienvenu sur l'agence de recrutement ATO, n'hésitez pas à me poser des questions.</h4>
+                        <div class="chat-message albert">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <span class="icon-albert-message">   
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="m21,23c0,.553-.448,1-1,1s-1-.447-1-1c0-2.206-1.794-4-4-4h-6c-2.206,0-4,1.794-4,4,0,.553-.448,1-1,1s-1-.447-1-1c0-3.309,2.691-6,6-6h6c3.309,0,6,2.691,6,6Zm1-15.5v2c0,.827-.673,1.5-1.5,1.5h-.5c0,2.206-1.794,4-4,4h-8c-2.206,0-4-1.794-4-4h-.5c-.827,0-1.5-.673-1.5-1.5v-2c0-.827.673-1.5,1.5-1.5h.5c0-2.206,1.794-4,4-4h3v-1c0-.553.448-1,1-1s1,.447,1,1v1h3c2.206,0,4,1.794,4,4h.5c.827,0,1.5.673,1.5,1.5Zm-4-1.5c0-1.103-.897-2-2-2h-8c-1.103,0-2,.897-2,2v5c0,1.103.897,2,2,2h8c1.103,0,2-.897,2-2v-5Zm-8.5,1c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Zm5,0c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Z"/>
+                                    </svg>
+                                </span>
+                                <div class="message-content">
+                                    <p>Albert</p>
+                                    <h4>{{ fanontaniana.question.reponse.reponse }}</h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="chat-message client">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <span class="icon-client-message">
-                                <img src="assets/img/team/avatar2.jpg" alt="Avatar">
-                            </span>
-                            <div class="message-content">
-                                <p>Jin Kazama</p>
-                                <h4>Mes suggestions ne dépassent pas 80%</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat-message albert">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <span class="icon-albert-message">   
-                                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20">
-                                    <path d="m21,23c0,.553-.448,1-1,1s-1-.447-1-1c0-2.206-1.794-4-4-4h-6c-2.206,0-4,1.794-4,4,0,.553-.448,1-1,1s-1-.447-1-1c0-3.309,2.691-6,6-6h6c3.309,0,6,2.691,6,6Zm1-15.5v2c0,.827-.673,1.5-1.5,1.5h-.5c0,2.206-1.794,4-4,4h-8c-2.206,0-4-1.794-4-4h-.5c-.827,0-1.5-.673-1.5-1.5v-2c0-.827.673-1.5,1.5-1.5h.5c0-2.206,1.794-4,4-4h3v-1c0-.553.448-1,1-1s1,.447,1,1v1h3c2.206,0,4,1.794,4,4h.5c.827,0,1.5.673,1.5,1.5Zm-4-1.5c0-1.103-.897-2-2-2h-8c-1.103,0-2,.897-2,2v5c0,1.103.897,2,2,2h8c1.103,0,2-.897,2-2v-5Zm-8.5,1c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Zm5,0c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Z"/>
-                                </svg>
-                            </span>
-                            <div class="message-content">
-                                <p>Albert</p>
-                                <h4>Bienvenu sur l'agence de recrutement ATO, n'hésitez pas à me poser des questions.</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat-message client">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <span class="icon-client-message">
-                                <img src="assets/img/team/avatar2.jpg" alt="Avatar">
-                            </span>
-                            <div class="message-content">
-                                <p>Jin Kazama</p>
-                                <h4>Mes suggestions ne dépassent pas 80%</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat-message albert">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <span class="icon-albert-message">   
-                                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20">
-                                    <path d="m21,23c0,.553-.448,1-1,1s-1-.447-1-1c0-2.206-1.794-4-4-4h-6c-2.206,0-4,1.794-4,4,0,.553-.448,1-1,1s-1-.447-1-1c0-3.309,2.691-6,6-6h6c3.309,0,6,2.691,6,6Zm1-15.5v2c0,.827-.673,1.5-1.5,1.5h-.5c0,2.206-1.794,4-4,4h-8c-2.206,0-4-1.794-4-4h-.5c-.827,0-1.5-.673-1.5-1.5v-2c0-.827.673-1.5,1.5-1.5h.5c0-2.206,1.794-4,4-4h3v-1c0-.553.448-1,1-1s1,.447,1,1v1h3c2.206,0,4,1.794,4,4h.5c.827,0,1.5.673,1.5,1.5Zm-4-1.5c0-1.103-.897-2-2-2h-8c-1.103,0-2,.897-2,2v5c0,1.103.897,2,2,2h8c1.103,0,2-.897,2-2v-5Zm-8.5,1c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Zm5,0c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Z"/>
-                                </svg>
-                            </span>
-                            <div class="message-content">
-                                <p>Albert</p>
-                                <h4>Bienvenu sur l'agence de recrutement ATO, n'hésitez pas à me poser des questions.</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat-message client">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <span class="icon-client-message">
-                                <img src="assets/img/team/avatar2.jpg" alt="Avatar">
-                            </span>
-                            <div class="message-content">
-                                <p>Jin Kazama</p>
-                                <h4>Mes suggestions ne dépassent pas 80%</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat-message albert">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <span class="icon-albert-message">   
-                                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20">
-                                    <path d="m21,23c0,.553-.448,1-1,1s-1-.447-1-1c0-2.206-1.794-4-4-4h-6c-2.206,0-4,1.794-4,4,0,.553-.448,1-1,1s-1-.447-1-1c0-3.309,2.691-6,6-6h6c3.309,0,6,2.691,6,6Zm1-15.5v2c0,.827-.673,1.5-1.5,1.5h-.5c0,2.206-1.794,4-4,4h-8c-2.206,0-4-1.794-4-4h-.5c-.827,0-1.5-.673-1.5-1.5v-2c0-.827.673-1.5,1.5-1.5h.5c0-2.206,1.794-4,4-4h3v-1c0-.553.448-1,1-1s1,.447,1,1v1h3c2.206,0,4,1.794,4,4h.5c.827,0,1.5.673,1.5,1.5Zm-4-1.5c0-1.103-.897-2-2-2h-8c-1.103,0-2,.897-2,2v5c0,1.103.897,2,2,2h8c1.103,0,2-.897,2-2v-5Zm-8.5,1c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Zm5,0c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Z"/>
-                                </svg>
-                            </span>
-                            <div class="message-content">
-                                <p>Albert</p>
-                                <h4>Bienvenu sur l'agence de recrutement ATO, n'hésitez pas à me poser des questions.</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat-message client">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <span class="icon-client-message">
-                                <img src="assets/img/team/avatar2.jpg" alt="Avatar">
-                            </span>
-                            <div class="message-content">
-                                <p>Jin Kazama</p>
-                                <h4>Mes suggestions ne dépassent pas 80%</h4>
-                            </div>
-                        </div>
-                    </div><div class="chat-message albert">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <span class="icon-albert-message">   
-                                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20">
-                                    <path d="m21,23c0,.553-.448,1-1,1s-1-.447-1-1c0-2.206-1.794-4-4-4h-6c-2.206,0-4,1.794-4,4,0,.553-.448,1-1,1s-1-.447-1-1c0-3.309,2.691-6,6-6h6c3.309,0,6,2.691,6,6Zm1-15.5v2c0,.827-.673,1.5-1.5,1.5h-.5c0,2.206-1.794,4-4,4h-8c-2.206,0-4-1.794-4-4h-.5c-.827,0-1.5-.673-1.5-1.5v-2c0-.827.673-1.5,1.5-1.5h.5c0-2.206,1.794-4,4-4h3v-1c0-.553.448-1,1-1s1,.447,1,1v1h3c2.206,0,4,1.794,4,4h.5c.827,0,1.5.673,1.5,1.5Zm-4-1.5c0-1.103-.897-2-2-2h-8c-1.103,0-2,.897-2,2v5c0,1.103.897,2,2,2h8c1.103,0,2-.897,2-2v-5Zm-8.5,1c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Zm5,0c-.828,0-1.5.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5Z"/>
-                                </svg>
-                            </span>
-                            <div class="message-content">
-                                <p>Albert</p>
-                                <h4>Bienvenu sur l'agence de recrutement ATO, n'hésitez pas à me poser des questions.</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat-message client">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <span class="icon-client-message">
-                                <img src="assets/img/team/avatar2.jpg" alt="Avatar">
-                            </span>
-                            <div class="message-content">
-                                <p>Jin Kazama</p>
-                                <h4>Mes suggestions ne dépassent pas 80%</h4>
-                            </div>
-                        </div>
-                    </div>        
+                    </div>    
                 </div>
                 <div class="chat-footer d-flex align-items-center">
                     <input type="text" placeholder="Écrivez un message ...">

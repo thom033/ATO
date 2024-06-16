@@ -25,15 +25,4 @@ public class FaqController {
         return mv;
     }
 
-    @GetMapping("/faq/question/{idQuestion}")
-    public String poserQuestion(@PathVariable("idQuestion") String idQuestion, HttpSession session) {
-        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
-        HistoriqueQuestion hq = new HistoriqueQuestion();
-        hq.setUtilisateur(utilisateur);
-        hq.setQuestion(questionRepository.getById(Long.valueOf(idQuestion)));
-
-        historiqueQuestionRepository.save(hq);
-        return "inseré";
-    }
-
 }

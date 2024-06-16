@@ -99,18 +99,28 @@ frontApp.controller('notificationController', function($scope, $http) {
 });
 
 
-frontApp.controller("faqController", function($scope, $http) {
-    $scope.question = function(idQuestion) {
+frontApp.controller("faqController", function($scope, $http, $location, $anchorScroll) {
+    $scope.poserQuestion = function(idQuestion) {
         let aurl = "/faq/question/" + idQuestion;
         $http({
             url: aurl,
             method: 'GET'
         })
         .then(function(response) {
-            console.log("question posé avec succes")
+            $scope.getData();
+            console.log("question posé avec succes");
+
+            setTimeout(function() {
+                // Définir l'ancre à l'ID de la nouvelle question
+                $location.hash('question-' + response.data.retour);
+                // Faire défiler vers l'ancre
+                $anchorScroll();
+            }, 100);
+
         }, function(error) {
             console.error('Erreur lors de la récupération des données:', error);
         });
+        
     };
 
     $scope.getData = function() {
@@ -120,11 +130,25 @@ frontApp.controller("faqController", function($scope, $http) {
             method: 'GET'
         })
         .then(function(response) {
-            $scope.notifications = response.data;
+            $scope.historiqueQuestions = response.data;
         }, function(error) {
             console.error('Erreur lors de la récupération des données:', error);
         });
     };
+
+    $scope.getQuestion = function() {
+        let aurl = "/question/get";
+        $http({
+            url: aurl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            $scope.questions = response.data;
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+    };
+
 
     $scope.delete = function(idNotif) {
         let delUrl = "/notification/delete/" + idNotif;
@@ -140,4 +164,7 @@ frontApp.controller("faqController", function($scope, $http) {
         });
 
     };
+
+    $scope.getData();
+    $scope.getQuestion();
 });

@@ -16,10 +16,11 @@ public class FaqJSONController {
     @Autowired
     HistoriqueQuestionRepository historiqueQuestionRepository;
 
-    @GetMapping("/faq/get")
-    public List<HistoriqueQuestion> getMethodName(@RequestParam String param, HttpSession session) {
+    @GetMapping("/faq/historique")
+    public List<HistoriqueQuestion> getMethodName(HttpSession session) {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
-        return historiqueQuestionRepository.findByUtilisateur(utilisateur);
+        List<HistoriqueQuestion> historique = historiqueQuestionRepository.findByUtilisateur(utilisateur);
+        return historique;
     }
 
 }

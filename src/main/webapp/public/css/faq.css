@@ -206,12 +206,12 @@
     box-shadow: 1px 1px 5px 0.5px rgb(209, 208, 208);
 }
 .icon-albert-message svg {
+    margin-right: 20px;
     width: 2em;
     height: 2em;   
     border-radius: 50%;
     color: #00A8FF;
     fill: #007bff;
-    margin-right: 10px;
 }
 
 .d-flex {
