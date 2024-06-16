@@ -1,43 +1,5 @@
 var frontApp = angular.module("frontApp",[]);
 
-// frontApp.component('notification', {
-//     template: `
-//         <div>
-//             <h1>{{ $ctrl.title }}</h1>
-//             <p>{{ $ctrl.description }}</p>
-//         </div>
-//     `,
-//     bindings: {
-//         titler : '@'
-//     }
-//     ,
-//     controller: function() {
-//         // console.log(this.notif);
-//         this.titler = notif;
-//         this.description = 'This is a simple AngularJS component example.';
-//     }
-// })
-
-// Define the component with bindings
-frontApp.component('myComponent', {
-    bindings: {
-        title: '@',
-        description: '@'
-    },
-    template: `
-        <div>
-            <h1>{{ $ctrl.title }}</h1>
-            <p>{{ $ctrl.description }}</p>
-        </div>
-    `,
-    controller: function() {
-        // The controller can use $onInit for initialization
-        this.$onInit = function() {
-            // console.log('Component initialized with title:', this.title);
-        };
-    }
-});
-
 frontApp.controller('notificationController', function($scope, $http) {
 
     $scope.nom = "albert";
@@ -134,4 +96,48 @@ frontApp.controller('notificationController', function($scope, $http) {
         const formattedDate = date.toLocaleDateString('fr-FR');
         return formattedDate;
     }
+});
+
+
+frontApp.controller("faqController", function($scope, $http) {
+    $scope.question = function(idQuestion) {
+        let aurl = "/faq/question/" + idQuestion;
+        $http({
+            url: aurl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            console.log("question posé avec succes")
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+    };
+
+    $scope.getData = function() {
+        let aurl = "/faq/historique";
+        $http({
+            url: aurl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            $scope.notifications = response.data;
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+    };
+
+    $scope.delete = function(idNotif) {
+        let delUrl = "/notification/delete/" + idNotif;
+        $http({
+            url: delUrl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            console.log("supprimé avec succes");
+            $scope.getData();
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+
+    };
 });

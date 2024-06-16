@@ -26,7 +26,7 @@
                     <li class="nav-item"><a class="nav-link active" href="/acceuil" style="font-family: 'Space Grotesk';">Acceuil</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Space Grotesk';">Statistique</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/notification/index" style="font-family: 'Space Grotesk';">Mes Notifications</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Space Grotesk';">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/faq/index" style="font-family: 'Space Grotesk';">FAQ</a></li>
                 </ul>
             </div>
                 <%

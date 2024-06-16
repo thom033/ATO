@@ -55,18 +55,18 @@ VALUES
 ('2000-09-01', 'Baccalauréat en Économie', '2003-06-30', 3);
 
 -- Données pour la table Question
-INSERT INTO Question (question)
+INSERT INTO Question (question, id_reponse)
 VALUES
-('Quelles sont vos compétences principales ?'),
-('Quel est votre niveau d expérience ?'),
-('Quelle est votre formation académique ?');
+('Quelles sont vos compétences principales ?',1),
+('Quel est votre niveau d expérience ?',2),
+('Quelle est votre formation académique ?',3);
 
 -- Données pour la table Reponse
-INSERT INTO Reponse (reponse, id_question)
+INSERT INTO Reponse (reponse)
 VALUES
-('Programmation, Gestion de projet', 1),
-('5 ans en tant que Développeur', 2),
-('Master en Informatique', 3);
+('Programmation, Gestion de projet'),
+('5 ans en tant que Développeur'),
+('Master en Informatique');
 
 -- Données pour la table type_notification
 -- INSERT INTO type_notification (poste, point)
