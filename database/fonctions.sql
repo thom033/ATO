@@ -303,5 +303,77 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION get_point_status(user_id INT, poste_id INT) RETURNS TEXT[] AS $$
+DECLARE
+    status TEXT[];
+    point DOUBLE PRECISION := 0;
+    distance DOUBLE PRECISION;
+    distance_points INTEGER;
+BEGIN
+    -- Vérifier l'âge de l'utilisateur
+    IF check_age(user_id, poste_id) = TRUE THEN
+        status := array_append(status, 'Age: OK');
+        point := point + 3;
+    ELSE
+        status := array_append(status, 'Age: NOT OK');
+    END IF;
+
+    -- Vérifier l'expérience de l'utilisateur
+    IF check_experience(user_id, poste_id) = TRUE THEN
+        status := array_append(status, 'Experience: OK');
+        point := point + 5;
+    ELSE
+        status := array_append(status, 'Experience: NOT OK');
+    END IF;
+
+    -- Vérifier la formation de l'utilisateur
+    IF check_formation(user_id, poste_id) = TRUE THEN
+        status := array_append(status, 'Formation: OK');
+        point := point + 2;
+    ELSE
+        status := array_append(status, 'Formation: NOT OK');
+    END IF;
+
+    -- Vérifier le diplôme de l'utilisateur
+    IF check_diplome(user_id, poste_id) = TRUE THEN
+        status := array_append(status, 'Diplome: OK');
+        point := point + 5;
+    ELSE
+        status := array_append(status, 'Diplome: NOT OK');
+    END IF;
+
+    -- Calculer la distance entre l'utilisateur et le poste
+    distance := calculate_distance(user_id, poste_id);
+
+    -- Calculer les points en fonction de la distance
+    IF distance > 0 THEN
+        distance_points := point_distance(user_id, poste_id);
+        CASE
+            WHEN distance_points = 5 THEN 
+                point := point + 5;
+                status := array_append(status, 'Distance: OK (5 points)');
+            WHEN distance_points = 25 THEN 
+                point := point + 2.5; -- 5 / 2
+                status := array_append(status, 'Distance: OK (2.5 points)');
+            WHEN distance_points = 50 THEN 
+                point := point + 1.25; -- 5 / 4
+                status := array_append(status, 'Distance: OK (1.25 points)');
+            ELSE 
+                status := array_append(status, 'Distance: NOT OK');
+        END CASE;
+    ELSE
+        status := array_append(status, 'Distance: NOT OK');
+    END IF;
+
+    -- Ajouter le total des points au tableau de status
+    status := array_append(status, 'Total Points: ' || (point / 20.0) * 100.0);
+
+    -- Retourner le tableau de status
+    RETURN status;
+END;
+$$ LANGUAGE plpgsql;
+
+-- TEST
+SELECT get_point_status(1, 1); -- Remplacez 1 et 1 par les IDs de l'utilisateur et du poste respectifs
 
 
