@@ -22,4 +22,8 @@ public class ResultAcceuilService {
     public Integer getUserSecteur(Integer idUtilisateur) {
         return repository.getUserSecteur(idUtilisateur);
     }
+
+    public List<String> getPointStatus(Integer idUtilisateur, Integer idPoste) {
+        return repository.getPointStatus(idUtilisateur, idPoste);
+    }
 }

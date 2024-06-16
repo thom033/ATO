@@ -18,4 +18,7 @@ public interface ResultAcceuilRepository extends JpaRepository<ResultAcceuil, Lo
 
     @Query(value = "SELECT * FROM result_acceuil order by entreprise_point DESC limit 3;", nativeQuery = true)
     List<ResultAcceuil> getBestPoint();
+
+    @Query(value = "SELECT get_point_status(:id_utilisateur, :id_poste)", nativeQuery = true)
+    List<String> getPointStatus(@Param("id_utilisateur") Integer idUtilisateur, @Param("id_poste") Integer idPoste);
 }
