@@ -23,7 +23,15 @@ public class ResultAcceuilService {
         return repository.getUserSecteur(idUtilisateur);
     }
 
-    public List<String> getPointStatus(Integer idUtilisateur, Integer idPoste) {
-        return repository.getPointStatus(idUtilisateur, idPoste);
+    public List<ResultAcceuil> getBestPoint() {
+        return repository.getBestPoint();
+    }
+
+    public List<String> getPositif(Integer idUtilisateur, Integer idPoste) {
+        return repository.getPositif(idUtilisateur, idPoste);
+    }
+
+    public List<String> getNegatif(Integer idUtilisateur, Integer idPoste) {
+        return repository.getNegatif(idUtilisateur, idPoste);
     }
 }
