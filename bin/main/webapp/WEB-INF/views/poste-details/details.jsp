@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="itu.Compatibilite.PosteDetails"%>
 <%@ page import="java.util.List" %>
+<%@ page import="itu.contact.Contact"%>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%
     PosteDetails postedetails = (PosteDetails) request.getAttribute("details");
     double pourcentage = (double) request.getAttribute("pourcentage");
+    List<Contact> contacts = (List<Contact>) request.getAttribute("contacts");
 %>
 
 <head>
@@ -19,11 +21,11 @@
 <body>
     <div class="container-principale">
         <div class="row">
-            <div class="col-md-3 fixed-top" style="margin-left: 20px;">
+            <div class="col-md-3 fixed-top" style="margin-left: 20px;top: 50px;">
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
-                            <img class="avatar" src="/public/img/avatars/avatar.jpg" alt="">
+                            <img class="avatar" src="/public/img/avatars/<%= postedetails.getPosteImage() %>" alt="">
                         </div>
                     </div>
                 </div>
@@ -33,8 +35,11 @@
                             <img class="icon-contact" src="/public/img/icon/fi-rr-phone-flip.svg">
                         </div>
                         <div class="apropos">
-                            <p>+261 034 56 556 56</p>
-                            <p class="input">+261 033 22 777 44</p> <!-- Zay <p> farany asiana class="input" -->
+                            <% 
+                                for(Contact contact : contacts) {
+                            %>
+                            <p><%= contact.getNumTelephone() %></p>
+                            <% } %>
                         </div>
                     </div>
                     <div class="info-perso">
@@ -60,13 +65,13 @@
                                 <div class="col-md-8 col-lg-8">
                                     <p class="W"><%= postedetails.getPosteTitre() %></p>
                                     <p class="descW"><%= postedetails.getEntrepriseNom() %></p>
-                                    <p class="ptsW">123</p>
+                                    <p class="ptsW"><%= postedetails.getPosteCout() %> points</p>
                                 </div>
                                 <div class="col-md-2 col-lg-2" style="margin-top:10px; font-style: normal;">
                                     <p>Taux de compatibilité :</p>
                                 </div>
                                 <div class="col-md-2 col-lg-2" style="margin-top:0px;">
-                                    <strong><%= pourcentage %>%</strong>
+                                    <strong><%= pourcentage %> %</strong>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +100,7 @@
                                             <p>Salaire</p>
                                         </div>
                                         <div class="variable">
-                                            <p><%= postedetails.getPosteSalaire() %></p>
+                                            <p><%= postedetails.getPosteSalaire() %> Ariary</p>
                                         </div>
                                     </div>
                                     <div class="input">
@@ -111,7 +116,7 @@
                                             <p>Formation</p>
                                         </div>
                                         <div class="variable">
-                                            <p class="input"><%= postedetails.getNbrAnneeFormation() %>ans de formations</p> <!-- Zay <p> farany asiana class="input" -->
+                                            <p class="input"><%= postedetails.getNbrAnneeFormation() %> ans de formations</p> <!-- Zay <p> farany asiana class="input" -->
                                         </div>
                                     </div>
                                     <div class="input">
@@ -119,7 +124,7 @@
                                             <p>Expérience</p>
                                         </div>
                                         <div class="variable">
-                                            <p class="input"><%= postedetails.getNbrAnneeExperience() %>ans d'expérience</p> <!-- Zay <p> farany asiana class="input" -->
+                                            <p class="input"><%= postedetails.getNbrAnneeExperience() %> ans d'expérience</p> <!-- Zay <p> farany asiana class="input" -->
                                         </div>
                                     </div>
                                     <div class="input">
