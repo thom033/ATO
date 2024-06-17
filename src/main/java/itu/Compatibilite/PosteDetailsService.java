@@ -16,5 +16,9 @@ public class PosteDetailsService {
         return posteDetailsRepository.getPosteDetails();
     }
 
+    public PosteDetails getAllDetailsPoste(Long idPoste) {
+        return posteDetailsRepository.getPosteDetails(idPoste);
+    }
+
     // Méthode pour calculer la compatibilité entre un poste et un utilisateur
 }

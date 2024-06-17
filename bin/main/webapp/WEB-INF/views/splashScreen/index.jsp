@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <header class="bg-primary-gradient">
+    <header class="">
         <div class="container pt-4 pt-xl-5" style="background: var(--bs-body-bg);">
-            <div class="row pt-5" style="background: url(&quot;/public/img/acceuil.png&quot;) center / cover, var(--bs-body-bg);margin-bottom: -52px;padding-top: 0px;margin-top: -48px;width: 100%;">
+            <div class="row pt-5" style="background: url('/public/img/acceuil2.jpg') center / cover, var(--bs-body-bg);margin-bottom: -52px;padding-top: 0px;margin-top: -48px;width: 100%;">
                 <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto" style="padding-left: 0px;padding-bottom: 0px;margin-bottom: 56px;padding-right: 0px;">
                     <div class="text-center">
                         <h1 class="fw-bold" style="text-shadow: 2px 0px 0px var(--bs-body-color);transform: perspective(2500px);font-family: 'Space Grotesk', sans-serif;font-size: 48px;margin-top: -1px;margin-bottom: 0px;">Trouvez un travail&nbsp;<br>qui vous correspond</h1>
-                        <p style="margin-right: -32px;padding-left: 30px;margin-left: -33px;margin-bottom: 0px;padding-bottom: 22px;font-size: 14px;">Accédez au catalogue de travail grâce à notre proposition de travail avec un&nbsp;<br>système de compatibilité</p><button class="btn btn-dark" type="button" style="background: var(--bs-emphasis-color);margin-right: 0px;margin-bottom: 344px;font-size: 13px;margin-top: -12px;">Parcourir</button>
+                        <p style="margin-right: -32px;padding-left: 30px;margin-left: -33px;margin-bottom: 0px;padding-bottom: 22px;font-size: 14px;">Accédez au catalogue de travail grâce à notre proposition de travail avec un&nbsp;<br>système de compatibilité</p><button onclick="window.location.href='/acceuil';" class="btn btn-dark" type="button" style="background: var(--bs-emphasis-color);margin-right: 0px;margin-bottom: 344px;font-size: 13px;margin-top: -12px;">Parcourir</button>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
         </div>
     </section>
 
-    <footer class="bg-primary-gradient">
+    <footer class="bg-primary-gradient" style="background: white;">
         <div class="container py-4 py-lg-5">
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
@@ -75,7 +75,7 @@
                         <li style="color: var(--bs-body-color);">RAKOTOARIMANANA Tojo</li>
                     </ul>
                 </div>
-                <div class="col-lg-3 text-center text-lg-start d-flex flex-column align-items-center order-first align-items-lg-start order-lg-last"><img src="/public/img/rohy2.png" style="width: 200px;margin-left: 32px;margin-top: 34px;">
+                <div class="col-lg-3 text-center text-lg-start d-flex flex-column align-items-center order-first align-items-lg-start order-lg-last"><img src="/public/img/rohy2.jpg" style="width: 200px;margin-left: 32px;margin-top: 34px;">
                     <div class="fw-bold d-flex align-items-center mb-2"></div>
                     <p class="text-muted" style="text-align: center;color: var(--bs-emphasis-color);font-size: 20px;font-weight: bold;"></p>
                 </div>

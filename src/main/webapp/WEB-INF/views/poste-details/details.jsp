@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="itu.poste.*"%>
+<%@ page import="itu.Compatibilite.PosteDetails"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%
-    List<PosteDetails> postedetails = (List<PosteDetails>) request.getAttribute("details");
+    PosteDetails postedetails = (PosteDetails) request.getAttribute("details");
+    double pourcentage = (double) request.getAttribute("pourcentage");
 %>
 
 <head>
@@ -45,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto provident accusantium praesentium minima, tempora, magnam, explicabo quibusdam quidem officia velit illum possimus debitis quos accusamus dolores cupiditate incidunt error rem.</p>
+                <p><%= postedetails.getPosteDescription() %></p>
                 <div class="button-info">
                     <div class="my-2" ><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" type="submit">Postuler</button></div>
                 </div>
@@ -59,13 +60,13 @@
                                 <div class="col-md-8 col-lg-8">
                                     <p class="W"><%= postedetails.getPosteTitre() %></p>
                                     <p class="descW"><%= postedetails.getEntrepriseNom() %></p>
-                                    <p class="ptsW">3pts</p>
+                                    <p class="ptsW">123</p>
                                 </div>
                                 <div class="col-md-2 col-lg-2" style="margin-top:10px; font-style: normal;">
                                     <p>Taux de compatibilité :</p>
                                 </div>
                                 <div class="col-md-2 col-lg-2" style="margin-top:0px;">
-                                    <strong>45%</strong>
+                                    <strong><%= pourcentage %>%</strong>
                                 </div>
                             </div>
                         </div>
@@ -107,21 +108,18 @@
                                     </div>
                                     <div class="input">
                                         <div class="invariable">
-                                            <p>Compétence(s)</p>
+                                            <p>Formation</p>
                                         </div>
                                         <div class="variable">
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                            <p class="input">Spécialisation python</p> <!-- Zay <p> farany asiana class="input" -->
+                                            <p class="input"><%= postedetails.getNbrAnneeFormation() %>ans de formations</p> <!-- Zay <p> farany asiana class="input" -->
                                         </div>
                                     </div>
                                     <div class="input">
                                         <div class="invariable">
-                                            <p>Expérience(s)</p>
+                                            <p>Expérience</p>
                                         </div>
                                         <div class="variable">
-                                            <p>Lorem, ipsum. - 1ans</p>
-                                            <p class="input">Lorem, ipsum. - 5ans</p> <!-- Zay <p> farany asiana class="input" -->
+                                            <p class="input"><%= postedetails.getNbrAnneeExperience() %>ans d'expérience</p> <!-- Zay <p> farany asiana class="input" -->
                                         </div>
                                     </div>
                                     <div class="input">
@@ -195,13 +193,13 @@
                                                         <p>Points</p>
                                                     </div>
                                                     <div class="variable">
-                                                        <p>50</p>
+                                                        <p><%= postedetails.getEntreprisePoint() %></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <img src="/public/img/avatars/avatar.jpg" alt="">
+                                            <img src="/public/img/avatars/<%= postedetails.getEntrepriseImage() %>" alt="">
                                         </div>
                                     </div>
                                 </div>

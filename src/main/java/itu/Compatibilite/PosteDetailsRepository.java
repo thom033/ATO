@@ -11,4 +11,7 @@ public interface PosteDetailsRepository extends JpaRepository<PosteDetails, Long
 
     @Query("select p from PosteDetails p where idSecteur= 2")
     List<PosteDetails> getPosteDetails();
+
+    @Query("select pd from PosteDetails pd where idPoste= :idPostee")
+    PosteDetails getPosteDetails(Long idPostee);
 }
