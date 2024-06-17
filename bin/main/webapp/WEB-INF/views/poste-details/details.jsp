@@ -23,7 +23,7 @@
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
-                            <img class="avatar" src="/public/img/avatars/avatar.jpg" alt="">
+                            <img class="avatar" src="/public/img/avatars/<%= postedetails.getPosteImage() %>" alt="">
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                                 <div class="col-md-8 col-lg-8">
                                     <p class="W"><%= postedetails.getPosteTitre() %></p>
                                     <p class="descW"><%= postedetails.getEntrepriseNom() %></p>
-                                    <p class="ptsW">123</p>
+                                    <p class="ptsW"><%= postedetails.getPosteCout() %> points</p>
                                 </div>
                                 <div class="col-md-2 col-lg-2" style="margin-top:10px; font-style: normal;">
                                     <p>Taux de compatibilité :</p>

@@ -11,6 +11,8 @@ SELECT
     p.annee_formation AS nbr_annee_formation,
     p.age_min AS poste_age_min,
     p.age_max AS poste_age_max,
+    p.image AS poste_image,
+    p.cout AS poste_cout,
     
     d.id_diplome,
     d.diplome AS diplome_nom,
