@@ -19,7 +19,7 @@
 <body>
     <div class="container-principale">
         <div class="row">
-            <div class="col-md-3 fixed-top" style="margin-left: 20px;">
+            <div class="col-md-3 fixed-top" style="margin-left: 20px;top: 50px;">
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
@@ -66,7 +66,7 @@
                                     <p>Taux de compatibilité :</p>
                                 </div>
                                 <div class="col-md-2 col-lg-2" style="margin-top:0px;">
-                                    <strong><%= pourcentage %>%</strong>
+                                    <strong><%= pourcentage %> %</strong>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                                             <p>Salaire</p>
                                         </div>
                                         <div class="variable">
-                                            <p><%= postedetails.getPosteSalaire() %></p>
+                                            <p><%= postedetails.getPosteSalaire() %> Ariary</p>
                                         </div>
                                     </div>
                                     <div class="input">
@@ -111,7 +111,7 @@
                                             <p>Formation</p>
                                         </div>
                                         <div class="variable">
-                                            <p class="input"><%= postedetails.getNbrAnneeFormation() %>ans de formations</p> <!-- Zay <p> farany asiana class="input" -->
+                                            <p class="input"><%= postedetails.getNbrAnneeFormation() %> ans de formations</p> <!-- Zay <p> farany asiana class="input" -->
                                         </div>
                                     </div>
                                     <div class="input">
@@ -119,7 +119,7 @@
                                             <p>Expérience</p>
                                         </div>
                                         <div class="variable">
-                                            <p class="input"><%= postedetails.getNbrAnneeExperience() %>ans d'expérience</p> <!-- Zay <p> farany asiana class="input" -->
+                                            <p class="input"><%= postedetails.getNbrAnneeExperience() %> ans d'expérience</p> <!-- Zay <p> farany asiana class="input" -->
                                         </div>
                                     </div>
                                     <div class="input">
