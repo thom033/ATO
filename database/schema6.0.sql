@@ -218,3 +218,12 @@ CREATE TABLE entretien(
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur),
    FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
 );
+
+CREATE TABLE postulation(
+   id_postulation SERIAL PRIMARY KEY,
+   id_utilisateur integer,
+   id_poste integer,
+   date TIMESTAMP DEFAULT CURRENT_DATE,
+   FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id_utilisateur),
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
+);

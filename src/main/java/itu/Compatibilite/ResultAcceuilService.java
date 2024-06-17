@@ -8,14 +8,10 @@ import java.util.List;
 @Service
 public class ResultAcceuilService {
 
-    private final ResultAcceuilRepository repository;
-
     @Autowired
-    public ResultAcceuilService(ResultAcceuilRepository repository) {
-        this.repository = repository;
-    }
+    ResultAcceuilRepository resultAcceuilRepository;
 
-    public List<ResultAcceuil> getAllResults() {
-        return repository.getResultAcceuils();
+    public List<ResultAcceuil> getAllResults(Long idUtilisateur) {
+        return resultAcceuilRepository.findByIdUtilisateur(idUtilisateur);
     }
 }
