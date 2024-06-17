@@ -40,7 +40,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="mb-2 nicolas-sous-titre"><%= p.get(i).getPosteSalaire()%> Ar</p>
                         <% Long id = (long) p.get(i).getIdPoste();%>
-                        <button class="btn-nicolas"><a href="/poste/details?idPoste=<%= id %>&pourcentage=<%= p.get(i).getPtsTotal()%>" >Visiter</a></button>
+                        <button class="btn-nicolas"><a href="/poste/details?idPoste=<%= id %>" >Visiter</a></button>
                     </div>
                 </div>
             </div>

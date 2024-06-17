@@ -11,4 +11,7 @@ public interface ResultAcceuilRepository extends JpaRepository<ResultAcceuil, Lo
 
     @Query(value = "SELECT * FROM result_acceuil", nativeQuery = true)
     List<ResultAcceuil> getResultAcceuils();
+
+    @Query("select ptsTotal from ResultAcceuil where idUtilisateur= :userId AND idPoste= :posteID")
+    double getResultAcceuilsByIdPosteUser(Long userId, Long posteID);
 }
