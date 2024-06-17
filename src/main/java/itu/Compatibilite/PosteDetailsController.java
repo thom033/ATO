@@ -1,5 +1,6 @@
 package itu.Compatibilite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import itu.contact.Contact;
+import itu.contact.EntrepriseContact;
+import itu.contact.EntrepriseContactRepository;
+import itu.contact.UtilisateurContact;
+import itu.contact.UtilisateurContactRepository;
+import itu.entreprise.Entreprise;
 import itu.utilisateur.Utilisateur;
 import itu.utilisateur.UtilisateurRepository;
 import jakarta.servlet.http.HttpSession;
@@ -21,6 +28,9 @@ public class PosteDetailsController {
 
     @Autowired
     PosteDetailsService posteDetailsService;
+
+    @Autowired
+    EntrepriseContactRepository entrepriseContactRepository;
 
     @GetMapping("/postedetails")
     public String lister(Model model) {
@@ -42,8 +52,15 @@ public class PosteDetailsController {
         ModelAndView  mv = new  ModelAndView("template");
 
         PosteDetails pd = posteDetailsService.getAllDetailsPoste(IdPoste);
+        List<Contact> contacts = new ArrayList<>();
+
+        List<EntrepriseContact> entreprisecontacts = entrepriseContactRepository.findByEntrepriseId(pd.getPosteEntreprise());
+        for (EntrepriseContact uc : entreprisecontacts) {
+            contacts.add(uc.getContact());
+        }
 
         mv.addObject("details", pd);
+        mv.addObject("contacts", contacts);
         mv.addObject("pourcentage", pourcentage);
 
         mv.addObject("page", "poste-details/details");

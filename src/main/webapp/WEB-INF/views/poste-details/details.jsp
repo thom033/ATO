@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="itu.Compatibilite.PosteDetails"%>
 <%@ page import="java.util.List" %>
+<%@ page import="itu.contact.Contact"%>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%
     PosteDetails postedetails = (PosteDetails) request.getAttribute("details");
     double pourcentage = (double) request.getAttribute("pourcentage");
+    List<Contact> contacts = (List<Contact>) request.getAttribute("contacts");
 %>
 
 <head>
@@ -33,8 +35,11 @@
                             <img class="icon-contact" src="/public/img/icon/fi-rr-phone-flip.svg">
                         </div>
                         <div class="apropos">
-                            <p>+261 034 56 556 56</p>
-                            <p class="input">+261 033 22 777 44</p> <!-- Zay <p> farany asiana class="input" -->
+                            <% 
+                                for(Contact contact : contacts) {
+                            %>
+                            <p><%= contact.getNumTelephone() %></p>
+                            <% } %>
                         </div>
                     </div>
                     <div class="info-perso">
