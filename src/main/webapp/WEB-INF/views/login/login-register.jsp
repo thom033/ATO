@@ -11,8 +11,8 @@
         <div class="content">
             <h1>Log In</h1>
             <form action="/login/test" method="post">
-                <input type="email" name="mail" placeholder="email">
-                <input type="password" name="mdp" placeholder="password">
+                <input type="email" name="mail" placeholder="email" value="jean.dupont@example.com">
+                <input type="password" name="mdp" placeholder="password" value="password123">
                 <span class="remember">Remember me</span>
                 <span class="forget">Forgot password?</span>
                 <span class="clearfix"></span>

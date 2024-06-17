@@ -107,12 +107,15 @@ CREATE TABLE Reponse(
    FOREIGN KEY(id_question) REFERENCES Question(id_question)
 );
 
-CREATE TABLE type_notification(
-   id_type_notification SERIAL,
-   poste INTEGER REFERENCES poste(id_poste),
-   point BOOLEAN,
-   PRIMARY KEY(id_type_notification)
-);
+-- CREATE TABLE type_notification(
+--    id_type_notification SERIAL,
+--    poste INTEGER,
+--    point BOOLEAN,
+--    FOREIGN KEY(poste) REFERENCES poste(id_poste),
+--    PRIMARY KEY(id_type_notification)
+-- );
+-- point boolean - default false
+-- foreign key(poste)
 
 CREATE TABLE Contact(
    id_contact SERIAL,
@@ -148,14 +151,17 @@ CREATE TABLE historique_question(
 CREATE TABLE Notification(
    id_notification SERIAL,
    message TEXT NOT NULL,
-   date_notification TIMESTAMP NOT NULL DEFAULT CURRRENT_DATE,
+   date_notification TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
    date_lu TIMESTAMP DEFAULT NULL,
-   id_type_notification INTEGER NOT NULL,
    id_utilisateur INTEGER NOT NULL,
+   id_poste INTEGER,
+   point BOOLEAN,
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
    PRIMARY KEY(id_notification),
-   FOREIGN KEY(id_type_notification) REFERENCES type_notification(id_type_notification),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
+-- CURRRENT-date
+-- id_notification degage
 
 CREATE TABLE competence_utilisateur(
    id_utilisateur INTEGER,
