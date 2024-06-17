@@ -8,57 +8,57 @@ public class PosteDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_poste")
-    private Long idPoste;
+    Long idPoste;
     @Column(name = "poste_description")
-    private String posteDescription;
+    String posteDescription;
     @Column(name = "poste_date_insertion")
-    private String posteDateInsertion;
+    String posteDateInsertion;
     @Column(name = "poste_salaire")
-    private double posteSalaire;
+    double posteSalaire;
     @Column(name = "poste_titre")
-    private String posteTitre;
+    String posteTitre;
     @Column(name = "poste_diplome")
-    private Long posteDiplome;
+    Long posteDiplome;
     @Column(name = "poste_entreprise")
-    private Long posteEntreprise;
+    Long posteEntreprise;
     @Column(name = "nbr_annee_experience")
-    private int nbrAnneeExperience;
+    int nbrAnneeExperience;
     @Column(name = "nbr_annee_formation")
-    private int nbrAnneeFormation;
+    int nbrAnneeFormation;
     @Column(name = "poste_age_min")
-    private int posteAgeMin;
+    int posteAgeMin;
     @Column(name = "poste_age_max")
-    private int posteAgeMax;
+    int posteAgeMax;
     @Column(name = "id_diplome")
-    private Long idDiplome;
+    Long idDiplome;
     @Column(name = "diplome_nom")
-    private String diplomeNom;
+    String diplomeNom;
     @Column(name = "diplome_niveau")
-    private String diplomeNiveau;
+    String diplomeNiveau;
     @Column(name = "entreprise_nom")
-    private String entrepriseNom;
+    String entrepriseNom;
     @Column(name = "entreprise_point")
-    private int entreprisePoint;
+    int entreprisePoint;
     @Column(name = "entreprise_type")
-    private String entrepriseType;
+    String entrepriseType;
     @Column(name = "entreprise_date_creation")
-    private String entrepriseDateCreation;
+    String entrepriseDateCreation;
     @Column(name = "entreprise_adresse")
-    private String entrepriseAdresse;
+    String entrepriseAdresse;
     @Column(name = "entreprise_site_web")
-    private String entrepriseSiteWeb;
+    String entrepriseSiteWeb;
     @Column(name = "entreprise_mail")
-    private String entrepriseMail;
+    String entrepriseMail;
     @Column(name = "entreprise_latitude")
-    private double entrepriseLatitude;
+    double entrepriseLatitude;
     @Column(name = "entreprise_longitude")
-    private double entrepriseLongitude;
+    double entrepriseLongitude;
     @Column(name = "entreprise_image")
-    private String entrepriseImage;
+    String entrepriseImage;
     @Column(name = "id_secteur")
-    private int idSecteur;
+    int idSecteur;
     @Column(name = "secteur_diplome_id_diplome")
-    private int secteurDiplomeIdDiplome;
+    int secteurDiplomeIdDiplome;
 
     // ---- CONSTRUCTEURS ----
     public PosteDetails() {}
