@@ -1,4 +1,4 @@
-package itu.question;
+package itu.faq;
 
 import org.springframework.stereotype.Controller;
 
