@@ -74,11 +74,11 @@
           </thead>
           <tbody>
             <tr ng-repeat="reponse in reponses | filter: filterReponse">
-              <th scope="row">{{reponse.idReponse}}</th>
+              <th scope="row">{{reponse.id}}</th>
               <td>{{reponse.question.question}}</td>
               <td>{{reponse.reponse}}</td>
-              <td><button class="btn btn-warning" ng-click="modify(reponse.idReponse)">Modifier</button></td>
-              <td><button class="btn btn-danger" ng-click="delete(reponse.idReponse)">Supprimer</button></td>
+              <td><button class="btn btn-warning" ng-click="modify(reponse.id)">Modifier</button></td>
+              <td><button class="btn btn-danger" ng-click="delete(reponse.id)">Supprimer</button></td>
             </tr>
           </tbody>
         </table>
