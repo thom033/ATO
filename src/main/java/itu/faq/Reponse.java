@@ -17,6 +17,16 @@ public class Reponse {
 
     String reponse;
 
+    Question question;
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
     public Long getId() {
         return id;
     }
