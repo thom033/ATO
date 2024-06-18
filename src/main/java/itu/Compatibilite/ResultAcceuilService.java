@@ -15,15 +15,15 @@ public class ResultAcceuilService {
         this.repository = repository;
     }
 
-    public List<ResultAcceuil> getAllResults() {
-        return repository.getResultAcceuils();
+    public List<ResultAcceuil> getAllResults(Long idUtilisateur ,Long idSecteur) {
+        return repository.getResultAcceuils(idUtilisateur , idSecteur);
     }
 
-    public Integer getUserSecteur(Integer idUtilisateur) {
+    public Long getUserSecteur(Long idUtilisateur) {
         return repository.getUserSecteur(idUtilisateur);
     }
 
-    public List<ResultAcceuil> getBestPoint() {
+    /*public List<ResultAcceuil> getBestPoint() {
         return repository.getBestPoint();
     }
 
@@ -33,5 +33,5 @@ public class ResultAcceuilService {
 
     public List<String> getNegatif(Integer idUtilisateur, Integer idPoste) {
         return repository.getNegatif(idUtilisateur, idPoste);
-    }
+    }*/
 }

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import itu.utilisateur.Utilisateur;
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class PosteDetailsController {
     @Autowired
@@ -16,12 +19,13 @@ public class PosteDetailsController {
     PosteDetailsService posteDetailsService;
 
     @GetMapping("/postedetails")
-public String lister(Model model) {
-    List<PosteDetails> listPost = posteDetailsService.getAllinSecteur();
-    model.addAttribute("listPost", listPost);
-    model.addAttribute("isEmpty", listPost.isEmpty());
-    return "test";
-}
+    public String lister(Model model, HttpSession httpSession) {
+        Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
+        List<PosteDetails> listPost = posteDetailsService.getAllinSecteur(user.getId());
+        model.addAttribute("listPost", listPost);
+        model.addAttribute("isEmpty", listPost.isEmpty());
+        return "test";
+    }
 
 
 

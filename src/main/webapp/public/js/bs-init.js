@@ -8,3 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 }, false);
+
+function redirect(lien){
+	window.href.location = "/"+ lien;
+}

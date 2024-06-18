@@ -23,7 +23,7 @@ public class UtilisateurDetailsController {
     @Autowired
     private UtilisateurDetails utilisateurDetails;
 
-    @GetMapping("/acceuilxxl")
+    /*@GetMapping("/acceuilxxl")
     public ModelAndView calculateCompatibility() {
         double[] compatibility = utilisateurDetails.ListCompatibility(posteDetailsRepository.getPosteDetails());
         ModelAndView mv = new ModelAndView("/template");
@@ -36,6 +36,5 @@ public class UtilisateurDetailsController {
         // Debug log to check the value
         System.out.println("Pages value: " + pages);
         return mv;
-    }
-
+    }*/
 }

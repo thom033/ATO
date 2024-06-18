@@ -10,18 +10,9 @@ import java.util.List;
 @Repository
 public interface ResultAcceuilRepository extends JpaRepository<ResultAcceuil, Long> {
 
-    @Query(value = "SELECT * FROM result_acceuil", nativeQuery = true)
-    List<ResultAcceuil> getResultAcceuils();
+    @Query(value = "SELECT * FROM result_acceuil where id_utilisateur =:idUtilisateur AND id_secteur =:idSecteur", nativeQuery = true)
+    List<ResultAcceuil> getResultAcceuils(@Param("idUtilisateur") Long id_utilisateur, @Param("idSecteur") Long idSecteur);
 
     @Query(value = "SELECT get_user_secteur(:id_utilisateur)", nativeQuery = true)
-    Integer getUserSecteur(@Param("id_utilisateur") Integer idUtilisateur);
-
-    @Query(value = "SELECT * FROM result_acceuil order by entreprise_point DESC limit 3;", nativeQuery = true)
-    List<ResultAcceuil> getBestPoint();
-
-    @Query(value = "SELECT get_positif(:id_utilisateur, :id_poste)", nativeQuery = true)
-    List<String> getPositif(@Param("id_utilisateur") Integer idUtilisateur, @Param("id_poste") Integer idPoste);
-
-    @Query(value = "SELECT get_negatif(:id_utilisateur, :id_poste)", nativeQuery = true)
-    List<String> getNegatif(@Param("id_utilisateur") Integer idUtilisateur, @Param("id_poste") Integer idPoste);
+    Long getUserSecteur(@Param("id_utilisateur") Long id_utilisateur);
 }

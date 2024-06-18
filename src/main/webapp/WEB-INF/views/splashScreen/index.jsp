@@ -5,7 +5,7 @@
                 <div class="col-md-8 col-xl-6 text-center text-md-start mx-auto" style="padding-left: 0px;padding-bottom: 0px;margin-bottom: 56px;padding-right: 0px;">
                     <div class="text-center">
                         <h1 class="fw-bold" style="text-shadow: 2px 0px 0px var(--bs-body-color);transform: perspective(2500px);font-family: 'Space Grotesk', sans-serif;font-size: 48px;margin-top: -1px;margin-bottom: 0px;">Trouvez un travail&nbsp;<br>qui vous correspond</h1>
-                        <p style="margin-right: -32px;padding-left: 30px;margin-left: -33px;margin-bottom: 0px;padding-bottom: 22px;font-size: 14px;">Accédez au catalogue de travail grâce à notre proposition de travail avec un&nbsp;<br>système de compatibilité</p><button class="btn btn-dark" type="button" style="background: var(--bs-emphasis-color);margin-right: 0px;margin-bottom: 344px;font-size: 13px;margin-top: -12px;">Parcourir</button>
+                        <p style="margin-right: -32px;padding-left: 30px;margin-left: -33px;margin-bottom: 0px;padding-bottom: 22px;font-size: 14px;">Accédez au catalogue de travail grâce à notre proposition de travail avec un&nbsp;<br>système de compatibilité</p><button class="btn btn-dark" type="button" style="background: var(--bs-emphasis-color);margin-right: 0px;margin-bottom: 344px;font-size: 13px;margin-top: -12px;" ><a href="/acceuil">Parcourir</a></button>
                     </div>
                 </div>
             </div>

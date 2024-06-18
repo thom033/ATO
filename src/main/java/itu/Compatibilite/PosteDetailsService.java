@@ -12,8 +12,8 @@ public class PosteDetailsService {
     private PosteDetailsRepository posteDetailsRepository;
 
     // Méthode pour récupérer tous les détails des postes
-    public List<PosteDetails> getAllinSecteur() {
-        return posteDetailsRepository.getPosteDetails();
+    public List<PosteDetails> getAllinSecteur(Long idSecteur) {
+        return posteDetailsRepository.getPosteDetails(idSecteur);
     }
 
     public Integer getUserSecteur(Integer idUtilisateur) {

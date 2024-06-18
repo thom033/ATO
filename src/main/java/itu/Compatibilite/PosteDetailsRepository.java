@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface PosteDetailsRepository extends JpaRepository<PosteDetails, Long> {
 
-    @Query("select p from PosteDetails p where idSecteur= 2")
-    List<PosteDetails> getPosteDetails();
+    @Query("select p from PosteDetails p where idSecteur =:id_secteur")
+    List<PosteDetails> getPosteDetails(@Param("id_secteur") Long id_secteur);
 
     @Query(value = "SELECT get_user_secteur(:id_utilisateur)", nativeQuery = true)
     Integer getUserSecteur(@Param("id_utilisateur") Integer idUtilisateur);
