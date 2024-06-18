@@ -1,4 +1,4 @@
-package itu.Compatibilite;
+package itu.compatibilite;
 
 import jakarta.persistence.*;
 
