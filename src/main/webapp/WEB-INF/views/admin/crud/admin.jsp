@@ -11,7 +11,7 @@
   }
 </style>
 <script src="../../../../../public/js/angular.min.js"></script>
-<div class="container">
+<div class="container" style="margin-top: 5%;">
   <div class="row" ng-app="AdminApp" ng-controller="tableController">
     <div class="col-md-6">
       <div class="form">
@@ -55,24 +55,34 @@
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-5">
+      <div class="row mb-3">
+        <div class="col-md-5">
+          <div class="input-group">
+            <input type="text" ng-model="recherche" autocomplete="off" class="input" style=" border-radius: 15px;">
+            <label class="user-label">Recherche</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Mail</th>
-                <th scope="col">Modifier</th>
-                <th scope="col">Renvoyer</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="admin in admins">
-                <th scope="row">{{admin.idAdmin}}</th>
-                <td>{{admin.mail}}</td>
-                <td><button class="btn btn-warning" ng-click="modify(admin.idAdmin)">Modifier</button></td>
-                <td><button class="btn btn-danger" ng-click="delete(admin.idAdmin)">Renvoyer</button></td>
-              </tr>
-            </tbody>
-          </table>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Mail</th>
+              <th scope="col">Modifier</th>
+              <th scope="col">Renvoyer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="admin in admins | filter: recherche">
+              <th scope="row">{{admin.idAdmin}}</th>
+              <td>{{admin.mail}}</td>
+              <td><button class="btn btn-warning" ng-click="modify(admin.idAdmin)">Modifier</button></td>
+              <td><button class="btn btn-danger" ng-click="delete(admin.idAdmin)">Renvoyer</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

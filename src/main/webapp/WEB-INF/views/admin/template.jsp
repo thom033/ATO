@@ -56,7 +56,7 @@
     <div class="offcanvas-body">
         <div class="row" style="margin-left:10%;">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link active" href="/question/CRUD" style="font-family: 'Space Grotesk';">Question/Reponse</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/question/crud" style="font-family: 'Space Grotesk';">Question/Reponse</a></li>
             </ul>
         </div>
     </div>
