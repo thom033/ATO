@@ -1,4 +1,4 @@
-<%@ page contentType='text/html;charset=UTF-8' language='java' %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
     <link rel="stylesheet" href="/public/css/notification.css">
 
@@ -11,8 +11,7 @@
     </section>
     <div class="notification-container" ng-app="frontApp" ng-controller="notificationController" >
 
-        <div ng-repeat="notif in notifications">
-            <div class="notification-item row align-items-center" style="padding-top: 20px;">
+            <div ng-repeat="notif in notifications" class="notification-item row align-items-center" style="padding-top: 20px;">
                 <div class="col-1 text-center pl">
                     <a href="/notification/delete/{{ notif.id }}"><span class="notification-icon download" style="margin-left: 40px;"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
@@ -32,14 +31,13 @@
                 <div class="col-1 text-center"></div>
                 <div class="col-1 text-end" style="margin-bottom: 5px;">
                 <div class="notification-date" >{{ formatDate(notif.dateNotification) }}</div>
-                    <div ng-if="estDynamique(notif) > -2"> 
-                        <a href="{{ interpreterUrl(estDynamique(notif)) }}"><span class="notification-icon chevron" ><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <div ng-if="estDynamique(notif) >= 0"> 
+                        <a href="{{ interpreterUrl(notif) }}"><span class="notification-icon chevron" ><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
                         </svg></span></a>
                     </div>
                 </div>
             </div>
-        </div>
         
     </div>
 

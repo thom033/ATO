@@ -2,19 +2,19 @@ package itu.Compatibilite;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "result_acceuil")
 public class ResultAcceuil {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_utilisateur")
     private Long idUtilisateur;
     @Column(name = "id_diplome")
     private Long idDiplome;
     @Column(name = "id_secteur")
     private Long idSecteur;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_poste")
     private Long idPoste;
     @Column(name = "poste_salaire")

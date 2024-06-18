@@ -18,19 +18,14 @@ public class ResultAcceuilController {
     ResultAcceuilService resultAcceuilService;
 
     @Autowired
-    HttpSession httpSession;
+    ResultAcceuilRepository resultAcceuilRepository;
 
     @GetMapping("/acceuil")
-    public ModelAndView calculateCompatibility() {
+    public ModelAndView calculateCompatibility(HttpSession session) {
         ModelAndView mv = new ModelAndView("/template");
         String pages = "acceuil/index";
-        Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
-        Long userSecteur = resultAcceuilService.getUserSecteur(user.getId());
-        mv.addObject("data", resultAcceuilService.getAllResults(user.getId(),userSecteur));
-        List<ResultAcceuil> rs = resultAcceuilService.getAllResults(user.getId(),userSecteur);
-        /*for (int i = 0; i < resultAcceuilService.getAllResults(user.getId(),userSecteur).size(); i++) {
-            System.out.println("Nom entreprise "+ rs.get(i).getEntrepriseNom());
-        }*/
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        mv.addObject("data", resultAcceuilService.getAllResults(utilisateur.getId()));
 
         mv.addObject("page", pages);
 

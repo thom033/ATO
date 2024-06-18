@@ -10,9 +10,15 @@ import java.util.List;
 @Repository
 public interface ResultAcceuilRepository extends JpaRepository<ResultAcceuil, Long> {
 
-    @Query(value = "SELECT * FROM result_acceuil where id_utilisateur =:idUtilisateur AND id_secteur =:idSecteur", nativeQuery = true)
-    List<ResultAcceuil> getResultAcceuils(@Param("idUtilisateur") Long id_utilisateur, @Param("idSecteur") Long idSecteur);
+    List<ResultAcceuil> findByIdUtilisateur(Long idUtilisateur);
 
-    @Query(value = "SELECT get_user_secteur(:id_utilisateur)", nativeQuery = true)
-    Long getUserSecteur(@Param("id_utilisateur") Long id_utilisateur);
+    @Query(value = "SELECT * FROM result_acceuil", nativeQuery = true)
+    List<ResultAcceuil> getResultAcceuils();
+
+    @Query("select ptsTotal from ResultAcceuil where idUtilisateur= :userId AND idPoste= :posteID")
+    double getResultAcceuilsByIdPosteUser(Long userId, Long posteID);
+
+    @Query("select ra from ResultAcceuil ra where idUtilisateur= :userId AND idPoste= :posteID")
+    ResultAcceuil getResultAcceuilsRecherche(Long userId, Long posteID);
+
 }

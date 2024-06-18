@@ -38,7 +38,7 @@
             <div class="container mt-5">
                 <div class="content">
                     <h5>Recherche de travail</h5><hr>
-                    <form method="get" action="recherche_result">
+                    <form method="get" action="/search">
                     <div class="row" >
                         <div class="input-group">
                             <span class="input-group-text" style="height:47px;">
@@ -46,7 +46,7 @@
                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
                                 </svg>
                             </span>
-                            <input type="text" class="form-control mb-2" placeholder="Recherche par titre">
+                            <input type="text" name="title" class="form-control mb-2" placeholder="Recherche par titre">
                         </div>
                     </div>
                     <p>Plus de details</p>
@@ -64,20 +64,20 @@
                                     <% 
                                         for(Diplome Diplome : diplomes) {
                                     %>
-                                    <option value="<%= Diplome.getId() %>"><%= Diplome.getDiplome() %></option>
+                                    <option value=<%= Diplome.getId() %>><%= Diplome.getDiplome() %></option>
                                     <% } %>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <div class="input-group">
-                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="ageMin" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Age min</label>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3"> 
                             <div class="input-group">
-                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="ageMax" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Age max</label>
                             </div>
                         </div>
@@ -96,26 +96,26 @@
                                     <% 
                                         for(Secteur secteur : secteurs) {
                                     %>
-                                    <option value="<%= secteur.getId() %>"><%= secteur.getSecteur() %></option>
+                                    <option value=<%= secteur.getId() %>><%= secteur.getSecteur() %></option>
                                     <% } %>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <div class="input-group">
-                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="salaireMin" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Salaire min</label>
                             </div>
                         </div> 
                         <div class="col-md-3 mb-3">
                             <div class="input-group">
-                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="salaireMax" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Salaire max</label>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <div class="input-group">
-                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="distance" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Distance</label>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <div class="input-group">
-                                <input type="text" name="text" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                <input type="text" name="anneeExperience" autocomplete="off" class="input" style=" border-radius: 15px;">
                                 <label class="user-label">Année</label>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                     <% 
                                         for(Competence Competence : competences) {
                                     %>
-                                    <option value="<%= Competence.getId() %>"><%= Competence.getCompetence() %></option>
+                                    <option value=<%= Competence.getId() %>><%= Competence.getCompetence() %></option>
                                     <% } %>
                                 </select>
                             </div>
