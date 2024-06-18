@@ -14,4 +14,7 @@ public class ResultAcceuilService {
     public List<ResultAcceuil> getAllResults(Long idUtilisateur) {
         return resultAcceuilRepository.findByIdUtilisateur(idUtilisateur);
     }
+    public ResultAcceuil getResult(Long idPoste) {
+        return resultAcceuilRepository.getResultAcceuil(idPoste);
+    }
 }

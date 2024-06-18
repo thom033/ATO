@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION check_age(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+CREATE OR REPLACE FUNCTION check_age(user_id BIGINT, poste_id BIGINT) RETURNS BOOLEAN AS $$
 DECLARE
     u_age INT;
     age_min INT;
@@ -39,7 +39,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION check_experience(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+CREATE OR REPLACE FUNCTION check_experience(user_id BIGINT, poste_id BIGINT) RETURNS BOOLEAN AS $$
 DECLARE
     u_exp INT;
     exp_min INT;
@@ -78,7 +78,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION check_formation(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+CREATE OR REPLACE FUNCTION check_formation(user_id BIGINT, poste_id BIGINT) RETURNS BOOLEAN AS $$
 DECLARE
     u_form INT;
     form_min INT;
@@ -117,7 +117,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION check_diplome(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+CREATE OR REPLACE FUNCTION check_diplome(user_id BIGINT, poste_id BIGINT) RETURNS BOOLEAN AS $$
 DECLARE
     user_diplome INT;
     poste_diplome INT;
@@ -149,7 +149,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION calculate_distance(user_id INT, poste_id INT) RETURNS DOUBLE PRECISION AS $$
+CREATE OR REPLACE FUNCTION calculate_distance(user_id BIGINT, poste_id BIGINT) RETURNS DOUBLE PRECISION AS $$
 DECLARE
     u_latitude DOUBLE PRECISION;
     u_longitude DOUBLE PRECISION;
@@ -198,7 +198,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION point_distance(user_id INT, poste_id INT) RETURNS DOUBLE PRECISION AS $$
+CREATE OR REPLACE FUNCTION point_distance(user_id BIGINT, poste_id BIGINT) RETURNS DOUBLE PRECISION AS $$
 DECLARE
     u_latitude DOUBLE PRECISION;
     u_longitude DOUBLE PRECISION;
@@ -303,7 +303,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION get_positif(user_id INT, poste_id INT) RETURNS TEXT[] AS $$
+CREATE OR REPLACE FUNCTION get_positif(user_id BIGINT, poste_id BIGINT) RETURNS TEXT[] AS $$
 DECLARE
     status TEXT[];
     distance DOUBLE PRECISION;
@@ -349,7 +349,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION get_negatif(user_id INT, poste_id INT) RETURNS TEXT[] AS $$
+CREATE OR REPLACE FUNCTION get_negatif(user_id BIGINT, poste_id BIGINT) RETURNS TEXT[] AS $$
 DECLARE
     status TEXT[];
     distance DOUBLE PRECISION;

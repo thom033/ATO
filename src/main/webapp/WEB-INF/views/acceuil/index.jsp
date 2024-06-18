@@ -25,13 +25,14 @@
     <div class="row">
         <%
             for (int i = 0; i < p.size(); i++) {
+                Long id = (long) p.get(i).getIdPoste();
                 %>
                 <div class="col-md-3 col-sm-6 mb-4 py-2" >
                     <div class="card shadow-sm h-100 nicolas-card-1" >
                 <div class="card-body nicolas-card">
                     <div class="d-flex justify-content-between align-items-center top-card-nicolas">
                         <h4 class="card-title box_name mb-0" ><%= p.get(i).getEntrepriseNom()%></h4>
-                        <h4 class="percent mb-0 nicolas-compatibilite"><a href="#" ><%= p.get(i).getPtsTotal() %>%</a></h4>
+                        <h4 class="percent mb-0 nicolas-compatibilite"><a href="/compatibility-poste/<%= id %>" ><%= p.get(i).getPtsTotal() %>%</a></h4>
                     </div>
                     <div class="img_box flex-grow-1">
                         <img src="/public/img/products/4.jpg" class="img-fluid" alt="">
@@ -39,7 +40,6 @@
                     <h3 class="mt-3 nicolas-nom-travail"><%= p.get(i).getPosteTitre() %></h3>
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="mb-2 nicolas-sous-titre"><%= p.get(i).getPosteSalaire()%> Ar</p>
-                        <% Long id = (long) p.get(i).getIdPoste();%>
                         <button class="btn-nicolas"><a href="/poste/details?idPoste=<%= id %>" >Visiter</a></button>
                     </div>
                 </div>

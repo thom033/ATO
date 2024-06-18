@@ -17,16 +17,23 @@ public class PosteDetailsService {
         return posteDetailsRepository.getPosteDetails(idSecteur);
     }
 
-    public Integer getUserSecteur(Integer idUtilisateur) {
+    /*public Integer getUserSecteur(Integer idUtilisateur) {
         return posteDetailsRepository.getUserSecteur(idUtilisateur);
-    }
+    }*/
 
     public PosteDetails getAllDetailsPoste(Long idPoste) {
-        return posteDetailsRepository.getPosteDetails(idPoste);
+        return posteDetailsRepository.getPosteDetail(idPoste);
+    }
+
+    public List<String> getPositif(Long idUser,Long idPoste){
+        return posteDetailsRepository.getPositif(idUser,idPoste);
+    }
+
+    public List<String> getNegatif(Long idUser,Long idPoste){
+        return posteDetailsRepository.getNegatif(idUser,idPoste);
     }
 
     // Méthode pour calculer la compatibilité entre un poste et un utilisateur
-
     public List<PosteDetails> searchPostes(String title, Long diplome, Integer secteur, String competence, Integer ageMin, Integer ageMax, Double salaireMin, Double salaireMax, Integer distance, Integer anneeExperience) {
         Specification<PosteDetails> spec = Specification.where(PosteDetailsSpecifications.withTitre(title))
                 .and(PosteDetailsSpecifications.withIdDiplome(diplome))

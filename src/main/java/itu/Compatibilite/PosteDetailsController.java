@@ -7,25 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import itu.contact.Contact;
 import itu.contact.EntrepriseContact;
 import itu.contact.EntrepriseContactRepository;
-import itu.contact.UtilisateurContact;
-import itu.contact.UtilisateurContactRepository;
-import itu.entreprise.Entreprise;
 import itu.utilisateur.Utilisateur;
-import itu.utilisateur.UtilisateurRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class PosteDetailsController {
-    @Autowired
-    private HttpSession httpSession;
-
     @Autowired
     PosteDetailsService posteDetailsService;
 
@@ -35,14 +28,29 @@ public class PosteDetailsController {
     @Autowired
     ResultAcceuilRepository resultAcceuilRepository;
 
-    @GetMapping("/postedetails")
+    @Autowired
+    ResultAcceuilService resultAcceuilService;
+
+    /*@GetMapping("/postedetails")
     public String lister(Model model) {
         List<PosteDetails> listPost = posteDetailsService.getAllinSecteur();
         model.addAttribute("listPost", listPost);
         model.addAttribute("isEmpty", listPost.isEmpty());
         return "test";
-    }
+    }*/
+    @GetMapping("/compatibility-poste/{idPoste}")
+    public ModelAndView detailPoste(@PathVariable Long idPoste,HttpSession httpSession){
+        ModelAndView mv = new ModelAndView("/template");
+        String pages = "acceuil/compatibilite";
+        Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
+        mv.addObject("data", resultAcceuilService.getResult(idPoste));
+        mv.addObject("positif", posteDetailsService.getPositif(utilisateur.getId(), idPoste));
+        mv.addObject("negatif", posteDetailsService.getNegatif(utilisateur.getId(), idPoste));
 
+        mv.addObject("page", pages);
+
+        return mv;
+    }
     @GetMapping("/postetest")
     public String test(Model model) {
         model.addAttribute("listPost", "CC TEST TEST");
@@ -50,7 +58,7 @@ public class PosteDetailsController {
     }
     
     @GetMapping("/poste/details")
-    public  ModelAndView rechargeSoldeUtilisateur(@RequestParam(name = "idPoste", required = false, defaultValue = "0") Long IdPoste) {
+    public  ModelAndView rechargeSoldeUtilisateur(@RequestParam(name = "idPoste", required = false, defaultValue = "0") Long IdPoste , HttpSession httpSession) {
         ModelAndView  mv = new  ModelAndView("template");
         Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
 
