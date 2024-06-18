@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import itu.Compatibilite.PosteDetails;
-import itu.Compatibilite.PosteDetailsService;
-import itu.Compatibilite.ResultAcceuil;
-import itu.Compatibilite.ResultAcceuilRepository;
+import itu.compatibilite.PosteDetails;
+import itu.compatibilite.PosteDetailsService;
+import itu.compatibilite.ResultAcceuil;
+import itu.compatibilite.ResultAcceuilRepository;
 import itu.competence.Competence;
 import itu.competence.CompetenceRepository;
 import itu.diplome.Diplome;

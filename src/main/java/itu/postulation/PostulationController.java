@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import itu.Compatibilite.PosteDetails;
-import itu.Compatibilite.PosteDetailsRepository;
-import itu.Compatibilite.PosteDetailsService;
-import itu.Compatibilite.ResultAcceuilRepository;
+import itu.compatibilite.PosteDetails;
+import itu.compatibilite.PosteDetailsRepository;
+import itu.compatibilite.PosteDetailsService;
+import itu.compatibilite.ResultAcceuilRepository;
 import itu.entretien.Entretien;
 import itu.entretien.EntretienRepository;
 import itu.notification.Notification;

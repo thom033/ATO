@@ -1,4 +1,4 @@
-package itu.Compatibilite;
+package itu.compatibilite;
 
 import org.springframework.data.jpa.domain.Specification;
 

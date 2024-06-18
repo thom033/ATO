@@ -2,7 +2,7 @@ package itu.postulation;
 
 import java.time.LocalDateTime;
 
-import itu.Compatibilite.PosteDetails;
+import itu.compatibilite.PosteDetails;
 import itu.utilisateur.Utilisateur;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
