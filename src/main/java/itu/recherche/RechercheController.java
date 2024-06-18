@@ -111,54 +111,56 @@ public class RechercheController {
         String salaireMax = params.get("salaireMax");
         String distance = params.get("distance");
         String anneeExperience = params.get("anneeExperience");
-
+    
         StringBuilder sql = new StringBuilder("SELECT * FROM postes_details WHERE 1=1");
         List<Object> paramsList = new ArrayList<>();
-
+    
         if (title != null && !title.isEmpty()) {
             sql.append(" AND poste_titre LIKE ?");
             paramsList.add("%" + title + "%");
         }
         if (diplome != null && !diplome.isEmpty()) {
             sql.append(" AND id_diplome = ?");
-            paramsList.add(diplome);
+            paramsList.add(Long.parseLong(diplome));
         }
         if (secteur != null && !secteur.isEmpty()) {
             sql.append(" AND id_secteur = ?");
-            paramsList.add(secteur);
+            paramsList.add(Long.parseLong(secteur));
         }
         if (competence != null && !competence.isEmpty()) {
             sql.append(" AND competence_requise LIKE ?");
             paramsList.add("%" + competence + "%");
         }
         if (ageMin != null && !ageMin.isEmpty()) {
-            sql.append(" AND age_requise >= ?");
-            paramsList.add(ageMin);
+            sql.append(" AND (age_requise IS NULL OR age_requise >= ?)");
+            paramsList.add(Integer.parseInt(ageMin));
         }
         if (ageMax != null && !ageMax.isEmpty()) {
-            sql.append(" AND age_requise <= ?");
-            paramsList.add(ageMax);
+            sql.append(" AND (age_requise IS NULL OR age_requise <= ?)");
+            paramsList.add(Integer.parseInt(ageMax));
         }
         if (salaireMin != null && !salaireMin.isEmpty()) {
             sql.append(" AND poste_salaire >= ?");
-            paramsList.add(salaireMin);
+            paramsList.add(Double.parseDouble(salaireMin));
         }
         if (salaireMax != null && !salaireMax.isEmpty()) {
             sql.append(" AND poste_salaire <= ?");
-            paramsList.add(salaireMax);
+            paramsList.add(Double.parseDouble(salaireMax));
         }
         if (distance != null && !distance.isEmpty()) {
             sql.append(" AND distance <= ?");
-            paramsList.add(distance);
+            paramsList.add(Double.parseDouble(distance));
         }
         if (anneeExperience != null && !anneeExperience.isEmpty()) {
             sql.append(" AND nbr_annee_experience >= ?");
-            paramsList.add(anneeExperience);
+            paramsList.add(Integer.parseInt(anneeExperience));
         }
-
+    
         List<Map<String, Object>> results = jdbcTemplate.queryForList(sql.toString(), paramsList.toArray());
         model.addAttribute("results", results);
-
+    
         return "recherche/resultat";
     }
+    
+    
 }
