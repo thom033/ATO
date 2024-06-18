@@ -14,7 +14,7 @@ public class NotificationJSONController {
     @Autowired
     NotificationRepository notificationRepository;
 
-    @GetMapping("/notification/liste")
+    @GetMapping(value = "/notification/liste", produces = "application/json; charset=UTF-8")
     public List<Notification> listeNotification(HttpSession session) {
         return notificationRepository.findAll();
     }

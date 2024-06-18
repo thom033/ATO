@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/public/css/travail.css">
 </head>
 
-<body>
+<body ng-app="frontApp" ng-controller="postulationController">
     <div class="container-principale">
         <div class="row">
             <div class="col-md-3 fixed-top" style="margin-left: 20px;top: 30px;">
@@ -53,7 +53,7 @@
                 </div>
                 <p><%= postedetails.getPosteDescription() %></p>
                 <div class="button-info">
-                    <div class="my-2" ><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" type="submit">Postuler</button></div>
+                    <div class="my-2" ><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" ng-click="postuler(<%= postedetails.getIdPoste() %>)" >Postuler</button></div>
                 </div>
             </div>
             <div class="col-md-1 col-lg-1" style="position:relative; margin-left: auto;"></div>
@@ -215,8 +215,10 @@
             </div>
         </div>
     </div>
-    <script src="/public/bootstrap/js/pikaday.min.js"></script>
-    <script src="/public/bootstrap/js/theme.js"></script>
+    
 </body>
-
+<script src="/public/bootstrap/js/pikaday.min.js"></script>
+<script src="/public/bootstrap/js/theme.js"></script>
+<script src="/public/js/angular.min.js"></script>
+<script src="/public/js/client/frontApp.js"></script>
 </html>
