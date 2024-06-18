@@ -32,6 +32,9 @@ public class PosteDetailsController {
     @Autowired
     EntrepriseContactRepository entrepriseContactRepository;
 
+    @Autowired
+    ResultAcceuilRepository resultAcceuilRepository;
+
     @GetMapping("/postedetails")
     public String lister(Model model) {
         List<PosteDetails> listPost = posteDetailsService.getAllinSecteur();
@@ -47,9 +50,9 @@ public class PosteDetailsController {
     }
     
     @GetMapping("/poste/details")
-    public  ModelAndView rechargeSoldeUtilisateur(@RequestParam(name = "idPoste", required = false, defaultValue = "0") Long IdPoste,
-    @RequestParam(name = "pourcentage", required = false, defaultValue = "0") double pourcentage) {
+    public  ModelAndView rechargeSoldeUtilisateur(@RequestParam(name = "idPoste", required = false, defaultValue = "0") Long IdPoste) {
         ModelAndView  mv = new  ModelAndView("template");
+        Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
 
         PosteDetails pd = posteDetailsService.getAllDetailsPoste(IdPoste);
         List<Contact> contacts = new ArrayList<>();
@@ -58,6 +61,8 @@ public class PosteDetailsController {
         for (EntrepriseContact uc : entreprisecontacts) {
             contacts.add(uc.getContact());
         }
+
+        double pourcentage = resultAcceuilRepository.getResultAcceuilsByIdPosteUser(user.getId(),IdPoste);
 
         mv.addObject("details", pd);
         mv.addObject("contacts", contacts);

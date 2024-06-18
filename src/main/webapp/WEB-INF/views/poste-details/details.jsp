@@ -21,7 +21,7 @@
 <body ng-app="frontApp" ng-controller="postulationController">
     <div class="container-principale">
         <div class="row">
-            <div class="col-md-3 fixed-top" style="margin-left: 20px;top: 50px;">
+            <div class="col-md-3 fixed-top" style="margin-left: 20px;top: 30px;">
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
