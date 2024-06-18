@@ -17,7 +17,7 @@ ContactApp.controller('tableController', function($scope, $http) {
         console.log("Sending data:", JSON.stringify($scope.utilisateur)); // Afficher le JSON dans la console
         $http.post('/utilisateur/contact/update', $scope.utilisateur)
         .then(function(response) {
-            console.log("Updated");
+            alert("Modification effectué")
         }, function(error) {
             $scope.error = error.error || "Une erreur est survenue.";
         });

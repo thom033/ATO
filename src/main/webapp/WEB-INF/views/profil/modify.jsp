@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="col-md-7">
-            <form action="#" method="post">
+            <form method="post">
                 <div class="form">
                     <div class="container"><h5>Paramètres</h5><hr></div>
                     <div id="form-body" class="form-body container-fluid">
@@ -87,7 +87,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-5">
                                     <div class="input-group">
-                                        <input required="" type="date" autocomplete="off" class="input" style=" border-radius: 15px;">
+                                        <input required="" type="date" value="{{utilisateur.dateNaissance.split('T')[0]}}" autocomplete="off" class="input" style=" border-radius: 15px;">
                                         <label class="user-label">Date de naissance</label>
                                     </div>
                                 </div>
@@ -149,8 +149,12 @@
                                 <h6>Proffessionalité</h6><hr>
                             </div>
                             <div class="row mb-3">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <a href="/utilisateur/parametre/diplome" class="btn btn-primary">Diplome</a>
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-3">
+                                    <a href="/utilisateur/parametre/competence" class="btn btn-primary">Competence</a>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -196,11 +200,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-9"></div>
-                                <div class="col-md-3"><button class="btn btn-primary">Valider</button></div>
-                            </div>
                         </div>
+                    </div>
+                    <div class="container"><hr></div>
+                    <div class="row mb-3">
+                        <div class="col-md-9"></div>
+                        <div class="col-md-3"><button ng-click="updateForm()" class="btn btn-primary">Valider</button></div>
                     </div>
                 </div>
             </form>

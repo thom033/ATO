@@ -43,10 +43,12 @@ public class UtilisateurJSONController {
     }
 
     @PostMapping("/utilisateur/update")
-    public String update(@RequestBody Utilisateur utilisateur,HttpSession session) {
+    public HashMap<String,String> update(@RequestBody Utilisateur utilisateur,HttpSession session) {
         this.utilisateurRepository.save(utilisateur);
         session.setAttribute("utilisateur", utilisateur);
-        return "updated";
+        HashMap<String,String> valiny=new HashMap<String,String>();
+        valiny.put("message","Updated");
+        return valiny;
     }
 
     @PostMapping("/utilisateur/contact/update")

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import itu.competence.Competence;
 import itu.contact.Contact;
 import itu.diplome.Diplome;
 import itu.notification.*;
@@ -47,6 +48,22 @@ public class Utilisateur {
         inverseJoinColumns = @JoinColumn(name = "id_contact")
     )
     private Set<Contact> contacts;
+
+    @ManyToMany
+    @JoinTable(
+        name = "competence_utilisateur",
+        joinColumns = @JoinColumn(name = "id_utilisateur"),
+        inverseJoinColumns = @JoinColumn(name = "id_competence")
+    )
+    private Set<Competence> competences;
+
+    public Set<Competence> getCompetences() {
+        return competences;
+    }
+
+    public void setCompetences(Set<Competence> competences) {
+        this.competences = competences;
+    }
 
     public Set<Contact> getContacts() {
         return contacts;

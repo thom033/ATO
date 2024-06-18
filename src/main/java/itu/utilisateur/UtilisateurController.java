@@ -246,6 +246,13 @@ public class UtilisateurController {
         return modelAndView;
     }
 
+    @GetMapping("/utilisateur/parametre/competence")
+    public ModelAndView parametreCompetence() {
+        ModelAndView modelAndView=new ModelAndView("template");
+        modelAndView.addObject("page","profil/modifyCompetence");
+        return modelAndView;
+    }
+
     @GetMapping("/utilisateur/parametre/contact")
     public ModelAndView parametreContact() {
         ModelAndView modelAndView=new ModelAndView("template");

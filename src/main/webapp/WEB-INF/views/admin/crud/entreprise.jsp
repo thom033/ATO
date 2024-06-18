@@ -158,6 +158,7 @@
               <th scope="col">Entreprise</th>
               <th scope="col">Date de creation</th>
               <th scope="col">Site Web</th>
+              <th scope="col">Contact</th>
               <th scope="col">Voir plus/Modifier</th>
               <th scope="col">Supprimer</th>
             </tr>
@@ -168,6 +169,7 @@
               <td>{{entreprise.entreprise}}</td>
               <td>{{entreprise.dateCreation.split('T')[0]}}</td>
               <td>{{entreprise.siteWeb}}</td>
+              <td><a class="btn btn-primary" href="/entreprise/contact?idEntreprise={{entreprise.id}}">Contact</a></td>              
               <td><button class="btn btn-warning" ng-click="modify(entreprise.id)">Modifier</button></td>
               <td><button class="btn btn-danger" ng-click="delete(entreprise.id)">Supprimer</button></td>
             </tr>

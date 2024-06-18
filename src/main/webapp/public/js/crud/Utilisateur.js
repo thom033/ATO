@@ -9,13 +9,12 @@ UtilisateurApp.controller('parametreController', function($scope, $http) {
     });
 
     $scope.updateForm = function() {
-        console.log("Sending data:", JSON.stringify(utilisateur)); // Afficher le JSON dans la console
-        $http.post('/utilisateur/update/', $scope.utilisateur)
+        console.log("Sending data:", JSON.stringify($scope.utilisateur)); // Afficher le JSON dans la console
+        $http.post('/utilisateur/update', $scope.utilisateur)
         .then(function(response) {
-            $scope.utilisateurs = response.data;
-            $scope.initialize();
-            document.getElementById("formulaire").setAttribute("ng-submit", "submitForm()");
+            alert("Modification effectué");
         }, function(error) {
+            console.log(error);
             $scope.error = error.error || "Une erreur est survenue.";
         });
     };

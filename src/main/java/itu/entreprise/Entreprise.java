@@ -1,12 +1,17 @@
 package itu.entreprise;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
+import itu.contact.Contact;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,7 +33,21 @@ public class Entreprise {
     double latitude;
     double longitude;
     String image;
+
+    @ManyToMany
+    @JoinTable(
+        name = "entreprise_contact",
+        joinColumns = @JoinColumn(name = "id_entreprise"),
+        inverseJoinColumns = @JoinColumn(name = "id_contact")
+    )
+    private Set<Contact> contacts;
     
+    public Set<Contact> getContacts() {
+        return contacts;
+    }
+    public void setContacts(Set<Contact> contacts) {
+        this.contacts = contacts;
+    }
     public Entreprise(Long id, String entreprise, String mail, int point, String type, Timestamp dateCreation,
             String adresse, String siteWeb, double latitude, double longitude, String image) {
         this.id = id;
