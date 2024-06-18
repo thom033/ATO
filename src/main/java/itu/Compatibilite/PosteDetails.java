@@ -8,62 +8,66 @@ public class PosteDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_poste")
-    private Long idPoste;
+    Long idPoste;
     @Column(name = "poste_description")
-    private String posteDescription;
+    String posteDescription;
     @Column(name = "poste_date_insertion")
-    private String posteDateInsertion;
+    String posteDateInsertion;
     @Column(name = "poste_salaire")
-    private double posteSalaire;
+    double posteSalaire;
     @Column(name = "poste_titre")
-    private String posteTitre;
+    String posteTitre;
     @Column(name = "poste_diplome")
-    private Long posteDiplome;
+    Long posteDiplome;
     @Column(name = "poste_entreprise")
-    private Long posteEntreprise;
+    Long posteEntreprise;
     @Column(name = "nbr_annee_experience")
-    private int nbrAnneeExperience;
+    int nbrAnneeExperience;
     @Column(name = "nbr_annee_formation")
-    private int nbrAnneeFormation;
+    int nbrAnneeFormation;
     @Column(name = "poste_age_min")
-    private int posteAgeMin;
+    int posteAgeMin;
     @Column(name = "poste_age_max")
-    private int posteAgeMax;
+    int posteAgeMax;
+    @Column(name = "poste_image")
+    String posteImage;
+    @Column(name = "poste_cout")
+    int posteCout;
     @Column(name = "id_diplome")
-    private Long idDiplome;
+    Long idDiplome;
     @Column(name = "diplome_nom")
-    private String diplomeNom;
+    String diplomeNom;
     @Column(name = "diplome_niveau")
-    private String diplomeNiveau;
+    String diplomeNiveau;
     @Column(name = "entreprise_nom")
-    private String entrepriseNom;
+    String entrepriseNom;
     @Column(name = "entreprise_point")
-    private int entreprisePoint;
+    int entreprisePoint;
     @Column(name = "entreprise_type")
-    private String entrepriseType;
+    String entrepriseType;
     @Column(name = "entreprise_date_creation")
-    private String entrepriseDateCreation;
+    String entrepriseDateCreation;
     @Column(name = "entreprise_adresse")
-    private String entrepriseAdresse;
+    String entrepriseAdresse;
     @Column(name = "entreprise_site_web")
-    private String entrepriseSiteWeb;
+    String entrepriseSiteWeb;
     @Column(name = "entreprise_mail")
-    private String entrepriseMail;
+    String entrepriseMail;
     @Column(name = "entreprise_latitude")
-    private double entrepriseLatitude;
+    double entrepriseLatitude;
     @Column(name = "entreprise_longitude")
-    private double entrepriseLongitude;
+    double entrepriseLongitude;
     @Column(name = "entreprise_image")
-    private String entrepriseImage;
+    String entrepriseImage;
     @Column(name = "id_secteur")
-    private int idSecteur;
+    int idSecteur;
     @Column(name = "secteur_diplome_id_diplome")
-    private int secteurDiplomeIdDiplome;
+    int secteurDiplomeIdDiplome; 
 
     // ---- CONSTRUCTEURS ----
     public PosteDetails() {}
 
-    public PosteDetails(Long idPoste, String posteDescription, String posteDateInsertion, double posteSalaire, String posteTitre, Long posteDiplome, Long posteEntreprise, int nbrAnneeExperience, int nbrAnneeFormation, int posteAgeMin, int posteAgeMax, Long idDiplome, String diplomeNom, String diplomeNiveau, String entrepriseNom, int entreprisePoint, String entrepriseType, String entrepriseDateCreation, String entrepriseAdresse, String entrepriseSiteWeb, String entrepriseMail, double entrepriseLatitude, double entrepriseLongitude, String entrepriseImage, int idSecteur, int secteurDiplomeIdDiplome) {
+    public PosteDetails(Long idPoste, String posteDescription, String posteDateInsertion, double posteSalaire, String posteTitre, Long posteDiplome, Long posteEntreprise, int nbrAnneeExperience, int nbrAnneeFormation, int posteAgeMin, int posteAgeMax,String posteImage,int posteCout, Long idDiplome, String diplomeNom, String diplomeNiveau, String entrepriseNom, int entreprisePoint, String entrepriseType, String entrepriseDateCreation, String entrepriseAdresse, String entrepriseSiteWeb, String entrepriseMail, double entrepriseLatitude, double entrepriseLongitude, String entrepriseImage, int idSecteur, int secteurDiplomeIdDiplome) {
         this.idPoste = idPoste;
         this.posteDescription = posteDescription;
         this.posteDateInsertion = posteDateInsertion;
@@ -75,6 +79,8 @@ public class PosteDetails {
         this.nbrAnneeFormation = nbrAnneeFormation;
         this.posteAgeMin = posteAgeMin;
         this.posteAgeMax = posteAgeMax;
+        this.posteImage = posteImage;
+        this.posteCout = posteCout;
         this.idDiplome = idDiplome;
         this.diplomeNom = diplomeNom;
         this.diplomeNiveau = diplomeNiveau;
@@ -125,6 +131,12 @@ public class PosteDetails {
 
     public int getPosteAgeMax() { return posteAgeMax; }
     public void setPosteAgeMax(int posteAgeMax) { this.posteAgeMax = posteAgeMax; }
+
+    public int getPosteCout() { return posteCout; }
+    public void setPosteCout(int posteCout) { this.posteCout = posteCout; }
+    
+    public String getPosteImage() { return posteImage; }
+    public void setPosteImage(String posteImage) { this.posteImage = posteImage; }
 
     public Long getIdDiplome() { return idDiplome; }
     public void setIdDiplome(Long idDiplome) { this.idDiplome = idDiplome; }

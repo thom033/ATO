@@ -54,19 +54,24 @@ VALUES
 ('2010-09-01', 'Master en Gestion', '2012-06-30', 2),
 ('2000-09-01', 'Baccalauréat en Économie', '2003-06-30', 3);
 
--- Données pour la table Question
-INSERT INTO Question (question)
-VALUES
-('Quelles sont vos compétences principales ?'),
-('Quel est votre niveau d expérience ?'),
-('Quelle est votre formation académique ?');
-
 -- Données pour la table Reponse
-INSERT INTO Reponse (reponse, id_question)
+INSERT INTO Reponse (reponse)
 VALUES
-('Programmation, Gestion de projet', 1),
-('5 ans en tant que Développeur', 2),
-('Master en Informatique', 3);
+('Programmation, Gestion de projet'),
+('5 ans en tant que Développeur'),
+('Master en Informatique');
+
+
+-- Données pour la table Question
+INSERT INTO Question (question, id_reponse)
+VALUES
+('Quelles sont vos compétences principales ?',1),
+('Quel est votre niveau d expérience ?',2),
+('Quelle est votre formation académique ?',3);
+
+INSERT INTO historique_question(id_question, id_utilisateur)
+VALUES
+(1,1);
 
 -- Données pour la table type_notification
 -- INSERT INTO type_notification (poste, point)
@@ -74,13 +79,6 @@ VALUES
 -- (null, TRUE),
 -- (2, FALSE),
 -- (null, TRUE);
-
--- Données pour la table Contact
-INSERT INTO Contact (num_telephone, id_entreprise, id_utilisateur)
-VALUES
-('0123456789', 1, 1),
-('0987654321', 2, 2),
-('0555123456', 3, 3);
 
 -- Données pour la table administrateur
 INSERT INTO administrateur (mail, mot_de_passe)
@@ -152,6 +150,12 @@ INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (1, 2);
 INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 3);
 INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 4);
 INSERT INTO utilisateur_contact (id_utilisateur, id_contact) VALUES (2, 5);
+
+-- Insert test data into entreprise_contact table
+INSERT INTO entreprise_contact (id_entreprise, id_contact) VALUES (1, 1);
+INSERT INTO entreprise_contact (id_entreprise, id_contact) VALUES (1, 2);
+INSERT INTO entreprise_contact (id_entreprise, id_contact) VALUES (2, 3);
+INSERT INTO entreprise_contact (id_entreprise, id_contact) VALUES (3, 4);
 
 INSERT INTO entretien(date_envoi, date_entretien, id_utilisateur, id_poste) VALUES
 ('2024-06-10 10:00:00', '2024-06-15 14:30:00', 1, 3),

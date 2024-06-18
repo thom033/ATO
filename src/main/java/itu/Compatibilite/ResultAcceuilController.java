@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import itu.utilisateur.Utilisateur;
 import jakarta.servlet.http.HttpSession;
 
 import java.util.List;
@@ -17,13 +18,14 @@ public class ResultAcceuilController {
     ResultAcceuilService resultAcceuilService;
 
     @Autowired
-    HttpSession httpSession;
+    ResultAcceuilRepository resultAcceuilRepository;
 
     @GetMapping("/acceuil")
-    public ModelAndView calculateCompatibility() {
+    public ModelAndView calculateCompatibility(HttpSession session) {
         ModelAndView mv = new ModelAndView("/template");
         String pages = "acceuil/index";
-        mv.addObject("data", resultAcceuilService.getAllResults());
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        mv.addObject("data", resultAcceuilService.getAllResults(utilisateur.getId()));
 
         mv.addObject("page", pages);
 
