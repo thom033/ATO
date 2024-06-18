@@ -31,7 +31,7 @@ public class AchatController {
         if (error != null) {
             mv.addObject("error", error);
         }
-        mv.addObject("page", "achat/achat.jsp");
+        mv.addObject("page", "achat/achat");
 
         return mv;
     }

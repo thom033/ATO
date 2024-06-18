@@ -233,7 +233,7 @@ button:focus {
 
 .front {
     /* background: linear-gradient(-45deg, #FFCF00 0%, #FC4F4F 100%) no-repeat 0 0/200%; */
-    background-image: url('../img/login.png');
+    background-image: url('../img/login2.jpg');
     background-size: cover;
     z-index: 3;
 }

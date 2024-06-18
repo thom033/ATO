@@ -19,5 +19,4 @@ public interface ArgentRepository extends JpaRepository<Argent, Integer> {
 
     @Query("Select a from Argent a WHERE a.idUtilisateur = :utilisateurId")
     Argent getArgentUser(Long utilisateurId);
-
 }

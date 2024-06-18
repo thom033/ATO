@@ -1,5 +1,6 @@
 package itu.notification;
 
+import itu.entretien.Entretien;
 import itu.poste.Poste;
 import itu.utilisateur.Utilisateur;
 import jakarta.persistence.*;
@@ -34,6 +35,10 @@ public class Notification {
     @JoinColumn(name = "id_poste")
     Poste poste;
 
+    @ManyToOne
+    @JoinColumn(name = "id_entretien")
+    Entretien entretien;
+
     Boolean point;
 
     // ---- ---- CONSTRUCTEURS ------- ------
@@ -41,7 +46,7 @@ public class Notification {
     }
 
     public Notification(Long idNotification, String message, LocalDateTime dateNotification, LocalDateTime dateLu,
-            Utilisateur utilisateur, Poste poste, Boolean point) {
+            Utilisateur utilisateur, Poste poste, Boolean point, Entretien entretien) {
         this.id = idNotification;
         this.message = message;
         this.dateNotification = dateNotification;
@@ -49,6 +54,7 @@ public class Notification {
         this.utilisateur = utilisateur;
         this.poste = poste;
         this.point = point;
+        this.entretien = entretien;
     }
     // ------- ---------- --------- ------
 
@@ -80,6 +86,15 @@ public class Notification {
     public void setPoste(Poste poste) {
         this.poste = poste;
     }
+
+    public Entretien getEntretien() {
+        return entretien;
+    }
+
+    public void setEntretien(Entretien entretien) {
+        this.entretien = entretien;
+    }
+
     /* ----- ----- ------- --------- */
 
     /* ----- ----- GETTERS --------- */
@@ -170,4 +185,5 @@ public class Notification {
         n.setDateNotification(LocalDateTime.now());
         System.out.println(n.tempsEcoule());
     }
+
 }
