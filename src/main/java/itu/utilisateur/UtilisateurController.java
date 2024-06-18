@@ -179,4 +179,26 @@ public class UtilisateurController {
 
         return model;
     }
+
+    @GetMapping("/utilisateur/parametre")
+    public ModelAndView parametre() {
+        ModelAndView modelAndView=new ModelAndView("template");
+        modelAndView.addObject("page","profil/modify");
+        return modelAndView;
+    }
+
+    @GetMapping("/utilisateur/parametre/diplome")
+    public ModelAndView parametreDiplome() {
+        ModelAndView modelAndView=new ModelAndView("template");
+        modelAndView.addObject("page","profil/modifyDiplome");
+        return modelAndView;
+    }
+
+    @GetMapping("/utilisateur/parametre/contact")
+    public ModelAndView parametreContact() {
+        ModelAndView modelAndView=new ModelAndView("template");
+        modelAndView.addObject("page","profil/modifyContact");
+        return modelAndView;
+    }
+    
 }

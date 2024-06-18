@@ -40,6 +40,14 @@ public class DiplomeUtilisateur {
     @EmbeddedId
     private DiplomeUtilisateurId id = new DiplomeUtilisateurId();
 
+    public DiplomeUtilisateurId getId() {
+        return id;
+    }
+
+    public void setId(DiplomeUtilisateurId id) {
+        this.id = id;
+    }
+
     @ManyToOne
     @MapsId("utilisateur")
     @JoinColumn(name = "id_utilisateur", nullable = false)

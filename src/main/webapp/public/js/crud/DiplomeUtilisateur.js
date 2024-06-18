@@ -2,12 +2,22 @@ let DiplomeUtilisateurApp = angular.module("DiplomeUtilisateurApp",[]);
 
 DiplomeUtilisateurApp.controller('tableController', function($scope, $http) {
 
+    $scope.utilisateur={};
+    $scope.diplomes=[];
+    $scope.utilisateur.diplomes=[];
+    $scope.recherche="";
     $http.get("/diplomeUtilisateur/liste")
     .then(function(response) {
-        $scope.diplomeUtilisateurs = response.data.diplomeUtilisateurs;
-        $scope.diplomeExists = response.data.diplomeExists;
-        console.log($scope.diplomeUtilisateurs);
-        console.log($scope);
+        $scope.diplomes = response.data;
+        $scope.retirerDoublon();
+    });
+
+    $http.get("/utilisateur/connected")
+    .then(function(response) {
+        $scope.utilisateur = response.data;
+        $scope.retirerDoublon();
+    },function(error){
+        console.log("Erreur sur l'utilisateur");
     });
 
     $scope.initialize=function(){
@@ -15,59 +25,57 @@ DiplomeUtilisateurApp.controller('tableController', function($scope, $http) {
         $scope.diplomeUtilisateur.diplome.niveau=0;
     }
 
-    $scope.modify = function(idDiplome,idUtilisateur){
-        $http.get("/diplomeUtilisateur/information?idDiplome="+idDiplome+"&idUtilisateur="+idUtilisateur)
-        .then(function(response) {
-            $scope.diplomeUtilisateur = response.data;
-            const submitButton=document.getElementById("buttonSubmit");
-            submitButton.innerText="Modifier";
-            console.log($scope.diplomeUtilisateur);
-        });
-    }
-
-    $scope.delete = function(idDiplome,idUtilisateur){
-        $http.get("/diplomeUtilisateur/delete?idDiplome="+idDiplome+"&idUtilisateur="+idUtilisateur)
-        .then(function(response) {
-            $scope.diplomeUtilisateurs = response.data;
-        });
-    }
-
     $scope.submitForm = function() {
-        const submitButton=document.getElementById("buttonSubmit");
-        if(submitButton.innerText=="Modifier"){
-            $scope.updateForm();
-        }
-        else{
-            $scope.insertForm();
-        }
+        $scope.updateForm();
     };
-
-    $scope.insertForm=function(){
-        console.log("Insert");
-        console.log("Sending data:", JSON.stringify($scope.diplomeUtilisateur)); // Afficher le JSON dans la console
-        $http.post('/diplomeUtilisateur/insert', $scope.diplomeUtilisateur)
-        .then(function(response) {
-            $scope.diplomeUtilisateurs = response.data;
-            $scope.initialize();
-            document.getElementById("formulaire").setAttribute("ng-submit", "submitForm()");
-        }, function(error) {
-            $scope.error = error.error || "Une erreur est survenue.";
-        });
-    }
 
     $scope.updateForm = function() {
-        console.log("JSON");
-        // console.log($scope.diplomeUtilsateur.diplome);
-        $scope.diplomeUtilisateur.id.diplome=$scope.diplomeUtilisateur.diplome.id;
-        $scope.diplomeUtilisateur.id.utilisateur=$scope.diplomeUtilisateur.utilisateur.id;
-        console.log("Sending data:", JSON.stringify($scope.diplomeUtilisateur)); // Afficher le JSON dans la console
-        $http.post('/diplomeUtilisateur/update', $scope.diplomeUtilisateur)
+        console.log("Sending data:", JSON.stringify($scope.utilisateur)); // Afficher le JSON dans la console
+        $http.post('/utilisateur/update', $scope.utilisateur)
         .then(function(response) {
-            $scope.diplomeUtilisateurs = response.data;
-            $scope.initialize();
-            document.getElementById("formulaire").setAttribute("ng-submit", "submitForm()");
+            console.log("updated");
         }, function(error) {
             $scope.error = error.error || "Une erreur est survenue.";
         });
     };
+
+    $scope.getNiveau=function(number){
+        if(number==1){
+            return "";
+        }
+        if(number==2){
+            return "Licence";
+        }
+        if(number==3){
+            return "Master";
+        }
+        else{
+            return "Doctorat"
+        }
+    }
+
+    $scope.ajouter=function(diplome){
+        console.log(diplome.id);
+        $scope.diplomes = $scope.diplomes.filter(obj => obj.id !== diplome.id);
+        $scope.utilisateur.diplomes.push(diplome);
+    }
+
+    $scope.retirer=function(diplome){
+        $scope.utilisateur.diplomes = $scope.utilisateur.diplomes.filter(obj => obj.id !== diplome.id);
+        $scope.diplomes.push(diplome);
+    }
+
+    $scope.delete=function(array,objs){
+        array = array.filter(obj => obj.id !== objs.id);
+    }
+
+    $scope.retirerDoublon=function(){
+        for(let i=0;i<$scope.utilisateur.diplomes.length;i++){
+            for(let e=0;e<$scope.diplomes.length;e++){
+                if($scope.utilisateur.diplomes[i].id==$scope.diplomes[e].id){
+                    $scope.diplomes = $scope.diplomes.filter(obj => obj.id !== $scope.utilisateur.diplomes[i].id);
+                }
+            }
+        }
+    }
 });

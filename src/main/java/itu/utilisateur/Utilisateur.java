@@ -3,10 +3,14 @@ package itu.utilisateur;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
+import itu.contact.Contact;
+import itu.diplome.Diplome;
 import itu.notification.*;
 
 import jakarta.persistence.*;
@@ -27,6 +31,38 @@ public class Utilisateur {
 
     @OneToMany(mappedBy = "utilisateur")
     List<Notification> notifications;
+
+    @ManyToMany
+    @JoinTable(
+        name = "diplome_utilisateur",
+        joinColumns = @JoinColumn(name = "id_utilisateur"),
+        inverseJoinColumns = @JoinColumn(name = "id_diplome")
+    )
+    private Set<Diplome> diplomes;
+
+    @ManyToMany
+    @JoinTable(
+        name = "utilisateur_contact",
+        joinColumns = @JoinColumn(name = "id_utilisateur"),
+        inverseJoinColumns = @JoinColumn(name = "id_contact")
+    )
+    private Set<Contact> contacts;
+
+    public Set<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(Set<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
+    public Set<Diplome> getDiplomes() {
+        return diplomes;
+    }
+
+    public void setDiplomes(Set<Diplome> diplomes) {
+        this.diplomes = diplomes;
+    }
 
     // List<String> numeroTelephone;
     String etatCivil;

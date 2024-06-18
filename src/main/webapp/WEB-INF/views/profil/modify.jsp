@@ -119,7 +119,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-md-4">
                                     <div class="input-group">
                                         <input disabled required="" id="latitude" type="number" ng-model="utilisateur.latitude" autocomplete="off" class="input" style=" border-radius: 15px;">
@@ -138,6 +138,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <a href="/utilisateur/parametre/contact" class="btn btn-primary">Contact</a>                                    
+                                </div>
+                            </div>
                         </div>
                         <div class="form-parts">
                             <div class="row">
@@ -145,7 +150,7 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-4">
-                                    <a href="/utilisateur/diplome/modify" class="btn btn-primary">Diplome</a>
+                                    <a href="/utilisateur/parametre/diplome" class="btn btn-primary">Diplome</a>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -166,11 +171,6 @@
                         <div class="form-parts">
                             <div class="row">
                                 <h6>Confidentialité</h6><hr>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-3">
-                                    <a href="/utilisateur/parametre/contact" class="btn btn-primary">Contact</a>                                    
-                                </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
@@ -267,3 +267,4 @@
 </script>
 <script src="/public/js/angular.min.js"></script>
 <script src="/public/js/crud/Utilisateur.js"></script>
+<script src="/public/js/input.js"></script>

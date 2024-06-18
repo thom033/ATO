@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="../../../../public/bootstrap/css/input.css">
 <link rel="stylesheet" href="../../../../public/bootstrap/css/stylesRecherche.css">
 <style>
@@ -11,77 +12,66 @@
   }
 </style>
 <script src="../../../../../public/js/angular.min.js"></script>
-<div class="container">
+<div class="container" style="margin-top:5%">
   <div class="row" ng-app="DiplomeUtilisateurApp" ng-controller="tableController">
     <div class="col-md-6">
       <div class="form">
-        <form id="formulaire" ng-submit="submitForm()">
-          <div class="container">
-            <h5>Diplome de l'utilisateur</h5>
-            <hr>
-          </div>
-          <div class="row mb-3">
-            <div class="col-md-5">
-              <div class="input-group">
-                  <span class="input-group-text">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                          <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5M5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/>
-                          <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1"/>
-                      </svg>
-                  </span>
-                  <select class="form-select" ng-model="diplomeUtilsateur.diplome.id" style="width: 10%;">
-                      <option ng-repeat="diplomeExist in diplomeExists" value="{{diplomeExist.id}}"
-                       ng-selected="diplomeExist.diplome == diplomeUtilsateur.diplome.diplome">{{diplomeExist.diplome}}</option>
-                  </select>
-              </div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-md-5">
-              <div class="input-group">
-                  <span class="input-group-text">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                        <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5M5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/>
-                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1"/>
-                    </svg>
-                  </span>
-                  <select class="form-select" ng-model="diplomeUtilsateur.diplome.niveau" style="width: 10%;">
-                      <option value="1">Licence</option>
-                      <option value="2">Master</option>
-                      <option value="3">Doctorat</option>
-                  </select>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-9"></div>
-            <div class="col-md-3">
-              <button id="buttonSubmit" type="submit" class="btn btn-primary">Ajouter</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
-        <table class="table">
+        <div class="container">
+          <h5>Diplome de l'utilisateur</h5>
+          <hr>
+        </div>
+        <div class="row">
+          <table class="table">
             <thead>
               <tr>
                 <th scope="col">Diplome</th>
                 <th scope="col">Niveau</th>
-                <th scope="col">Modifier</th>
-                <th scope="col">Supprimer</th>
+                <th scope="col">Retirer</th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="diplomeUtilisateur in diplomeUtilisateurs">
-                <td scope="row">{{diplomeUtilisateur.diplome.diplome}}</td>
-                <td>{{diplomeUtilisateur.diplome.niveau}}</td>
-                <td><button class="btn btn-warning" ng-click="modify(diplomeUtilisateur.diplome.id,diplomeUtilisateur.utilisateur.id)">Modifier</button></td>
-                <td><button class="btn btn-danger" ng-click="delete(diplomeUtilisateur.diplome.id,diplomeUtilisateur.utilisateur.id)">Supprimer</button></td>
+              <tr ng-repeat="diplome in utilisateur.diplomes">
+                <td>{{diplome.diplome}}</td>
+                <td>{{getNiveau(diplome.niveau)}}</td>
+                <td><button class="btn btn-danger" ng-click="retirer(diplome)">Retirer</button></td>
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="row">
+          <div class="col-md-9"></div>
+          <div class="col-md-3">
+            <button class="btn btn-primary" ng-click="submitForm()">Valider</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+        <div class="row">
+          <div class="input-group">
+            <input type="text" ng-model="recherche" class="input" style=" border-radius: 15px;">
+            <label class="user-label">Recherche</label>
+          </div>
+        </div>
+        <div class="row">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Diplome</th>
+                <th scope="col">Niveau</th>
+                <th scope="col">Ajouter</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="diplome in diplomes | filter: recherche">
+                <td scope="row">{{diplome.diplome}}</td>
+                <td>{{getNiveau(diplome.niveau)}}</td>
+                <td><button class="btn btn-primary" ng-click="ajouter(diplome)">Ajouter</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
     </div>
   </div>
 </div>

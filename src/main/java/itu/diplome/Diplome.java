@@ -1,5 +1,10 @@
 package itu.diplome;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import itu.utilisateur.Utilisateur;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +20,16 @@ public class Diplome {
     @Column(name = "niveau")
     private Integer niveau;
 
+    // @ManyToMany(mappedBy = "diplomes")
+    // protected Set<Utilisateur> utilisateurs;
+
+    // public Set<Utilisateur> getUtilisateurs() {
+    //     return utilisateurs;
+    // }
+
+    // public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
+    //     this.utilisateurs = utilisateurs;
+    // }
     public Long getId() {
         return id;
     }
