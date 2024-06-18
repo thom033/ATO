@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 public class Postulation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_notification")
+    @Column(name = "id_postulation")
     Long id;
 
     @ManyToOne

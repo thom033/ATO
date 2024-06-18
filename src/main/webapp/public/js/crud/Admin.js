@@ -69,3 +69,24 @@ AdminApp.controller('tableController', function($scope, $http) {
         });
     };
 });
+
+AdminApp.controller("crudPostulationController", function($scope, $http) {
+    $scope.getData = function() {
+        let aurl = "/postulation/liste";
+        $http({
+            url: aurl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            $scope.postulations = response.data;
+            console.log($scope.postulations);
+
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+        
+    };
+
+    $scope.getData();
+
+});

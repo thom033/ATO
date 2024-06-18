@@ -16,8 +16,22 @@
 
 .notification-item:hover {
     transform: scale(1.02);
-    /* height: 10em;
-    transition: 0.2s; */
+    height: 10em;
+    transition: 0.2s;
+}
+
+.notification-item:hover {
+    transform: scale(1.02);
+    height: 10em;
+    transition: 0.2s;
+}
+
+.input-date {
+    display: none;
+}
+
+.notification-item:hover .input-date {
+    display: block;
 }
 
 .notification-icon {
