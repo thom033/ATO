@@ -77,3 +77,4 @@
   </div>
 </div>
 <script src="../../../../public/js/crud/Admin.js"></script>
+<script src="../../../../public/js/input.js"></script>

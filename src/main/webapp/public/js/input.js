@@ -16,6 +16,8 @@ for(let i=0;i<inputs.length;i++){
     // Écouteur d'événement pour les changements manuels
     inputs[i].addEventListener('input', checkValue);
 
+    inputs[i].addEventListener('onchange',checkValue);
+
     // MutationObserver pour les changements de valeur par JavaScript
     const observer = new MutationObserver(() => {
       checkValue();
