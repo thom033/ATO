@@ -8,5 +8,6 @@ public class Poste {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_poste")
-    long id_poste;
+    long id;
+
 }

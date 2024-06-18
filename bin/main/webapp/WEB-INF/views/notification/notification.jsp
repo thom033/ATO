@@ -32,8 +32,8 @@
                 <div class="col-1 text-center"></div>
                 <div class="col-1 text-end" style="margin-bottom: 5px;">
                 <div class="notification-date" >{{ formatDate(notif.dateNotification) }}</div>
-                    <div ng-if="estDynamique(notif) > -2"> 
-                        <a href="{{ interpreterUrl(estDynamique(notif)) }}"><span class="notification-icon chevron" ><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <div ng-if="estDynamique(notif) >= 0"> 
+                        <a href="{{ interpreterUrl(notif) }}"><span class="notification-icon chevron" ><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
                         </svg></span></a>
                     </div>

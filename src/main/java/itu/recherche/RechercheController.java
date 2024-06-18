@@ -32,7 +32,8 @@ public class RechercheController {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public RechercheController(SecteurRepository secteurRepository, DiplomeRepository diplomeRepository, CompetenceRepository competenceRepository, JdbcTemplate jdbcTemplate) {
+    public RechercheController(SecteurRepository secteurRepository, DiplomeRepository diplomeRepository,
+            CompetenceRepository competenceRepository, JdbcTemplate jdbcTemplate) {
         this.secteurRepository = secteurRepository;
         this.diplomeRepository = diplomeRepository;
         this.competenceRepository = competenceRepository;
