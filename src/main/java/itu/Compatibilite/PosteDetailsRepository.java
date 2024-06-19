@@ -32,4 +32,6 @@ public interface PosteDetailsRepository extends JpaRepository<PosteDetails, Long
     @Query(value = "SELECT get_positif(:userId, :posteId)", nativeQuery = true)
     String[] getPositif(@Param("userId") Long userId, @Param("posteId") Long posteId);
 
+    @Query(value = "SELECT calculate_distance(:userId, :posteId)", nativeQuery = true)
+    double calculateDistance(Long userId, Long posteId);
 }

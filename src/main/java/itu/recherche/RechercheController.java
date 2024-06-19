@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import itu.compatibilite.PosteDetails;
+import itu.compatibilite.PosteDetailsRepository;
 import itu.compatibilite.PosteDetailsService;
 import itu.compatibilite.ResultAcceuil;
 import itu.compatibilite.ResultAcceuilRepository;
@@ -43,6 +44,9 @@ public class RechercheController {
 
     @Autowired
     PosteDetailsService posteDetailsService;
+
+    @Autowired
+    PosteDetailsRepository posteDetailsRepository;
 
     @Autowired
     ResultAcceuilRepository resultAcceuilRepository;
@@ -84,14 +88,19 @@ public class RechercheController {
         Integer ageMax = params.get("ageMax") != null && !params.get("ageMax").isEmpty() ? Integer.valueOf(params.get("ageMax")) : null;
         Double salaireMin = params.get("salaireMin") != null && !params.get("salaireMin").isEmpty() ? Double.valueOf(params.get("salaireMin")) : null;
         Double salaireMax = params.get("salaireMax") != null && !params.get("salaireMax").isEmpty() ? Double.valueOf(params.get("salaireMax")) : null;
-        Integer distance = params.get("distance") != null && !params.get("distance").isEmpty() ? Integer.valueOf(params.get("distance")) : null;
+        Double distance = params.get("distance") != null && !params.get("distance").isEmpty() ? Double.valueOf(params.get("distance")) : null;
         Integer anneeExperience = params.get("anneeExperience") != null && !params.get("anneeExperience").isEmpty() ? Integer.valueOf(params.get("anneeExperience")) : null;
 
-        List<PosteDetails> resultPoste = posteDetailsService.searchPostes(title, diplome, secteur, competence, ageMin, ageMax, salaireMin, salaireMax, distance, anneeExperience);
+        List<PosteDetails> resultPoste = posteDetailsService.searchPostes(title, diplome, secteur, competence, ageMin, ageMax, salaireMin, salaireMax, anneeExperience);
         List<ResultAcceuil> result = new ArrayList<>();
 
         for (PosteDetails poste : resultPoste) {
-            result.add(resultAcceuilRepository.getResultAcceuilsRecherche(utilisateur.getId(),poste.getIdPoste()));
+            if (distance != null && distance <= posteDetailsRepository.calculateDistance(utilisateur.getId(),poste.getIdPoste())) {
+                result.add(resultAcceuilRepository.getResultAcceuilsRecherche(utilisateur.getId(),poste.getIdPoste()));
+            }
+            else{
+                result.add(resultAcceuilRepository.getResultAcceuilsRecherche(utilisateur.getId(),poste.getIdPoste()));
+            }
         }
 
         mv.addObject("data", result);
