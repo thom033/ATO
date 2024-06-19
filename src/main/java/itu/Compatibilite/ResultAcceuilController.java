@@ -23,11 +23,14 @@ public class ResultAcceuilController {
     @GetMapping("/acceuil")
     public ModelAndView calculateCompatibility(HttpSession session) {
         ModelAndView mv = new ModelAndView("/template");
-        String pages = "acceuil/index";
-        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
-        mv.addObject("data", resultAcceuilService.getAllResults(utilisateur.getId()));
 
-        mv.addObject("page", pages);
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        if (utilisateur != null) {
+            mv.addObject("page", "acceuil/index");
+            mv.addObject("data", resultAcceuilService.getAllResults(utilisateur.getId()));
+        } else {
+            mv.setViewName("login/login-register");
+        }
 
         return mv;
     }
