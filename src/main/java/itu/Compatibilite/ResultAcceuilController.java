@@ -29,6 +29,7 @@ public class ResultAcceuilController {
             mv.addObject("page", "acceuil/index");
             mv.addObject("data", resultAcceuilService.getAllResults(utilisateur.getId()));
         } else {
+            session.setAttribute("nextPage", "/acceuil");
             mv.setViewName("login/login-register");
         }
 

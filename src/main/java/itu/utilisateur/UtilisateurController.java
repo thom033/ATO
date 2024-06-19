@@ -85,7 +85,7 @@ public class UtilisateurController {
     }
 
     @PostMapping("/login/test")
-    public ModelAndView verificationLogin(@RequestParam HashMap<String, Object> login, HttpSession httpSession) {
+    public String verificationLogin(@RequestParam HashMap<String, Object> login, HttpSession session) {
         boolean validite = true;
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setMail((String) login.get("mail"));
@@ -99,13 +99,12 @@ public class UtilisateurController {
             ModelAndView mv = new ModelAndView("template");
 
             Utilisateur user = recherche.get(0);
-            httpSession.setAttribute("utilisateur", user);
+            session.setAttribute("utilisateur", user);
 
-            mv.addObject("page", "splashScreen/index");
-            return mv;
+            mv.addObject("page", session.getAttribute("nextPage"));
+            return "redirect:" + session.getAttribute("nextPage");
         } else {
-            ModelAndView mv = new ModelAndView("login/login-register");
-            return mv;
+            return "login/login-register";
         }
     }
 
@@ -232,31 +231,32 @@ public class UtilisateurController {
 
         return model;
     }
+
     @GetMapping("/utilisateur/parametre")
     public ModelAndView parametre() {
-        ModelAndView modelAndView=new ModelAndView("template");
-        modelAndView.addObject("page","profil/modify");
+        ModelAndView modelAndView = new ModelAndView("template");
+        modelAndView.addObject("page", "profil/modify");
         return modelAndView;
     }
 
     @GetMapping("/utilisateur/parametre/diplome")
     public ModelAndView parametreDiplome() {
-        ModelAndView modelAndView=new ModelAndView("template");
-        modelAndView.addObject("page","profil/modifyDiplome");
+        ModelAndView modelAndView = new ModelAndView("template");
+        modelAndView.addObject("page", "profil/modifyDiplome");
         return modelAndView;
     }
 
     @GetMapping("/utilisateur/parametre/competence")
     public ModelAndView parametreCompetence() {
-        ModelAndView modelAndView=new ModelAndView("template");
-        modelAndView.addObject("page","profil/modifyCompetence");
+        ModelAndView modelAndView = new ModelAndView("template");
+        modelAndView.addObject("page", "profil/modifyCompetence");
         return modelAndView;
     }
 
     @GetMapping("/utilisateur/parametre/contact")
     public ModelAndView parametreContact() {
-        ModelAndView modelAndView=new ModelAndView("template");
-        modelAndView.addObject("page","profil/modifyContact");
+        ModelAndView modelAndView = new ModelAndView("template");
+        modelAndView.addObject("page", "profil/modifyContact");
         return modelAndView;
     }
 }
