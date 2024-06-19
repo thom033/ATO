@@ -41,18 +41,18 @@ VALUES
 ('Gestion de projet', 'Compétence en gestion et coordination de projets.');
 
 -- Données pour la table experience
-INSERT INTO experience (date_debut, date_fin, description, id_utilisateur)
+INSERT INTO experience (date_debut, date_fin, description, id_utilisateur,id_secteur)
 VALUES
-('2010-01-01', '2015-01-01', 'Développeur Junior chez TechCorp', 1),
-('2015-02-01', '2020-02-01', 'Chef de Projet chez FinanceInc', 2),
-('2005-03-01', '2010-03-01', 'Analyste chez MarketLLC', 3);
+('2010-01-01', '2015-01-01', 'Développeur Junior chez TechCorp', 1,1),
+('2015-02-01', '2020-02-01', 'Chef de Projet chez FinanceInc', 2,2),
+('2005-03-01', '2010-03-01', 'Analyste chez MarketLLC', 3,3);
 
 -- Données pour la table Formation
-INSERT INTO Formation (date_debut, description, date_fin, id_utilisateur)
+INSERT INTO Formation (date_debut, description, date_fin, id_utilisateur,id_diplome)
 VALUES
-('2006-09-01', 'Licence en Informatique', '2009-06-30', 1),
-('2010-09-01', 'Master en Gestion', '2012-06-30', 2),
-('2000-09-01', 'Baccalauréat en Économie', '2003-06-30', 3);
+('2006-09-01', 'Licence en Informatique', '2009-06-30', 1,1),
+('2010-09-01', 'Master en Gestion', '2012-06-30', 2,2),
+('2000-09-01', 'Baccalauréat en Économie', '2003-06-30', 3,3);
 
 -- Données pour la table Reponse
 INSERT INTO Reponse (reponse)

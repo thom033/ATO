@@ -78,6 +78,7 @@ CREATE TABLE experience(
    date_debut DATE NOT NULL,
    date_fin DATE,
    description TEXT NOT NULL,
+   id_secteur INTEGER NOT NULL,
    id_utilisateur INTEGER NOT NULL,
    PRIMARY KEY(id_experience),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
@@ -87,6 +88,7 @@ CREATE TABLE Formation(
    id_formation SERIAL,
    date_debut DATE NOT NULL,
    description TEXT NOT NULL,
+   id_diplome INTEGER NOT NULL,
    date_fin DATE,
    id_utilisateur INTEGER NOT NULL,
    PRIMARY KEY(id_formation),
