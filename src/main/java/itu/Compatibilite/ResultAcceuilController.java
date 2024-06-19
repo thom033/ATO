@@ -22,7 +22,7 @@ public class ResultAcceuilController {
 
     @GetMapping("/acceuil")
     public ModelAndView calculateCompatibility( HttpSession session,
-                                                @RequestParam(defaultValue = "1") int pagex,
+                                                @RequestParam(defaultValue = "0") int pagex,
                                                 @RequestParam(defaultValue = "10") int size) {
         ModelAndView mv = new ModelAndView("/template");
         String pages = "acceuil/index";
