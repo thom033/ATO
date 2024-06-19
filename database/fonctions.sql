@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION check_age(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+CREATE OR REPLACE FUNCTION check_age(user_id BIGINT, poste_id BIGINT) RETURNS BOOLEAN AS $$
 DECLARE
     u_age INT;
     age_min INT;
@@ -39,7 +39,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION check_experience(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+CREATE OR REPLACE FUNCTION check_experience(user_id BIGINT, poste_id BIGINT) RETURNS BOOLEAN AS $$
 DECLARE
     u_exp INT;
     exp_min INT;
@@ -78,7 +78,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION check_formation(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+CREATE OR REPLACE FUNCTION check_formation(user_id BIGINT, poste_id BIGINT) RETURNS BOOLEAN AS $$
 DECLARE
     u_form INT;
     form_min INT;
@@ -117,7 +117,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION check_diplome(user_id INT, poste_id INT) RETURNS BOOLEAN AS $$
+CREATE OR REPLACE FUNCTION check_diplome(user_id BIGINT, poste_id BIGINT) RETURNS BOOLEAN AS $$
 DECLARE
     user_diplome INT;
     poste_diplome INT;
@@ -149,7 +149,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION calculate_distance(user_id INT, poste_id INT) RETURNS DOUBLE PRECISION AS $$
+CREATE OR REPLACE FUNCTION calculate_distance(user_id BIGINT, poste_id BIGINT) RETURNS DOUBLE PRECISION AS $$
 DECLARE
     u_latitude DOUBLE PRECISION;
     u_longitude DOUBLE PRECISION;
@@ -198,7 +198,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION point_distance(user_id INT, poste_id INT) RETURNS DOUBLE PRECISION AS $$
+CREATE OR REPLACE FUNCTION point_distance(user_id BIGINT, poste_id BIGINT) RETURNS DOUBLE PRECISION AS $$
 DECLARE
     u_latitude DOUBLE PRECISION;
     u_longitude DOUBLE PRECISION;
@@ -276,4 +276,118 @@ BEGIN
     RETURN (point / 20.0) * 100.0;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_user_secteur(idU BIGINT) RETURNS BIGINT AS $$
+DECLARE
+    user_secteur_id INTEGER;
+BEGIN
+    -- Récupérer et afficher les informations des diplômes de l'utilisateur
+    RAISE NOTICE 'Récupération des diplômes de l''utilisateur avec id_utilisateur = %', idU;
+
+    -- Sélectionner l'id_secteur correspondant à l'utilisateur
+    SELECT sd.id_secteur
+    INTO user_secteur_id
+    FROM diplome_utilisateur du
+    JOIN secteur_diplome sd ON du.id_diplome = sd.id_diplome
+    WHERE du.id_utilisateur = idU
+    LIMIT 1; -- Ajouter cette ligne si un utilisateur peut avoir plusieurs secteurs et vous voulez en retourner un seul
+
+    -- Vérifier si un id_secteur a été trouvé
+    IF user_secteur_id IS NOT NULL THEN
+        RAISE NOTICE 'Secteur trouvé: id_secteur = %', user_secteur_id;
+    ELSE
+        RAISE NOTICE 'Aucun secteur trouvé pour id_utilisateur = %', idU;
+    END IF;
+
+    RETURN user_secteur_id;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_positif(user_id BIGINT, poste_id BIGINT) RETURNS TEXT[] AS $$
+DECLARE
+    status TEXT[] := '{}';  -- Initialisation du tableau vide
+    distance DOUBLE PRECISION;
+    distance_points INTEGER;
+BEGIN
+    -- Vérifier l'âge de l'utilisateur
+    IF check_age(user_id, poste_id) = TRUE THEN
+        status := array_append(status, 'Age: OK');
+    END IF;
+
+    -- Vérifier l'expérience de l'utilisateur
+    IF check_experience(user_id, poste_id) = TRUE THEN
+        status := array_append(status, 'Experience: OK');
+    END IF;
+
+    -- Vérifier la formation de l'utilisateur
+    IF check_formation(user_id, poste_id) = TRUE THEN
+        status := array_append(status, 'Formation: OK');
+    END IF;
+
+    -- Vérifier le diplôme de l'utilisateur
+    IF check_diplome(user_id, poste_id) = TRUE THEN
+        status := array_append(status, 'Diplome: OK');
+    END IF;
+
+    -- Calculer la distance entre l'utilisateur et le poste
+    distance := calculate_distance(user_id, poste_id);
+
+    -- Calculer les points en fonction de la distance
+    IF distance > 0 THEN
+        distance_points := point_distance(user_id, poste_id);
+        IF distance_points < 50 THEN
+            status := array_append(status, 'Distance: OK');
+        END IF;
+    END IF;
+    -- Retourner le tableau de status
+    RETURN status;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_negatif(user_id BIGINT, poste_id BIGINT) RETURNS TEXT[] AS $$
+DECLARE
+    status TEXT[];
+    distance DOUBLE PRECISION;
+    distance_points INTEGER;
+BEGIN
+    -- Vérifier l'âge de l'utilisateur
+    IF check_age(user_id, poste_id) != TRUE THEN
+        status := array_append(status, 'Age: NOT OK');
+    END IF;
+
+    -- Vérifier l'expérience de l'utilisateur
+    IF check_experience(user_id, poste_id) != TRUE THEN
+        status := array_append(status, 'Experience: NOT OK');
+    END IF;
+
+    -- Vérifier la formation de l'utilisateur
+    IF check_formation(user_id, poste_id) != TRUE THEN
+        status := array_append(status, 'Formation:NOT OK');
+    END IF;
+
+    -- Vérifier le diplôme de l'utilisateur
+    IF check_diplome(user_id, poste_id) != TRUE THEN
+        status := array_append(status, 'Diplome:NOT OK');
+    END IF;
+
+    -- Calculer la distance entre l'utilisateur et le poste
+    distance := calculate_distance(user_id, poste_id);
+
+    -- Calculer les points en fonction de la distance
+    IF distance > 0 THEN
+        distance_points := point_distance(user_id, poste_id);
+        IF distance_points = 50 THEN
+            status := array_append(status, 'Distance: NOT OK');
+        END IF;
+    END IF;
+
+    -- Retourner le tableau de status
+    RETURN status;
+END;
+$$ LANGUAGE plpgsql;
+
+-- TEST
+SELECT get_point_status(1, 1); -- Remplacez 1 et 1 par les IDs de l'utilisateur et du poste respectifs
+
 

@@ -25,6 +25,8 @@ public class ResultAcceuil {
     private String posteTitre;
     @Column(name = "entreprise_nom")
     private String entrepriseNom;
+    @Column(name = "entreprise_point")
+    private int entreprisePoints;
     @Column(name = "pts_total")
     private double ptsTotal;
 
@@ -100,5 +102,20 @@ public class ResultAcceuil {
 
     public void setPtsTotal(double ptsTotal) {
         this.ptsTotal = ptsTotal;
+    }
+
+    public int getEntreprisePoints() {
+        return entreprisePoints;
+    }
+
+    public void setEntreprisePoints(int entreprisePoints) {
+        this.entreprisePoints = entreprisePoints;
+    }
+
+    public static String[] splitByComma(String input) {
+        if (input == null || input.isEmpty()) {
+            return new String[0]; // Retourne un tableau vide si l'entrée est null ou vide
+        }
+        return input.split(",");
     }
 }
