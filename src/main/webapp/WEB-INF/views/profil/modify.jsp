@@ -152,9 +152,14 @@
                                 <div class="col-md-3">
                                     <a href="/utilisateur/parametre/diplome" class="btn btn-primary">Diplome</a>
                                 </div>
-                                <div class="col-md-1"></div>
                                 <div class="col-md-3">
                                     <a href="/utilisateur/parametre/competence" class="btn btn-primary">Competence</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a href="/utilisateur/parametre/experience" class="btn btn-primary">Experience</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <a href="/utilisateur/parametre/formation" class="btn btn-primary">Formation</a>
                                 </div>
                             </div>
                             <div class="row mb-3">
