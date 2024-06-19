@@ -104,14 +104,12 @@ CREATE TABLE Notification(
    id_poste INTEGER,
    id_utilisateur INTEGER NOT NULL,
    id_entretien integer,
-   id_poste integer,
    PRIMARY KEY(id_notification),
    FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
    FOREIGN KEY(id_entretien) REFERENCES entretien(id_entretien),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 -- ajout de id_entretien
--- ajout id_poste
 
 CREATE TABLE Reponse(
    id_reponse SERIAL,

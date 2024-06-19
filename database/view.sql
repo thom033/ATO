@@ -31,7 +31,6 @@ SELECT
 
     sd.id_secteur,
     sd.id_diplome AS secteur_diplome_id_diplome,
-
     cs.id_competence
 FROM 
    poste p

@@ -107,7 +107,12 @@ public class UtilisateurController {
             session.setAttribute("utilisateur", user);
 
             mv.addObject("page", session.getAttribute("nextPage"));
-            return "redirect:" + session.getAttribute("nextPage");
+            if (session.getAttribute("nextPage") == null)
+                return "redirect:/";
+
+            String nextPage = (String) session.getAttribute("nextPage");
+            session.removeAttribute("nextPage");
+            return "redirect:" + nextPage;
         } else {
             return "login/login-register";
         }
@@ -201,7 +206,8 @@ public class UtilisateurController {
 
         if (user != null) {
             experiences = experienceRepository.findByUtilisateurId(user.getId());
-            List<DiplomeUtilisateur> diplomeUtilisateurs = diplomeUtilisateurRepository.findByUtilisateurId(user.getId());
+            List<DiplomeUtilisateur> diplomeUtilisateurs = diplomeUtilisateurRepository
+                    .findByUtilisateurId(user.getId());
             for (DiplomeUtilisateur du : diplomeUtilisateurs) {
                 diplomes.add(du.getDiplome());
                 List<SecteurDiplome> secteurDiplome = secteurDiplomeRepository.findByDiplomeId(du.getDiplome().getId());
@@ -269,8 +275,8 @@ public class UtilisateurController {
 
     @GetMapping("/utilisateur/parametre/experience")
     public ModelAndView parametreExperience() {
-        ModelAndView modelAndView=new ModelAndView("template");
-        modelAndView.addObject("page","profil/modifyExperience");
+        ModelAndView modelAndView = new ModelAndView("template");
+        modelAndView.addObject("page", "profil/modifyExperience");
         return modelAndView;
     }
 }
