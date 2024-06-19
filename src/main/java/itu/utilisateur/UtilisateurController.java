@@ -259,4 +259,11 @@ public class UtilisateurController {
         modelAndView.addObject("page","profil/modifyContact");
         return modelAndView;
     }
+
+    @GetMapping("/utilisateur/parametre/experience")
+    public ModelAndView parametreExperience() {
+        ModelAndView modelAndView=new ModelAndView("template");
+        modelAndView.addObject("page","profil/modifyExperience");
+        return modelAndView;
+    }
 }
