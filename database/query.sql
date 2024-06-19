@@ -33,6 +33,40 @@ VALUES
 ('Analyse financière', CURRENT_DATE, 50000, 'Analyste', 3, 5, 30, 40, 'poste2.jpg', 3, 2,2, FALSE),
 ('Gestion de projet marketing', CURRENT_DATE, 45000, 'Chef de Projet', 4, 6, 28, 38, 'poste3.jpg', 2, 3,5, TRUE);
 
+INSERT INTO poste (description, date_insertion, salaire, titre, annee_experience, annee_formation, age_min, age_max, image, id_diplome, id_entreprise, cout, disponibilite)
+VALUES
+('Ingénierie réseau', CURRENT_DATE, 42000, 'Ingénieur Réseau', 3, 5, 27, 37, 'poste4.jpg', 2, 1, 4, TRUE),
+('Administration de base de données', CURRENT_DATE, 48000, 'Administrateur BD', 4, 6, 29, 39, 'poste5.jpg', 3, 2, 3, FALSE),
+('Développement Web', CURRENT_DATE, 39000, 'Développeur Web', 2, 4, 24, 34, 'poste6.jpg', 1, 3, 2, TRUE),
+('Support technique', CURRENT_DATE, 35000, 'Technicien Support', 1, 3, 22, 32, 'poste7.jpg', 2, 1, 3, FALSE),
+('Rédaction technique', CURRENT_DATE, 37000, 'Rédacteur Technique', 2, 4, 26, 36, 'poste8.jpg', 1, 2, 1, TRUE),
+('Consultation en gestion', CURRENT_DATE, 55000, 'Consultant en Gestion', 5, 7, 32, 42, 'poste9.jpg', 3, 3, 4, FALSE),
+('Conception graphique', CURRENT_DATE, 41000, 'Graphiste', 3, 5, 25, 35, 'poste10.jpg', 2, 1, 2, TRUE),
+('Analyse de données', CURRENT_DATE, 46000, 'Analyste de Données', 4, 6, 28, 38, 'poste11.jpg', 3, 2, 3, FALSE),
+('Gestion des ressources humaines', CURRENT_DATE, 50000, 'Responsable RH', 5, 7, 30, 40, 'poste12.jpg', 2, 3, 4, TRUE),
+('Enseignement informatique', CURRENT_DATE, 38000, 'Formateur Informatique', 2, 4, 26, 36, 'poste13.jpg', 1, 1, 2, FALSE),
+('Développement mobile', CURRENT_DATE, 43000, 'Développeur Mobile', 3, 5, 25, 35, 'poste14.jpg', 2, 2, 3, TRUE),
+('Gestion des opérations', CURRENT_DATE, 51000, 'Manager Opérations', 5, 7, 32, 42, 'poste15.jpg', 3, 3, 4, FALSE),
+('Rédaction de contenu', CURRENT_DATE, 36000, 'Rédacteur de Contenu', 2, 4, 24, 34, 'poste16.jpg', 1, 1, 2, TRUE),
+('Consultation en finance', CURRENT_DATE, 57000, 'Consultant Finance', 6, 8, 34, 44, 'poste17.jpg', 3, 2, 5, FALSE),
+('Développement de jeux vidéo', CURRENT_DATE, 42000, 'Développeur Jeux', 3, 5, 27, 37, 'poste18.jpg', 2, 3, 3, TRUE),
+('Marketing digital', CURRENT_DATE, 45000, 'Spécialiste Marketing', 4, 6, 28, 38, 'poste19.jpg', 3, 1, 3, FALSE),
+('Analyse de sécurité', CURRENT_DATE, 49000, 'Analyste Sécurité', 5, 7, 31, 41, 'poste20.jpg', 2, 2, 4, TRUE),
+('Gestion des ventes', CURRENT_DATE, 52000, 'Directeur des Ventes', 6, 8, 33, 43, 'poste21.jpg', 3, 3, 5, FALSE),
+('Enseignement mathématiques', CURRENT_DATE, 37000, 'Professeur Maths', 2, 4, 26, 36, 'poste22.jpg', 1, 1, 2, TRUE),
+('Consultation en IT', CURRENT_DATE, 60000, 'Consultant IT', 7, 9, 35, 45, 'poste23.jpg', 3, 2, 6, FALSE),
+('Développement frontend', CURRENT_DATE, 44000, 'Développeur Frontend', 3, 5, 25, 35, 'poste24.jpg', 2, 3, 3, TRUE),
+('Gestion de produit', CURRENT_DATE, 54000, 'Chef de Produit', 5, 7, 30, 40, 'poste25.jpg', 3, 1, 4, FALSE),
+('Support aux utilisateurs', CURRENT_DATE, 35000, 'Technicien Support', 1, 3, 22, 32, 'poste26.jpg', 2, 1, 2, TRUE),
+('Rédaction web', CURRENT_DATE, 36000, 'Rédacteur Web', 2, 4, 24, 34, 'poste27.jpg', 1, 2, 2, FALSE),
+('Consultation stratégique', CURRENT_DATE, 59000, 'Consultant Stratégie', 6, 8, 34, 44, 'poste28.jpg', 3, 3, 5, TRUE),
+('Développement backend', CURRENT_DATE, 46000, 'Développeur Backend', 4, 6, 28, 38, 'poste29.jpg', 2, 2, 3, FALSE),
+('Gestion de la qualité', CURRENT_DATE, 53000, 'Manager Qualité', 5, 7, 31, 41, 'poste30.jpg', 3, 1, 4, TRUE),
+('Enseignement physique', CURRENT_DATE, 38000, 'Professeur Physique', 2, 4, 26, 36, 'poste31.jpg', 1, 2, 2, FALSE),
+('Consultation juridique', CURRENT_DATE, 61000, 'Consultant Juridique', 7, 9, 35, 45, 'poste32.jpg', 3, 1, 6, TRUE),
+('Développement logiciel embarqué', CURRENT_DATE, 47000, 'Développeur Embarqué', 4, 6, 29, 39, 'poste33.jpg', 2, 3, 3, FALSE);
+
+
 -- Données pour la table competence
 INSERT INTO competence (competence, description)
 VALUES
