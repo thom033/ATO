@@ -84,7 +84,7 @@ CREATE TABLE experience(
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
-CREATE TABLE Formation(
+CREATE TABLE formation(
    id_formation SERIAL,
    date_debut DATE NOT NULL,
    description TEXT NOT NULL,

@@ -27,6 +27,8 @@ import itu.diplome.DiplomeUtilisateur;
 import itu.diplome.DiplomeUtilisateurRepository;
 import itu.experience.Experience;
 import itu.experience.ExperienceRepository;
+import itu.formation.Formation;
+import itu.formation.FormationRepository;
 import itu.secteur.Secteur;
 import itu.secteur.SecteurDiplome;
 import itu.secteur.SecteurDiplomeRepository;
@@ -42,6 +44,9 @@ public class UtilisateurController {
 
     @Autowired
     ExperienceRepository experienceRepository;
+
+    @Autowired
+    FormationRepository formationRepository;
 
     @Autowired
     DiplomeUtilisateurRepository diplomeUtilisateurRepository;
@@ -133,6 +138,7 @@ public class UtilisateurController {
         ModelAndView model = new ModelAndView("template");
         Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
         List<Experience> experiences = new ArrayList<>();
+        List<Formation> formations = new ArrayList<>();
         List<Diplome> diplomes = new ArrayList<>();
         List<Competence> competences = new ArrayList<>();
         List<Secteur> secteurs = new ArrayList<>();
@@ -141,6 +147,7 @@ public class UtilisateurController {
 
         if (user != null) {
             experiences = experienceRepository.findByUtilisateurId(user.getId());
+            formations = formationRepository.findByUtilisateurId(user.getId());
             List<DiplomeUtilisateur> diplomeUtilisateurs = diplomeUtilisateurRepository
                     .findByUtilisateurId(user.getId());
             for (DiplomeUtilisateur du : diplomeUtilisateurs) {
@@ -170,6 +177,7 @@ public class UtilisateurController {
 
         model.addObject("utilisateur", user);
         model.addObject("experiences", experiences);
+        model.addObject("formations", formations);
         model.addObject("diplomes", diplomes);
         model.addObject("competences", competences);
         model.addObject("secteurs", secteurs);
@@ -193,8 +201,7 @@ public class UtilisateurController {
 
         if (user != null) {
             experiences = experienceRepository.findByUtilisateurId(user.getId());
-            List<DiplomeUtilisateur> diplomeUtilisateurs = diplomeUtilisateurRepository
-                    .findByUtilisateurId(user.getId());
+            List<DiplomeUtilisateur> diplomeUtilisateurs = diplomeUtilisateurRepository.findByUtilisateurId(user.getId());
             for (DiplomeUtilisateur du : diplomeUtilisateurs) {
                 diplomes.add(du.getDiplome());
                 List<SecteurDiplome> secteurDiplome = secteurDiplomeRepository.findByDiplomeId(du.getDiplome().getId());

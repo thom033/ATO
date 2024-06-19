@@ -23,4 +23,5 @@ public interface ResultAcceuilRepository extends JpaRepository<ResultAcceuil, Lo
 
     @Query("select ra from ResultAcceuil ra where idUtilisateur=:userId AND idPoste=:posteID")
     ResultAcceuil getResultAcceuilsRecherche(Long userId, Long posteID);
+    
 }

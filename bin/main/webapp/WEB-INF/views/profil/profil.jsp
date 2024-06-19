@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="itu.utilisateur.Utilisateur"%>
 <%@ page import="itu.experience.Experience"%>
+<%@ page import="itu.formation.Formation"%>
 <%@ page import="itu.diplome.Diplome"%>
 <%@ page import="itu.competence.Competence"%>
 <%@ page import="itu.secteur.Secteur"%>
 <%@ page import="itu.contact.Contact"%>
 <%@ page import="itu.achat.Argent"%>
-<%@ page import="java.util.List" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.util.List"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
 <%
     Utilisateur user = (Utilisateur) request.getAttribute("utilisateur");
     List<Experience> exp = (List<Experience>) request.getAttribute("experiences");
+    List<Formation> form = (List<Formation>) request.getAttribute("formations");
     List<Diplome> dip = (List<Diplome>) request.getAttribute("diplomes");
     List<Competence> comp = (List<Competence>) request.getAttribute("competences");
     List<Secteur> sect = (List<Secteur>) request.getAttribute("secteurs");
@@ -177,6 +179,24 @@
                                         %>
                                                 <p><%= experience.getDescription() %></p>
                                                 <p>Date : <%= dateDebut %> au <%= dateFin %></p>
+                                        <% 
+                                            } 
+                                        %>
+                                        </div>
+                                    </div>
+                                    <div class="input">
+                                        <div class="invariable">
+                                            <p>Formation(s)</p>
+                                        </div>
+                                        <div class="variable">
+                                        <%
+                                            SimpleDateFormat sdff = new SimpleDateFormat("yyyy-MM-dd");
+                                            for (Formation formation : form) {
+                                                String dateDebutt = sdff.format(formation.getDateDebut());
+                                                String dateFinn = sdff.format(formation.getDateFin());
+                                        %>
+                                                <p><%= formation.getDescription() %></p>
+                                                <p>Date : <%= dateDebutt %> au <%= dateFinn %></p>
                                         <% 
                                             } 
                                         %>
