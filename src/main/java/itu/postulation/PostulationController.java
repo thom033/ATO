@@ -84,12 +84,7 @@ public class PostulationController {
 
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
         LocalDateTime dateEntretien = LocalDateTime.parse(date, formatter);
-
         Utilisateur utilisateur = utilisateurRepository.getById(Long.valueOf(idUtilisateur));
-        Notification notification = new Notification();
-        notification.setDateNotification(LocalDateTime.now());
-        notification.setMessage("Convocation à un entretien d'embauche");
-        notification.setUtilisateur(utilisateur);
 
         Entretien entretien = new Entretien();
         entretien.setDateEntretien(dateEntretien);
@@ -100,6 +95,12 @@ public class PostulationController {
         entretien.setReussite(false);
         entretien.setUtilisateur(utilisateur);
         entretienRepository.save(entretien);
+
+        Notification notification = new Notification();
+        notification.setDateNotification(LocalDateTime.now());
+        notification.setMessage(
+                "Convocation a un entretien d'embauche pour le travail " + entretien.getPoste().getPosteTitre());
+        notification.setUtilisateur(utilisateur);
 
         notification.setEntretien(entretien);
         notificationRepository.save(notification);

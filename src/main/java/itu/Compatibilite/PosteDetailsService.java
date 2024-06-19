@@ -13,16 +13,31 @@ public class PosteDetailsService {
     private PosteDetailsRepository posteDetailsRepository;
 
     // Méthode pour récupérer tous les détails des postes
-    public List<PosteDetails> getAllinSecteur() {
-        return posteDetailsRepository.getPosteDetails();
+    public List<PosteDetails> getAllinSecteur(Long idSecteur) {
+        return posteDetailsRepository.getPosteDetails(idSecteur);
     }
 
+    /*public Integer getUserSecteur(Integer idUtilisateur) {
+        return posteDetailsRepository.getUserSecteur(idUtilisateur);
+    }*/
+
     public PosteDetails getAllDetailsPoste(Long idPoste) {
-        return posteDetailsRepository.getPosteDetails(idPoste);
+        return posteDetailsRepository.getPosteDetail(idPoste);
+    }
+
+    public List<String> getPositifx(Long idUser,Long idPoste){
+        return posteDetailsRepository.getPositifxx(idUser,idPoste);
+    }
+
+    public String[] getPositif(Long userId, Long posteId) {
+        return posteDetailsRepository.getPositif(userId, posteId);
+    }
+
+    public String[] getNegatif(Long idUser,Long idPoste){
+        return posteDetailsRepository.getNegatif(idUser,idPoste);
     }
 
     // Méthode pour calculer la compatibilité entre un poste et un utilisateur
-
     public List<PosteDetails> searchPostes(String title, Long diplome, Integer secteur, String competence, Integer ageMin, Integer ageMax, Double salaireMin, Double salaireMax, Integer distance, Integer anneeExperience) {
         Specification<PosteDetails> spec = Specification.where(PosteDetailsSpecifications.withTitre(title))
                 .and(PosteDetailsSpecifications.withIdDiplome(diplome))

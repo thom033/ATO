@@ -67,7 +67,7 @@ public class PdfService {
 
                 Paragraph introduction = new Paragraph("Entreprise Rohy\r\n" + //
                                 "Fait à Antananarivo le "
-                                + entretien.getDateEnvoi().format(DateTimeFormatter.ofPattern("dd-mm-yyyy")) + "\r\n" + //
+                                + entretien.getDateEnvoi().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\r\n" + //
                                 "\r\n" + //
                                 "Madame / Monsieur " + entretien.getUtilisateur().getNom() + ",\r\n" + //
                                 "\r\n" + //
@@ -83,16 +83,11 @@ public class PdfService {
                                 "compétences et vos motivations.\r\n" + //
                                 "\r\n" + //
                                 "Date : "
-                                + entretien.getDateEntretien().format(DateTimeFormatter.ofPattern("dd-mm-yyyy"))
+                                + entretien.getDateEntretien().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
                                 + "\r\n" + //
                                 "Heure : " + entretien.getDateEntretien().toLocalTime() + "\r\n" + //
                                 "Lieu : Adresse de l'entreprise Rohy\r\n" + //
-                                "\r\n" + //
-                                "Personne à contacter :\r\n" + //
-                                "Nom : [Nom de la personne chargée de l'entretien]\r\n" + //
-                                "Fonction : [Fonction de la personne chargée de l'entretien]\r\n" + //
-                                "Email : [Email de la personne chargée de l'entretien]\r\n" + //
-                                "Téléphone : [Numéro de téléphone de la personne chargée de l'entretien]\r\n" + //
+
                                 "\r\n" + //
                                 "Nous vous prions de bien vouloir nous confirmer votre présence à cet entretien en nous contactant au numéro de téléphone de contact ci-dessus.\r\n"
                                 + //
