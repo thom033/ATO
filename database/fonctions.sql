@@ -273,7 +273,7 @@ BEGIN
     END IF;
 
     -- Retourner le nombre total de points
-    RETURN (point / 20.0) * 100.0;
+    RETURN point*5;
 END;
 $$ LANGUAGE plpgsql;
 

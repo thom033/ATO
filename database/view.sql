@@ -40,7 +40,7 @@ JOIN
 JOIN 
    secteur_diplome sd ON d.id_diplome = sd.id_diplome;
 
-CREATE VIEW utilisateur_details AS
+CREATE OR REPLACE VIEW utilisateur_details AS
 SELECT
     u.id_utilisateur,
     u.nom,
