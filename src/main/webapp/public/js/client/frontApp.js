@@ -81,7 +81,7 @@ frontApp.controller('notificationController', function($scope, $http) {
         if (url == 2) {
             valiny = "/utilisateur/profil";
         } else if (url == 0 ) {
-            valiny = "/utilisateur/inscription";
+            valiny = "/poste/details/show?idPoste=" + notification.poste.idPoste;
         } else if (url == 1) {
             valiny = "/generer-pdf/" + notification.entretien.id;
         }
@@ -169,7 +169,7 @@ frontApp.controller("faqController", function($scope, $http, $location, $anchorS
     $scope.getQuestion();
 });
 
-frontApp.controller("postulationController", function($scope, $http, $location, $anchorScroll) {
+frontApp.controller("postulationController", function($scope, $http) {
     $scope.postuler = function(idPoste) {
         let aurl = "/postuler/" + idPoste;
         $http({

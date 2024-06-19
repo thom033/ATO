@@ -31,23 +31,25 @@ public class PosteDetailsController {
     @Autowired
     ResultAcceuilService resultAcceuilService;
 
-    /*@GetMapping("/postedetails")
-    public String lister(Model model) {
-        List<PosteDetails> listPost = posteDetailsService.getAllinSecteur();
-        model.addAttribute("listPost", listPost);
-        model.addAttribute("isEmpty", listPost.isEmpty());
-        return "test";
-    }*/
+    /*
+     * @GetMapping("/postedetails")
+     * public String lister(Model model) {
+     * List<PosteDetails> listPost = posteDetailsService.getAllinSecteur();
+     * model.addAttribute("listPost", listPost);
+     * model.addAttribute("isEmpty", listPost.isEmpty());
+     * return "test";
+     * }
+     */
 
     @GetMapping("/compatibility-poste/{idPoste}")
-    public ModelAndView detailPoste(@PathVariable Long idPoste,HttpSession httpSession){
+    public ModelAndView detailPoste(@PathVariable Long idPoste, HttpSession httpSession) {
         ModelAndView mv = new ModelAndView("/template");
         String pages = "acceuil/compatibilite";
         Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
-        String [] positifBase = posteDetailsService.getPositif(utilisateur.getId(), idPoste);
-        String [] positif = ResultAcceuil.splitByComma(positifBase[0]);
-        String [] NegatifBase = posteDetailsService.getNegatif(utilisateur.getId(), idPoste);
-        String [] negatif = ResultAcceuil.splitByComma(NegatifBase[0]);
+        String[] positifBase = posteDetailsService.getPositif(utilisateur.getId(), idPoste);
+        String[] positif = ResultAcceuil.splitByComma(positifBase[0]);
+        String[] NegatifBase = posteDetailsService.getNegatif(utilisateur.getId(), idPoste);
+        String[] negatif = ResultAcceuil.splitByComma(NegatifBase[0]);
 
         mv.addObject("data", resultAcceuilService.getResult(idPoste));
         mv.addObject("positif", positif);
@@ -57,26 +59,30 @@ public class PosteDetailsController {
 
         return mv;
     }
+
     @GetMapping("/postetest")
     public String test(Model model) {
         model.addAttribute("listPost", "CC TEST TEST");
         return "test";
     }
-    
+
     @GetMapping("/poste/details")
-    public  ModelAndView rechargeSoldeUtilisateur(@RequestParam(name = "idPoste", required = false, defaultValue = "0") Long IdPoste , HttpSession httpSession) {
-        ModelAndView  mv = new  ModelAndView("template");
+    public ModelAndView rechargeSoldeUtilisateur(
+            @RequestParam(name = "idPoste", required = false, defaultValue = "0") Long IdPoste,
+            HttpSession httpSession) {
+        ModelAndView mv = new ModelAndView("template");
         Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
 
         PosteDetails pd = posteDetailsService.getAllDetailsPoste(IdPoste);
         List<Contact> contacts = new ArrayList<>();
 
-        List<EntrepriseContact> entreprisecontacts = entrepriseContactRepository.findByEntrepriseId(pd.getPosteEntreprise());
+        List<EntrepriseContact> entreprisecontacts = entrepriseContactRepository
+                .findByEntrepriseId(pd.getPosteEntreprise());
         for (EntrepriseContact uc : entreprisecontacts) {
             contacts.add(uc.getContact());
         }
 
-        double pourcentage = resultAcceuilRepository.getResultAcceuilsByIdPosteUser(user.getId(),IdPoste);
+        double pourcentage = resultAcceuilRepository.getResultAcceuilsByIdPosteUser(user.getId(), IdPoste);
 
         mv.addObject("details", pd);
         mv.addObject("contacts", contacts);
@@ -84,6 +90,39 @@ public class PosteDetailsController {
 
         mv.addObject("page", "poste-details/details");
 
-        return  mv;
+        return mv;
+    }
+
+    @GetMapping("/poste/details/show")
+    public ModelAndView voirPoste(@RequestParam(name = "idPoste", required = false, defaultValue = "0") String IdPoste,
+            HttpSession session) {
+        ModelAndView mv = new ModelAndView("template");
+
+        Utilisateur user = (Utilisateur) session.getAttribute("utilisateur");
+        if (user == null) {
+            mv.setViewName("login/login-register");
+            session.setAttribute("nextPage", "/poste/details/show?idPoste=" + IdPoste);
+            return mv;
+        }
+
+        PosteDetails pd = posteDetailsService.getAllDetailsPoste(Long.valueOf(IdPoste));
+        List<Contact> contacts = new ArrayList<>();
+
+        List<EntrepriseContact> entreprisecontacts = entrepriseContactRepository
+                .findByEntrepriseId(pd.getPosteEntreprise());
+        for (EntrepriseContact uc : entreprisecontacts) {
+            contacts.add(uc.getContact());
+        }
+
+        double pourcentage = resultAcceuilRepository.getResultAcceuilsByIdPosteUser(user.getId(),
+                Long.valueOf(IdPoste));
+
+        mv.addObject("details", pd);
+        mv.addObject("contacts", contacts);
+        mv.addObject("pourcentage", pourcentage);
+
+        mv.addObject("page", "poste-details/details");
+
+        return mv;
     }
 }
