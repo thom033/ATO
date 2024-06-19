@@ -17,11 +17,14 @@ public interface PosteDetailsRepository extends JpaRepository<PosteDetails, Long
     @Query("select pd from PosteDetails pd where idPoste=:idPoste")
     PosteDetails getPosteDetail(@Param("idPoste")Long idPostee);
 
-    @Query(value = "SELECT get_positif(:idUser,:idPoste)", nativeQuery = true)
-    List<String>  getPositif(@Param("idUser") Long idUtilisateur,@Param("idPoste") Long idPoste);
+    @Query(value = "SELECT get_positif(:idUser,:idPoste)")
+    List<String>  getPositifxx(@Param("idUser") Long idUtilisateur,@Param("idPoste") Long idPoste);
 
-    @Query(value = "SELECT get_negatif(:idUser,:idPoste)", nativeQuery = true)
-    List<String>  getNegatif(@Param("idUser") Long idUtilisateur,@Param("idPoste") Long idPoste);
+    @Query(value = "SELECT get_negatif(:idUser,:idPoste)")
+    String[]  getNegatif(@Param("idUser") Long idUtilisateur,@Param("idPoste") Long idPoste);
+
+    @Query(value = "SELECT get_positif(:userId, :posteId)", nativeQuery = true)
+    String[] getPositif(@Param("userId") Long userId, @Param("posteId") Long posteId);
 
 
 }

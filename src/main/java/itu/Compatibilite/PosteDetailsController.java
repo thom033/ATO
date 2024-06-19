@@ -38,14 +38,20 @@ public class PosteDetailsController {
         model.addAttribute("isEmpty", listPost.isEmpty());
         return "test";
     }*/
+
     @GetMapping("/compatibility-poste/{idPoste}")
     public ModelAndView detailPoste(@PathVariable Long idPoste,HttpSession httpSession){
         ModelAndView mv = new ModelAndView("/template");
         String pages = "acceuil/compatibilite";
         Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
+        String [] positifBase = posteDetailsService.getPositif(utilisateur.getId(), idPoste);
+        String [] positif = ResultAcceuil.splitByComma(positifBase[0]);
+        String [] NegatifBase = posteDetailsService.getNegatif(utilisateur.getId(), idPoste);
+        String [] negatif = ResultAcceuil.splitByComma(NegatifBase[0]);
+
         mv.addObject("data", resultAcceuilService.getResult(idPoste));
-        mv.addObject("positif", posteDetailsService.getPositif(utilisateur.getId(), idPoste));
-        mv.addObject("negatif", posteDetailsService.getNegatif(utilisateur.getId(), idPoste));
+        mv.addObject("positif", positif);
+        mv.addObject("negatif", negatif);
 
         mv.addObject("page", pages);
 

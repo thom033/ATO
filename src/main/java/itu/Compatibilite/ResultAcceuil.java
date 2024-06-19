@@ -111,4 +111,11 @@ public class ResultAcceuil {
     public void setEntreprisePoints(int entreprisePoints) {
         this.entreprisePoints = entreprisePoints;
     }
+
+    public static String[] splitByComma(String input) {
+        if (input == null || input.isEmpty()) {
+            return new String[0]; // Retourne un tableau vide si l'entrée est null ou vide
+        }
+        return input.split(",");
+    }
 }

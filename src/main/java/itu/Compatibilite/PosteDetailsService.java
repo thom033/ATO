@@ -25,11 +25,15 @@ public class PosteDetailsService {
         return posteDetailsRepository.getPosteDetail(idPoste);
     }
 
-    public List<String> getPositif(Long idUser,Long idPoste){
-        return posteDetailsRepository.getPositif(idUser,idPoste);
+    public List<String> getPositifx(Long idUser,Long idPoste){
+        return posteDetailsRepository.getPositifxx(idUser,idPoste);
     }
 
-    public List<String> getNegatif(Long idUser,Long idPoste){
+    public String[] getPositif(Long userId, Long posteId) {
+        return posteDetailsRepository.getPositif(userId, posteId);
+    }
+
+    public String[] getNegatif(Long idUser,Long idPoste){
         return posteDetailsRepository.getNegatif(idUser,idPoste);
     }
 

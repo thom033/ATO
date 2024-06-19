@@ -305,7 +305,7 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION get_positif(user_id BIGINT, poste_id BIGINT) RETURNS TEXT[] AS $$
 DECLARE
-    status TEXT[];
+    status TEXT[] := '{}';  -- Initialisation du tableau vide
     distance DOUBLE PRECISION;
     distance_points INTEGER;
 BEGIN
@@ -335,19 +335,15 @@ BEGIN
     -- Calculer les points en fonction de la distance
     IF distance > 0 THEN
         distance_points := point_distance(user_id, poste_id);
-        CASE
-            WHEN distance_points = 5 THEN 
-                status := array_append(status, 'Distance: OK (5 points)');
-            WHEN distance_points = 25 THEN 
-                status := array_append(status, 'Distance: OK (2.5 points)');
-            WHEN distance_points = 50 THEN 
-                status := array_append(status, 'Distance: OK (1.25 points)');
-        END CASE;
+        IF distance_points < 50 THEN
+            status := array_append(status, 'Distance: OK');
+        END IF;
     END IF;
     -- Retourner le tableau de status
     RETURN status;
 END;
 $$ LANGUAGE plpgsql;
+
 
 CREATE OR REPLACE FUNCTION get_negatif(user_id BIGINT, poste_id BIGINT) RETURNS TEXT[] AS $$
 DECLARE
@@ -381,10 +377,9 @@ BEGIN
     -- Calculer les points en fonction de la distance
     IF distance > 0 THEN
         distance_points := point_distance(user_id, poste_id);
-        CASE
-            WHEN distance_points > 50 THEN 
-                status := array_append(status, 'Distance: NOT OK');
-        END CASE;
+        IF distance_points = 50 THEN
+            status := array_append(status, 'Distance: NOT OK');
+        END IF;
     END IF;
 
     -- Retourner le tableau de status

@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="itu.Compatibilite.ResultAcceuil" %>
+
 <%
+    // Récupération des attributs depuis l'objet request
     ResultAcceuil poste = (ResultAcceuil) request.getAttribute("data");
-    List<String> positif = (List<String>) request.getAttribute("positif");
-    List<String> negatif = (List<String>) request.getAttribute("negatif");
+    String[] positif = (String[]) request.getAttribute("positif");
+    String[] negatif = (String[]) request.getAttribute("negatif");
 %>
 <!DOCTYPE html>
 <html lang="fr">
@@ -55,7 +57,7 @@
                         <p style="font-size: 150%; color: gray;">Taux de compatibilité :</p>
                     </div>
                     <div class="col-md-6">
-                        <p style="font-size: 340%; color: red; font-weight: bold;"><%= poste.getPtsTotal() %></p>
+                        <p style="font-size: 340%; color: red; font-weight: bold;"><%= poste.getPtsTotal() %> %</p>
                     </div>
                 </div>
             </div>
@@ -65,16 +67,16 @@
                         <p style="font-size: 240%; font-weight: 600; color: gray;">+ Points positifs: </p>
                     </div>
                     <div class="col-md-2">
-                        <p style="font-size: 240%; color: #00CF00; font-weight: 600;"><%= positif.size() %></p>
+                        <p style="font-size: 240%; color: #00CF00; font-weight: 600;"><%= positif.length %></p>
                     </div>
                 </div>
-                <% for (int i = 0; i < positif.size(); i++) { %> 
+                <% for (int i = 0; i < positif.length; i++) { %> 
                 <div class="row">
                     <div class="col-md-1">
                         <div class="roundGreen"></div>
                     </div>
                     <div class="col-md-11">
-                        <p><%= positif.get(i) %></p>
+                        <p><%= positif[i] %></p>
                     </div>
                 </div>
                 <% } %>
@@ -85,16 +87,16 @@
                         <p style="font-size: 240%; font-weight: 600; color: gray;">- Points négatifs:</p>
                     </div>
                     <div class="col-md-2">
-                        <p style="font-size: 240%; color: red; font-weight: 600;"><%= negatif.size() %></p>
+                        <p style="font-size: 240%; color: red; font-weight: 600;"><%= negatif.length %></p>
                     </div>
                 </div>
-                <% for (int i = 0; i < negatif.size(); i++) { %>
+                <% for (int i = 0; i < negatif.length; i++) { %>
                 <div class="row">
                     <div class="col-md-1">
                         <div class="roundRed"></div>
                     </div>
                     <div class="col-md-11">
-                        <p><%= negatif.get(i) %></p>
+                        <p><%= negatif[i] %></p>
                     </div>
                 </div>
                 <% } %>
