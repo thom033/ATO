@@ -37,7 +37,7 @@ public class PosteDetailsSpecifications {
             if (competence == null ) {
                 return criteriaBuilder.conjunction();
             }
-            return criteriaBuilder.equal(root.get("idCompetence"), "%" + competence + "%");
+            return criteriaBuilder.equal(root.get("idCompetence"), competence);
         };
     }
 

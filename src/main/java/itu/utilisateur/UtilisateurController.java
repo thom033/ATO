@@ -139,6 +139,7 @@ public class UtilisateurController {
         ModelAndView model = new ModelAndView("template");
         Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
         List<Experience> experiences = new ArrayList<>();
+        List<Formation> formations = new ArrayList<>();
         List<Diplome> diplomes = new ArrayList<>();
         List<Competence> competences = new ArrayList<>();
         List<Secteur> secteurs = new ArrayList<>();
@@ -147,6 +148,7 @@ public class UtilisateurController {
 
         if (user != null) {
             experiences = experienceRepository.findByUtilisateurId(user.getId());
+            formations = formationRepository.findByUtilisateurId(user.getId());
             List<DiplomeUtilisateur> diplomeUtilisateurs = diplomeUtilisateurRepository
                     .findByUtilisateurId(user.getId());
             for (DiplomeUtilisateur du : diplomeUtilisateurs) {
@@ -176,6 +178,7 @@ public class UtilisateurController {
 
         model.addObject("utilisateur", user);
         model.addObject("experiences", experiences);
+        model.addObject("formations", formations);
         model.addObject("diplomes", diplomes);
         model.addObject("competences", competences);
         model.addObject("secteurs", secteurs);
@@ -191,7 +194,6 @@ public class UtilisateurController {
         ModelAndView model = new ModelAndView("template");
         Utilisateur user = utilisateurRepository.getById(Long.valueOf(idUtilisateur));
         List<Experience> experiences = new ArrayList<>();
-        List<Formation> formations = new ArrayList<>();
         List<Diplome> diplomes = new ArrayList<>();
         List<Competence> competences = new ArrayList<>();
         List<Secteur> secteurs = new ArrayList<>();
@@ -200,7 +202,6 @@ public class UtilisateurController {
 
         if (user != null) {
             experiences = experienceRepository.findByUtilisateurId(user.getId());
-            formations = formationRepository.findByUtilisateurId(user.getId());
             List<DiplomeUtilisateur> diplomeUtilisateurs = diplomeUtilisateurRepository.findByUtilisateurId(user.getId());
             for (DiplomeUtilisateur du : diplomeUtilisateurs) {
                 diplomes.add(du.getDiplome());
@@ -229,7 +230,6 @@ public class UtilisateurController {
 
         model.addObject("utilisateur", user);
         model.addObject("experiences", experiences);
-        model.addObject("formations", experiences);
         model.addObject("diplomes", diplomes);
         model.addObject("competences", competences);
         model.addObject("secteurs", secteurs);

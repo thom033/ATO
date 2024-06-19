@@ -13,7 +13,7 @@
 <%
     Utilisateur user = (Utilisateur) request.getAttribute("utilisateur");
     List<Experience> exp = (List<Experience>) request.getAttribute("experiences");
-    List<Experience> form = (List<Experience>) request.getAttribute("formations");
+    List<Formation> form = (List<Formation>) request.getAttribute("formations");
     List<Diplome> dip = (List<Diplome>) request.getAttribute("diplomes");
     List<Competence> comp = (List<Competence>) request.getAttribute("competences");
     List<Secteur> sect = (List<Secteur>) request.getAttribute("secteurs");
@@ -191,7 +191,7 @@
                                         <div class="variable">
                                         <%
                                             SimpleDateFormat sdff = new SimpleDateFormat("yyyy-MM-dd");
-                                            for (Experience formation : form) {
+                                            for (Formation formation : form) {
                                                 String dateDebutt = sdff.format(formation.getDateDebut());
                                                 String dateFinn = sdff.format(formation.getDateFin());
                                         %>
