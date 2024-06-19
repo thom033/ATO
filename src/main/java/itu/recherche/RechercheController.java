@@ -1,10 +1,9 @@
 package itu.recherche;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import javax.xml.transform.Result;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import itu.compatibilite.PosteDetails;
+import itu.compatibilite.PosteDetailsRepository;
 import itu.compatibilite.PosteDetailsService;
 import itu.compatibilite.ResultAcceuil;
 import itu.compatibilite.ResultAcceuilRepository;
@@ -43,6 +43,9 @@ public class RechercheController {
 
     @Autowired
     PosteDetailsService posteDetailsService;
+
+    @Autowired
+    PosteDetailsRepository posteDetailsRepository;
 
     @Autowired
     ResultAcceuilRepository resultAcceuilRepository;
@@ -79,20 +82,34 @@ public class RechercheController {
         String title = params.get("title");
         Long diplome = params.get("diplome") != null && !params.get("diplome").isEmpty() ? Long.valueOf(params.get("diplome")) : null;
         Integer secteur = params.get("secteur") != null && !params.get("secteur").isEmpty() ? Integer.valueOf(params.get("secteur")) : null;
-        String competence = params.get("competence");
+        Long competence = params.get("competence") != null && !params.get("competence").isEmpty() ? Long.valueOf(params.get("competence")) : null;
         Integer ageMin = params.get("ageMin") != null && !params.get("ageMin").isEmpty() ? Integer.valueOf(params.get("ageMin")) : null;
         Integer ageMax = params.get("ageMax") != null && !params.get("ageMax").isEmpty() ? Integer.valueOf(params.get("ageMax")) : null;
         Double salaireMin = params.get("salaireMin") != null && !params.get("salaireMin").isEmpty() ? Double.valueOf(params.get("salaireMin")) : null;
         Double salaireMax = params.get("salaireMax") != null && !params.get("salaireMax").isEmpty() ? Double.valueOf(params.get("salaireMax")) : null;
-        Integer distance = params.get("distance") != null && !params.get("distance").isEmpty() ? Integer.valueOf(params.get("distance")) : null;
+        Double distance = params.get("distance") != null && !params.get("distance").isEmpty() ? Double.valueOf(params.get("distance")) : null;
         Integer anneeExperience = params.get("anneeExperience") != null && !params.get("anneeExperience").isEmpty() ? Integer.valueOf(params.get("anneeExperience")) : null;
 
-        List<PosteDetails> resultPoste = posteDetailsService.searchPostes(title, diplome, secteur, competence, ageMin, ageMax, salaireMin, salaireMax, distance, anneeExperience);
+        List<PosteDetails> resultPoste = posteDetailsService.searchPostes(title, diplome, secteur, competence, ageMin, ageMax, salaireMin, salaireMax, anneeExperience);
         List<ResultAcceuil> result = new ArrayList<>();
 
         for (PosteDetails poste : resultPoste) {
             result.add(resultAcceuilRepository.getResultAcceuilsRecherche(utilisateur.getId(),poste.getIdPoste()));
+            System.out.println("distance : " + posteDetailsRepository.calculateDistance(utilisateur.getId(),poste.getIdPoste()));
+            System.out.println("id poste : " + poste.getIdPoste());
         }
+
+        if (distance != null) {
+            Iterator<ResultAcceuil> iterator = result.iterator();
+            while (iterator.hasNext()) {
+                ResultAcceuil resultAcceuil = iterator.next();
+                if (distance < posteDetailsRepository.calculateDistance(utilisateur.getId(), resultAcceuil.getIdPoste())) {
+                    System.out.println("id posteee : " + resultAcceuil.getIdPoste());
+                    iterator.remove();
+                }
+            }
+        }
+        
 
         mv.addObject("data", result);
         mv.addObject("page", "acceuil/index");

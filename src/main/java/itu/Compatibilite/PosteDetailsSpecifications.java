@@ -9,7 +9,8 @@ public class PosteDetailsSpecifications {
             if (titre == null || titre.isEmpty()) {
                 return criteriaBuilder.conjunction();
             }
-            return criteriaBuilder.like(root.get("posteTitre"), "%" + titre + "%");
+            String titreLower = titre.toLowerCase();
+            return criteriaBuilder.like(criteriaBuilder.lower(root.get("posteTitre")), "%" + titreLower + "%");
         };
     }
 
@@ -31,12 +32,12 @@ public class PosteDetailsSpecifications {
         };
     }
 
-    public static Specification<PosteDetails> withCompetence(String competence) {
+    public static Specification<PosteDetails> withCompetence(Long competence) {
         return (root, query, criteriaBuilder) -> {
-            if (competence == null || competence.isEmpty()) {
+            if (competence == null ) {
                 return criteriaBuilder.conjunction();
             }
-            return criteriaBuilder.like(root.get("competenceRequise"), "%" + competence + "%");
+            return criteriaBuilder.equal(root.get("idCompetence"), competence);
         };
     }
 
@@ -84,7 +85,7 @@ public class PosteDetailsSpecifications {
             if (anneeExperience == null) {
                 return criteriaBuilder.conjunction();
             }
-            return criteriaBuilder.greaterThanOrEqualTo(root.get("nbrAnneeExperience"), anneeExperience);
+            return criteriaBuilder.lessThanOrEqualTo(root.get("nbrAnneeExperience"), anneeExperience);
         };
     }
 }

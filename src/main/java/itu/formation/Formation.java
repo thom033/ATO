@@ -1,38 +1,26 @@
-package itu.experience;
+package itu.formation;
 
 import jakarta.persistence.*;
 import java.util.Date;
 
-import itu.secteur.Secteur;
 import itu.utilisateur.Utilisateur;
 
 @Entity
-public class Experience {
+@Table(name = "formation")
+public class Formation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_experience")
+    @Column(name = "id_formation")
     private Long id;
 
     @Column(name = "date_debut")
     private Date dateDebut;
 
-    @Column(name = "date_fin")
-    private Date dateFin;
-
     @Column(name = "description")
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "id_secteur")
-    private Secteur secteur;
     
-    public Secteur getSecteur() {
-        return secteur;
-    }
-
-    public void setSecteur(Secteur secteur) {
-        this.secteur = secteur;
-    }
+    @Column(name = "date_fin")
+    private Date dateFin;
 
     @ManyToOne
     @JoinColumn(name = "id_utilisateur")
