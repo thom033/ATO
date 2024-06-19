@@ -4,7 +4,11 @@
 
 .container {
     height: 100%;
-    margin-bottom: 3rem !important;
+    /* margin-bottom: 3rem !important; */
+}
+
+.espace-nico {
+    padding: 2em;
 }
 
 .card {
@@ -14,8 +18,7 @@
 }
 
 .content {
-    margin-left: 30px;
-    margin-right: 30px;
+
 }
 
 strong {
@@ -62,4 +65,5 @@ strong {
 .container .card p {
     color: rgb(133, 134, 134);
     font-weight: bold;
+    margin: 1em;
 }

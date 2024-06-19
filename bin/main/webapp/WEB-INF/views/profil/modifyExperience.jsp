@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="../../../../public/bootstrap/css/input.css">
 <link rel="stylesheet" href="../../../../public/bootstrap/css/stylesRecherche.css">
 <style>
@@ -12,36 +13,44 @@
 </style>
 <script src="../../../../../public/js/angular.min.js"></script>
 <div class="container" style="margin-top: 5%;">
-  <div class="row" ng-app="AdminApp" ng-controller="tableController">
+  <div class="row" ng-app="ExperienceApp" ng-controller="tableController">
     <div class="col-md-6">
       <div class="form">
         <form id="formulaire" ng-submit="submitForm()">
           <div class="container">
-            <h5>Administrateur</h5>
+            <h5>Experience utilisateur</h5>
             <hr>
           </div>
           <div class="row mb-3">
+            <p>Secteur</p>
+            <div class="col-md-5">
+                <select class="form-select" aria-label="Default select example" ng-model="experience.secteur">
+                    <option ng-repeat="secteur in secteurs" ng-value="{{secteur}}" ng-selected="secteur.secteur==experience.secteur">{{secteur.secteur}}</option>
+                </select>
+            </div>
+          </div>
+          <div class="row mb-3">
             <div class="col-md-5">
               <div class="input-group">
-                  <input required="" type="text" ng-model="admin.mail" auto complete="off" class="input" style=" border-radius: 15px;">
-                  <label class="user-label">Mail</label>
+                  <input required="" value="{{experience.dateDebut.split('T')[0]}}" type="date" id="dateDebut" auto complete="off" class="input" style=" border-radius: 15px;">
+                  <label class="user-label">Début</label>
               </div>
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-md-5">
               <div class="input-group">
-                  <input required="" type="password" ng-model="admin.motDePasse" name="password1" autocomplete="off" class="input" style=" border-radius: 15px;">
-                  <label class="user-label">Mot de passe</label>
+                  <input value="{{experience.dateFin.split('T')[0]}}" type="date" id="dateFin" autocomplete="off" class="input" style=" border-radius: 15px;">
+                  <label class="user-label">Fin</label>
               </div>
             </div>
           </div>
           <div class="row mb-3">
-            <div class="col-md-5">
-              <div class="input-group">
-                  <input id="password" required="" type="password" name="password2" autocomplete="off" class="input" style=" border-radius: 15px;">
-                  <label class="user-label">Confirmer mot de passe</label>
-              </div>
+            <div class="col-md-9">
+                <div class="input-group">
+                    <span class="input-group-text">Description</span>
+                    <textarea class="form-control" ng-model="experience.description" aria-label="With textarea"></textarea>
+                </div>
             </div>
           </div>
           <div class="row">
@@ -67,18 +76,18 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Mail</th>
+              <th scope="col">Secteur</th>
+              <th scope="col">Début</th>
               <th scope="col">Modifier</th>
-              <th scope="col">Renvoyer</th>
+              <th scope="col">Supprimer</th>
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="admin in admins | filter: recherche">
-              <th scope="row">{{admin.idAdmin}}</th>
-              <td>{{admin.mail}}</td>
-              <td><button class="btn btn-warning" ng-click="modify(admin.idAdmin)">Modifier</button></td>
-              <td><button class="btn btn-danger" ng-click="delete(admin.idAdmin)">Renvoyer</button></td>
+            <tr ng-repeat="experience in experiences | filter: recherche">
+              <td>{{experience.secteur.secteur}}</td>
+              <td>{{experience.dateDebut.toISOString().split('T')[0]}}</td>
+              <td><button class="btn btn-warning" ng-click="modify(experience.id)">Modifier</button></td>
+              <td><button class="btn btn-danger" ng-click="delete(experience.id)">Supprimer</button></td>
             </tr>
           </tbody>
         </table>
@@ -86,5 +95,5 @@
     </div>
   </div>
 </div>
-<script src="../../../../public/js/crud/Admin.js"></script>
-<script src="../../../../public/js/input.js"></script>
+<script src="/public/js/crud/Experience.js"></script>
+<script src="/public/js/input.js"></script>
