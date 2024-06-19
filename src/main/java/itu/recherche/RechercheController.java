@@ -79,7 +79,7 @@ public class RechercheController {
         String title = params.get("title");
         Long diplome = params.get("diplome") != null && !params.get("diplome").isEmpty() ? Long.valueOf(params.get("diplome")) : null;
         Integer secteur = params.get("secteur") != null && !params.get("secteur").isEmpty() ? Integer.valueOf(params.get("secteur")) : null;
-        String competence = params.get("competence");
+        Long competence = params.get("competence") != null && !params.get("competence").isEmpty() ? Long.valueOf(params.get("competence")) : null;
         Integer ageMin = params.get("ageMin") != null && !params.get("ageMin").isEmpty() ? Integer.valueOf(params.get("ageMin")) : null;
         Integer ageMax = params.get("ageMax") != null && !params.get("ageMax").isEmpty() ? Integer.valueOf(params.get("ageMax")) : null;
         Double salaireMin = params.get("salaireMin") != null && !params.get("salaireMin").isEmpty() ? Double.valueOf(params.get("salaireMin")) : null;
