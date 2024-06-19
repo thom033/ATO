@@ -1,10 +1,9 @@
 package itu.recherche;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import javax.xml.transform.Result;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -95,13 +94,22 @@ public class RechercheController {
         List<ResultAcceuil> result = new ArrayList<>();
 
         for (PosteDetails poste : resultPoste) {
-            if (distance != null && distance <= posteDetailsRepository.calculateDistance(utilisateur.getId(),poste.getIdPoste())) {
-                result.add(resultAcceuilRepository.getResultAcceuilsRecherche(utilisateur.getId(),poste.getIdPoste()));
-            }
-            else{
-                result.add(resultAcceuilRepository.getResultAcceuilsRecherche(utilisateur.getId(),poste.getIdPoste()));
+            result.add(resultAcceuilRepository.getResultAcceuilsRecherche(utilisateur.getId(),poste.getIdPoste()));
+            System.out.println("distance : " + posteDetailsRepository.calculateDistance(utilisateur.getId(),poste.getIdPoste()));
+            System.out.println("id poste : " + poste.getIdPoste());
+        }
+
+        if (distance != null) {
+            Iterator<ResultAcceuil> iterator = result.iterator();
+            while (iterator.hasNext()) {
+                ResultAcceuil resultAcceuil = iterator.next();
+                if (distance < posteDetailsRepository.calculateDistance(utilisateur.getId(), resultAcceuil.getIdPoste())) {
+                    System.out.println("id posteee : " + resultAcceuil.getIdPoste());
+                    iterator.remove();
+                }
             }
         }
+        
 
         mv.addObject("data", result);
         mv.addObject("page", "acceuil/index");
