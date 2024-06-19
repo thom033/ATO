@@ -48,11 +48,11 @@ VALUES
 ('2005-03-01', '2010-03-01', 'Analyste chez MarketLLC', 3);
 
 -- Données pour la table Formation
-INSERT INTO Formation (date_debut, description, date_fin, id_utilisateur)
+INSERT INTO Formation (date_debut, description, date_fin, id_utilisateur,id_diplome)
 VALUES
-('2006-09-01', 'Licence en Informatique', '2009-06-30', 1),
-('2010-09-01', 'Master en Gestion', '2012-06-30', 2),
-('2000-09-01', 'Baccalauréat en Économie', '2003-06-30', 3);
+('2006-09-01', 'Licence en Informatique', '2009-06-30', 1,1);
+('2010-09-01', 'Master en Gestion', '2012-06-30', 2,2),
+('2000-09-01', 'Baccalaureat en Economie', '2003-06-30', 3,3);
 
 -- Données pour la table Reponse
 INSERT INTO Reponse (reponse)
