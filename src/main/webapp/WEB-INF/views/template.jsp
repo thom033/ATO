@@ -113,5 +113,29 @@
     <script src="/public/bootstrap/js/bootstrap.min.js"></script>
     <script src="/public/js/bs-init.js"></script>
     <script src="/public/js/bold-and-bright.js"></script>
+    <script src="/public/js/sweetalert2.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var message = "<%= request.getAttribute("error") != null ? request.getAttribute("error") : "" %>";
+            if (message != "") {
+                Swal.fire({
+                    title: 'Problème lors de la génération des données',
+                    text: message,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+
+            var success = "<%= request.getAttribute("succes") != null ? request.getAttribute("succes") : ""%>";
+            if (success) {
+                Swal.fire({
+                    title: 'Insertion de données',
+                    text: success,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    </script>
 </body>
 </html>

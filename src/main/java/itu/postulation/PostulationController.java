@@ -94,8 +94,16 @@ public class PostulationController {
             @RequestParam("idUtilisateur") String idUtilisateur,
             HttpSession session) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-        LocalDateTime dateEntretien = LocalDateTime.parse(date, formatter);
+        LocalDateTime dateEntretien = null;
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+            dateEntretien = LocalDateTime.parse(date, formatter);
+        } catch (Exception e) {
+            ModelAndView view = new ModelAndView("template");
+            view.addObject("error", "La date de l'embauche n'est pas valide");
+            view.addObject("page", "admin/postulation/index");
+            return view;
+        }
         Utilisateur utilisateur = utilisateurRepository.getById(Long.valueOf(idUtilisateur));
 
         Entretien entretien = new Entretien();
