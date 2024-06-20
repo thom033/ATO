@@ -33,5 +33,6 @@ public class ResultAcceuilController {
         mv.addObject("page", pages);
 
         return mv;
+        // xx
     }
 }
