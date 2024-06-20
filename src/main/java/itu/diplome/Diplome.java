@@ -1,5 +1,10 @@
 package itu.diplome;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import itu.utilisateur.Utilisateur;
 import jakarta.persistence.*;
 
 @Entity

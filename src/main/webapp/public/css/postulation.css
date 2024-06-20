@@ -1,0 +1,119 @@
+:root {
+    --my-max-width: 80%;
+}
+
+.notification-header {
+    font-size: 100px;
+    text-align: center;
+}
+.notification-item {
+    border-bottom: 1px solid #707070;
+    padding: 1.4em 0em;
+    max-width: 100%;
+    height: 7em;
+    transition: 0.2s;
+}
+
+.notification-item:hover {
+    transform: scale(1.02);
+    height: 10em;
+    transition: 0.2s;
+}
+
+.notification-item:hover {
+    transform: scale(1.02);
+    height: 10em;
+    transition: 0.2s;
+}
+
+.input-date {
+    display: none;
+}
+
+.notification-item:hover .input-date {
+    display: block;
+}
+
+.notification-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: auto;
+    color: black;
+}
+.notification-icon.download {
+    width: 3.2rem;
+    height: 3.2rem;
+    border: 3.5px solid green;
+}
+.notification-icon.garbage {
+    width: 3.2rem;
+    height: 3.2rem;
+    border: 3.5px solid red;
+    transition: 0.2s;
+}
+
+.notification-icon.chevron {
+    border: 2px solid black;
+    width: 25px;
+    height: 25px;
+}
+.notification-time {
+    color: #707070;
+}
+.notification-container {
+    position: relative;
+    margin-top: -50px;
+    overflow-y: scroll;
+}
+.notification-container::-webkit-scrollbar {
+    display: none;
+}
+
+.notification-container {
+    max-width: 1220px;
+    margin: auto;
+    max-height: 25.4em;
+    min-height: 25.4em;
+    border-top: 0.4rem solid #707070;
+    border-bottom: 0.4rem solid #707070;
+    border-radius: 0.4em;
+}
+
+@media (min-width: 1440) {
+    .notification-container {
+        max-width: 1220px;
+        margin: auto;
+    }
+}
+/* .notification-container::before,
+.notification-container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-color: #707070;
+} */
+.notification-container::before {
+    top: 0;
+}
+.notification-container::after {
+    bottom: 0;
+}
+.custom-h2 {
+    font-family: Helvetica, sans-serif;
+    font-size: 100px;
+    font-weight: bold;
+    color: #707070;
+}
+
+
+/* Nicolas */
+.nicolas-message {
+    font-weight: 600;
+}

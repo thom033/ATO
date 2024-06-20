@@ -3,6 +3,7 @@ package itu.utilisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +27,8 @@ import itu.diplome.DiplomeUtilisateur;
 import itu.diplome.DiplomeUtilisateurRepository;
 import itu.experience.Experience;
 import itu.experience.ExperienceRepository;
+import itu.formation.Formation;
+import itu.formation.FormationRepository;
 import itu.secteur.Secteur;
 import itu.secteur.SecteurDiplome;
 import itu.secteur.SecteurDiplomeRepository;
@@ -41,6 +44,9 @@ public class UtilisateurController {
 
     @Autowired
     ExperienceRepository experienceRepository;
+
+    @Autowired
+    FormationRepository formationRepository;
 
     @Autowired
     DiplomeUtilisateurRepository diplomeUtilisateurRepository;
@@ -84,7 +90,7 @@ public class UtilisateurController {
     }
 
     @PostMapping("/login/test")
-    public ModelAndView verificationLogin(@RequestParam HashMap<String, Object> login, HttpSession httpSession) {
+    public String verificationLogin(@RequestParam HashMap<String, Object> login, HttpSession session) {
         boolean validite = true;
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setMail((String) login.get("mail"));
@@ -98,13 +104,17 @@ public class UtilisateurController {
             ModelAndView mv = new ModelAndView("template");
 
             Utilisateur user = recherche.get(0);
-            httpSession.setAttribute("utilisateur", user);
+            session.setAttribute("utilisateur", user);
 
-            mv.addObject("page", "splashScreen/index");
-            return mv;
+            mv.addObject("page", session.getAttribute("nextPage"));
+            if (session.getAttribute("nextPage") == null)
+                return "redirect:/";
+
+            String nextPage = (String) session.getAttribute("nextPage");
+            session.removeAttribute("nextPage");
+            return "redirect:" + nextPage;
         } else {
-            ModelAndView mv = new ModelAndView("login/login-register");
-            return mv;
+            return "login/login-register";
         }
     }
 
@@ -132,6 +142,61 @@ public class UtilisateurController {
     public ModelAndView profil() {
         ModelAndView model = new ModelAndView("template");
         Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
+        List<Experience> experiences = new ArrayList<>();
+        List<Formation> formations = new ArrayList<>();
+        List<Diplome> diplomes = new ArrayList<>();
+        List<Competence> competences = new ArrayList<>();
+        List<Secteur> secteurs = new ArrayList<>();
+        List<Contact> contacts = new ArrayList<>();
+        Argent argentUser = new Argent();
+
+        if (user != null) {
+            experiences = experienceRepository.findByUtilisateurId(user.getId());
+            formations = formationRepository.findByUtilisateurId(user.getId());
+            List<DiplomeUtilisateur> diplomeUtilisateurs = diplomeUtilisateurRepository
+                    .findByUtilisateurId(user.getId());
+            for (DiplomeUtilisateur du : diplomeUtilisateurs) {
+                diplomes.add(du.getDiplome());
+                List<SecteurDiplome> secteurDiplome = secteurDiplomeRepository.findByDiplomeId(du.getDiplome().getId());
+                for (SecteurDiplome sd : secteurDiplome) {
+                    secteurs.add(sd.getSecteur());
+                }
+            }
+            List<CompetenceUtilisateur> competencesUtilisateurs = competenceUtilisateurRepository
+                    .findByUtilisateurId(user.getId());
+            for (CompetenceUtilisateur cu : competencesUtilisateurs) {
+                competences.add(cu.getCompetence());
+            }
+            List<UtilisateurContact> usercontacts = utilisateurContactRepository.findByUtilisateurId(user.getId());
+            for (UtilisateurContact uc : usercontacts) {
+                contacts.add(uc.getContact());
+            }
+
+            argentUser = argentRepository.getArgentUser(user.getId());
+        }
+
+        else {
+            ModelAndView mv = new ModelAndView("login/login-register");
+            return mv;
+        }
+
+        model.addObject("utilisateur", user);
+        model.addObject("experiences", experiences);
+        model.addObject("formations", formations);
+        model.addObject("diplomes", diplomes);
+        model.addObject("competences", competences);
+        model.addObject("secteurs", secteurs);
+        model.addObject("argent", argentUser);
+        model.addObject("contacts", contacts);
+        model.addObject("page", "profil/profil");
+
+        return model;
+    }
+
+    @GetMapping("/admin/utilisateur/profil/{idUtilisateur}")
+    public ModelAndView adminAccess(@PathVariable("idUtilisateur") String idUtilisateur) {
+        ModelAndView model = new ModelAndView("template");
+        Utilisateur user = utilisateurRepository.getById(Long.valueOf(idUtilisateur));
         List<Experience> experiences = new ArrayList<>();
         List<Diplome> diplomes = new ArrayList<>();
         List<Competence> competences = new ArrayList<>();
@@ -178,5 +243,40 @@ public class UtilisateurController {
         model.addObject("page", "profil/profil");
 
         return model;
+    }
+
+    @GetMapping("/utilisateur/parametre")
+    public ModelAndView parametre() {
+        ModelAndView modelAndView = new ModelAndView("template");
+        modelAndView.addObject("page", "profil/modify");
+        return modelAndView;
+    }
+
+    @GetMapping("/utilisateur/parametre/diplome")
+    public ModelAndView parametreDiplome() {
+        ModelAndView modelAndView = new ModelAndView("template");
+        modelAndView.addObject("page", "profil/modifyDiplome");
+        return modelAndView;
+    }
+
+    @GetMapping("/utilisateur/parametre/competence")
+    public ModelAndView parametreCompetence() {
+        ModelAndView modelAndView = new ModelAndView("template");
+        modelAndView.addObject("page", "profil/modifyCompetence");
+        return modelAndView;
+    }
+
+    @GetMapping("/utilisateur/parametre/contact")
+    public ModelAndView parametreContact() {
+        ModelAndView modelAndView = new ModelAndView("template");
+        modelAndView.addObject("page", "profil/modifyContact");
+        return modelAndView;
+    }
+
+    @GetMapping("/utilisateur/parametre/experience")
+    public ModelAndView parametreExperience() {
+        ModelAndView modelAndView = new ModelAndView("template");
+        modelAndView.addObject("page", "profil/modifyExperience");
+        return modelAndView;
     }
 }

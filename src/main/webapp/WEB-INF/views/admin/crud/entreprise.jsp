@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="../../../../public/bootstrap/css/input.css">
 <link rel="stylesheet" href="../../../../public/bootstrap/css/stylesRecherche.css">
 <link rel="stylesheet" href="../../../../public/leaflet/leaflet.css">
@@ -44,7 +45,7 @@
             </div>
         </div>
     </div>
-<div class="container">
+<div class="container" style="margin-top: 10%;">
   <div class="row" ng-app="EntrepriseApp" ng-controller="tableController">
     <div class="col-md-5">
       <form id="formulaire" ng-submit="submitForm()">
@@ -143,30 +144,41 @@
       </form>
     </div>
     <div class="col-md-7">
+      <div class="row mb-3">
+        <div class="input-group">
+          <input type="text" ng-model="recherche" autocomplete="off" class="input" style=" border-radius: 15px;">
+          <label class="user-label">Recherche</label>
+        </div>
+      </div>
+      <div class="row">
         <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Entreprise</th>
-                <th scope="col">Date de creation</th>
-                <th scope="col">Site Web</th>
-                <th scope="col">Voir plus/Modifier</th>
-                <th scope="col">Supprimer</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="entreprise in entreprises">
-                <th scope="row">{{entreprise.idEntreprise}}</th>
-                <td>{{entreprise.entreprise}}</td>
-                <td>{{entreprise.dateCreation.split('T')[0]}}</td>
-                <td>{{entreprise.siteWeb}}</td>
-                <td><button class="btn btn-warning" ng-click="modify(entreprise.idEntreprise)">Modifier</button></td>
-                <td><button class="btn btn-danger" ng-click="delete(entreprise.idEntreprise)">Supprimer</button></td>
-              </tr>
-            </tbody>
-          </table>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Entreprise</th>
+              <th scope="col">Date de creation</th>
+              <th scope="col">Site Web</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Voir plus/Modifier</th>
+              <th scope="col">Supprimer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="entreprise in entreprises | filter: recherche">
+              <th scope="row">{{entreprise.id}}</th>
+              <td>{{entreprise.entreprise}}</td>
+              <td>{{entreprise.dateCreation.split('T')[0]}}</td>
+              <td>{{entreprise.siteWeb}}</td>
+              <td><a class="btn btn-primary" href="/entreprise/contact?idEntreprise={{entreprise.id}}">Contact</a></td>              
+              <td><button class="btn btn-warning" ng-click="modify(entreprise.id)">Modifier</button></td>
+              <td><button class="btn btn-danger" ng-click="delete(entreprise.id)">Supprimer</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
+<script src="../../../../public/js/input.js"></script>
 <script src="../../../../public/leaflet/leaflet.js"></script>
 <script src="../../../../public/js/crud/Entreprise.js"></script>

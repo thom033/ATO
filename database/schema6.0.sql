@@ -78,15 +78,17 @@ CREATE TABLE experience(
    date_debut DATE NOT NULL,
    date_fin DATE,
    description TEXT NOT NULL,
+   id_secteur INTEGER NOT NULL,
    id_utilisateur INTEGER NOT NULL,
    PRIMARY KEY(id_experience),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
-CREATE TABLE Formation(
+CREATE TABLE formation(
    id_formation SERIAL,
    date_debut DATE NOT NULL,
    description TEXT NOT NULL,
+   id_diplome INTEGER NOT NULL,
    date_fin DATE,
    id_utilisateur INTEGER NOT NULL,
    PRIMARY KEY(id_formation),
@@ -101,24 +103,29 @@ CREATE TABLE Notification(
    point BOOLEAN,
    id_poste INTEGER,
    id_utilisateur INTEGER NOT NULL,
+   id_entretien integer,
    PRIMARY KEY(id_notification),
    FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
+   FOREIGN KEY(id_entretien) REFERENCES entretien(id_entretien),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+);
+-- ajout de id_entretien
+
+CREATE TABLE Reponse(
+   id_reponse SERIAL,
+   reponse TEXT NOT NULL,
+   PRIMARY KEY(id_reponse)
 );
 
 CREATE TABLE Question(
    id_question SERIAL,
    question TEXT NOT NULL,
-   PRIMARY KEY(id_question)
+   id_reponse integer,
+   PRIMARY KEY(id_question),
+   FOREIGN KEY(id_reponse) REFERENCES reponse(id_reponse)
 );
-
-CREATE TABLE Reponse(
-   id_reponse SERIAL,
-   reponse TEXT NOT NULL,
-   id_question INTEGER NOT NULL,
-   PRIMARY KEY(id_reponse),
-   FOREIGN KEY(id_question) REFERENCES Question(id_question)
-);
+-- inversment dans question qu'il a reponse 
+-- donc dans question on met id_reponse
 
 CREATE TABLE Contact(
    id_contact SERIAL,
@@ -147,6 +154,7 @@ CREATE TABLE historique_question(
    id_historique SERIAL,
    id_question INTEGER NOT NULL,
    id_utilisateur INTEGER NOT NULL,
+   date TIMESTAMP DEFAULT CURRENT_DATE,
    PRIMARY KEY(id_historique),
    FOREIGN KEY(id_question) REFERENCES Question(id_question),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
@@ -198,4 +206,26 @@ CREATE TABLE entreprise_contact(
    PRIMARY KEY(id_entreprise, id_contact),
    FOREIGN KEY(id_entreprise) REFERENCES Entreprise(id_entreprise),
    FOREIGN KEY(id_contact) REFERENCES Contact(id_contact)
+);
+
+-- modifications
+CREATE TABLE entretien(
+   id_entretien SERIAL,
+   date_envoi TIMESTAMP DEFAULT CURRENT_DATE,
+   date_entretien TIMESTAMP,
+   id_utilisateur INTEGER,
+   id_poste INTEGER,
+   reussite BOOLEAN DEFAULT FALSE,
+   PRIMARY KEY(id_entretien),
+   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur),
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
+);
+
+CREATE TABLE postulation(
+   id_postulation SERIAL PRIMARY KEY,
+   id_utilisateur integer,
+   id_poste integer,
+   date TIMESTAMP DEFAULT CURRENT_DATE,
+   FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id_utilisateur),
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
 );

@@ -1,5 +1,5 @@
 
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="fr">
 
@@ -75,9 +75,12 @@
                                         <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1"/>
                                     </svg>
                                 </span>
-                                <select class="form-select" name="diplome" id="diplome">
-                                    <option value="">Diplôme</option>
-                                </select>
+                                   <select class="form-select" name="diplome" id="diplome">
+                                        <option value="" class="option">Diplôme</option>
+                                        <c:forEach var="diplome" items="${allDiplomes}">
+                                            <option value="${diplome.id}">${diplome.diplome}</option>
+                                        </c:forEach>
+                                    </select>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
@@ -104,7 +107,10 @@
                                 </span>
                                 <select class="form-select" name="secteur" id="secteur">
                                     <option value="" class="option">Secteur</option>
-                                </select>
+                                        <c:forEach var="secteur" items="${allSecteurs}">
+                                            <option value="${secteur.id}">${secteur.secteur}</option>
+                                        </c:forEach>
+                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">

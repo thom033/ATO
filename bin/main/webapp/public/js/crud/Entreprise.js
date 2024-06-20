@@ -72,6 +72,15 @@ EntrepriseApp.controller('tableController', function($scope, $http) {
     }
 
     $scope.submitForm = function() {
+        if(buttonNext.innerText=="Modifier"){
+            $scope.updateForm();
+        }
+        else{
+            $scope.insertForm();
+        }
+    };
+
+    $scope.insertForm=function(){
         var newEntreprise = {
             idEntreprise: $scope.entreprise.idEntreprise,
             entreprise: $scope.entreprise.entreprise,
@@ -84,7 +93,6 @@ EntrepriseApp.controller('tableController', function($scope, $http) {
             image: "",
             longitude: $scope.entreprise.longitude
         };
-        console.log($scope.entreprise.latitude);
         console.log("Sending data:", JSON.stringify(newEntreprise)); // Afficher le JSON dans la console
         $http.post('/entreprise/insert', newEntreprise)
         .then(function(response) {
@@ -124,7 +132,7 @@ map.on('click', function(e) {
 
     $scope.updateForm = function() {
         var entreprise = {
-            idEntreprise: $scope.entreprise.idEntreprise,
+            id: $scope.entreprise.id,
             entreprise: $scope.entreprise.entreprise,
             type: $scope.entreprise.type,
             mail: $scope.entreprise.mail,
@@ -135,9 +143,9 @@ map.on('click', function(e) {
             image: "",
             longitude: $scope.entreprise.longitude
         };
-        console.log($scope.entreprise.latitude);
+        console.log(entreprise.id);
         console.log("Sending data:", JSON.stringify(entreprise)); // Afficher le JSON dans la console
-        $http.post('/entreprise/update/', entreprise)
+        $http.post('/entreprise/update', entreprise)
         .then(function(response) {
             $scope.entreprises = response.data;
             $scope.initialize();

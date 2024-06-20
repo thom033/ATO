@@ -31,6 +31,7 @@ public class NotificationController {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         if (utilisateur == null) {
             mv.setViewName("login/login-register");
+            session.setAttribute("nextPage", "/notification/index");
         } else {
             mv.setViewName("template");
             List<Notification> notifications = notificationRepository

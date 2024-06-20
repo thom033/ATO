@@ -1,69 +1,8 @@
 var frontApp = angular.module("frontApp",[]);
 
-// frontApp.component('notification', {
-//     template: `
-//         <div>
-//             <h1>{{ $ctrl.title }}</h1>
-//             <p>{{ $ctrl.description }}</p>
-//         </div>
-//     `,
-//     bindings: {
-//         titler : '@'
-//     }
-//     ,
-//     controller: function() {
-//         // console.log(this.notif);
-//         this.titler = notif;
-//         this.description = 'This is a simple AngularJS component example.';
-//     }
-// })
-
-// Define the component with bindings
-frontApp.component('myComponent', {
-    bindings: {
-        title: '@',
-        description: '@'
-    },
-    template: `
-        <div>
-            <h1>{{ $ctrl.title }}</h1>
-            <p>{{ $ctrl.description }}</p>
-        </div>
-    `,
-    controller: function() {
-        // The controller can use $onInit for initialization
-        this.$onInit = function() {
-            // console.log('Component initialized with title:', this.title);
-        };
-    }
-});
-
 frontApp.controller('notificationController', function($scope, $http) {
 
     $scope.nom = "albert";
-
-    // $scope.submitForm = function () {
-    //     console.log("Championnat")
-    //     console.log($scope.championnat)
-    //     $http({
-    //         url: 'championnat-controller',
-    //         method: 'POST',
-    //         data: $scope.championnat,
-    //         headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
-    //         transformRequest: function(obj) {
-    //             var str = [];
-    //             for (var p in obj)
-    //                 str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-    //             return str.join("&");
-    //         }
-    //     })
-    //         .then(function(response) {
-    //             $scope.submitted = true;
-    //             $scope.tableData = response.data;
-    //         }, function(error) {
-    //             console.error('Erreur lors de l\'envoi des données', error);
-    //         });
-    // };
 
     $scope.getData = function() {
         let aurl = "/notification/liste";
@@ -73,7 +12,6 @@ frontApp.controller('notificationController', function($scope, $http) {
         })
         .then(function(response) {
             $scope.notifications = response.data;
-            // console.log($scope.notifications);
         }, function(error) {
             console.error('Erreur lors de la récupération des données:', error);
         });
@@ -128,19 +66,24 @@ frontApp.controller('notificationController', function($scope, $http) {
     $scope.estDynamique = function(notification) {
         if (notification.poste != null) {
             return 0;
+        } else if (notification.entretien != null) {
+            return 1;
         }
         else if(notification.point) {
-            return -1;
+            return 2;
         }
-        return -2
+        return -1;
     };
 
-    $scope.interpreterUrl = function(url) {
+    $scope.interpreterUrl = function(notification) {
         let valiny = "";
-        if (url == -1) {
+        let url = $scope.estDynamique(notification);
+        if (url == 2) {
             valiny = "/utilisateur/profil";
-        } else if (url >= 0 ) {
-            valiny = "/utilisateur/inscription";
+        } else if (url == 0 ) {
+            valiny = "/poste/details/show?idPoste=" + notification.poste.idPoste;
+        } else if (url == 1) {
+            valiny = "/generer-pdf/" + notification.entretien.id;
         }
         return valiny;
     }
@@ -153,4 +96,93 @@ frontApp.controller('notificationController', function($scope, $http) {
         const formattedDate = date.toLocaleDateString('fr-FR');
         return formattedDate;
     }
+});
+
+
+frontApp.controller("faqController", function($scope, $http, $location, $anchorScroll) {
+    $scope.poserQuestion = function(idQuestion) {
+        let aurl = "/faq/question/" + idQuestion;
+        $http({
+            url: aurl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            $scope.getData();
+            console.log("question posé avec succes");
+
+            setTimeout(function() {
+                // Définir l'ancre à l'ID de la nouvelle question
+                $location.hash('question-' + response.data.retour);
+                // Faire défiler vers l'ancre
+                $anchorScroll();
+            }, 0);
+
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+        
+    };
+
+    $scope.getData = function() {
+        let aurl = "/faq/historique";
+        $http({
+            url: aurl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            $scope.historiqueQuestions = response.data;
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+    };
+
+    $scope.getQuestion = function() {
+        let aurl = "/question/get";
+        $http({
+            url: aurl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            $scope.questions = response.data;
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+    };
+
+
+    $scope.delete = function(idNotif) {
+        let delUrl = "/notification/delete/" + idNotif;
+        $http({
+            url: delUrl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            console.log("supprimé avec succes");
+            $scope.getData();
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+
+    };
+
+    $scope.getData();
+    $scope.getQuestion();
+});
+
+frontApp.controller("postulationController", function($scope, $http) {
+    $scope.postuler = function(idPoste) {
+        let aurl = "/postuler/" + idPoste;
+        $http({
+            url: aurl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            console.log("Postulation effectue avec succes");
+
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+        
+    };
+
 });
