@@ -17,31 +17,31 @@ public class ReponseJSONController {
     QuestionRepository questionRepository;
 
     @GetMapping("/reponse/liste")
-    public List<Reponse> liste() {
-        return reponseRepository.findAll();
+    public List<Question> liste() {
+        return questionRepository.findAll();
     }
 
     @PostMapping("/reponse/insert")
-    public List<Reponse> insert(@RequestBody Reponse reponse) {
-        questionRepository.save(reponse.getQuestion());
-        reponseRepository.save(reponse);
-        return reponseRepository.findAll();
+    public List<Question> insert(@RequestBody Question question) {
+        reponseRepository.save(question.getReponse());
+        questionRepository.save(question);
+        return questionRepository.findAll();
     }
 
     @GetMapping("/reponse/delete")
-    public List<Reponse> delete(@RequestParam("idReponse") Long idReponse) {
-        reponseRepository.deleteById(idReponse);
-        return reponseRepository.findAll();
+    public List<Question> delete(@RequestParam("idQuestion") Long idQuestion) {
+        questionRepository.deleteById(idQuestion);
+        return questionRepository.findAll();
     }
 
     @GetMapping("/reponse/information")
-    public Reponse getUtilisateur(@RequestParam("idReponse") Long idReponse) {
-        return reponseRepository.findById(idReponse).get();
+    public Question getInformation(@RequestParam("idQuestion") Long idQuestion) {
+        return questionRepository.findById(idQuestion).get();
     }
     
     @PostMapping("/reponse/update")
-    public List<Reponse> modifier(@RequestBody Reponse reponse) {
-        reponseRepository.save(reponse);
-        return reponseRepository.findAll();
+    public List<Question> modifier(@RequestBody Question question) {
+        questionRepository.save(question);
+        return questionRepository.findAll();
     }
 }

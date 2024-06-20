@@ -1,5 +1,12 @@
 const inputs = document.querySelectorAll('.input-group .input');
 const labels = document.querySelectorAll('.input-group .user-label');
+const buttons = document.querySelectorAll('button');
+
+function checkValueBtn(){
+    setTimeout(() => {
+        checkValue();
+    }, 100);
+}
 
 function checkValue(){
     for(let i=0;i<inputs.length;i++){
@@ -15,8 +22,6 @@ function checkValue(){
 for(let i=0;i<inputs.length;i++){
     // Écouteur d'événement pour les changements manuels
     inputs[i].addEventListener('input', checkValue);
-
-    inputs[i].addEventListener('onchange',checkValue);
 
     // MutationObserver pour les changements de valeur par JavaScript
     const observer = new MutationObserver(() => {

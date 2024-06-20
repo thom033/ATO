@@ -56,5 +56,12 @@ public class AdminController {
         mv.addObject("page", "crud/admin.jsp");
         return mv;
     }
+
+    @GetMapping("/diplome/crud")
+    public ModelAndView crudDiplome() {
+        ModelAndView mv = new ModelAndView("admin/template");
+        mv.addObject("page", "crud/diplome.jsp");
+        return mv;
+    }
     
 }
