@@ -66,6 +66,11 @@ VALUES
 ('Consultation juridique', CURRENT_DATE, 61000, 'Consultant Juridique', 7, 9, 35, 45, 'poste32.jpg', 3, 1, 6, TRUE),
 ('Développement logiciel embarqué', CURRENT_DATE, 47000, 'Développeur Embarqué', 4, 6, 29, 39, 'poste33.jpg', 2, 3, 3, FALSE);
 
+INSERT INTO poste (description, date_insertion, salaire, titre, annee_experience, annee_formation, age_min, age_max, image, id_diplome, id_entreprise, cout, disponibilite)
+VALUES
+('Gestion des opérations', CURRENT_DATE, 51000, 'Manager Opérations', 5, 7, 32, 42, 'poste15.jpg', 3, 3, 4, FALSE);
+
+
 
 -- Données pour la table competence
 INSERT INTO competence (competence, description)
