@@ -29,6 +29,8 @@ public class Diplome {
     )
     private Set<Secteur> secteur;
 
+    public Diplome() {
+    }
     public Set<Secteur> getSecteur() {
         return secteur;
     }

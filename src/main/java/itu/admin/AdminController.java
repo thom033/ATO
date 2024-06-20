@@ -63,5 +63,13 @@ public class AdminController {
         mv.addObject("page", "crud/diplome.jsp");
         return mv;
     }
+
+    @GetMapping("/admin/poste")
+    public ModelAndView getMethodName() {
+        ModelAndView mv = new ModelAndView("admin/template");
+        mv.addObject("page", "postulation/insertPost.jsp");
+        return mv;
+    }
+    
     
 }
