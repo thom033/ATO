@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import itu.compatibilite.PosteDetails;
 import itu.compatibilite.PosteDetailsRepository;
@@ -59,6 +60,17 @@ public class PostulationController {
         postulation.setDate(LocalDateTime.now());
         postulation.setPoste(posteDetails);
         postulation.setUtilisateur(utilisateur);
+
+        if (utilisateur.getPoint() < posteDetails.getPosteCout()) {
+            return "redirect:/poste/details?error=Points insuffisant&idPoste=" + posteDetails.getIdPoste();
+        }
+
+        else{
+            utilisateur.setPoint(utilisateur.getPoint() - posteDetails.getPosteCout());
+            utilisateurRepository.updatePointsPostule(utilisateur.getId(), posteDetails.getPosteCout());
+    
+            session.setAttribute("utilisateur", utilisateur);
+        }
 
         postulationRepository.save(postulation);
         return "redirect:/notification/index";

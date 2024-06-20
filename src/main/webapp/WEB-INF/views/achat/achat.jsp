@@ -36,7 +36,7 @@
                                 </span>
                             </div>
                             <p class="description">Quantite de points</p>
-                            <form class="form-quantite" method="get" action="/utilisateur/achat">
+                            <form class="form-quantite" method="get" action="/utilisateur/achat" style="margin-top: 10px;">
                                 <div class="input-group">
                                     <input required type="number" id="quantite" name="quantite" autocomplete="off" class="input" style="border-radius: 15px;">
                                     <label class="user-label">Quantite</label>
