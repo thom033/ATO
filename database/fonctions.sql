@@ -396,7 +396,7 @@ SELECT get_point_status(1, 1); -- Remplacez 1 et 1 par les IDs de l'utilisateur 
 
 CREATE OR REPLACE FUNCTION notify_new_post() RETURNS TRIGGER AS $$
 BEGIN
-    PERFORM calculate_compatibility(NEW.id);
+    PERFORM calculate_compatibility(NEW.id_poste);
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -404,31 +404,29 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER after_insert_post
 AFTER INSERT ON poste
 FOR EACH ROW
-EXECUTE FUNCTION notify_new_post();
+EXECUTE PROCEDURE notify_new_post();
 
-CREATE OR REPLACE FUNCTION calculate_compatibility(poste_id BIGINT) RETURNS VOID AS $$
+
+CREATE OR REPLACE FUNCTION calculate_compatibility(poste_id INT) RETURNS VOID AS $$
 DECLARE
-    user RECORD;
+    user_record RECORD;
     point_total DOUBLE PRECISION;
 BEGIN
-    FOR user IN SELECT id_utilisateur FROM utilisateur LOOP
-        point_total := get_point_total(user.id_utilisateur, poste_id);
-        IF point_total > 80 THEN
-            PERFORM insert_notification(user.id, poste_id, point_total);
+    FOR user_record IN SELECT id_utilisateur FROM Utilisateur LOOP
+        point_total := get_point_total(user_record.id_utilisateur, poste_id);
+        IF point_total > 70 THEN
+            PERFORM insert_notification(user_record.id_utilisateur, poste_id, point_total);
         END IF;
     END LOOP;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION insert_notification(user_id BIGINT, poste_id BIGINT, point_total DOUBLE PRECISION) RETURNS VOID AS $$
+CREATE OR REPLACE FUNCTION insert_notification(user_id INT, poste_id INT, point_total DOUBLE PRECISION) RETURNS VOID AS $$
 BEGIN
-    INSERT INTO notification(user_id, poste_id, message, date)
-    VALUES (user_id, poste_id, 'Vous avez un nouveau poste compatible à ' || point_total || '%', NOW());
+    INSERT INTO notification(message,date_notification,point,id_poste,id_utilisateur,date_lu,id_entretien)
+    VALUES ('Vous avez un nouveau poste compatible a ' || point_total || '%',NOW(),FALSE,poste_id, user_id,null,null);
 END;
 $$ LANGUAGE plpgsql;
 
 -- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 -- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-
-
