@@ -273,4 +273,11 @@ public class UtilisateurController {
         modelAndView.addObject("page","profil/modifyExperience");
         return modelAndView;
     }
+
+    @GetMapping("/utilisateur/parametre/formation")
+    public ModelAndView parametreFormation() {
+        ModelAndView modelAndView=new ModelAndView("template");
+        modelAndView.addObject("page","profil/modifyFormation");
+        return modelAndView;
+    }
 }

@@ -59,6 +59,11 @@
                 <li class="nav-item"><a class="nav-link active" href="/question/crud" style="font-family: 'Space Grotesk';">Question/Reponse</a></li>
             </ul>
         </div>
+        <div class="row" style="margin-left:10%;">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link active" href="/diplome/crud" style="font-family: 'Space Grotesk';">Diplome</a></li>
+            </ul>
+        </div>
     </div>
 </div>
     <jsp:include page="<%= pages %>" />
