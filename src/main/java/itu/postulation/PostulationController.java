@@ -50,7 +50,7 @@ public class PostulationController {
     UtilisateurRepository utilisateurRepository;
 
     @GetMapping("/postuler/{idPoste}")
-    public String getMethodName(@PathVariable("idPoste") String idTravail, HttpSession session) {
+    public String getMethodName(@PathVariable("idPoste") String idTravail, HttpSession session) throws Exception {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         Postulation postulation = new Postulation();
 
@@ -62,13 +62,13 @@ public class PostulationController {
         postulation.setUtilisateur(utilisateur);
 
         if (utilisateur.getPoint() < posteDetails.getPosteCout()) {
-            return "redirect:/poste/details?error=Points insuffisant&idPoste=" + posteDetails.getIdPoste();
+            throw new Exception("Vous ne possedez pas assez de point");
         }
 
-        else{
+        else {
             utilisateur.setPoint(utilisateur.getPoint() - posteDetails.getPosteCout());
             utilisateurRepository.updatePointsPostule(utilisateur.getId(), posteDetails.getPosteCout());
-    
+
             session.setAttribute("utilisateur", utilisateur);
         }
 
