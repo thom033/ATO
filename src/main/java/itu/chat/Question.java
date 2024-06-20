@@ -11,6 +11,8 @@ public class Question {
     long idQuestion;
     String question;
 
+    public Question() {
+    }
     public Question(int idQuestion, String question) {
         this.idQuestion = idQuestion;
         this.question = question;
@@ -30,7 +32,7 @@ public class Question {
 
 
     /* ---- GETTERS ------ */
-    public int getIdQuestion() {
+    public long getIdQuestion() {
         return idQuestion;
     }
 

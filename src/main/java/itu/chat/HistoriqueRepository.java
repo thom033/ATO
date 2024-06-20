@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface HistoriqueRepository extends JpaRepository<HistoriqueQuestion, long> {
+public interface HistoriqueRepository extends JpaRepository<HistoriqueQuestion, Long> {
     @Query("select count(id_question) as total from historique_question GROUP BY id_question")
     List<Integer> statQuestion();
 }

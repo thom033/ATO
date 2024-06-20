@@ -96,7 +96,7 @@ CREATE TABLE Formation(
 CREATE TABLE Notification(
    id_notification SERIAL,
    message TEXT NOT NULL,
-   date_notification TIMESTAMP NOT NULL DEFAULT CURRRENT_DATE,
+   date_notification TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
    date_lu TIMESTAMP DEFAULT NULL,
    point BOOLEAN,
    id_poste INTEGER,
