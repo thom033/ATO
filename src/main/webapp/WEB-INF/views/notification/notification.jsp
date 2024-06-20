@@ -10,7 +10,7 @@
             </div>
     </section>
     <div class="notification-container" ng-app="frontApp" ng-controller="notificationController" >
-
+            <p ng-if="notifications.length == 0">404 aucune notification</p>
             <div ng-repeat="notif in notifications" class="notification-item row align-items-center" style="padding-top: 20px;">
                 <div class="col-1 text-center pl">
                     <a href="/notification/delete/{{ notif.id }}"><span class="notification-icon download" style="margin-left: 40px;"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">

@@ -31,7 +31,6 @@ SELECT
 
     sd.id_secteur,
     sd.id_diplome AS secteur_diplome_id_diplome,
-
     cs.id_competence
 FROM 
    poste p
@@ -44,7 +43,7 @@ JOIN
 JOIN 
    competence_secteur cs ON sd.id_secteur = cs.id_secteur;
 
-CREATE VIEW utilisateur_details AS
+CREATE OR REPLACE VIEW utilisateur_details AS
 SELECT
     u.id_utilisateur,
     u.nom,

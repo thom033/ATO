@@ -37,13 +37,13 @@ function up(input,label){
     label.style.backgroundColor="#fff";
     label.style.padding="0.2rem";
     label.style.color="#82b6fb";
-    label.style.margin.top="1px";
+    label.style.margin.top="10px";
     input.style.border="1.5px solid #82b6fb";
 }
 
 function down(input,label){
     label.style.transform="";
-    label.style.backgroundColor="transparent";
+    label.style.backgroundColor="#fff";
     label.style.padding="";
     label.style.color="#000";
     label.style.margin.top="";

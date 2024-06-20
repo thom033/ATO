@@ -1,5 +1,6 @@
 package itu.notification;
 
+import itu.compatibilite.PosteDetails;
 import itu.entretien.Entretien;
 import itu.poste.Poste;
 import itu.utilisateur.Utilisateur;
@@ -33,7 +34,7 @@ public class Notification {
 
     @ManyToOne
     @JoinColumn(name = "id_poste")
-    Poste poste;
+    PosteDetails poste;
 
     @ManyToOne
     @JoinColumn(name = "id_entretien")
@@ -46,7 +47,7 @@ public class Notification {
     }
 
     public Notification(Long idNotification, String message, LocalDateTime dateNotification, LocalDateTime dateLu,
-            Utilisateur utilisateur, Poste poste, Boolean point, Entretien entretien) {
+            Utilisateur utilisateur, PosteDetails poste, Boolean point, Entretien entretien) {
         this.id = idNotification;
         this.message = message;
         this.dateNotification = dateNotification;
@@ -83,7 +84,7 @@ public class Notification {
         this.point = point;
     }
 
-    public void setPoste(Poste poste) {
+    public void setPoste(PosteDetails poste) {
         this.poste = poste;
     }
 
@@ -102,7 +103,7 @@ public class Notification {
         return point;
     }
 
-    public Poste getPoste() {
+    public PosteDetails getPoste() {
         return poste;
     }
 

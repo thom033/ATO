@@ -155,5 +155,6 @@
             </div>
         </div>
     </div>
+    <script src="/public/js/input.js"></script>
 </body>
 </html>
