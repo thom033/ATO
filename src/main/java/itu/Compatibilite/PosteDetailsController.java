@@ -69,7 +69,7 @@ public class PosteDetailsController {
     @GetMapping("/poste/details")
     public ModelAndView rechargeSoldeUtilisateur(
             @RequestParam(name = "idPoste", required = false, defaultValue = "0") Long IdPoste,
-            HttpSession httpSession) {
+            HttpSession httpSession, @RequestParam(name = "error", required = false) String error) {
         ModelAndView mv = new ModelAndView("template");
         Utilisateur user = (Utilisateur) httpSession.getAttribute("utilisateur");
 
@@ -80,6 +80,11 @@ public class PosteDetailsController {
                 .findByEntrepriseId(pd.getPosteEntreprise());
         for (EntrepriseContact uc : entreprisecontacts) {
             contacts.add(uc.getContact());
+        }
+
+        if (error != null) {
+            System.out.println("erreurr : " + error);
+            mv.addObject("error", error);
         }
 
         double pourcentage = resultAcceuilRepository.getResultAcceuilsByIdPosteUser(user.getId(), IdPoste);

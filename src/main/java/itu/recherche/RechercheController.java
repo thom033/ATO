@@ -64,6 +64,11 @@ public class RechercheController {
     @GetMapping("/recherche")
     public ModelAndView recherche() {
         ModelAndView mv = new ModelAndView("template");
+        Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
+        if (utilisateur == null) {
+            mv.setViewName("login/login-register");
+            httpSession.setAttribute("nextPage", "/recherche");
+        }
         List<Secteur> allSec = secteurRepository.findAll();
         List<Diplome> allDip = diplomeRepository.findAll();
         List<Competence> allComp = competenceRepository.findAll();
