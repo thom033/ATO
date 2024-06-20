@@ -233,6 +233,7 @@
             updateCurrentValue();
         };
     </script>
+    <script src="/public/js/input.js"></script>
 </body>
 
 </html>
