@@ -188,6 +188,7 @@ CREATE TABLE historique_question
     id_historique  SERIAL,
     id_question    INTEGER NOT NULL,
     id_utilisateur INTEGER NOT NULL,
+    date           TIMESTAMP DEFAULT CURRENT_DATE,
     PRIMARY KEY (id_historique),
     FOREIGN KEY (id_question) REFERENCES Question (id_question),
     FOREIGN KEY (id_utilisateur) REFERENCES Utilisateur (id_utilisateur)
