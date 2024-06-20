@@ -1,12 +1,12 @@
 -- statistique de poste indisponible par secteur
-SELECT id_secteur, count(id_secteur) AS embauche FROM poste
-join secteur_diplome sd on poste.id_diplome = sd.id_diplome
+SELECT * FROM statSecteur;
+
+SELECT id_secteur, count(id_secteur) AS embauche FROM statSecteur
 where disponibilite = false
 group by id_secteur;
 
 -- statistique de poste disponible par secteur
-SELECT id_secteur, count(id_secteur) AS dispo FROM poste
-JOIN secteur_diplome sd ON poste.id_diplome = sd.id_diplome
+SELECT id_secteur, count(id_secteur) AS dispo FROM statSecteur
 where disponibilite = true
 group by id_secteur;
 

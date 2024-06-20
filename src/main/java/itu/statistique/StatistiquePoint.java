@@ -1,9 +1,18 @@
 package itu.statistique;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "statPoint")
 public class StatistiquePoint {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cout")
     String point;
     int total;
 
+    public StatistiquePoint(){
+    }
     public StatistiquePoint(String point, int total) throws Exception{
         this.setPoint(point);
         this.setTotal(total);

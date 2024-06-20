@@ -1,5 +1,17 @@
+-- secteur izay betsaka embauche
+
+DROP view if exists statSecteur;
+CREATE OR REPLACE VIEW statSecteur AS
+SELECT poste.*, id_secteur FROM poste
+JOIN secteur_diplome sd on poste.id_diplome = sd.id_diplome;
+
+-- statistique par categorie de point
+CREATE OR REPLACE VIEW statPoint AS
+SELECT cout, count(cout) AS total FROM poste
+group by cout;
+
 CREATE OR REPLACE VIEW postes_details AS
-SELECT 
+SELECT
     p.id_poste,
     p.description AS poste_description,
     p.date_insertion AS poste_date_insertion,
