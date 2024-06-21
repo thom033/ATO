@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,8 +20,17 @@ public class Question {
 
     String question;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "id_reponse")
+    private Reponse reponse;
+
+    public Reponse getReponse() {
+        return reponse;
+    }
+
+    public void setReponse(Reponse reponse) {
+        this.reponse = reponse;
+    }
 
     public Long getId() {
         return id;
