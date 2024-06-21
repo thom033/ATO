@@ -78,8 +78,8 @@ public class PostulationController {
 
     @GetMapping("/admin/postulation")
     public ModelAndView getMethodName() {
-        ModelAndView mv = new ModelAndView("template");
-        mv.addObject("page", "admin/postulation/index");
+        ModelAndView mv = new ModelAndView("admin/template");
+        mv.addObject("page", "postulation/index.jsp");
         return mv;
     }
 

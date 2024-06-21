@@ -25,6 +25,7 @@
                     <li class="nav-item"><a class="nav-link active" href="/admin/poste" style="font-family: 'Space Grotesk';">Poste</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/admin/CRUD" style="font-family: 'Space Grotesk';">Admin</a></li>
                     <li class="nav-item"><a class="nav-link active" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="font-family: 'Space Grotesk';">CRUD</a></li>
+                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="offcanvas" href="#offcanvasEntretien" role="button" aria-controls="offcanvasExample" style="font-family: 'Space Grotesk';">Entretien</a></li>
                 </ul>
             </div>
                 <%
@@ -65,10 +66,31 @@
             </ul>
         </div>
     </div>
+    
+</div>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasEntretien" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Entretien</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="row" style="margin-left:10%;">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link active" href="/admin/postulation" style="font-family: 'Space Grotesk';">Demandes d'entretien</a></li>
+            </ul>
+        </div>
+        <div class="row" style="margin-left:10%;">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link active" href="/admin/entretien/encours" style="font-family: 'Space Grotesk';">Entretien en cours</a></li>
+            </ul>
+        </div>
+    </div>
+    
 </div>
     <jsp:include page="<%= pages %>" />
 
-    <footer class="bg-primary-gradient">
+    <%-- <footer class="bg-primary-gradient">
         <div class="container py-4 py-lg-5">
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
@@ -119,7 +141,7 @@
                 </ul>
             </div>
         </div>
-    </footer>
+    </footer> --%>
     <script src="/public/bootstrap/js/bootstrap.min.js"></script>
     <script src="/public/js/bs-init.js"></script>
     <script src="/public/js/bold-and-bright.js"></script>
