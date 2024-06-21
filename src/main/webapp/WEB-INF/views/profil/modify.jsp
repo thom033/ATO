@@ -155,6 +155,8 @@
                                 <div class="col-md-3">
                                     <a href="/utilisateur/parametre/competence" class="btn btn-primary">Competence</a>
                                 </div>
+                            </div>
+                            <div class="row mb-3">
                                 <div class="col-md-3">
                                     <a href="/utilisateur/parametre/experience" class="btn btn-primary">Experience</a>
                                 </div>

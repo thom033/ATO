@@ -57,6 +57,9 @@
         
     </div>
 
+
     <script src="/public/js/angular.min.js"></script>
+    <script src="/public/js/script.js"></script>
+    <script src="/public/js/sweetalert2.js"></script>
     <script src="/public/js/crud/Admin.js"></script>
 

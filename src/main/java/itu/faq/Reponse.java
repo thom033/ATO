@@ -19,18 +19,6 @@ public class Reponse {
 
     String reponse;
 
-    @ManyToOne
-    @JoinColumn(name = "id_question")
-    Question question;
-
-    public Question getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
-
     public Long getId() {
         return id;
     }
