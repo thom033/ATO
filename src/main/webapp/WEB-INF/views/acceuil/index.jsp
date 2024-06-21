@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="org.springframework.data.domain.Page" %>
 <%@ page import="itu.Compatibilite.ResultAcceuil" %>
 <%
-    Page<ResultAcceuil> resultPage = (Page<ResultAcceuil>) request.getAttribute("data");
-    List<ResultAcceuil> content = resultPage.getContent();
-    int currentPage = resultPage.getNumber();
-    int totalPages = resultPage.getTotalPages();
-    int size = resultPage.getSize();
+    List<ResultAcceuil> content = (List<ResultAcceuil>) request.getAttribute("data");
+    int currentPage = (int) request.getAttribute("currentPage");
+    int totalPages = (int) request.getAttribute("totalPages");
+    int size = (int) request.getAttribute("size");
 %>
 <link rel="stylesheet" href="/public/css/acceuil.css">
 
