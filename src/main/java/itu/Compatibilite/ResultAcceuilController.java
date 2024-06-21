@@ -29,13 +29,21 @@ public class ResultAcceuilController {
         ModelAndView mv = new ModelAndView("/template");
         String pages = "acceuil/index";
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        Long idUser = utilisateur.getId();
         Long idSector = resultAcceuilService.getUserSecteur(utilisateur.getId());
-        List<ResultAcceuil> paginatedResults = resultAcceuilService.getPaginatedResults(idSector,page, size);
+        List<ResultAcceuil> paginatedResults = resultAcceuilService.getPaginatedResults(idUser,idSector,page, size);
         mv.addObject("data", paginatedResults);
         mv.addObject("page", pages);
         mv.addObject("currentPage", page);
-        mv.addObject("totalPages", (int) Math.ceil((double) resultAcceuilService.findAll().size() / size));
+        mv.addObject("totalPages", (int) Math.ceil((double) resultAcceuilService.getResultAcceuil_Secteur_User(idUser,idSector).size() / size));
         mv.addObject("size", size);
+
+        System.out.println("idSector: " + idSector);
+        System.out.println("paginatedResults: " + paginatedResults);
+        System.out.println("page: " + page);
+        System.out.println("size: " + size);
+        System.out.println("totalPages: " + (int) Math.ceil((double) resultAcceuilService.getResultAcceuil_Secteur_User(idUser,idSector).size() / size));
+        
         return mv;
     }
 
