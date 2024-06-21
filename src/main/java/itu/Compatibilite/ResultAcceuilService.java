@@ -32,8 +32,8 @@ public class ResultAcceuilService {
         return resultAcceuilRepository.findAll();
     }
 
-    public List<ResultAcceuil> getPaginatedResults(Long idPoste, int page, int size) {
-        List<ResultAcceuil> allResults = getAllResults(idPoste);
+    public List<ResultAcceuil> getPaginatedResults(Long idUser,Long idPoste, int page, int size) {
+        List<ResultAcceuil> allResults = getResultAcceuil_Secteur_User(idUser,idPoste);
         int start = page * size;
         int end = Math.min(start + size, allResults.size());
 
@@ -45,6 +45,10 @@ public class ResultAcceuilService {
 
     public Long getUserSecteur(Long idUtilisateur) {
         return resultAcceuilRepository.getUserSecteur(idUtilisateur);
+    }
+
+    public List<ResultAcceuil> getResultAcceuil_Secteur_User(Long idUser,Long idSecteur) {
+        return resultAcceuilRepository.getResultAcceuilSecteur(idUser,idSecteur);
     }
 
 
