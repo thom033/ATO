@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="itu.Compatibilite.ResultAcceuil" %>
+<%@ page import="itu.compatibilite.ResultAcceuil" %>
 <%
     List<ResultAcceuil> content = (List<ResultAcceuil>) request.getAttribute("data");
     int currentPage = (int) request.getAttribute("currentPage");
@@ -19,7 +19,7 @@
         </div>
         <div class="d-flex justify-content-center">
             <button class="btn btn-dark me-2" type="button">Best Point</button>
-            <button class="btn btn-light" type="button">Compatibilite</button>
+            <button class="btn btn-light" type="button">compatibilite</button>
         </div>
     </div>
 </section>

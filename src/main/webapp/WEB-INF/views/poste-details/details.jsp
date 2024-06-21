@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="itu.Compatibilite.PosteDetails"%>
+<%@ page import="itu.compatibilite.PosteDetails"%>
 <%@ page import="java.util.List" %>
 <%@ page import="itu.contact.Contact"%>
 <%@ page import="java.text.SimpleDateFormat" %>

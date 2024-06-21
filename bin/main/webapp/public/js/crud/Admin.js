@@ -69,3 +69,81 @@ AdminApp.controller('tableController', function($scope, $http) {
         });
     };
 });
+
+AdminApp.controller("crudPostulationController", function($scope, $http) {
+    $scope.postulation = {
+        date: null
+    }
+
+    $scope.getData = function() {
+        let aurl = "/postulation/liste";
+        $http({
+            url: aurl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            $scope.postulations = response.data;
+            console.log($scope.postulations);
+
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+        
+    };
+
+    $scope.delete = function(idPostulation) {
+        let delUrl = "/admin/delete/postulation/" + idPostulation ;
+        $http({
+            url: delUrl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            console.log("supprimé avec succes");
+            $scope.getData();
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+
+    };
+
+    // $scope.valider = function(idPostulation) {
+    //     console.log($scope.postulation.date);
+    //     let delUrl = "/admin/valider/postulation/" + idPostulation;
+    //     console.log($scope.postulation);
+    //     $http({
+    //         url: delUrl,
+    //         method: 'GET',
+    //         data: $scope.postulation
+    //     })
+    //     .then(function(response) {
+    //         console.log("supprimé avec succes");
+    //         // $scope.getData();
+    //     }, function(error) {
+    //         console.error('Erreur lors de la récupération des données:', error);
+    //     });
+
+    // };
+
+    $scope.submitDate = function($scope, $http, idPostulation) {
+        var dateTime = $scope.datetime;
+        var dateOnly = dateTime.toISOString().split('T')[0];
+        var dateData = {
+            date: dateOnly
+        }
+        
+        let delUrl = "/admin/valider/postulation/" + idPostulation;
+        $http.post(idPostulation, dateData)
+        .then(function(response) {
+            console.log("DateEnvoyé");
+        }, function(error) {
+
+        });
+    };
+
+    $scope.getData();
+    $scope.formatDate = function (dateNotification) {
+        let date = new Date(dateNotification);
+        const formattedDate = date.toLocaleDateString('fr-FR');
+        return formattedDate;
+    }
+});

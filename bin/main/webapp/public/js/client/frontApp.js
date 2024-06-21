@@ -168,3 +168,21 @@ frontApp.controller("faqController", function($scope, $http, $location, $anchorS
     $scope.getData();
     $scope.getQuestion();
 });
+
+frontApp.controller("postulationController", function($scope, $http, $location, $anchorScroll) {
+    $scope.postuler = function(idPoste) {
+        let aurl = "/postuler/" + idPoste;
+        $http({
+            url: aurl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            console.log("Postulation effectue avec succes");
+
+        }, function(error) {
+            console.error('Erreur lors de la récupération des données:', error);
+        });
+        
+    };
+
+});

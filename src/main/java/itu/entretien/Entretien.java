@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
 
-import itu.Compatibilite.PosteDetails;
+import itu.compatibilite.PosteDetails;
 import itu.poste.Poste;
 import itu.utilisateur.Utilisateur;
 import jakarta.persistence.Column;

@@ -3,7 +3,7 @@
     String pages = (String) request.getAttribute("page");
     pages = pages + ".jsp";
 %>
-<%@ page contentType='text/html;charset=UTF-8' language='java' %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 <head>

@@ -1,4 +1,4 @@
-package itu.Compatibilite;
+package itu.compatibilite;
 
 import java.util.ArrayList;
 import java.util.List;

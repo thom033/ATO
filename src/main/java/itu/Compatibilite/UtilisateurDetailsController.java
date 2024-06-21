@@ -1,4 +1,4 @@
-package itu.Compatibilite;
+package itu.compatibilite;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
