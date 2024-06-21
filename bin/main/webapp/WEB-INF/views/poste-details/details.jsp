@@ -85,6 +85,11 @@
                                     <div>
                                         <h4>INFORMATIONS DU TRAVAIL</h4>
                                     </div>
+
+                                    <% if (request.getAttribute("error") != null) { %>
+                                            <p><%= request.getAttribute("error") %></p>
+                                    <% } %>
+
                                 </div>
                                 <div class="information">
                                     <div class="input">
@@ -221,4 +226,5 @@
 <script src="/public/bootstrap/js/theme.js"></script>
 <script src="/public/js/angular.min.js"></script>
 <script src="/public/js/client/frontApp.js"></script>
+<script src="/public/js/script.js"></script>
 </html>

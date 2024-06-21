@@ -27,14 +27,18 @@ public class ResultAcceuilController {
 
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         if (utilisateur != null) {
+            Page<ResultAcceuil> Lra = resultAcceuilService.getPaginatedResults(utilisateur.getId(), pagex, size);
+            mv.addObject("data", Lra);
             mv.addObject("page", "acceuil/index");
-            mv.addObject("data", resultAcceuilService.getAllResults(utilisateur.getId()));
+
+            System.out.println("size:" + Lra.getSize());
+            System.out.println("current pqge:" + Lra.getNumber());
+            System.out.println("totalpages:" + Lra.getTotalPages());
         } else {
             session.setAttribute("nextPage", "/acceuil");
             mv.setViewName("login/login-register");
         }
 
         return mv;
-        // xx
     }
 }
