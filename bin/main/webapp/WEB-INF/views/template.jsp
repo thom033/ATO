@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Rohy</title>
     <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/js/sweetalert2.js">
     <link rel="stylesheet" href="/public/css/Splash.css">
     <link rel="stylesheet" href="/public/css/Header.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
@@ -112,5 +113,29 @@
     <script src="/public/bootstrap/js/bootstrap.min.js"></script>
     <script src="/public/js/bs-init.js"></script>
     <script src="/public/js/bold-and-bright.js"></script>
+    <script src="/public/js/sweetalert2.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var message = "<%= request.getAttribute("error") != null ? request.getAttribute("error") : "" %>";
+            if (message != "") {
+                Swal.fire({
+                    title: 'Problème lors de la génération des données',
+                    text: message,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+
+            var success = "<%= request.getAttribute("succes") != null ? request.getAttribute("succes") : ""%>";
+            if (success) {
+                Swal.fire({
+                    title: 'Insertion de données',
+                    text: success,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    </script>
 </body>
 </html>
