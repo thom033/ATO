@@ -19,6 +19,11 @@ public class ResultAcceuilService {
         return resultAcceuilRepository.findByIdUtilisateur(idUtilisateur);
     }
 
+    // public Page<ResultAcceuil> getPaginatedResults(Long idUtilisateur, int page, int size) {
+    //     Pageable pageable = PageRequest.of(page, size);
+    //     return resultAcceuilRepository.findByIdUtilisateur(idUtilisateur, pageable);
+    // }
+
     public ResultAcceuil getResult(Long idPoste) {
         return resultAcceuilRepository.getResultAcceuil(idPoste);
     }
@@ -55,19 +60,4 @@ public class ResultAcceuilService {
         }
         return allResults.subList(start, end);
     }
-
-    // public List<ResultAcceuil> getBestPoint(Long idUser) {
-    //     return resultAcceuilRepository.getBestPoint(idUser);
-    // }
-
-    // public List<ResultAcceuil> getPaginatedBestPoint(Long idUser, int page, int size) {
-    //     List<ResultAcceuil> allResults = getBestPoint(idUser);
-    //     int start = page * size;
-    //     int end = Math.min(start + size, allResults.size());
-
-    //     if (start > allResults.size()) {
-    //         return Collections.emptyList();
-    //     }
-    //     return allResults.subList(start, end);
-    // }
 }
