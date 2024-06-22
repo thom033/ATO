@@ -69,6 +69,7 @@ public class AchatController {
                 utilisateur.setPoint(utilisateur.getPoint() + quantite);
                 utilisateurRepository.updatePoints(utilisateur.getId(), quantite);
                 argentRepository.updateArgentUser(utilisateur.getId(), montantTotal);
+                argentRepository.insertAchat(utilisateur.getId(), quantite);
                 // Enregistrer l'utilisateur mis à jour dans la session
                 httpSession.setAttribute("utilisateur", utilisateur);
                 redirectView.setUrl("/utilisateur/profil");
