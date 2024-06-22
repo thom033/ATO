@@ -238,4 +238,8 @@ create table point_vendu(
    FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id_utilisateur)
 );
 
---select count(entretien) as nbEntretien,extract(month from date_entretien) as mois from entretien where reussite and extract(year from date_entretien)=2024 group by extract(month from date_entretien);
+create table prix_point(
+   id_prix_point serial,
+   prix numeric(10,2),
+   date_changement date
+);

@@ -1,9 +1,13 @@
 -- Données pour la table Utilisateur
 INSERT INTO Utilisateur (nom, prenom, date_naissance, adresse, mail, etat_civil, photo, point, latitude, longitude, motdepasse, description, salaire_recherche)
 VALUES
-('Dupont', 'Jean', '1985-06-15', '123 Rue Principale, Paris', 'jean.dupont@example.com', 'Célibataire', 'photo1.jpg', 100, 48.8566, 2.3522, 'password123', 'Développeur Full Stack', 45000),
-('Martin', 'Sophie', '1990-11-20', '456 Rue Secondaire, Lyon', 'sophie.martin@example.com', 'Marié', 'photo2.jpg', 200, 45.7640, 4.8357, 'securepass', 'Chef de projet', 55000),
-('Leroy', 'Julien', '1978-04-05', '789 Rue Tertiaire, Marseille', 'julien.leroy@example.com', 'Divorcé', 'photo3.jpg', 150, 43.2965, 5.3698, 'password789', 'Analyste', 50000);
+('Dupont', 'Jean', '1985-06-15', '123 Rue Principale, Paris', 'jean.dupont@example.com', 'Célibataire', 'photo1.jpg', 100, 48.8566, 2.3522, MD5('password123'), 'Développeur Full Stack', 45000),
+('Martin', 'Sophie', '1990-11-20', '456 Rue Secondaire, Lyon', 'sophie.martin@example.com', 'Marié', 'photo2.jpg', 200, 45.7640, 4.8357, MD5('securepass'), 'Chef de projet', 55000),
+('Leroy', 'Julien', '1978-04-05', '789 Rue Tertiaire, Marseille', 'julien.leroy@example.com', 'Divorcé', 'photo3.jpg', 150, 43.2965, 5.3698, MD5('password789'), 'Analyste', 50000);
+
+INSERT INTO Utilisateur (nom, prenom, date_naissance, adresse, mail, etat_civil, photo, point, latitude, longitude, motdepasse, description, salaire_recherche)
+VALUES
+('Dupont', 'Jean', '1985-06-15', '123 Rue Principale, Paris', 'jjean.dupont@example.com', 'Célibataire', 'photo1.jpg', 100, 48.8566, 2.3522, MD5('password123'), 'Développeur Full Stack', 45000);
 
 -- Données pour la table Secteur
 INSERT INTO Secteur (secteur)
@@ -96,17 +100,31 @@ VALUES
 -- Données pour la table Reponse
 INSERT INTO Reponse (reponse)
 VALUES
-('Programmation, Gestion de projet'),
-('5 ans en tant que Développeur'),
-('Master en Informatique');
+('Le point c''est comme un droit de participation pour pouvoir postuler à un offre ou à un emploi'),
+('Illimté, c''est-à-dire que vous pouvez toujour acheter même si vous en avez déjà '),
+('Vous pouvez acheter des points si vous avez un compte, il suffit juste d''aller vers votre éspace pérsonnelle et trouver le bouton acheter point'),
+('Première étape : trouver le poste qui vous correspond le mieux, Deuxième étape : Cliquer sur le bouton postuler et remplir les informations nécéssaire, Troisième étape : Vous aller recevoir un notification pour l''entretien si votre profil correspond au profil rechercher'),
+('Premièrement, on collabore avec des entreprises reputés dans le monde professionnel. Deuxièmement, on facilite votre intégration dans les entreprises en partenariat avec nous parce que c''est nous qui séléctionne les dossiers et c''est encore nous qui fait les entretiens d''embauche'),
+('Le diplôme minimum est le BACC '),
+('Nous prenons le temps de comprendre la culture d''entreprise de nos clients et nous utilisons des entretiens comportementaux pour évaluer l''adéquation des candidats'),
+('Les termes et conditions incluent une description des services fournis, les obligations de chaque partie, et les politiques de remplacement et de remboursement'),
+('Nous effectuons des vérifications de références, évaluons la stabilité financière, et maintenons des relations étroites pour garantir des environnements de travail de qualité'),
+('Il n''y a pas de remboursement parce que les points sont les droits pour postuler');
 
 
 -- Données pour la table Question
 INSERT INTO Question (question, id_reponse)
 VALUES
-('Quelles sont vos compétences principales ?',1),
-('Quel est votre niveau d expérience ?',2),
-('Quelle est votre formation académique ?',3);
+('C''est quoi le point et à quoi ça sert ?',1),
+('quel est le maximum de points qu''on peut acheter ?',2),
+('Comment faire pour acheter des points ?',3),
+('Comment fait-on pour postuler ?',4),
+('Pourquoi on devrait vous faire confiance ?',5),
+('Quel est le diplôme minimum nécéssaire pour trouver un travail chez vous ?',6),
+('Comment assurez-vous que les candidats proposés sont en adéquation avec la culture d''entreprise de vos clients ?',7),
+('Quels sont les termes et conditions de votre contrat de service ?',8),
+('Comment assurez-vous la qualité et la fiabilité des entreprises avec lesquelles vous travaillez ?',9),
+('Si je ne suis pas recruter, est-ce qu''il y aura un remboursement ?',10);
 
 INSERT INTO historique_question(id_question, id_utilisateur)
 VALUES
@@ -349,6 +367,11 @@ insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite
 insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-01-10','2023-01-21',1,1,TRUE);
 insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-01-10','2023-01-21',1,1,TRUE);
 insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-01-10','2023-01-21',1,1,TRUE);
+
+insert into prix_point(prix,date_changement) values(10000,'2023-01-01');
+insert into prix_point(prix,date_changement) values(15000,'2023-06-01');
+insert into prix_point(prix,date_changement) values(7000,'2023-11-01');
+insert into prix_point(prix,date_changement) values(7500,'2024-04-01');
 
 select sum(point) as point,extract(month from date) as mois from point_vendu where extract(year from date)=2024 group by extract(month from date);
 
