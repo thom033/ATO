@@ -200,4 +200,12 @@ public class Notification {
         System.out.println(n.tempsEcoule());
     }
 
+    public Boolean getReussite() {
+        return reussite;
+    }
+
+    public void setReussite(Boolean reussite) {
+        this.reussite = reussite;
+    }
+
 }

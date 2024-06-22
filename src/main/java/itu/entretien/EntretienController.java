@@ -62,7 +62,7 @@ public class EntretienController {
         notification.setUtilisateur(entretien.getUtilisateur());
         notification.setMessage(
                 "Votre candidature n'a pas été retenue après l'entretien du" + entretien.getDateEntretien());
-
+        notification.setReussite(false);
         notificationRepository.save(notification);
         return "redirect:/admin/entretien/liste";
     }
@@ -80,7 +80,7 @@ public class EntretienController {
         notification.setMessage(
                 "Nous avons le plaisir de vous informer que vous avez ete sélectionné apres l'entretien du "
                         + entretien.getDateEntretien());
-
+        notification.setReussite(true);
         notificationRepository.save(notification);
         return "redirect:/admin/entretien/liste";
     }
