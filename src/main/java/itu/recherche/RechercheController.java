@@ -86,7 +86,7 @@ public class RechercheController {
 
     @GetMapping("/search")
     public ModelAndView searchResultRecherche(@RequestParam Map<String, String> params,
-    @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+    @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "8") int size) {
         Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
         ModelAndView mv = new ModelAndView("template");
         String title = params.get("title");

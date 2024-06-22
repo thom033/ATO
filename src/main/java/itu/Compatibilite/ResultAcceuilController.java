@@ -25,7 +25,7 @@ public class ResultAcceuilController {
     @GetMapping("/acceuil")
     public ModelAndView calculateCompatibility(HttpSession session,
                                             @RequestParam(defaultValue = "0") int page,
-                                            @RequestParam(defaultValue = "10") int size) {
+                                            @RequestParam(defaultValue = "8") int size) {
         ModelAndView mv = new ModelAndView("/template");
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         if (utilisateur == null) {
