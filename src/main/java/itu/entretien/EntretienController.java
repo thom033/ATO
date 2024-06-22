@@ -52,7 +52,7 @@ public class EntretienController {
 
     @GetMapping("/admin/entretien/delete/{idEntretien}")
     public String supprimer(@PathVariable("idEntretien") String idEntretien) {
-        Entretien entretien = entretienRepository.getById(Long.valueOf(idEntretien));
+        Entretien entretien = entretienRepository.findById(Long.valueOf(idEntretien)).get();
         entretien.setReussite(false);
         entretienRepository.save(entretien);
 
