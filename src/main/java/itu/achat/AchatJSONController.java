@@ -1,5 +1,7 @@
 package itu.achat;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AchatJSONController {
+
+    @Autowired
+    private PrixPointRepository prixPointRepository;
     
     @Autowired
     private ArgentRepository argentRepository; 
@@ -35,4 +40,10 @@ public class AchatJSONController {
         }
         return valiny;
     }
+
+    @GetMapping("/test")
+    public PrixPoint getMethodName() {
+        return prixPointRepository.getPrixPoint(LocalDate.of(2023,8,10));
+    }
+    
 }
