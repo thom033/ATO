@@ -38,8 +38,12 @@
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
-                            <img class="avatar" src="/public/img/avatars/<%= user.getPhoto() %>" alt="">
+                            <img class="avatar" src="/public/img/uploaded/<%= user.getId()%>.jpg" alt="">
                         </div>
+                        <form id="uploadForm" enctype="multipart/form-data">
+                            <input type="file" id="fileInput" name="file" accept="image/*">
+                            <button type="button" onclick="uploadImage()">Upload</button>
+                        </form>
                     </div>
                 </div>
                 <div class="contact">
@@ -327,5 +331,6 @@
     </div>
     <script src="/public/bootstrap/js/pikaday.min.js"></script>
     <script src="/public/bootstrap/js/theme.js"></script>
+    <script src="/public/js/upload.js"></script>
 </body>
 </html>
