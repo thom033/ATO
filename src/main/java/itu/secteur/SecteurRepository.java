@@ -1,10 +1,14 @@
 package itu.secteur;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SecteurRepository extends JpaRepository<Secteur, Long> {
+    @Query(value="select secteur.id_secteur as idSecteur,count(secteur.id_secteur) as nbSecteur,secteur.secteur from poste natural join diplome join secteur_diplome as secteurDip on secteurDip.id_diplome=diplome.id_diplome join secteur on secteur.id_secteur=secteurDip.id_secteur group by secteur.secteur,secteur.id_secteur",nativeQuery=true)    
+    List<StatistiqueSecteur> getStatistiquePost();
 }
-
- 
