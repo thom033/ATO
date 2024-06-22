@@ -29,18 +29,19 @@ public class NotificationJSONController {
         if (type ==  0) {
             notifications = notificationRepository.findByUtilisateurIdAndPointTrue(utilisateur.getId());
         }
-        if (type == 1) {
+        else if (type == 1) {
             notifications = notificationRepository.findByUtilisateurIdAndEntretienNotNull(utilisateur.getId());            
         }
-        if (type == 2) {
+        else if (type == 2) {
             notifications = notificationRepository.findByUtilisateurIdAndPosteNotNull(utilisateur.getId());
         }
-        if (type == 3) {
+        else if (type == 3) {
             notifications = notificationRepository.findByUtilisateurIdAndReussiteTrue(utilisateur.getId());
         }
-        else{
-            notifications = notificationRepository.findAll();
+        else if (type == -1) {
+            notifications = notificationRepository.findByUtilisateurId(utilisateur.getId());
         }
+        System.out.println(type);
         return notifications;
     }
 }

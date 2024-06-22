@@ -75,6 +75,10 @@ public class AchatController {
                 redirectView.setUrl("/utilisateur/profil");
             }
         }
+        else{
+            redirectView.setUrl("/achat?error=Quantite invalide");
+            return redirectView;
+        }
 
         return redirectView;
     }

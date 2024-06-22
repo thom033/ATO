@@ -100,17 +100,31 @@ VALUES
 -- Données pour la table Reponse
 INSERT INTO Reponse (reponse)
 VALUES
-('Programmation, Gestion de projet'),
-('5 ans en tant que Développeur'),
-('Master en Informatique');
+('Le point c''est comme un droit de participation pour pouvoir postuler à un offre ou à un emploi'),
+('Illimté, c''est-à-dire que vous pouvez toujour acheter même si vous en avez déjà '),
+('Vous pouvez acheter des points si vous avez un compte, il suffit juste d''aller vers votre éspace pérsonnelle et trouver le bouton acheter point'),
+('Première étape : trouver le poste qui vous correspond le mieux, Deuxième étape : Cliquer sur le bouton postuler et remplir les informations nécéssaire, Troisième étape : Vous aller recevoir un notification pour l''entretien si votre profil correspond au profil rechercher'),
+('Premièrement, on collabore avec des entreprises reputés dans le monde professionnel. Deuxièmement, on facilite votre intégration dans les entreprises en partenariat avec nous parce que c''est nous qui séléctionne les dossiers et c''est encore nous qui fait les entretiens d''embauche'),
+('Le diplôme minimum est le BACC '),
+('Nous prenons le temps de comprendre la culture d''entreprise de nos clients et nous utilisons des entretiens comportementaux pour évaluer l''adéquation des candidats'),
+('Les termes et conditions incluent une description des services fournis, les obligations de chaque partie, et les politiques de remplacement et de remboursement'),
+('Nous effectuons des vérifications de références, évaluons la stabilité financière, et maintenons des relations étroites pour garantir des environnements de travail de qualité'),
+('Il n''y a pas de remboursement parce que les points sont les droits pour postuler');
 
 
 -- Données pour la table Question
 INSERT INTO Question (question, id_reponse)
 VALUES
-('Quelles sont vos compétences principales ?',1),
-('Quel est votre niveau d expérience ?',2),
-('Quelle est votre formation académique ?',3);
+('C''est quoi le point et à quoi ça sert ?',1),
+('quel est le maximum de points qu''on peut acheter ?',2),
+('Comment faire pour acheter des points ?',3),
+('Comment fait-on pour postuler ?',4),
+('Pourquoi on devrait vous faire confiance ?',5),
+('Quel est le diplôme minimum nécéssaire pour trouver un travail chez vous ?',6),
+('Comment assurez-vous que les candidats proposés sont en adéquation avec la culture d''entreprise de vos clients ?',7),
+('Quels sont les termes et conditions de votre contrat de service ?',8),
+('Comment assurez-vous la qualité et la fiabilité des entreprises avec lesquelles vous travaillez ?',9),
+('Si je ne suis pas recruter, est-ce qu''il y aura un remboursement ?',10);
 
 INSERT INTO historique_question(id_question, id_utilisateur)
 VALUES
