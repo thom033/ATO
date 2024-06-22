@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
-public class questionJSONController {
+public class QuestionJSONController {
 
     @Autowired
     QuestionRepository questionRepository;
@@ -49,4 +49,8 @@ public class questionJSONController {
         return questionRepository.findAll();
     }
 
+    @GetMapping("/question/statistique")
+    public List<StatistiqueQuestion> statistique() {
+        return questionRepository.getStatistiqueQuestion();
+    }
 }

@@ -71,5 +71,11 @@ public class AdminController {
         return mv;
     }
     
+    @GetMapping("/admin/dashboard")
+    public ModelAndView dashboard() {
+        ModelAndView mv=new ModelAndView("admin/template");
+        mv.addObject("page","dashboard/index.jsp");
+        return mv;
+    }
     
 }

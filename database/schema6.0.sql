@@ -229,3 +229,13 @@ CREATE TABLE postulation(
    FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id_utilisateur),
    FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
 );
+
+create table point_vendu(
+   id_point_vendu serial PRIMARY key,
+   id_utilisateur integer,
+   point integer,
+   date TIMESTAMP DEFAULT CURRENT_DATE,
+   FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id_utilisateur)
+);
+
+select count(entretien) as nbEntretien,extract(month from date_entretien) as mois from entretien where reussite and extract(year from date_entretien)=2024 group by extract(month from date_entretien);
