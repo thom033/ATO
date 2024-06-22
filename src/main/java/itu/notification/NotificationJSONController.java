@@ -38,9 +38,6 @@ public class NotificationJSONController {
         if (type == 3) {
             notifications = notificationRepository.findByUtilisateurIdAndReussiteTrue(utilisateur.getId());
         }
-        else{
-            notifications = notificationRepository.findAll();
-        }
         return notifications;
     }
 }
