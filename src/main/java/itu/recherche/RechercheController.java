@@ -120,7 +120,7 @@ public class RechercheController {
             }
         }
 
-        List<ResultAcceuil> paginatedResults = resultAcceuilService.getPaginatedResultsRecherche(result,page, size);
+        List<ResultAcceuil> paginatedResults = resultAcceuilService.getPaginatedResultsRecherche(result, page, size);
 
         mv.addObject("currentPage", page);
         mv.addObject("totalPages", (int) Math.ceil((double) result.size() / size));

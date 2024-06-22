@@ -60,5 +60,4 @@ public class ResultAcceuilService {
         }
         return allResults.subList(start, end);
     }
-
 }
