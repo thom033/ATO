@@ -59,12 +59,7 @@ public class PosteDetailsController {
 
         return mv;
     }
-
-    @GetMapping("/postetest")
-    public String test(Model model) {
-        model.addAttribute("listPost", "CC TEST TEST");
-        return "test";
-    }
+    
 
     @GetMapping("/poste/details")
     public ModelAndView rechargeSoldeUtilisateur(
