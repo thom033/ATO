@@ -73,7 +73,9 @@ public class RechercheController {
     }
 
     @GetMapping("/search")
-    public ModelAndView searchResultRecherche(@RequestParam Map<String, String> params) {
+    public ModelAndView searchResultRecherche(@RequestParam Map<String, String> params,
+    @RequestParam(defaultValue = "0") int page,
+    @RequestParam(defaultValue = "10") int size) {
         Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
         ModelAndView mv = new ModelAndView("template");
         String title = params.get("title");
@@ -93,6 +95,10 @@ public class RechercheController {
         for (PosteDetails poste : resultPoste) {
             result.add(resultAcceuilRepository.getResultAcceuilsRecherche(utilisateur.getId(),poste.getIdPoste()));
         }
+
+        mv.addObject("currentPage", page);
+        mv.addObject("totalPages", (int) Math.ceil((double) result.size() / size));
+        mv.addObject("size", size);
 
         mv.addObject("data", result);
         mv.addObject("page", "acceuil/index");
