@@ -22,7 +22,7 @@
         <div class="container"><img class="img-fluid" src="/public/img/rohy1.jpg" style="margin-top: -32px;margin-bottom: -21px;margin-left: -33px;width: 150px;"><a class="navbar-brand d-flex align-items-center" href="/"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1" style="font-size: large;margin-bottom: -2px;font-family: Aleo, serif;">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link active" href="/admin/dashboard" style="font-family: 'Space Grotesk';">Tableau de bord</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/admin/dashboard#!/point" style="font-family: 'Space Grotesk';">Tableau de bord</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/entreprise/CRUD" style="font-family: 'Space Grotesk';">Entreprise</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/admin/poste" style="font-family: 'Space Grotesk';">Poste</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/admin/CRUD" style="font-family: 'Space Grotesk';">Admin</a></li>

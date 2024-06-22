@@ -238,4 +238,4 @@ create table point_vendu(
    FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id_utilisateur)
 );
 
-select count(entretien) as nbEntretien,extract(month from date_entretien) as mois from entretien where reussite and extract(year from date_entretien)=2024 group by extract(month from date_entretien);
+--select count(entretien) as nbEntretien,extract(month from date_entretien) as mois from entretien where reussite and extract(year from date_entretien)=2024 group by extract(month from date_entretien);

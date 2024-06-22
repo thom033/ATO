@@ -18,8 +18,8 @@ public class SecteurJSONController {
     }
 
     @GetMapping("/secteur/statistique")
-    public List<StatistiqueSecteur> getStatistiqueSecteurs() {
-        return secteurRepository.getStatistiquePost();
+    public List<StatistiqueSecteur> getStatistiqueSecteurs(@RequestParam("annee") int annee,@RequestParam("mois") int mois) {
+        return secteurRepository.getStatistiquePost(annee,mois);
     }
     
 }

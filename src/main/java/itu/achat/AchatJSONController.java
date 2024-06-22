@@ -15,6 +15,24 @@ public class AchatJSONController {
     
     @GetMapping("/point/statistique")
     public List<StatistiquePoint> pointStatistique(@RequestParam int annee) {
-        return argentRepository.getStatistiquePoint(annee);
+        List<StatistiquePoint> valiny=argentRepository.getStatistiquePoint(annee);
+        for(int i=0;i<valiny.size();i++){
+            if(valiny.get(i).getMois()!=i+1){
+                final int moisInd=i+1;
+                valiny.add(i,new StatistiquePoint() {
+                    private int nombre=0;
+                    private int mois=moisInd;
+                    @Override
+                    public int getNombre(){
+                        return nombre;
+                    }
+                    @Override
+                    public int getMois(){
+                        return mois;
+                    }
+                });
+            }
+        }
+        return valiny;
     }
 }
