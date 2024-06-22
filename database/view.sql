@@ -30,7 +30,8 @@ SELECT
     e.image AS entreprise_image,
 
     sd.id_secteur,
-    sd.id_diplome AS secteur_diplome_id_diplome
+    sd.id_diplome AS secteur_diplome_id_diplome,
+    cs.id_competence
 FROM 
    poste p
 JOIN 
@@ -38,9 +39,11 @@ JOIN
 JOIN 
    entreprise e ON p.id_entreprise = e.id_entreprise
 JOIN 
-   secteur_diplome sd ON d.id_diplome = sd.id_diplome;
+   secteur_diplome sd ON d.id_diplome = sd.id_diplome
+JOIN 
+   competence_secteur cs ON sd.id_secteur = cs.id_secteur;
 
-CREATE VIEW utilisateur_details AS
+CREATE OR REPLACE VIEW utilisateur_details AS
 SELECT
     u.id_utilisateur,
     u.nom,

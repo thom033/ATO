@@ -66,6 +66,11 @@ VALUES
 ('Consultation juridique', CURRENT_DATE, 61000, 'Consultant Juridique', 7, 9, 35, 45, 'poste32.jpg', 3, 1, 6, TRUE),
 ('Développement logiciel embarqué', CURRENT_DATE, 47000, 'Développeur Embarqué', 4, 6, 29, 39, 'poste33.jpg', 2, 3, 3, FALSE);
 
+INSERT INTO poste (description, date_insertion, salaire, titre, annee_experience, annee_formation, age_min, age_max, image, id_diplome, id_entreprise, cout, disponibilite)
+VALUES
+('Gestion des opérations', CURRENT_DATE, 51000, 'Manager Opérations', 5, 7, 32, 42, 'poste15.jpg', 3, 3, 4, FALSE);
+
+
 
 -- Données pour la table competence
 INSERT INTO competence (competence, description)
@@ -82,11 +87,11 @@ VALUES
 ('2005-03-01', '2010-03-01', 'Analyste chez MarketLLC', 3);
 
 -- Données pour la table Formation
-INSERT INTO Formation (date_debut, description, date_fin, id_utilisateur)
+INSERT INTO Formation (date_debut, description, date_fin, id_utilisateur,id_diplome)
 VALUES
-('2006-09-01', 'Licence en Informatique', '2009-06-30', 1),
-('2010-09-01', 'Master en Gestion', '2012-06-30', 2),
-('2000-09-01', 'Baccalauréat en Économie', '2003-06-30', 3);
+('2006-09-01', 'Licence en Informatique', '2009-06-30', 1,1);
+('2010-09-01', 'Master en Gestion', '2012-06-30', 2,2),
+('2000-09-01', 'Baccalaureat en Economie', '2003-06-30', 3,3);
 
 -- Données pour la table Reponse
 INSERT INTO Reponse (reponse)

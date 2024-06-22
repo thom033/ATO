@@ -62,7 +62,7 @@
                     <section class="position-relative py-4 py-xl-5">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-8 col-lg-8">
+                                <div class="col-md-7 col-lg-7">
                                     <p class="W"><%= postedetails.getPosteTitre() %></p>
                                     <p class="descW"><%= postedetails.getEntrepriseNom() %></p>
                                     <p class="ptsW"><%= postedetails.getPosteCout() %> points</p>
@@ -70,7 +70,7 @@
                                 <div class="col-md-2 col-lg-2" style="margin-top:10px; font-style: normal;">
                                     <p>Taux de compatibilité :</p>
                                 </div>
-                                <div class="col-md-2 col-lg-2" style="margin-top:0px;">
+                                <div class="col-md-3 col-lg-3" style="margin-top:0px;">
                                     <strong><%= pourcentage %> %</strong>
                                 </div>
                             </div>
@@ -85,6 +85,11 @@
                                     <div>
                                         <h4>INFORMATIONS DU TRAVAIL</h4>
                                     </div>
+
+                                    <% if (request.getAttribute("error") != null) { %>
+                                            <p><%= request.getAttribute("error") %></p>
+                                    <% } %>
+
                                 </div>
                                 <div class="information">
                                     <div class="input">
@@ -219,6 +224,8 @@
 </body>
 <script src="/public/bootstrap/js/pikaday.min.js"></script>
 <script src="/public/bootstrap/js/theme.js"></script>
+<script src="/public/js/sweetalert2.js"></script>
 <script src="/public/js/angular.min.js"></script>
 <script src="/public/js/client/frontApp.js"></script>
+<script src="/public/js/script.js"></script>
 </html>

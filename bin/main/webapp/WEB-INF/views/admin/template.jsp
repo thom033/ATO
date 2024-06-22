@@ -22,9 +22,9 @@
             <div class="collapse navbar-collapse" id="navcol-1" style="font-size: large;margin-bottom: -2px;font-family: Aleo, serif;">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="/entreprise/CRUD" style="font-family: 'Space Grotesk';">Entreprise</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Space Grotesk';">Poste</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/admin/poste" style="font-family: 'Space Grotesk';">Poste</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/admin/CRUD" style="font-family: 'Space Grotesk';">Admin</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Space Grotesk';">CRUD</a></li>
+                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="font-family: 'Space Grotesk';">CRUD</a></li>
                 </ul>
             </div>
                 <%
@@ -48,7 +48,24 @@
                     </a>
         </div>
     </nav>
-
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">CRUD</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="row" style="margin-left:10%;">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link active" href="/question/crud" style="font-family: 'Space Grotesk';">Question/Reponse</a></li>
+            </ul>
+        </div>
+        <div class="row" style="margin-left:10%;">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link active" href="/diplome/crud" style="font-family: 'Space Grotesk';">Diplome</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
     <jsp:include page="<%= pages %>" />
 
     <footer class="bg-primary-gradient">

@@ -38,14 +38,13 @@ public class PosteDetailsService {
     }
 
     // Méthode pour calculer la compatibilité entre un poste et un utilisateur
-    public List<PosteDetails> searchPostes(String title, Long diplome, Integer secteur, String competence, Integer ageMin, Integer ageMax, Double salaireMin, Double salaireMax, Integer distance, Integer anneeExperience) {
+    public List<PosteDetails> searchPostes(String title, Long diplome, Integer secteur, Long competence, Integer ageMin, Integer ageMax, Double salaireMin, Double salaireMax, Integer anneeExperience) {
         Specification<PosteDetails> spec = Specification.where(PosteDetailsSpecifications.withTitre(title))
                 .and(PosteDetailsSpecifications.withIdDiplome(diplome))
                 .and(PosteDetailsSpecifications.withSecteur(secteur))
                 .and(PosteDetailsSpecifications.withCompetence(competence))
                 .and(PosteDetailsSpecifications.withAgeRange(ageMin, ageMax))
                 .and(PosteDetailsSpecifications.withSalaireRange(salaireMin, salaireMax))
-                .and(PosteDetailsSpecifications.withDistance(distance))
                 .and(PosteDetailsSpecifications.withAnneeExperience(anneeExperience));
 
         return posteDetailsRepository.findAll(spec);

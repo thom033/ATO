@@ -63,11 +63,16 @@ public class PosteDetails {
     int idSecteur;
     @Column(name = "secteur_diplome_id_diplome")
     int secteurDiplomeIdDiplome; 
+    @Column(name = "id_competence")
+    Long idCompetence;
 
     // ---- CONSTRUCTEURS ----
     public PosteDetails() {}
 
-    public PosteDetails(Long idPoste, String posteDescription, String posteDateInsertion, double posteSalaire, String posteTitre, Long posteDiplome, Long posteEntreprise, int nbrAnneeExperience, int nbrAnneeFormation, int posteAgeMin, int posteAgeMax,String posteImage,int posteCout, Long idDiplome, String diplomeNom, String diplomeNiveau, String entrepriseNom, int entreprisePoint, String entrepriseType, String entrepriseDateCreation, String entrepriseAdresse, String entrepriseSiteWeb, String entrepriseMail, double entrepriseLatitude, double entrepriseLongitude, String entrepriseImage, int idSecteur, int secteurDiplomeIdDiplome) {
+    public PosteDetails(Long idPoste, String posteDescription, String posteDateInsertion, double posteSalaire, String posteTitre, Long posteDiplome, Long posteEntreprise,
+     int nbrAnneeExperience, int nbrAnneeFormation, int posteAgeMin, int posteAgeMax,String posteImage,int posteCout, Long idDiplome, String diplomeNom, String diplomeNiveau, 
+     String entrepriseNom, int entreprisePoint, String entrepriseType, String entrepriseDateCreation, String entrepriseAdresse, String entrepriseSiteWeb, String entrepriseMail, 
+     double entrepriseLatitude, double entrepriseLongitude, String entrepriseImage, int idSecteur, int secteurDiplomeIdDiplome, Long idCompetence) {
         this.idPoste = idPoste;
         this.posteDescription = posteDescription;
         this.posteDateInsertion = posteDateInsertion;
@@ -96,6 +101,7 @@ public class PosteDetails {
         this.entrepriseImage = entrepriseImage;
         this.idSecteur = idSecteur;
         this.secteurDiplomeIdDiplome = secteurDiplomeIdDiplome;
+        this.idCompetence = idCompetence;
     }
 
     // ---- GETTERS ET SETTERS ----
@@ -182,6 +188,9 @@ public class PosteDetails {
 
     public int getSecteurDiplomeIdDiplome() { return secteurDiplomeIdDiplome; }
     public void setSecteurDiplomeIdDiplome(int secteurDiplomeIdDiplome) { this.secteurDiplomeIdDiplome = secteurDiplomeIdDiplome; }
+
+    public Long getIdCompetence() { return idCompetence; }
+    public void setIdCompetence(Long idCompetence) { this.idCompetence = idCompetence; }
 
     // ---- METHODES ----
     public boolean checkAge(UtilisateurDetails u){

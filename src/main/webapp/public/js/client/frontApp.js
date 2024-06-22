@@ -81,7 +81,7 @@ frontApp.controller('notificationController', function($scope, $http) {
         if (url == 2) {
             valiny = "/utilisateur/profil";
         } else if (url == 0 ) {
-            valiny = "/utilisateur/inscription";
+            valiny = "/poste/details/show?idPoste=" + notification.poste.idPoste;
         } else if (url == 1) {
             valiny = "/generer-pdf/" + notification.entretien.id;
         }
@@ -169,7 +169,7 @@ frontApp.controller("faqController", function($scope, $http, $location, $anchorS
     $scope.getQuestion();
 });
 
-frontApp.controller("postulationController", function($scope, $http, $location, $anchorScroll) {
+frontApp.controller("postulationController", function($scope, $http) {
     $scope.postuler = function(idPoste) {
         let aurl = "/postuler/" + idPoste;
         $http({
@@ -177,10 +177,21 @@ frontApp.controller("postulationController", function($scope, $http, $location, 
             method: 'GET'
         })
         .then(function(response) {
-            console.log("Postulation effectue avec succes");
-
+            message = "Postulation effectue avec succes";
+            Swal.fire({
+                title: 'Succes postulation',
+                text: message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
         }, function(error) {
-            console.error('Erreur lors de la récupération des données:', error);
+            message = "Vous n'avez pas assez de point";
+            Swal.fire({
+                title: 'Problème lors de la postulation',
+                text: message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         });
         
     };

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import itu.compatibilite.PosteDetails;
 import itu.compatibilite.PosteDetailsRepository;
@@ -49,7 +50,7 @@ public class PostulationController {
     UtilisateurRepository utilisateurRepository;
 
     @GetMapping("/postuler/{idPoste}")
-    public String getMethodName(@PathVariable("idPoste") String idTravail, HttpSession session) {
+    public String getMethodName(@PathVariable("idPoste") String idTravail, HttpSession session) throws Exception {
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         Postulation postulation = new Postulation();
 
@@ -59,6 +60,17 @@ public class PostulationController {
         postulation.setDate(LocalDateTime.now());
         postulation.setPoste(posteDetails);
         postulation.setUtilisateur(utilisateur);
+
+        if (utilisateur.getPoint() < posteDetails.getPosteCout()) {
+            throw new Exception("Vous ne possedez pas assez de point");
+        }
+
+        else {
+            utilisateur.setPoint(utilisateur.getPoint() - posteDetails.getPosteCout());
+            utilisateurRepository.updatePointsPostule(utilisateur.getId(), posteDetails.getPosteCout());
+
+            session.setAttribute("utilisateur", utilisateur);
+        }
 
         postulationRepository.save(postulation);
         return "redirect:/notification/index";
@@ -82,14 +94,17 @@ public class PostulationController {
             @RequestParam("idUtilisateur") String idUtilisateur,
             HttpSession session) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-        LocalDateTime dateEntretien = LocalDateTime.parse(date, formatter);
-
+        LocalDateTime dateEntretien = null;
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+            dateEntretien = LocalDateTime.parse(date, formatter);
+        } catch (Exception e) {
+            ModelAndView view = new ModelAndView("template");
+            view.addObject("error", "La date de l'embauche n'est pas valide");
+            view.addObject("page", "admin/postulation/index");
+            return view;
+        }
         Utilisateur utilisateur = utilisateurRepository.getById(Long.valueOf(idUtilisateur));
-        Notification notification = new Notification();
-        notification.setDateNotification(LocalDateTime.now());
-        notification.setMessage("Convocation à un entretien d'embauche");
-        notification.setUtilisateur(utilisateur);
 
         Entretien entretien = new Entretien();
         entretien.setDateEntretien(dateEntretien);
@@ -100,6 +115,12 @@ public class PostulationController {
         entretien.setReussite(false);
         entretien.setUtilisateur(utilisateur);
         entretienRepository.save(entretien);
+
+        Notification notification = new Notification();
+        notification.setDateNotification(LocalDateTime.now());
+        notification.setMessage(
+                "Convocation a un entretien d'embauche pour le travail " + entretien.getPoste().getPosteTitre());
+        notification.setUtilisateur(utilisateur);
 
         notification.setEntretien(entretien);
         notificationRepository.save(notification);

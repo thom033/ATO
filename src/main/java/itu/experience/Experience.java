@@ -3,6 +3,7 @@ package itu.experience;
 import jakarta.persistence.*;
 import java.util.Date;
 
+import itu.secteur.Secteur;
 import itu.utilisateur.Utilisateur;
 
 @Entity
@@ -20,6 +21,18 @@ public class Experience {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "id_secteur")
+    private Secteur secteur;
+    
+    public Secteur getSecteur() {
+        return secteur;
+    }
+
+    public void setSecteur(Secteur secteur) {
+        this.secteur = secteur;
+    }
 
     @ManyToOne
     @JoinColumn(name = "id_utilisateur")
