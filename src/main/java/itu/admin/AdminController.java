@@ -77,5 +77,16 @@ public class AdminController {
         mv.addObject("page","dashboard/index.jsp");
         return mv;
     }
-    
+
+    @GetMapping("/admin/dashboard/statistique/point")
+    public ModelAndView getStatistiquePoint() {
+        ModelAndView mv=new ModelAndView("admin/dashboard/statistique/point");
+        return mv;
+    }
+
+    @GetMapping("/admin/dashboard/statistique/embauche")
+    public ModelAndView getStatistiqueEntretien() {
+        ModelAndView mv=new ModelAndView("admin/dashboard/statistique/embauche");
+        return mv;
+    }
 }

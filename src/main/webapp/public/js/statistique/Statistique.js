@@ -1,10 +1,22 @@
-let StatistiqueApp = angular.module("StatistiqueApp",[]);
+let StatistiqueApp = angular.module("StatistiqueApp",["ngRoute"]);
 
-StatistiqueApp.controller('statistiqueController', function($scope, $http) {
+StatistiqueApp.config(['$routeProvider',function ($routeProvider){
+    $routeProvider
+        .when('/point',{
+            templateUrl:'/admin/dashboard/statistique/point',
+            controller:'statistiquePointController'
+        })
+        .when('/embauche',{
+            templateUrl:'/admin/dashboard/statistique/embauche',
+            controller:'statistiqueEntretienController'
+        })
+}]);
 
-    $scope.annee=2024;
+StatistiqueApp.controller('statistiquePointController', function($scope, $http) {
+
+    $scope.annee=2023;
     
-    $http.get("/point/statistique?annee=2024")
+    $http.get("/point/statistique?annee="+$scope.annee)
     .then(function(response) {
         $scope.statistique = response.data;
         $scope.initialize($scope.createCourbe);
@@ -120,8 +132,65 @@ StatistiqueApp.controller('statistiqueController', function($scope, $http) {
 
     $scope.updateCourbe=function(){
         console.log($scope.chartPoint);
-        $scope.chartPoint.data = $scope.data;
-        $scope.chartPoint.datasets[0].data = $scope.labels;
+        $scope.chartPoint.data.datasets[0].data = $scope.data;
+        $scope.chartPoint.labels = $scope.labels;
+        $scope.chartPoint.update();
+    }
+});
+
+StatistiqueApp.controller('statistiqueEntretienController', function($scope, $http) {
+    $scope.annee=2023;
+    
+    $http.get("/entretien/statistique?annee="+$scope.annee)
+    .then(function(response) {
+        $scope.statistique = response.data;
+        $scope.initialize($scope.createCourbe);
+        console.log($scope);
+    });
+    $scope.createCourbe=function(){
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        var data = {
+            labels: $scope.labels,
+            datasets: [{
+                label: 'Nombre de points obtenues',
+                data: $scope.data,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Créer le graphique
+        $scope.chartPoint = new Chart(ctx, {
+            type: 'line', 
+            data: data, 
+            options: options
+        });
+    }
+
+    $scope.initialize=function(callback){
+        $scope.labels=[];
+        $scope.data=[];
+        for(let i=0;i<$scope.statistique.length;i++){
+            $scope.labels.push($scope.getMois($scope.statistique[i].mois));
+            $scope.data.push($scope.statistique[i].nombre);
+        }
+        callback();
+    }
+
+    $scope.updateCourbe=function(){
+        console.log($scope.chartPoint);
+        $scope.chartPoint.data.datasets[0].data = $scope.data;
+        $scope.chartPoint.labels = $scope.labels;
         $scope.chartPoint.update();
     }
 });

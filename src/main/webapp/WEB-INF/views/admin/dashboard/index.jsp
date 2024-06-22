@@ -3,7 +3,7 @@
 <div class="container" style="font-family:Helvetica;border-bottom: solid;padding-bottom: 5%;">
     <div class="">
         <div class="container mt-5">
-            <div class="content">
+            <div class="content" ng-app="StatistiqueApp">
                 <div class="row justify-content-center">
 
                     <div class="col-6" style="padding-left: 5%;">
@@ -22,21 +22,8 @@
                     <%-- <div class="col-md-6" ng-app="StatistiqueApp" ng-controller="statistiqueController">
                         <canvas id="barChartCanvas"></canvas>
                     </div> --%>
-                    <div class="col-md-6" ng-app="StatistiqueApp" ng-controller="statistiqueController">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <input type="number" ng-model="annee" class="input" style=" border-radius: 15px;">
-                                    <label for="annee" class="user-label">Annee</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <button class="btn btn-primary" ng-click="getStatPoint()">Chercher</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <canvas id="myChart" width="400" height="400"></canvas>
-                        </div>
+                    <div class="col-md-6" ng-view>
+                        
                     </div>
                 </div>
             </div>
@@ -72,5 +59,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/public/js/angular.min.js"></script>
+<script src="/public/js/angular-route.js"></script>
 <script src="/public/js/input.js"></script>
 <script src="/public/js/statistique/Statistique.js"></script>
