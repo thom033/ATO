@@ -222,7 +222,6 @@ create table point_vendu(
    date TIMESTAMP DEFAULT CURRENT_DATE,
    FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id_utilisateur)
 );
-
 select count(entretien) as nbEntretien,extract(month from date_entretien) as mois from entretien where reussite and extract(year from date_entretien)=2024 group by extract(month from date_entretien);
 CREATE TABLE Notification(
    id_notification SERIAL,
@@ -240,3 +239,4 @@ CREATE TABLE Notification(
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 -- ajout de id_entretien
+

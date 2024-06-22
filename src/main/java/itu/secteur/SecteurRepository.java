@@ -5,10 +5,14 @@ import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SecteurRepository extends JpaRepository<Secteur, Long> {
-    @Query(value="select secteur.id_secteur as idSecteur,count(secteur.id_secteur) as nbSecteur,secteur.secteur from poste natural join diplome join secteur_diplome as secteurDip on secteurDip.id_diplome=diplome.id_diplome join secteur on secteur.id_secteur=secteurDip.id_secteur group by secteur.secteur,secteur.id_secteur",nativeQuery=true)    
-    List<StatistiqueSecteur> getStatistiquePost();
+    @Query(value="select secteur.id_secteur as idSecteur,count(secteur.id_secteur) as nbSecteur,secteur.secteur from poste natural join diplome join secteur_diplome as secteurDip on secteurDip.id_diplome=diplome.id_diplome join secteur on secteur.id_secteur=secteurDip.id_secteur where extract(month from date_insertion)= :mois and extract(year from date_insertion)= :annee group by secteur.secteur,secteur.id_secteur",nativeQuery=true)    
+    List<StatistiqueSecteur> getStatistiquePost(@Param("annee") int annee,@Param("mois") int mois);
+    
+    @Query(value="select secteur.id_secteur as idSecteur,count(secteur.id_secteur) as nbSecteur,secteur.secteur from poste natural join diplome join secteur_diplome as secteurDip on secteurDip.id_diplome=diplome.id_diplome join secteur on secteur.id_secteur=secteurDip.id_secteur where extract(year from date_insertion)= :annee group by secteur.secteur,secteur.id_secteur",nativeQuery=true)    
+    List<StatistiqueSecteur> getStatistiquePost(@Param("annee") int annee);
 }

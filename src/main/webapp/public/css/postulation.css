@@ -107,7 +107,7 @@
 }
 .custom-h2 {
     font-family: Helvetica, sans-serif;
-    font-size: 100px;
+    font-size: 6em;
     font-weight: bold;
     color: #707070;
 }
@@ -116,4 +116,10 @@
 /* Nicolas */
 .nicolas-message {
     font-weight: 600;
+}
+
+.sub-nico {
+    background-color: white;
+    border: none;
+    margin-left: 20px;
 }
