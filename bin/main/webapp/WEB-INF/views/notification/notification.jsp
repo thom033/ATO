@@ -12,6 +12,7 @@
 
 
         <select class="form-select" name="type" id="type" style="width: auto; margin: auto;" ng-model="selectedType" ng-change="filterNotifications()">
+            <option value="" disabled>Ajouter un filtre</option>
             <option value="-1">Tous les notifications</option>
             <option value="0">Achat Points</option>
             <option value="1">Convocation</option>
