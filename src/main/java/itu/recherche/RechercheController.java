@@ -18,6 +18,7 @@ import itu.compatibilite.PosteDetailsRepository;
 import itu.compatibilite.PosteDetailsService;
 import itu.compatibilite.ResultAcceuil;
 import itu.compatibilite.ResultAcceuilRepository;
+import itu.compatibilite.ResultAcceuilService;
 import itu.competence.Competence;
 import itu.competence.CompetenceRepository;
 import itu.diplome.Diplome;
@@ -51,6 +52,9 @@ public class RechercheController {
     ResultAcceuilRepository resultAcceuilRepository;
 
     @Autowired
+    ResultAcceuilService resultAcceuilService;
+
+    @Autowired
     JdbcTemplate jdbcTemplate;
 
     public RechercheController(SecteurRepository secteurRepository, DiplomeRepository diplomeRepository,
@@ -81,7 +85,8 @@ public class RechercheController {
     }
 
     @GetMapping("/search")
-    public ModelAndView searchResultRecherche(@RequestParam Map<String, String> params) {
+    public ModelAndView searchResultRecherche(@RequestParam Map<String, String> params,
+    @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
         ModelAndView mv = new ModelAndView("template");
         String title = params.get("title");
@@ -114,9 +119,14 @@ public class RechercheController {
                 }
             }
         }
-        
 
-        mv.addObject("data", result);
+        List<ResultAcceuil> paginatedResults = resultAcceuilService.getPaginatedResultsRecherche(result,page, size);
+
+        mv.addObject("currentPage", page);
+        mv.addObject("totalPages", (int) Math.ceil((double) result.size() / size));
+        mv.addObject("size", size);
+
+        mv.addObject("data", paginatedResults);
         mv.addObject("page", "acceuil/index");
         return mv; 
     }

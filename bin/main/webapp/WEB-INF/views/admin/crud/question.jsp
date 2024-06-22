@@ -24,7 +24,7 @@
             <div class="col-md-12">
               <div class="input-group">
                 <span class="input-group-text">Question</span>
-                <textarea ng-model="reponse.question.question" class="form-control" aria-label="With textarea"></textarea>
+                <textarea ng-model="question.question" class="form-control" aria-label="With textarea"></textarea>
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@
             <div class="col-md-12">
               <div class="input-group">
                 <span class="input-group-text">Reponse</span>
-                <textarea ng-model="reponse.reponse" class="form-control" aria-label="With textarea"></textarea>
+                <textarea ng-model="question.reponse.reponse" class="form-control" aria-label="With textarea"></textarea>
               </div>
             </div>
           </div>
@@ -73,12 +73,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="reponse in reponses | filter: filterReponse">
-              <th scope="row">{{reponse.id}}</th>
-              <td>{{reponse.question.question}}</td>
-              <td>{{reponse.reponse}}</td>
-              <td><button class="btn btn-warning" ng-click="modify(reponse.id)">Modifier</button></td>
-              <td><button class="btn btn-danger" ng-click="delete(reponse.id)">Supprimer</button></td>
+            <tr ng-repeat="question in questions | filter: filterReponse">
+              <th scope="row">{{question.id}}</th>
+              <td>{{question.question}}</td>
+              <td>{{question.reponse.reponse}}</td>
+              <td><button class="btn btn-warning" ng-click="modify(question.id)">Modifier</button></td>
+              <td><button class="btn btn-danger" ng-click="delete(question.id)">Supprimer</button></td>
             </tr>
           </tbody>
         </table>

@@ -76,7 +76,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">Secteur</th>
+              <th scope="col">Diplome</th>
               <th scope="col">Début</th>
               <th scope="col">Modifier</th>
               <th scope="col">Supprimer</th>
@@ -84,7 +84,7 @@
           </thead>
           <tbody>
             <tr ng-repeat="formation in formations | filter: recherche">
-              <td>{{formation.secteur.secteur}}</td>
+              <td>{{formation.diplome.diplome}}</td>
               <td>{{formation.dateDebut.toISOString().split('T')[0]}}</td>
               <td><button class="btn btn-warning" ng-click="modify(formation.id)">Modifier</button></td>
               <td><button class="btn btn-danger" ng-click="delete(formation.id)">Supprimer</button></td>
