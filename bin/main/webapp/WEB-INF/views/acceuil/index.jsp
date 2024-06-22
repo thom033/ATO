@@ -36,7 +36,22 @@
                 <div class="card-body nicolas-card">
                     <div class="d-flex justify-content-between align-items-center top-card-nicolas">
                         <h4 class="card-title box_name mb-0"><%= p.getEntrepriseNom() %></h4>
-                        <h4 class="percent mb-0 nicolas-compatibilite"><a href="/compatibility-poste/<%= id %>"><%= p.getPtsTotal() %>%</a></h4>
+                        <% 
+                            double ptsTotal = p.getPtsTotal();
+                            String colorClass = "red";
+
+                            if (ptsTotal > 75) {
+                                colorClass = "green";
+                            } else if (ptsTotal >= 25) {
+                                colorClass = "blue";
+                            }
+                            %>
+
+                            <h4 class="percent mb-0 nicolas-compatibilite">
+                            <a href="/compatibility-poste/<%= id %>" style="color: <%= colorClass %>;">
+                                <%= ptsTotal %>%
+                            </a>
+                            </h4>
                     </div>
                     <div class="img_box flex-grow-1">
                         <img src="/public/img/products/4.jpg" class="img-fluid" alt="">
