@@ -199,3 +199,67 @@ INSERT INTO entreprise_contact (id_entreprise, id_contact) VALUES (3, 4);
 INSERT INTO entretien(date_envoi, date_entretien, id_utilisateur, id_poste) VALUES
 ('2024-06-10 10:00:00', '2024-06-15 14:30:00', 1, 3),
 ('2024-06-05 08:00:00', '2024-06-13 10:00:00',1, 2);
+
+INSERT INTO historique_question(id_question,id_utilisateur) values(1,2);
+INSERT INTO historique_question(id_question,id_utilisateur) values(2,3);
+INSERT INTO historique_question(id_question,id_utilisateur) values(1,3);
+INSERT INTO historique_question(id_question,id_utilisateur) values(2,1);
+INSERT INTO historique_question(id_question,id_utilisateur) values(3,1);
+INSERT INTO historique_question(id_question,id_utilisateur) values(4,1);
+INSERT INTO historique_question(id_question,id_utilisateur) values(4,2);
+
+
+INSERT INTO Question (question, id_reponse)
+VALUES
+('Comment ?',4);
+
+INSERT INTO Reponse (reponse)
+VALUES
+('Comme ça');
+
+insert into point_vendu(id_utilisateur,point,date) values(1,2,DEFAULT);
+insert into point_vendu(id_utilisateur,point,date) values(2,4,DEFAULT);
+insert into point_vendu(id_utilisateur,point,date) values(3,1,DEFAULT);
+
+insert into point_vendu(id_utilisateur,point,date) values(1,1,'2024-06-21');
+insert into point_vendu(id_utilisateur,point,date) values(1,3,'2024-05-21');
+insert into point_vendu(id_utilisateur,point,date) values(2,3,'2024-05-21');
+insert into point_vendu(id_utilisateur,point,date) values(3,4,'2024-05-21');
+insert into point_vendu(id_utilisateur,point,date) values(2,4,'2024-04-21');
+insert into point_vendu(id_utilisateur,point,date) values(1,3,'2024-03-21');
+insert into point_vendu(id_utilisateur,point,date) values(3,2,'2024-02-21');
+insert into point_vendu(id_utilisateur,point,date) values(1,5,'2024-01-21');
+
+insert into point_vendu(id_utilisateur,point,date) values(2,3,'2023-12-21');
+insert into point_vendu(id_utilisateur,point,date) values(1,1,'2023-11-21');
+insert into point_vendu(id_utilisateur,point,date) values(3,2,'2023-10-21');
+insert into point_vendu(id_utilisateur,point,date) values(1,0,'2023-09-21');
+insert into point_vendu(id_utilisateur,point,date) values(2,5,'2023-08-21');
+insert into point_vendu(id_utilisateur,point,date) values(1,4,'2023-07-21');
+insert into point_vendu(id_utilisateur,point,date) values(3,1,'2023-06-21');
+insert into point_vendu(id_utilisateur,point,date) values(1,8,'2023-05-21');
+insert into point_vendu(id_utilisateur,point,date) values(2,6,'2023-04-21');
+insert into point_vendu(id_utilisateur,point,date) values(1,5,'2023-03-21');
+insert into point_vendu(id_utilisateur,point,date) values(3,10,'2023-02-21');
+insert into point_vendu(id_utilisateur,point,date) values(1,3,'2023-01-21');
+
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-06-10','2024-06-21',2,1,TRUE)
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-06-10','2024-06-21',3,1,TRUE)
+
+select sum(point) as point,extract(month from date) as mois from point_vendu where extract(year from date)=2024 group by extract(month from date);
+
+select id_question,count(id_question) as nbQuestion,question from question natural join historique_question group by id_question,question limit 3;
+
+select secteur.id_secteur,count(secteur.id_secteur) as nbSecteur,secteur.secteur from poste natural join diplome join secteur_diplome as secteurDip on secteurDip.id_diplome=diplome.id_diplome join secteur on secteur.id_secteur=secteurDip.id_secteur group by secteur.secteur,secteur.id_secteur;
+
+-- CREATE TABLE entretien(
+--    id_entretien SERIAL,
+--    date_envoi TIMESTAMP DEFAULT CURRENT_DATE,
+--    date_entretien TIMESTAMP,
+--    id_utilisateur INTEGER,
+--    id_poste INTEGER,
+--    reussite BOOLEAN DEFAULT FALSE,
+--    PRIMARY KEY(id_entretien),
+--    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur),
+--    FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
+-- );
