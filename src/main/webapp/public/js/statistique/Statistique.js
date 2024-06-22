@@ -8,14 +8,18 @@ StatistiqueApp.config(['$routeProvider',function ($routeProvider){
         })
         .when('/embauche',{
             templateUrl:'/admin/dashboard/statistique/embauche',
-            controller:'statistiqueEntretienController'
+            controller:'statistiqueEmbaucheController'
+        })
+        .when('/secteur',{
+            templateUrl:'/admin/dashboard/statistique/secteur',
+            controller:'statistiqueSecteurController'
         })
 }]);
 
 StatistiqueApp.controller('statistiquePointController', function($scope, $http) {
-
-    $scope.annee=2023;
-    
+    const currentDate=new Date();
+    $scope.annee=currentDate.getFullYear();
+    const mois=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"];    
     $http.get("/point/statistique?annee="+$scope.annee)
     .then(function(response) {
         $scope.statistique = response.data;
@@ -58,7 +62,7 @@ StatistiqueApp.controller('statistiquePointController', function($scope, $http) 
         const barChart = new Chart(barCtx, {
             type: 'bar',
             data: {
-                labels: $scope.labels,
+                labels: mois,
                 datasets: [{
                     label: 'Statistique Bâton',
                     data: $scope.data,
@@ -104,7 +108,7 @@ StatistiqueApp.controller('statistiquePointController', function($scope, $http) 
         var ctx = document.getElementById('myChart').getContext('2d');
 
         var data = {
-            labels: $scope.labels,
+            labels: mois,
             datasets: [{
                 label: 'Nombre de points obtenues',
                 data: $scope.data,
@@ -138,22 +142,36 @@ StatistiqueApp.controller('statistiquePointController', function($scope, $http) 
     }
 });
 
-StatistiqueApp.controller('statistiqueEntretienController', function($scope, $http) {
-    $scope.annee=2023;
+StatistiqueApp.controller('statistiqueEmbaucheController', function($scope, $http) {
+    const currentDate=new Date();
+    $scope.annee=currentDate.getFullYear();
+    const mois=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"];    
+    $scope.getMois=function (number){
+        return mois[number-1];
+    }
     
-    $http.get("/entretien/statistique?annee="+$scope.annee)
+    $http.get("/embauche/statistique?annee="+$scope.annee)
     .then(function(response) {
         $scope.statistique = response.data;
         $scope.initialize($scope.createCourbe);
         console.log($scope);
     });
+
+    $scope.getStatEmbauche=function(){
+        $http.get("/embauche/statistique?annee="+$scope.annee)
+        .then(function(response) {
+            $scope.statistique = response.data;
+            $scope.initialize($scope.updateCourbe);
+        });
+    }
+
     $scope.createCourbe=function(){
         var ctx = document.getElementById('myChart').getContext('2d');
 
         var data = {
-            labels: $scope.labels,
+            labels: mois,
             datasets: [{
-                label: 'Nombre de points obtenues',
+                label: 'Nombre de personnes embauchés',
                 data: $scope.data,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
@@ -182,7 +200,7 @@ StatistiqueApp.controller('statistiqueEntretienController', function($scope, $ht
         $scope.data=[];
         for(let i=0;i<$scope.statistique.length;i++){
             $scope.labels.push($scope.getMois($scope.statistique[i].mois));
-            $scope.data.push($scope.statistique[i].nombre);
+            $scope.data.push($scope.statistique[i].nbEntretien);
         }
         callback();
     }
@@ -190,7 +208,75 @@ StatistiqueApp.controller('statistiqueEntretienController', function($scope, $ht
     $scope.updateCourbe=function(){
         console.log($scope.chartPoint);
         $scope.chartPoint.data.datasets[0].data = $scope.data;
-        $scope.chartPoint.labels = $scope.labels;
+        $scope.chartPoint.update();
+    }
+});
+
+StatistiqueApp.controller('statistiqueSecteurController', function($scope, $http) {
+    const currentDate=new Date();
+    $scope.annee=currentDate.getFullYear();
+    $scope.mois=currentDate.getMonth()+1;
+    $scope.months=[{value:0,mois:"Tous"},{value:1,mois:"Janvier"},{value:2,mois:"Février"}
+                    ,{value:3,mois:"Mars"},{value:4,mois:"Avril"},
+                    {value:5,mois:"Mai"},{value:6,mois:"Juin"},{value:7,mois:"Juillet"}
+                    ,{value:8,mois:"Aout"},{value:9,mois:"Septembre"},{value:10,mois:"Octobre"},
+                    {value:11,mois:"Novembre"},{value:12,mois:"Decembre"}];
+    
+    $http.get("/secteur/statistique?annee="+$scope.annee+"&mois="+$scope.mois)
+    .then(function(response) {
+        $scope.statistique = response.data;
+        $scope.initialize($scope.createCamembert);
+        console.log($scope);
+    });
+
+    $scope.getStatSecteur=function(){
+        var link="/secteur/statistique?annee="+$scope.annee;
+        if($scope.mois!=0){
+            link+="&mois="+$scope.mois;
+        }
+        $http.get(link)
+        .then(function(response) {
+            $scope.statistique = response.data;
+            $scope.initialize($scope.updateCamembert);
+        });
+    }
+
+    $scope.createCamembert=function(){
+        var data = {
+            labels: [...new Set($scope.labels)],
+            datasets: [{
+                data: $scope.data,
+                backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
+            }]
+        };
+        
+        var options = {
+            responsive: true,
+            maintainAspectRatio: false
+        };
+        
+        var ctx = document.getElementById('myPieChart').getContext('2d');
+        
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: data,
+            options: options
+        });
+    }
+
+    $scope.initialize=function(callback){
+        $scope.labels=[];
+        $scope.data=[];
+        for(let i=0;i<$scope.statistique.length;i++){
+            $scope.labels.push($scope.statistique[i].secteur);
+            $scope.data.push($scope.statistique[i].nbSecteur);
+        }
+        callback();
+    }
+
+    $scope.updateCamembert=function(){
+        console.log($scope.chartPoint);
+        $scope.chartPoint.data.datasets[0].data = $scope.data;
         $scope.chartPoint.update();
     }
 });
