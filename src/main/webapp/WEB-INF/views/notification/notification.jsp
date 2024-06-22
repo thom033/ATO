@@ -8,6 +8,15 @@
                     <h2 class="custom-h2">Notifications</h2>
                 </div>
             </div>
+
+            <select class="form-select" name="type" id="type" style="width: auto; margin: auto;">
+                <option value="">Type Notifications</option>
+                <option value="0">Achat Points</option>
+                <option value="1">Convocation</option>
+                <option value="2">Opportunite</option>
+                <option value="3">Resultat Entretien</option>
+            </select>
+
     </section>
     <div class="notification-container" ng-app="frontApp" ng-controller="notificationController" >
             <p ng-if="notifications.length == 0">404 aucune notification</p>
