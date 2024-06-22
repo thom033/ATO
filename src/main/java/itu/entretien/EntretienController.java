@@ -2,6 +2,7 @@ package itu.entretien;
 
 import java.io.FileNotFoundException;
 import java.net.http.HttpHeaders;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,6 +25,8 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.TextAlignment;
 
+import itu.notification.Notification;
+import itu.notification.NotificationRepository;
 import itu.utilisateur.Utilisateur;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -35,6 +38,52 @@ public class EntretienController {
 
     @Autowired
     PdfService pdfService;
+
+    @Autowired
+    NotificationRepository notificationRepository;
+
+    @GetMapping("/admin/entretien/liste")
+    public ModelAndView listerEntretien() {
+        ModelAndView mv = new ModelAndView("admin/template");
+        mv.addObject("page", "entretien/entretienEnCours.jsp");
+
+        return mv;
+    }
+
+    @GetMapping("/admin/entretien/delete/{idEntretien}")
+    public String supprimer(@PathVariable("idEntretien") String idEntretien) {
+        Entretien entretien = entretienRepository.getById(Long.valueOf(idEntretien));
+        entretien.setReussite(false);
+        entretienRepository.save(entretien);
+
+        Notification notification = new Notification();
+        notification.setEntretien(entretien);
+        notification.setDateNotification(LocalDateTime.now());
+        notification.setUtilisateur(entretien.getUtilisateur());
+        notification.setMessage(
+                "Votre candidature n'a pas été retenue après l'entretien du" + entretien.getDateEntretien());
+
+        notificationRepository.save(notification);
+        return "redirect:/admin/entretien/liste";
+    }
+
+    @GetMapping("/admin/entretien/valider/{idEntretien}")
+    public String valider(@PathVariable("idEntretien") String idEntretien) {
+        Entretien entretien = entretienRepository.getById(Long.valueOf(idEntretien));
+        entretien.setReussite(true);
+        entretienRepository.save(entretien);
+
+        Notification notification = new Notification();
+        notification.setEntretien(entretien);
+        notification.setDateNotification(LocalDateTime.now());
+        notification.setUtilisateur(entretien.getUtilisateur());
+        notification.setMessage(
+                "Nous avons le plaisir de vous informer que vous avez ete sélectionné apres l'entretien du "
+                        + entretien.getDateEntretien());
+
+        notificationRepository.save(notification);
+        return "redirect:/admin/entretien/liste";
+    }
 
     @GetMapping("/generer-pdf/{idEntretien}")
     public void generatePdf(HttpServletResponse response, @PathVariable("idEntretien") String idEntretien)

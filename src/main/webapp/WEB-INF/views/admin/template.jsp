@@ -82,7 +82,7 @@
         </div>
         <div class="row" style="margin-left:10%;">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link active" href="/admin/entretien/encours" style="font-family: 'Space Grotesk';">Entretien en cours</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/admin/entretien/liste" style="font-family: 'Space Grotesk';">Entretien en cours</a></li>
             </ul>
         </div>
     </div>

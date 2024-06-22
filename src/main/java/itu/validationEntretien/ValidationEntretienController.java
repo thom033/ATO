@@ -8,12 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ValidationEntretienController {
-    @GetMapping("/admin/entretien/encours")
-    public ModelAndView enCours() {
-        ModelAndView mv = new ModelAndView("admin/template");
-        mv.addObject("page", "entretien/entretienEnCours.jsp");
-        return mv;
-    }
+    // @GetMapping("/admin/entretien/encours")
+    // public ModelAndView enCours() {
+    // ModelAndView mv = new ModelAndView("admin/template");
+    // mv.addObject("page", "entretien/entretienEnCours.jsp");
+    // return mv;
+    // }
 
     @GetMapping("/admin/validation/entretien/{idEntretien}")
     public ModelAndView validerEntretien(@PathVariable("idNotification") String idNotification) {
