@@ -51,7 +51,7 @@
                     <% if (session.getAttribute("utilisateur") != null) { 
                         Utilisateur user = (Utilisateur) session.getAttribute("utilisateur"); %>
                         <a class="navbar-brand d-flex align-items-center" href="/utilisateur/profil">
-                            <img style="width: 30px;height: 30px;border-radius: 100px;" src="/public/img/avatars/<%= user.getPhoto() %>">
+                            <img style="width: 30px;height: 30px;border-radius: 100px;"  src="/public/img/uploaded/<%= user.getId() %>.jpg" alt="" onerror="this.onerror=null; this.src='/public/img/uploaded/avatar.png';">
                         </a>
                     <% } %>
         </div>
