@@ -17,6 +17,22 @@ frontApp.controller('notificationController', function($scope, $http) {
         });
     };
 
+    // Fonction pour filtrer les notifications par type
+    $scope.filterNotifications = function() {
+        type = $scope.selectedType;
+        console.log("lsdfsj");
+        console.log(type);
+        let filtreurl = "/notification/filter/" + type;
+        $http({
+            url: filtreurl,
+            method: 'GET'
+        }).then(function(response) {
+            $scope.notifications = response.data;
+        }, function(error) {
+            console.error('Erreur lors du filtrage des notifications:', error);
+        });
+    };
+
     $scope.delete = function(idNotif) {
         let delUrl = "/notification/delete/" + idNotif;
         $http({
