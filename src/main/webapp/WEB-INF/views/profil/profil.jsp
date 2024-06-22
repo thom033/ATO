@@ -38,8 +38,9 @@
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
-                            <img class="avatar" src="/public/img/uploaded/<%= user.getId()%>.jpg" alt="">
+                            <img class="avatar" src="/public/img/uploaded/<%= user.getId() %>.jpg" alt="" onerror="this.onerror=null; this.src='/public/img/uploaded/avatar.png';">
                         </div>
+                        
                         <form id="uploadForm" enctype="multipart/form-data">
                             <input type="file" id="fileInput" name="file" accept="image/*">
                             <button type="button" onclick="uploadImage()">Upload</button>
