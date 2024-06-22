@@ -5,9 +5,10 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 <head>
+    <link rel="shortcut icon" href="/public/img/icon/theR.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - Brand</title>
+    <title>Rohy backoffice</title>
     <link rel="stylesheet" href="/public/css/input.css">
     <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/Splash.css">
