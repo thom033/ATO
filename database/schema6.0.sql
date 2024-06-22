@@ -240,3 +240,8 @@ CREATE TABLE Notification(
 );
 -- ajout de id_entretien
 
+create table prix_point(
+   id_prix_point serial,
+   prix numeric(10,2),
+   date_changement date
+);

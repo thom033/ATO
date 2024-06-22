@@ -368,6 +368,11 @@ insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite
 insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-01-10','2023-01-21',1,1,TRUE);
 insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-01-10','2023-01-21',1,1,TRUE);
 
+insert into prix_point(prix,date_changement) values(10000,'2023-01-01');
+insert into prix_point(prix,date_changement) values(15000,'2023-06-01');
+insert into prix_point(prix,date_changement) values(7000,'2023-11-01');
+insert into prix_point(prix,date_changement) values(7500,'2024-04-01');
+
 select sum(point) as point,extract(month from date) as mois from point_vendu where extract(year from date)=2024 group by extract(month from date);
 
 select id_question,count(id_question) as nbQuestion,question from question natural join historique_question group by id_question,question limit 3;
