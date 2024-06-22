@@ -430,3 +430,15 @@ $$ LANGUAGE plpgsql;
 
 -- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 -- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+CREATE OR REPLACE FUNCTION get_price(date_change TIMESTAMP)
+RETURNS numeric AS $$
+DECLARE
+    reponse numeric;
+BEGIN
+    -- Récupérer le prix original du produit
+    SELECT prix INTO reponse FROM prix_point WHERE date_changement in (select max(date_changement) from prix_point where date_changement<date_change );
+        
+    RETURN reponse;
+END;
+$$ LANGUAGE plpgsql;

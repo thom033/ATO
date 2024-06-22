@@ -100,6 +100,18 @@ public class AdminController {
         ModelAndView mv=new ModelAndView("admin/dashboard/statistique/secteur");
         return mv;
     }
+    
+    @GetMapping("/admin/dashboard/statistique/monnaie")
+    public ModelAndView getStatistiqueMonnaie() {
+        ModelAndView mv=new ModelAndView("admin/dashboard/statistique/monnaie");
+        return mv;
+    }
+
+    @GetMapping("/admin/dashboard/prix_point/changer")
+    public ModelAndView updatePrice() {
+        ModelAndView mv=new ModelAndView("admin/dashboard/change_prix_point");
+        return mv;
+    }
 
     @GetMapping("/admin/dashboard/question/delete")
     public String deleteQuestion() {
