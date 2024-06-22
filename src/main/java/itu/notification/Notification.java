@@ -42,6 +42,8 @@ public class Notification {
 
     Boolean point;
 
+    Boolean reussite;
+
     // ---- ---- CONSTRUCTEURS ------- ------
     public Notification() {
     }
