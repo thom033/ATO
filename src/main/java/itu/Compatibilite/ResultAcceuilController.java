@@ -52,4 +52,35 @@ public class ResultAcceuilController {
         return mv;
     }
 
+    // @GetMapping("/acceuil/bestPoint")
+    // public ModelAndView DisplayBestPoint(HttpSession session,
+    //                                         @RequestParam(defaultValue = "0") int page,
+    //                                         @RequestParam(defaultValue = "8") int size) {
+    //     ModelAndView mv = new ModelAndView("/template");
+    //     Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+    //     if (utilisateur == null) {
+    //         mv.setViewName("login/login-register");
+    //         session.setAttribute("nextPage", "/acceuil");
+    //     }
+    //     else{
+    //         String pages = "acceuil/index";
+    //         Long idUser = utilisateur.getId();
+    //         Long idSector = resultAcceuilService.getUserSecteur(utilisateur.getId());
+    //         List<ResultAcceuil> paginatedResults = resultAcceuilService.getPaginatedBestPoint(idUser,page, size);
+    //         mv.addObject("data", paginatedResults);
+    //         mv.addObject("page", pages);
+    //         mv.addObject("currentPage", page);
+    //         mv.addObject("totalPages", (int) Math.ceil((double) resultAcceuilService.getBestPoint(idUser).size() / size));
+    //         mv.addObject("size", size);
+    //         System.out.println("idSector: " + idSector);
+    //         System.out.println("paginatedResults: " + paginatedResults);
+    //         System.out.println("page: " + page);
+    //         System.out.println("size: " + size);
+    //         System.out.println("totalPages: " + (int) Math.ceil((double) resultAcceuilService.getBestPoint(idUser).size() / size));
+    //     }
+
+    //     return mv;
+    // }
+
+
 }
