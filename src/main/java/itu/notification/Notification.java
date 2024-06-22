@@ -42,6 +42,8 @@ public class Notification {
 
     Boolean point;
 
+    Boolean reussite;
+
     // ---- ---- CONSTRUCTEURS ------- ------
     public Notification() {
     }
@@ -58,6 +60,17 @@ public class Notification {
         this.entretien = entretien;
     }
     // ------- ---------- --------- ------
+
+    public String getType() {
+        if (Boolean.TRUE.equals(point)) {
+            return "0"; // Achat Points
+        } else if (entretien != null) {
+            return "1"; // Convocation
+        } else if (poste != null) {
+            return "2"; // Opportunite
+        }
+        return "unknown";
+    }
 
     /* ----- ----- SETTERS --------- */
     public void setId(Long idNotification) {
