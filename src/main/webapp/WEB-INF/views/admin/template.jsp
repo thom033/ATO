@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navcol-1" style="font-size: large;margin-bottom: -2px;font-family: Aleo, serif;">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="/admin/dashboard#!/point" style="font-family: 'Space Grotesk';">Tableau de bord</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/admin/poste" style="font-family: 'Space Grotesk';">Poste</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/admin/acceuil" style="font-family: 'Space Grotesk';">Poste</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/admin/CRUD" style="font-family: 'Space Grotesk';">Admin</a></li>
                     <li class="nav-item"><a class="nav-link active" data-bs-toggle="offcanvas" href="#offcanvasEntretien" role="button" aria-controls="offcanvasExample" style="font-family: 'Space Grotesk';">Entretien</a></li>
                     <li class="nav-item"><a class="nav-link active" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="font-family: 'Space Grotesk';">Plus...</a></li>
