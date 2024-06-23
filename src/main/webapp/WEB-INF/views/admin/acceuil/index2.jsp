@@ -18,8 +18,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <button class="btn btn-dark me-2" type="button">Best Point</button>
-            <button class="btn btn-light" type="button">compatibilite</button>
+            <a href="/admin/poste"><button class="btn btn-dark me-2" type="button">Inserer</button></a>
         </div>
     </div>
 </section>
