@@ -79,7 +79,7 @@ VALUES
 -- Donnees pour la table competence
 INSERT INTO competence (competence, description)
 VALUES
-('Programmation', 'Capacite à ecrire du code dans differents langages de programmation.'),
+('Programmation', 'Capacite a ecrire du code dans differents langages de programmation.'),
 ('Analyse financiere', 'Competence en evaluation et gestion des finances.'),
 ('Gestion de projet', 'Competence en gestion et coordination de projets.');
 
@@ -98,14 +98,14 @@ VALUES
 ('2000-09-01', 'Baccalaureat en Economie', '2003-06-30', 3,3);
 
 -- Donnees pour la table Reponse
-INSERT INTO Reponse (reponse)
+INSERT INTO Reponse (id_reponse,reponse)
 VALUES
-(1,'Le point c''est comme un droit de participation pour pouvoir postuler à un offre ou à un emploi'),
-(2,'Illimte, c''est-à-dire que vous pouvez toujour acheter même si vous en avez dejà '),
+(1,'Le point c''est comme un droit de participation pour pouvoir postuler a un offre ou a un emploi'),
+(2,'Illimte, c''est-a-dire que vous pouvez toujour acheter même si vous en avez deja '),
 (3,'Vous pouvez acheter des points si vous avez un compte, il suffit juste d''aller vers votre espace personnelle et trouver le bouton acheter point'),
-(4,'Premiere etape : trouver le poste qui vous correspond le mieux, Deuxieme etape : Cliquer sur le bouton postuler et remplir les informations necessaire, Troisieme etape : Vous aller recevoir un notification pour l''entretien si votre profil correspond au profil rechercher'),
+(4,'Premiere etape : trouver le poste qui vous correspond le mieux, Deuxieme etape : Cliquer sur le bouton postuler , Troisieme etape : Vous aller recevoir un notification pour l''entretien si votre profil correspond au profil rechercher'),
 (5,'Premierement, on collabore avec des entreprises reputes dans le monde professionnel. Deuxiemement, on facilite votre integration dans les entreprises en partenariat avec nous parce que c''est nous qui selectionne les dossiers et c''est encore nous qui fait les entretiens d''embauche'),
-(6,'Le diplôme minimum est le BACC '),
+(6,'Le diplome minimum est le BACC '),
 (7,'Nous prenons le temps de comprendre la culture d''entreprise de nos clients et nous utilisons des entretiens comportementaux pour evaluer l''adequation des candidats'),
 (8,'Les termes et conditions incluent une description des services fournis, les obligations de chaque partie, et les politiques de remplacement et de remboursement'),
 (9,'Nous effectuons des verifications de references, evaluons la stabilite financiere, et maintenons des relations etroites pour garantir des environnements de travail de qualite'),
@@ -114,14 +114,14 @@ VALUES
 
 
 -- Donnees pour la table Question
-INSERT INTO Question (question, id_reponse)
+INSERT INTO Question (id_question,question, id_reponse)
 VALUES
-(1,'C''est quoi le point et à quoi cela sert ?',1),
+(1,'C''est quoi le point et a quoi cela sert ?',1),
 (2,'quel est le maximum de points qu''on peut acheter ?',2),
 (3,'Comment faire pour acheter des points ?',3),
 (4,'Comment fait-on pour postuler ?',4),
 (5,'Pourquoi on devrait vous faire confiance ?',5),
-(6,'Quel est le diplôme minimum necessaire pour trouver un travail chez vous ?',6),
+(6,'Quel est le diplome minimum necessaire pour trouver un travail chez vous ?',6),
 (7,'Comment assurez-vous que les candidats proposes sont en adequation avec la culture d''entreprise de vos clients ?',7),
 (8,'Quels sont les termes et conditions de votre contrat de service ?',8),
 (9,'Comment assurez-vous la qualite et la fiabilite des entreprises avec lesquelles vous travaillez ?',9),
@@ -150,10 +150,10 @@ VALUES
 -- Donnees pour la table Notification
 INSERT INTO Notification (message, date_notification, date_lu, id_utilisateur,id_poste, point, id_entretien)
 VALUES
-('Nouvelle offre d emploi disponible qui vous corresponds à 85%', CURRENT_TIMESTAMP, NULL, 1,1,FALSE,null),
+('Nouvelle offre d emploi disponible qui vous corresponds a 85%', CURRENT_TIMESTAMP, NULL, 1,1,FALSE,null),
 ('Votre profil a ete mis a jour', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1,null,FALSE,null),
 ('Vous avez achete 25pts', CURRENT_TIMESTAMP, NULL, 1,null,TRUE ,null),
-('Convocation à un entretien d embauche', CURRENT_TIMESTAMP, NULL, 1,null,FALSE, 1 );
+('Convocation a un entretien d embauche', CURRENT_TIMESTAMP, NULL, 1,null,FALSE, 1 );
 
 -- Donnees pour la table competence_utilisateur
 INSERT INTO competence_utilisateur (id_utilisateur, id_competence)

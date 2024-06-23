@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="itu.compatibilite.ResultAcceuil" %>
+<%@ page import="itu.compatibilite.PosteDetails" %>
 <%
-    List<ResultAcceuil> content = (List<ResultAcceuil>) request.getAttribute("data");
+    List<PosteDetails> content = (List<PosteDetails>) request.getAttribute("data");
     int currentPage = (int) request.getAttribute("currentPage");
     int totalPages = (int) request.getAttribute("totalPages");
     int size = (int) request.getAttribute("size");
@@ -12,9 +12,9 @@
 <section class="py-5" style="padding-top: 1rem!important;padding-bottom: 1rem!important;">
     <div class="container py-5 text-center">
         <div class="row mb-4 mb-lg-5">
-            <div class="col-md-8 col-xl-6 text-center mx-auto">
-                <h2 class="fw-bold">Pour vous</h2>
-                <p class="text-muted">Les suggestions se basent sur les informations que vous avez inséré dans votre profil. <a href="utilisateur/profil" class="see-more">Aller voir</a></p>
+            <div class="col-md-10 col-xl-10 text-center mx-auto">
+                <h2 class="fw-bold">Liste des postes</h2>
+                <p class="text-muted">Vous pouvez voir les détails de tous les travails.</p>
             </div>
         </div>
         <div class="d-flex justify-content-center">
@@ -28,7 +28,7 @@
     <div class="row">
         <%
             for (int i = 0; i < content.size(); i++) {
-                ResultAcceuil p = content.get(i);
+                PosteDetails p = content.get(i);
                 Long id = (long) p.getIdPoste();
         %>
         <div class="col-md-3 col-sm-6 mb-4 py-2">
@@ -36,22 +36,7 @@
                 <div class="card-body nicolas-card">
                     <div class="d-flex justify-content-between align-items-center top-card-nicolas">
                         <h4 class="card-title box_name mb-0"><%= p.getEntrepriseNom() %></h4>
-                        <% 
-                            double ptsTotal = p.getPtsTotal();
-                            String colorClass = "red";
-
-                            if (ptsTotal > 75) {
-                                colorClass = "green";
-                            } else if (ptsTotal >= 25) {
-                                colorClass = "blue";
-                            }
-                            %>
-
-                            <h4 class="percent mb-0 nicolas-compatibilite">
-                            <a href="/compatibility-poste/<%= id %>" style="color: <%= colorClass %>;">
-                                <%= ptsTotal %>%
-                            </a>
-                            </h4>
+                        
                     </div>
                     <div class="img_box flex-grow-1">
                         <img src="/public/img/products/4.jpg" class="img-fluid" alt="">
@@ -59,7 +44,7 @@
                     <h3 class="mt-3 nicolas-nom-travail"><%= p.getPosteTitre() %></h3>
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="mb-2 nicolas-sous-titre"><%= p.getPosteSalaire() %> Ar</p>
-                        <button class="btn-nicolas"><a href="/poste/details?idPoste=<%= id %>">Visiter</a></button>
+                         <button class="btn-nicolas"><a href="/admin/poste/details?idPoste=<%= id %>">Visiter</a></button>
                     </div>
                 </div>
             </div>
