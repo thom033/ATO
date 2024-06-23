@@ -23,9 +23,13 @@
             <div class="col-md-3 fixed-top" style="margin-left: 20px;top: 30px;">
                 <div class="profile">
                     <div class="container">
-                        <div class="div_avatar">
-                            <img class="avatar" src="/public/img/avatars/<%= postedetails.getPosteImage() %>" alt="">
-                        </div>
+                            <div class="div_avatar">
+                                <img class="avatar" src="/public/img/uploaded/p_<%= postedetails.getIdPoste() %>.jpg" alt="" onerror="this.onerror=null; this.src='/public/img/uploaded/travail.jpg';">
+                            </div>
+                            <form id="uploadForm" enctype="multipart/form-data">
+                                <input type="file" id="fileInput" name="file" accept="image/*">
+                                <button type="button" onclick="uploadImagePoste(<%= postedetails.getIdPoste()  %>)">Upload</button>
+                            </form>
                     </div>
                 </div>
                 <div class="contact">
@@ -221,4 +225,5 @@
 <script src="/public/js/angular.min.js"></script>
 <script src="/public/js/client/frontApp.js"></script>
 <script src="/public/js/script.js"></script>
+<script src="/public/js/upload.js"></script>
 </html>
