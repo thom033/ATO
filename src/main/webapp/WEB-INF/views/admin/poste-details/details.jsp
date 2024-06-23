@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/public/css/travail.css">
 </head>
 
-<body ng-app="frontApp" ng-controller="postulationController">
+<body ng-app="adminApp" ng-controller="posteController">
     <div class="container-principale">
         <div class="row">
             <div class="col-md-3 fixed-top" style="margin-left: 20px;top: 30px;">
@@ -52,7 +52,7 @@
                 </div>
                 <p><%= postedetails.getPosteDescription() %></p>
                 <div class="button-info">
-                    <div class="my-2" ><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" ng-click="postuler(<%= postedetails.getIdPoste() %>)" >Postuler</button></div>
+                    <div class="my-2" ><a href="/admin/supprimer/<%= postedetails.getIdPoste() %>"><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" >Supprimer</button></a></div>
                 </div>
             </div>
             <div class="col-md-1 col-lg-1" style="position:relative; margin-left: auto;"></div>
