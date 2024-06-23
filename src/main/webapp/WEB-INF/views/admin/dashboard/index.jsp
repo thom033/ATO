@@ -24,6 +24,11 @@
                         <p class="pStatistique">Statistique des données selon différents sujet</p>
                         <div class="row mb-3">
                             <ul class="navbar-nav mx-auto">
+                                <li class="nav-item"><a class="btn btn-light" href="/admin/dashboard#!/monnaie" style="font-family: 'Space Grotesk';">Revenu</a></li>
+                            </ul>
+                        </div>
+                        <div class="row mb-3">
+                            <ul class="navbar-nav mx-auto">
                                 <li class="nav-item"><a class="btn btn-light" href="/admin/dashboard#!/point" style="font-family: 'Space Grotesk';">Nombre de points par mois</a></li>
                             </ul>
                         </div>
@@ -35,6 +40,11 @@
                         <div class="row mb-3">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item"><a class="btn btn-light" href="/admin/dashboard#!/secteur" style="font-family: 'Space Grotesk';">Secteurs le plus demandé</a></li>
+                            </ul>
+                        </div>
+                        <div class="row mb-3">
+                            <ul class="navbar-nav mx-auto">
+                                <li class="nav-item"><a class="btn btn-light" href="/admin/dashboard#!/changer_prix" style="font-family: 'Space Grotesk';">Changer la prix des points</a></li>
                             </ul>
                         </div>
                     </div>
@@ -53,7 +63,7 @@
 <div class="container" style="font-family:Helvetica;padding-top: 3%;">
     <div class="entete">
         <h1><strong>FAQ  -  QUESTIONS</strong></h1>
-        <a href="/admin/dashboard/question/delete" class="btn btn-danger">Initialiser historique</a>
+        <a href="/admin/dashboard/question/delete" class="btn btn-danger">Réinitialiser historique</a>
         <p class="pFaq">Les questions les plus posee</p>
     </div>
 

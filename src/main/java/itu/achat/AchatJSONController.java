@@ -1,14 +1,24 @@
 package itu.achat;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 public class AchatJSONController {
+
+    @Autowired
+    private PrixPointRepository prixPointRepository;
     
     @Autowired
     private ArgentRepository argentRepository; 
@@ -35,4 +45,33 @@ public class AchatJSONController {
         }
         return valiny;
     }
+
+    @GetMapping("/monnaie/statistique")
+    public List<StatistiqueArgentEntrant> getStatistiqueMonnaie(@RequestParam("annee") int annee) {
+        return prixPointRepository.getStatistiqueArgentEntrants(annee);
+    }
+
+    @GetMapping("/monnaie/rentrant_date")
+    public double getStatistiqueMonnaie(@RequestParam("dateMin") LocalDate dateMin,@RequestParam("dateMax") LocalDate dateMax) {
+        double valiny=0;
+        Optional<Double> recep=prixPointRepository.getMonnaieDate(dateMin,dateMax);
+        if(recep.isPresent()){
+            valiny=recep.get();
+        }
+        return valiny;
+    }
+
+    @GetMapping("/prix_point/actuel")
+    public double getMethodName() {
+        return prixPointRepository.getPrixPoint(LocalDate.now()).getPrix();
+    }
+    
+
+    @PostMapping("/prix_point/changer")
+    public String postMethodName(@RequestBody PrixPoint prixPoint) {
+        prixPointRepository.save(prixPoint);
+        return "{\"message\":\"inserted\"}";
+    }
+    
+    
 }

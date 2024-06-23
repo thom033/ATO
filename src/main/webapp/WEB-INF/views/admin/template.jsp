@@ -112,9 +112,9 @@
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">Team</h3>
                     <ul class="list-unstyled">
+                        <li style="color: var(--bs-emphasis-color);">RAKOTOARIMANANA Tojo Tianh Davidson</li>
                         <li style="color: var(--bs-emphasis-color);">RAKOTOMANJATO Nekena Prisila</li>
                         <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RAMANJATOMANITRA Ony Herilaza&nbsp;</a></li>
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</a></li>
                         <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</a></li>
                     </ul>
                 </div>
