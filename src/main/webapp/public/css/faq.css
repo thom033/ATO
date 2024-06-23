@@ -27,7 +27,7 @@
 }
 .profile .partie .name {
     margin: 0;
-    font-size: 40px;
+    font-size: 2em;
     padding: 4%;
 }
 .profile .partie .dots {
@@ -85,7 +85,7 @@
   padding-bottom: 5%;
 }
 .questions-container {
-    height: 26em;
+    height: 29em;
     overflow-y: scroll;
 }
 .questions-container::-webkit-scrollbar {

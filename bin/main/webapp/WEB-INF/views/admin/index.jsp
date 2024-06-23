@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login page Admin</title>
+    <title>Login</title>
+    <link rel="shortcut icon" href="/public/img/icon/theR.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link href="/public/css/style.css" rel="stylesheet">
 </head>
@@ -11,10 +12,10 @@
         <div class="content">
             <h1>Log In</h1>
             <form action="/admin/login" method="post">
-                <input type="email" name="mail" placeholder="email">
-                <input type="password" name="mdp" placeholder="password">
-                <span class="remember">Remember me</span>
-                <span class="forget">Forgot password?</span>
+                <input type="email" name="mail" placeholder="email" value="admin@example.com">
+                <input type="password" name="mdp" placeholder="password" value="adminpass">
+                <span class="remember" style="display: none">Remember me</span>
+                <span class="forget" style="display: none">Forgot password?</span>
                 <span class="clearfix"></span>
                 <button type="submit">Log In</button>
             </form>
@@ -49,7 +50,7 @@
             <span class="loginwith">Or</span>
 
             <form action="/utilisateur/inscription" method="post">
-                <input type="text" placeholder="nom" name="nom">
+                <input type="text" placeholder="nom" name="nom" >
                 <input type="text" placeholder="prenom" name="prenom">
                 <input type="email" placeholder="email" name="mail">
                 <input type="password" placeholder="password" name="mdp">

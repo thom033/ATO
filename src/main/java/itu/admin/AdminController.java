@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import itu.faq.QuestionRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AdminController {
     @Autowired
     AdminRepository adminRepository;
+
+    @Autowired
+    QuestionRepository questionRepository;
 
     @Autowired
     HttpSession httpSession;
@@ -74,6 +78,7 @@ public class AdminController {
     @GetMapping("/admin/dashboard")
     public ModelAndView dashboard() {
         ModelAndView mv=new ModelAndView("admin/template");
+        mv.addObject("statistiqueQuestion", questionRepository.getStatistiqueQuestion());
         mv.addObject("page","dashboard/index.jsp");
         return mv;
     }
@@ -89,4 +94,29 @@ public class AdminController {
         ModelAndView mv=new ModelAndView("admin/dashboard/statistique/embauche");
         return mv;
     }
+
+    @GetMapping("/admin/dashboard/statistique/secteur")
+    public ModelAndView getStatistiqueSecteur() {
+        ModelAndView mv=new ModelAndView("admin/dashboard/statistique/secteur");
+        return mv;
+    }
+    
+    @GetMapping("/admin/dashboard/statistique/monnaie")
+    public ModelAndView getStatistiqueMonnaie() {
+        ModelAndView mv=new ModelAndView("admin/dashboard/statistique/monnaie");
+        return mv;
+    }
+
+    @GetMapping("/admin/dashboard/prix_point/changer")
+    public ModelAndView updatePrice() {
+        ModelAndView mv=new ModelAndView("admin/dashboard/change_prix_point");
+        return mv;
+    }
+
+    @GetMapping("/admin/dashboard/question/delete")
+    public String deleteQuestion() {
+        questionRepository.deleteHistorique();
+        return "redirect:/admin/dashboard#!/point";
+    }
+    
 }

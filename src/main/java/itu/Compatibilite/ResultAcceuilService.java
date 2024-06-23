@@ -56,5 +56,4 @@ public class ResultAcceuilService {
         int end = Math.min((start + size), results.size());
         return results.subList(start, end);
     }
-
 }

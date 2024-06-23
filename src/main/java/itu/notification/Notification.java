@@ -42,6 +42,8 @@ public class Notification {
 
     Boolean point;
 
+    Boolean reussite;
+
     // ---- ---- CONSTRUCTEURS ------- ------
     public Notification() {
     }
@@ -196,6 +198,14 @@ public class Notification {
         Notification n = new Notification();
         n.setDateNotification(LocalDateTime.now());
         System.out.println(n.tempsEcoule());
+    }
+
+    public Boolean getReussite() {
+        return reussite;
+    }
+
+    public void setReussite(Boolean reussite) {
+        this.reussite = reussite;
     }
 
 }

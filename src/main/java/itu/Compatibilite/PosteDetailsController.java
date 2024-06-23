@@ -60,12 +60,6 @@ public class PosteDetailsController {
         return mv;
     }
 
-    @GetMapping("/postetest")
-    public String test(Model model) {
-        model.addAttribute("listPost", "CC TEST TEST");
-        return "test";
-    }
-
     @GetMapping("/poste/details")
     public ModelAndView rechargeSoldeUtilisateur(
             @RequestParam(name = "idPoste", required = false, defaultValue = "0") Long IdPoste,
@@ -94,6 +88,34 @@ public class PosteDetailsController {
         mv.addObject("pourcentage", pourcentage);
 
         mv.addObject("page", "poste-details/details");
+
+        return mv;
+    }
+
+    @GetMapping("/admin/poste/details")
+    public ModelAndView poste(
+            @RequestParam(name = "idPoste", required = false, defaultValue = "0") Long IdPoste,
+            HttpSession httpSession, @RequestParam(name = "error", required = false) String error) {
+        ModelAndView mv = new ModelAndView("admin/template");
+
+        PosteDetails pd = posteDetailsService.getAllDetailsPoste(IdPoste);
+        List<Contact> contacts = new ArrayList<>();
+
+        List<EntrepriseContact> entreprisecontacts = entrepriseContactRepository
+                .findByEntrepriseId(pd.getPosteEntreprise());
+        for (EntrepriseContact uc : entreprisecontacts) {
+            contacts.add(uc.getContact());
+        }
+
+        if (error != null) {
+            System.out.println("erreurr : " + error);
+            mv.addObject("error", error);
+        }
+
+        mv.addObject("details", pd);
+        mv.addObject("contacts", contacts);
+
+        mv.addObject("page", "poste-details/details.jsp");
 
         return mv;
     }

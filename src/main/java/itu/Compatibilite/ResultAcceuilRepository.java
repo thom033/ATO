@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.nio.file.Path;
 import java.util.List;
 
 @Repository
@@ -34,4 +33,7 @@ public interface ResultAcceuilRepository extends JpaRepository<ResultAcceuil, Lo
 
     @Query(value = "SELECT get_user_secteur(:idUser)")
     Long  getUserSecteur(@Param("idUser") Long idUtilisateur);
+
+   
+    
 }
