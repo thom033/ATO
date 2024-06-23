@@ -1,3 +1,11 @@
+CREATE DATABASE rohy
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       LC_COLLATE = 'fr_FR.UTF-8'
+       LC_CTYPE = 'fr_FR.UTF-8'
+       TEMPLATE = template0;
+\c rohy
+
 CREATE TABLE Utilisateur(
    id_utilisateur SERIAL,
    nom VARCHAR(255)  NOT NULL,
