@@ -85,10 +85,15 @@ public class RechercheController {
     }
 
     @GetMapping("/search")
-    public ModelAndView searchResultRecherche(@RequestParam Map<String, String> params,
-    @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "8") int size) {
+    public ModelAndView searchResultRecherche(
+            @RequestParam Map<String, String> params,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "8") int size) {
+        
         Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
         ModelAndView mv = new ModelAndView("template");
+
+        // Extraction des paramètres de recherche
         String title = params.get("title");
         Long diplome = params.get("diplome") != null && !params.get("diplome").isEmpty() ? Long.valueOf(params.get("diplome")) : null;
         Integer secteur = params.get("secteur") != null && !params.get("secteur").isEmpty() ? Integer.valueOf(params.get("secteur")) : null;
@@ -100,15 +105,17 @@ public class RechercheController {
         Double distance = params.get("distance") != null && !params.get("distance").isEmpty() ? Double.valueOf(params.get("distance")) : null;
         Integer anneeExperience = params.get("anneeExperience") != null && !params.get("anneeExperience").isEmpty() ? Integer.valueOf(params.get("anneeExperience")) : null;
 
+        // Recherche des postes
         List<PosteDetails> resultPoste = posteDetailsService.searchPostes(title, diplome, secteur, competence, ageMin, ageMax, salaireMin, salaireMax, anneeExperience);
         List<ResultAcceuil> result = new ArrayList<>();
 
         for (PosteDetails poste : resultPoste) {
-            result.add(resultAcceuilRepository.getResultAcceuilsRecherche(utilisateur.getId(),poste.getIdPoste()));
-            System.out.println("distance : " + posteDetailsRepository.calculateDistance(utilisateur.getId(),poste.getIdPoste()));
+            result.add(resultAcceuilRepository.getResultAcceuilsRecherche(utilisateur.getId(), poste.getIdPoste()));
+            System.out.println("distance : " + posteDetailsRepository.calculateDistance(utilisateur.getId(), poste.getIdPoste()));
             System.out.println("id poste : " + poste.getIdPoste());
         }
 
+        // Filtrer par distance
         if (distance != null) {
             Iterator<ResultAcceuil> iterator = result.iterator();
             while (iterator.hasNext()) {
@@ -120,16 +127,22 @@ public class RechercheController {
             }
         }
 
-        List<ResultAcceuil> paginatedResults = resultAcceuilService.getPaginatedResultsRecherche(result,page, size);
+        // Pagination des résultats
+        List<ResultAcceuil> paginatedResults = resultAcceuilService.getPaginatedResultsRecherche(result, page, size);
 
+        // Ajout des attributs au ModelAndView
         mv.addObject("currentPage", page);
         mv.addObject("totalPages", (int) Math.ceil((double) result.size() / size));
         mv.addObject("size", size);
-
         mv.addObject("data", paginatedResults);
+
+        // Ajouter les paramètres de recherche pour qu'ils puissent être utilisés dans les liens de pagination
+        mv.addObject("params", params);
+
         mv.addObject("page", "acceuil/index");
-        return mv; 
+        return mv;
     }
+
 
     @GetMapping("/recherche_result")
     public String searchResult(@RequestParam Map<String, String> params, Model model) {

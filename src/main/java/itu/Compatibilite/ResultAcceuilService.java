@@ -51,14 +51,10 @@ public class ResultAcceuilService {
         return resultAcceuilRepository.getResultAcceuilSecteur(idUser,idSecteur);
     }
 
-    public List<ResultAcceuil> getPaginatedResultsRecherche(List<ResultAcceuil> allResults, int page, int size) {
-        int start = page * size;
-        int end = Math.min(start + size, allResults.size());
-
-        if (start > allResults.size()) {
-            return Collections.emptyList();
-        }
-        return allResults.subList(start, end);
+    public List<ResultAcceuil> getPaginatedResultsRecherche(List<ResultAcceuil> results, int page, int size) {
+        int start = Math.min(page * size, results.size());
+        int end = Math.min((start + size), results.size());
+        return results.subList(start, end);
     }
 
 }
