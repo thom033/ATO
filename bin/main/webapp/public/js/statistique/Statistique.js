@@ -14,6 +14,14 @@ StatistiqueApp.config(['$routeProvider',function ($routeProvider){
             templateUrl:'/admin/dashboard/statistique/secteur',
             controller:'statistiqueSecteurController'
         })
+        .when('/monnaie',{
+            templateUrl:'/admin/dashboard/statistique/monnaie',
+            controller:'statistiqueMonnaieController'
+        })
+        .when('/changer_prix',{
+            templateUrl:'/admin/dashboard/prix_point/changer',
+            controller:'changePriceController'
+        })
 }]);
 
 StatistiqueApp.controller('statistiquePointController', function($scope, $http) {
@@ -212,6 +220,90 @@ StatistiqueApp.controller('statistiqueEmbaucheController', function($scope, $htt
     }
 });
 
+StatistiqueApp.controller('statistiqueMonnaieController', function($scope, $http) {
+    const currentDate=new Date();
+    $scope.monnaieString="";
+    $scope.annee=currentDate.getFullYear();
+    const mois=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"];    
+    $scope.getMois=function (number){
+        return mois[number-1];
+    }
+    
+    $http.get("/monnaie/statistique?annee="+$scope.annee)
+    .then(function(response) {
+        $scope.statistique = response.data;
+        $scope.initialize($scope.createCourbe);
+        console.log($scope);
+    });
+
+    $scope.getStatMonnaie=function(){
+        $http.get("/monnaie/statistique?annee="+$scope.annee)
+        .then(function(response) {
+            $scope.statistique = response.data;
+            $scope.initialize($scope.updateCourbe);
+        });
+    }
+
+    $scope.getMonnaieDate=function(){
+        var data={
+            dateMin:document.getElementById("dateMin").value,
+            dateMax:document.getElementById("dateMax").value
+        }
+        var link="/monnaie/rentrant_date?dateMin="+data.dateMin+"&dateMax="+data.dateMax
+        console.log(link);
+        $http.get(link)
+        .then(function(response) {
+            $scope.monnaieString="Revenu :"+response.data;
+        });
+    }
+
+    $scope.createCourbe=function(){
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        var data = {
+            labels: mois,
+            datasets: [{
+                label: 'Revenu par mois',
+                data: $scope.data,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Créer le graphique
+        $scope.chartPoint = new Chart(ctx, {
+            type: 'line', 
+            data: data, 
+            options: options
+        });
+    }
+
+    $scope.initialize=function(callback){
+        $scope.labels=[];
+        $scope.data=[];
+        for(let i=0;i<$scope.statistique.length;i++){
+            $scope.labels.push($scope.getMois($scope.statistique[i].mois));
+            $scope.data.push($scope.statistique[i].monnaie);
+        }
+        callback();
+    }
+
+    $scope.updateCourbe=function(){
+        console.log($scope.chartPoint);
+        $scope.chartPoint.data.datasets[0].data = $scope.data;
+        $scope.chartPoint.update();
+    }
+});
+
 StatistiqueApp.controller('statistiqueSecteurController', function($scope, $http) {
     const currentDate=new Date();
     $scope.annee=currentDate.getFullYear();
@@ -278,5 +370,28 @@ StatistiqueApp.controller('statistiqueSecteurController', function($scope, $http
         console.log($scope.chartPoint);
         $scope.chartPoint.data.datasets[0].data = $scope.data;
         $scope.chartPoint.update();
+    }
+});
+
+StatistiqueApp.controller('changePriceController', function($scope, $http) {
+    const currentDate=new Date();
+    $scope.newPrice=0;
+    $scope.prixPoint={};
+    $scope.prixPoint.prix=0;
+    $scope.prixPoint.dateChangement=currentDate;
+    
+    $http.get("/prix_point/actuel")
+    .then(function(response) {
+        $scope.newPrice = response.data;
+        console.log($scope);
+    });
+
+    $scope.changePrice=function(){
+        $scope.prixPoint.prix=$scope.newPrice;
+        console.log(JSON.stringify($scope.prixPoint));
+        $http.post("/prix_point/changer",$scope.prixPoint)
+        .then(function(response){
+            alert("updated");
+        });
     }
 });
