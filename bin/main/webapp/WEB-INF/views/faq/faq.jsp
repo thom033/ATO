@@ -1,13 +1,16 @@
 <%@ page contentType='text/html;charset=UTF-8' language='java' %>
-
+<%@ page import="itu.utilisateur.Utilisateur"%>
+<%
+    Utilisateur utilisateur = (Utilisateur) request.getAttribute("utilisateur");
+%>
 <link rel="stylesheet" href="/public/css/faq.css">
 <div class="container mt-4">
 <div class="row" ng-app="frontApp" ng-controller="faqController">
     <div class="col-md-6">
         <div class="profile">
-            <img src="/public/img/avatars/{{ historiqueQuestions[0].utilisateur.photo }}" alt="Avatar">
+            <img src="/public/img/avatars/<%= utilisateur.getPhoto() %>" alt="Avatar">
             <div class="partie">
-                <h5 class="name">{{ historiqueQuestions[0].utilisateur.nom }} {{ historiqueQuestions[0].utilisateur.prenom }}</h5>
+                <h5 class="name"><%= utilisateur.getNom() %> <%= utilisateur.getPrenom() %></h5>
                 <a href="" class="dots"><span ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
                     </svg></span></a>
@@ -41,14 +44,14 @@
             </div>
                     
             <button class="btn btn-light btn-custom">
-                <span class="bi-people">
+                <span class="bi-people" style="display: none">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
                         <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
                     </svg>
                 </span>
                 <div>
-                    <strong>Aucune question ne vous correspond ?</strong><br>
-                    <p>Discuter avec notre staff</p>
+                    <strong style="display: none">Aucune question ne vous correspond ?</strong><br>
+                    <p style="display: none" >Discuter avec notre staff</p>
                 </div>
             </button>
         </div>
@@ -111,9 +114,9 @@
                     </div>    
                 </div>
                 <div class="chat-footer d-flex align-items-center">
-                    <input type="text" placeholder="Écrivez un message ...">
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                    <input type="text" placeholder="Écrivez un message ..." style="display: none">
+                    <button >
+                        <svg style="color: #f1f1f1" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
                             <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
                             </svg>
                     </button>

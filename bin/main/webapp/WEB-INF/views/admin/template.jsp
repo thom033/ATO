@@ -20,11 +20,11 @@
 
 <body style="background: var(--bs-body-bg);">
     <nav class="navbar navbar-expand-md sticky-top navbar-shrink py-3 navbar-light" id="mainNav" style="margin-bottom: -1px;padding-bottom: 30px;padding-top: 0px;">
-        <div class="container"><img class="img-fluid" src="/public/img/rohy1.jpg" style="margin-top: -32px;margin-bottom: -21px;margin-left: -33px;width: 150px;"><a class="navbar-brand d-flex align-items-center" href="/"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a href="/admin/acceuil"><img class="img-fluid" src="/public/img/rohy1.jpg" style="margin-top: -32px;margin-bottom: -21px;margin-left: -33px;width: 150px;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1" style="font-size: large;margin-bottom: -2px;font-family: Aleo, serif;">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="/admin/dashboard#!/point" style="font-family: 'Space Grotesk';">Tableau de bord</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/admin/poste" style="font-family: 'Space Grotesk';">Poste</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/admin/acceuil" style="font-family: 'Space Grotesk';">Poste</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/admin/CRUD" style="font-family: 'Space Grotesk';">Admin</a></li>
                     <li class="nav-item"><a class="nav-link active" data-bs-toggle="offcanvas" href="#offcanvasEntretien" role="button" aria-controls="offcanvasExample" style="font-family: 'Space Grotesk';">Entretien</a></li>
                     <li class="nav-item"><a class="nav-link active" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="font-family: 'Space Grotesk';">Plus...</a></li>
@@ -112,9 +112,9 @@
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">Team</h3>
                     <ul class="list-unstyled">
+                        <li style="color: var(--bs-emphasis-color);">RAKOTOARIMANANA Tojo Tianh Davidson</li>
                         <li style="color: var(--bs-emphasis-color);">RAKOTOMANJATO Nekena Prisila</li>
                         <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RAMANJATOMANITRA Ony Herilaza&nbsp;</a></li>
-                        <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</a></li>
                         <li style="color: var(--bs-emphasis-color);"><a href="#" style="color: var(--bs-emphasis-color);">RANAIVOJAONA Rova Marc Nicolas</a></li>
                     </ul>
                 </div>

@@ -3,12 +3,14 @@
     String pages = (String) request.getAttribute("page");
     pages = pages + ".jsp";
 %>
+<%@ page pageEncoding='UTF-8'%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
+<html data-bs-theme="light" lang="fr">
 <head>
     <link rel="shortcut icon" href="/public/img/icon/theR.png">
     <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="fr">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Rohy</title>
     <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css">
@@ -51,7 +53,7 @@
                     <% if (session.getAttribute("utilisateur") != null) { 
                         Utilisateur user = (Utilisateur) session.getAttribute("utilisateur"); %>
                         <a class="navbar-brand d-flex align-items-center" href="/utilisateur/profil">
-                            <img style="width: 30px;height: 30px;border-radius: 100px;" src="/public/img/avatars/<%= user.getPhoto() %>">
+                            <img style="width: 30px;height: 30px;border-radius: 100px;"  src="/public/img/uploaded/<%= user.getId() %>.jpg" alt="" onerror="this.onerror=null; this.src='/public/img/uploaded/avatar.png';">
                         </a>
                     <% } %>
         </div>

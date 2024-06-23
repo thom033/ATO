@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
 <%@ page import="itu.compatibilite.ResultAcceuil" %>
 <%
     List<ResultAcceuil> content = (List<ResultAcceuil>) request.getAttribute("data");
     int currentPage = (int) request.getAttribute("currentPage");
     int totalPages = (int) request.getAttribute("totalPages");
     int size = (int) request.getAttribute("size");
+    Map<String, String> params = (Map<String, String>) request.getAttribute("params");
 %>
 <link rel="stylesheet" href="/public/css/acceuil.css">
 
@@ -74,7 +76,17 @@
                 if (currentPage > 0) {
             %>
                 <li class="page-item">
-                    <a class="page-link" href="?page=<%= currentPage - 1 %>&size=<%= size %>" tabindex="-1" aria-disabled="true">&laquo;</a>
+                    <a class="page-link" href="?page=<%= currentPage - 1 %>&size=<%= size %><%
+                        if (params != null) {
+                            for (Map.Entry<String, String> entry : params.entrySet()) {
+                                String key = entry.getKey();
+                                String value = entry.getValue();
+                                if (value != null && !value.isEmpty()) {
+                                    %>&<%= key %>=<%= value %><%
+                                }
+                            }
+                        }
+                    %>" tabindex="-1" aria-disabled="true">&laquo;</a>
                 </li>
             <%
                 }
@@ -89,7 +101,17 @@
                     } else {
             %>
                         <li class="page-item">
-                            <a class="page-link" href="?page=<%= i %>&size=<%= size %>"><%= i + 1 %></a>
+                            <a class="page-link" href="?page=<%= i %>&size=<%= size %><%
+                                if (params != null) {
+                                    for (Map.Entry<String, String> entry : params.entrySet()) {
+                                        String key = entry.getKey();
+                                        String value = entry.getValue();
+                                        if (value != null && !value.isEmpty()) {
+                                            %>&<%= key %>=<%= value %><%
+                                        }
+                                    }
+                                }
+                            %>"><%= i + 1 %></a>
                         </li>
             <%
                     }
@@ -98,7 +120,17 @@
                 if (currentPage < totalPages - 1) {
             %>
                 <li class="page-item">
-                    <a class="page-link" href="?page=<%= currentPage + 1 %>&size=<%= size %>">&raquo;</a>
+                    <a class="page-link" href="?page=<%= currentPage + 1 %>&size=<%= size %><%
+                        if (params != null) {
+                            for (Map.Entry<String, String> entry : params.entrySet()) {
+                                String key = entry.getKey();
+                                String value = entry.getValue();
+                                if (value != null && !value.isEmpty()) {
+                                    %>&<%= key %>=<%= value %><%
+                                }
+                            }
+                        }
+                    %>">&raquo;</a>
                 </li>
             <%
                 }
