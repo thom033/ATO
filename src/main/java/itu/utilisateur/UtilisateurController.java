@@ -94,7 +94,8 @@ public class UtilisateurController {
         boolean validite = true;
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setMail((String) login.get("mail"));
-        utilisateur.setMotdepasse((String) login.get("mdp"));
+        String hashMdp = utilisateur.MD5((String) login.get("mdp"));
+        utilisateur.setMotdepasse(hashMdp);
 
         List<Utilisateur> recherche = utilisateurRepository.getUtilisateur(utilisateur.getMail(),
                 utilisateur.getMotdepasse());
