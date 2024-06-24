@@ -6,7 +6,7 @@ import itu.secteur.SecteurService;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "statSecteur")
+@Table(name = "stat_secteur")
 public class StatistiqueSecteur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -8,19 +8,19 @@ public class StatistiquePoint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cout")
-    String point;
+    int point;
     int total;
 
     public StatistiquePoint(){
     }
-    public StatistiquePoint(String point, int total) throws Exception{
+    public StatistiquePoint(int point, int total) throws Exception{
         this.setPoint(point);
         this.setTotal(total);
     }
 
 
     /* --- Getters ------*/
-        public String getPoint() {
+        public int getPoint() {
             return point;
         }
         public int getTotal() {
@@ -30,7 +30,7 @@ public class StatistiquePoint {
 
 
     /* --- Setters ------*/
-        public void setPoint(String point) {
+        public void setPoint(int point) {
             this.point = point;
         }
         public void setTotal(int total) throws Exception {

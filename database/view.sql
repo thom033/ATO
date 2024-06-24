@@ -1,12 +1,14 @@
 -- secteur izay betsaka embauche
 
-DROP view if exists statSecteur;
-CREATE OR REPLACE VIEW statSecteur AS
-SELECT poste.*, id_secteur FROM poste
-JOIN secteur_diplome sd on poste.id_diplome = sd.id_diplome;
+DROP view if exists stat_secteur;
+CREATE OR REPLACE VIEW stat_secteur AS
+SELECT disponibilite, id_secteur, count(id_secteur) as total FROM poste
+JOIN secteur_diplome sd on poste.id_diplome = sd.id_diplome
+group by id_secteur, disponibilite;
 
 -- statistique par categorie de point
-CREATE OR REPLACE VIEW statPoint AS
+DROP view if exists stat_point;
+CREATE OR REPLACE VIEW stat_point AS
 SELECT cout, count(cout) AS total FROM poste
 group by cout;
 

@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navcol-1" style="font-size: large;margin-bottom: -2px;font-family: Aleo, serif;">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="/acceuil" style="font-family: 'Space Grotesk';">Acceuil</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#" style="font-family: 'Space Grotesk';">Statistique</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/statistique" style="font-family: 'Space Grotesk';">Statistique</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/notification/index" style="font-family: 'Space Grotesk';">Mes Notifications</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/faq/index" style="font-family: 'Space Grotesk';">FAQ</a></li>
                 </ul>
