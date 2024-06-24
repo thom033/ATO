@@ -30,13 +30,13 @@ public class NotificationJSONController {
             notifications = notificationRepository.findByUtilisateurIdAndPointTrue(utilisateur.getId());
         }
         else if (type == 1) {
-            notifications = notificationRepository.findByUtilisateurIdAndEntretienNotNull(utilisateur.getId());            
+            notifications = notificationRepository.findByUtilisateurIdAndEntretienNotNullAndAndReussiteIsNull(utilisateur.getId());            
         }
         else if (type == 2) {
             notifications = notificationRepository.findByUtilisateurIdAndPosteNotNull(utilisateur.getId());
         }
         else if (type == 3) {
-            notifications = notificationRepository.findByUtilisateurIdAndReussiteTrue(utilisateur.getId());
+            notifications = notificationRepository.findByUtilisateurIdAndReussiteNotNull(utilisateur.getId());
         }
         else if (type == -1) {
             notifications = notificationRepository.findByUtilisateurId(utilisateur.getId());
