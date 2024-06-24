@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="org.springframework.data.domain.Page" %>
-<%@ page import="itu.Compatibilite.ResultAcceuil" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="itu.compatibilite.ResultAcceuil" %>
 <%
-    Page<ResultAcceuil> resultPage = (Page<ResultAcceuil>) request.getAttribute("data");
-    List<ResultAcceuil> content = resultPage.getContent();
-    int currentPage = resultPage.getNumber();
-    int totalPages = resultPage.getTotalPages();
-    int size = resultPage.getSize();
+    List<ResultAcceuil> content = (List<ResultAcceuil>) request.getAttribute("data");
+    int currentPage = (int) request.getAttribute("currentPage");
+    int totalPages = (int) request.getAttribute("totalPages");
+    int size = (int) request.getAttribute("size");
+    Map<String, String> params = (Map<String, String>) request.getAttribute("params");
 %>
 <link rel="stylesheet" href="/public/css/acceuil.css">
 
@@ -21,7 +21,7 @@
         </div>
         <div class="d-flex justify-content-center">
             <button class="btn btn-dark me-2" type="button">Best Point</button>
-            <button class="btn btn-light" type="button">Compatibilite</button>
+            <button class="btn btn-light" type="button">compatibilite</button>
         </div>
     </div>
 </section>
@@ -38,7 +38,22 @@
                 <div class="card-body nicolas-card">
                     <div class="d-flex justify-content-between align-items-center top-card-nicolas">
                         <h4 class="card-title box_name mb-0"><%= p.getEntrepriseNom() %></h4>
-                        <h4 class="percent mb-0 nicolas-compatibilite"><a href="/compatibility-poste/<%= id %>"><%= p.getPtsTotal() %>%</a></h4>
+                        <% 
+                            double ptsTotal = p.getPtsTotal();
+                            String colorClass = "red";
+
+                            if (ptsTotal > 75) {
+                                colorClass = "green";
+                            } else if (ptsTotal >= 25) {
+                                colorClass = "blue";
+                            }
+                            %>
+
+                            <h4 class="percent mb-0 nicolas-compatibilite">
+                            <a href="/compatibility-poste/<%= id %>" style="color: <%= colorClass %>;">
+                                <%= ptsTotal %>%
+                            </a>
+                            </h4>
                     </div>
                     <div class="img_box flex-grow-1">
                         <img src="/public/img/products/4.jpg" class="img-fluid" alt="">
@@ -61,7 +76,17 @@
                 if (currentPage > 0) {
             %>
                 <li class="page-item">
-                    <a class="page-link" href="?page=<%= currentPage - 1 %>&size=<%= size %>" tabindex="-1" aria-disabled="true">&laquo;</a>
+                    <a class="page-link" href="?page=<%= currentPage - 1 %>&size=<%= size %><%
+                        if (params != null) {
+                            for (Map.Entry<String, String> entry : params.entrySet()) {
+                                String key = entry.getKey();
+                                String value = entry.getValue();
+                                if (value != null && !value.isEmpty()) {
+                                    %>&<%= key %>=<%= value %><%
+                                }
+                            }
+                        }
+                    %>" tabindex="-1" aria-disabled="true">&laquo;</a>
                 </li>
             <%
                 }
@@ -76,7 +101,17 @@
                     } else {
             %>
                         <li class="page-item">
-                            <a class="page-link" href="?page=<%= i %>&size=<%= size %>"><%= i + 1 %></a>
+                            <a class="page-link" href="?page=<%= i %>&size=<%= size %><%
+                                if (params != null) {
+                                    for (Map.Entry<String, String> entry : params.entrySet()) {
+                                        String key = entry.getKey();
+                                        String value = entry.getValue();
+                                        if (value != null && !value.isEmpty()) {
+                                            %>&<%= key %>=<%= value %><%
+                                        }
+                                    }
+                                }
+                            %>"><%= i + 1 %></a>
                         </li>
             <%
                     }
@@ -85,7 +120,17 @@
                 if (currentPage < totalPages - 1) {
             %>
                 <li class="page-item">
-                    <a class="page-link" href="?page=<%= currentPage + 1 %>&size=<%= size %>">&raquo;</a>
+                    <a class="page-link" href="?page=<%= currentPage + 1 %>&size=<%= size %><%
+                        if (params != null) {
+                            for (Map.Entry<String, String> entry : params.entrySet()) {
+                                String key = entry.getKey();
+                                String value = entry.getValue();
+                                if (value != null && !value.isEmpty()) {
+                                    %>&<%= key %>=<%= value %><%
+                                }
+                            }
+                        }
+                    %>">&raquo;</a>
                 </li>
             <%
                 }

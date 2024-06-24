@@ -4,7 +4,7 @@
     
     <section class="py-5">
             <div class="row mb-4 mb-lg-5">
-                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <div class="col-md-10 col-xl-10 text-center mx-auto">
                     <h2 class="custom-h2">Postulation en cours</h2>
                 </div>
             </div>
@@ -24,10 +24,10 @@
 
             <form method="GET" action="/admin/valider/postulation" ng-repeat="postu in postulations" class="notification-item row align-items-center" style="padding-top: 20px;">
                 <div class="col-1 text-center pl">
-                    <input type="submit"><span class="notification-icon download" style="margin-left: 40px;"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                    <button type="submit" class="sub-nico" ><span class="notification-icon download"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                         <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
-                    </svg></span></boutton>
+                    </svg></span></button>
                 </div>
                 <div class="col-1 text-center">
                     <a href="" ng-click="delete(postu.id)"><span class="notification-icon garbage"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
@@ -57,6 +57,26 @@
         
     </div>
 
+
     <script src="/public/js/angular.min.js"></script>
+    <script src="/public/js/script.js"></script>
+    <script src="/public/js/sweetalert2.js"></script>
     <script src="/public/js/crud/Admin.js"></script>
+    <script>
+        function validateForm() {
+        // Vous pouvez ajouter ici la logique de validation du formulaire
+        
+        // Par exemple, récupérer la valeur du champ nom
+        var nom = document.getElementById("fname").value;
+        
+        // Valider le champ nom
+        if (nom == "") {
+            alert("Le champ Nom doit être rempli");
+            return false; // Empêche la soumission du formulaire si le champ est vide
+        }
+        
+        // Si la validation est réussie, soumettre le formulaire
+        document.getElementById("myForm").submit();
+        }
+    </script>
 

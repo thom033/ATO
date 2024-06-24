@@ -40,7 +40,7 @@ public class Entretien {
     @JoinColumn(name = "id_poste")
     PosteDetails poste;
 
-    boolean reussite;
+    Boolean reussite;
 
     // Getter & Setter
     public Long getId() {
@@ -83,11 +83,11 @@ public class Entretien {
         this.poste = poste;
     }
 
-    public boolean isReussite() {
+    public Boolean isReussite() {
         return reussite;
     }
 
-    public void setReussite(boolean reussite) {
+    public void setReussite(Boolean reussite) {
         this.reussite = reussite;
     }
 

@@ -19,9 +19,17 @@ public class FaqController {
     HistoriqueQuestionRepository historiqueQuestionRepository;
 
     @GetMapping("/faq/index")
-    public ModelAndView getMethodName() {
+    public ModelAndView getMethodName(HttpSession session) {
         ModelAndView mv = new ModelAndView("template");
+
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+        if (utilisateur == null) {
+            mv.setViewName("login/login-register");
+            session.setAttribute("nextPage", "/faq/index");
+        }
+
         mv.addObject("page", "faq/faq");
+        mv.addObject("utilisateur", utilisateur);
         return mv;
     }
 

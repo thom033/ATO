@@ -29,11 +29,13 @@ public class AchatController {
     public ModelAndView getPageAchat(@RequestParam(name = "type", required = false, defaultValue = "0") int type,
     @RequestParam(name = "error", required = false) String error) {
         ModelAndView mv = new ModelAndView("template");
+        Double prix_point = argentRepository.getPrixPoint();
         mv.addObject("type", type);
         if (error != null) {
             mv.addObject("error", error);
         }
         mv.addObject("page", "achat/achat");
+        mv.addObject("prix", prix_point);
 
         return mv;
     }
@@ -46,17 +48,19 @@ public class AchatController {
         Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateur");
         RedirectView redirectView = new RedirectView();
 
+        Double prix_point = argentRepository.getPrixPoint();
+
         if (utilisateur != null && quantite > 0) {
             double montantTotal;
 
             if (reduction != null && !reduction.isEmpty()) {
                 if (quantite == 5) {
-                    montantTotal = 24000;
+                    montantTotal = (prix_point-((prix_point * 4)/100))*5;
                 } else {
-                    montantTotal = 48000;
+                    montantTotal = (prix_point-((prix_point * 8)/100))*10;
                 }
             } else {
-                montantTotal = quantite * 5000;
+                montantTotal = quantite * prix_point;
             }
 
             Argent arg = argentRepository.getArgentUser(utilisateur.getId());
@@ -69,10 +73,15 @@ public class AchatController {
                 utilisateur.setPoint(utilisateur.getPoint() + quantite);
                 utilisateurRepository.updatePoints(utilisateur.getId(), quantite);
                 argentRepository.updateArgentUser(utilisateur.getId(), montantTotal);
+                argentRepository.insertAchat(utilisateur.getId(), quantite);
                 // Enregistrer l'utilisateur mis à jour dans la session
                 httpSession.setAttribute("utilisateur", utilisateur);
                 redirectView.setUrl("/utilisateur/profil");
             }
+        }
+        else{
+            redirectView.setUrl("/achat?error=Quantite invalide");
+            return redirectView;
         }
 
         return redirectView;

@@ -42,7 +42,7 @@ public class QuestionJSONController {
     public Question getUtilisateur(@RequestParam("idQuestion") Long idQuestion) {
         return questionRepository.findById(idQuestion).get();
     }
-    
+
     @PostMapping("/question/update")
     public List<Question> modifier(@RequestBody Question question) {
         questionRepository.save(question);

@@ -147,3 +147,32 @@ AdminApp.controller("crudPostulationController", function($scope, $http) {
         return formattedDate;
     }
 });
+
+AdminApp.controller("posteController", function($scope, $http) {
+    $scope.supprimer = function(idPoste) {
+        let aurl = "/admin/supprimer/" + idPoste;
+        $http({
+            url: aurl,
+            method: 'GET'
+        })
+        .then(function(response) {
+            message = "Postulation effectue avec succes";
+            Swal.fire({
+                title: 'Succes postulation',
+                text: message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        }, function(error) {
+            message = "Vous n'avez pas assez de point";
+            Swal.fire({
+                title: 'Problème lors de la postulation',
+                text: message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+        
+    };
+
+});

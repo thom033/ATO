@@ -1,3 +1,11 @@
+CREATE DATABASE rohy
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       LC_COLLATE = 'fr_FR.UTF-8'
+       LC_CTYPE = 'fr_FR.UTF-8'
+       TEMPLATE = template0;
+\c rohy
+
 CREATE TABLE Utilisateur(
    id_utilisateur SERIAL,
    nom VARCHAR(255)  NOT NULL,
@@ -94,22 +102,6 @@ CREATE TABLE formation(
    PRIMARY KEY(id_formation),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
-
-CREATE TABLE Notification(
-   id_notification SERIAL,
-   message TEXT NOT NULL,
-   date_notification TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
-   date_lu TIMESTAMP DEFAULT NULL,
-   point BOOLEAN,
-   id_poste INTEGER,
-   id_utilisateur INTEGER NOT NULL,
-   id_entretien integer,
-   PRIMARY KEY(id_notification),
-   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
-   FOREIGN KEY(id_entretien) REFERENCES entretien(id_entretien),
-   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
-);
--- ajout de id_entretien
 
 CREATE TABLE Reponse(
    id_reponse SERIAL,
@@ -215,11 +207,12 @@ CREATE TABLE entretien(
    date_entretien TIMESTAMP,
    id_utilisateur INTEGER,
    id_poste INTEGER,
-   reussite BOOLEAN DEFAULT FALSE,
+   reussite BOOLEAN DEFAULT NULL,
    PRIMARY KEY(id_entretien),
    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur),
    FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
 );
+-- default null
 
 CREATE TABLE postulation(
    id_postulation SERIAL PRIMARY KEY,
@@ -237,6 +230,23 @@ create table point_vendu(
    date TIMESTAMP DEFAULT CURRENT_DATE,
    FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id_utilisateur)
 );
+select count(entretien) as nbEntretien,extract(month from date_entretien) as mois from entretien where reussite and extract(year from date_entretien)=2024 group by extract(month from date_entretien);
+CREATE TABLE Notification(
+   id_notification SERIAL,
+   message TEXT NOT NULL,
+   date_notification TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
+   date_lu TIMESTAMP DEFAULT NULL,
+   point BOOLEAN,
+   id_poste INTEGER,
+   id_utilisateur INTEGER NOT NULL,
+   id_entretien integer,
+   reussite BOOLEAN,
+   PRIMARY KEY(id_notification),
+   FOREIGN KEY(id_poste) REFERENCES poste(id_poste),
+   FOREIGN KEY(id_entretien) REFERENCES entretien(id_entretien),
+   FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+);
+-- ajout de id_entretien
 
 create table prix_point(
    id_prix_point serial,

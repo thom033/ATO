@@ -92,7 +92,7 @@
 
                                 </div>
                                 <div class="information">
-                                    <div class="input">
+                                    <div class="inpute">
                                         <div class="invariable">
                                             <p>Titre</p>
                                         </div>
@@ -100,7 +100,7 @@
                                             <p><%= postedetails.getPosteTitre() %></p>
                                         </div>
                                     </div>
-                                    <div class="input">
+                                    <div class="inpute">
                                         <div class="invariable">
                                             <p>Salaire</p>
                                         </div>
@@ -108,7 +108,7 @@
                                             <p><%= postedetails.getPosteSalaire() %> Ariary</p>
                                         </div>
                                     </div>
-                                    <div class="input">
+                                    <div class="inpute">
                                         <div class="invariable">
                                             <p>Age min-max</p>
                                         </div>
@@ -116,28 +116,28 @@
                                             <p><%= postedetails.getPosteAgeMin() %> - <%= postedetails.getPosteAgeMax() %> ans</p>
                                         </div>
                                     </div>
-                                    <div class="input">
+                                    <div class="inpute">
                                         <div class="invariable">
                                             <p>Formation</p>
                                         </div>
                                         <div class="variable">
-                                            <p class="input"><%= postedetails.getNbrAnneeFormation() %> ans de formations</p> <!-- Zay <p> farany asiana class="input" -->
+                                            <p class="inpute"><%= postedetails.getNbrAnneeFormation() %> ans de formations</p> <!-- Zay <p> farany asiana class="inpute" -->
                                         </div>
                                     </div>
-                                    <div class="input">
+                                    <div class="inpute">
                                         <div class="invariable">
                                             <p>Expérience</p>
                                         </div>
                                         <div class="variable">
-                                            <p class="input"><%= postedetails.getNbrAnneeExperience() %> ans d'expérience</p> <!-- Zay <p> farany asiana class="input" -->
+                                            <p class="inpute"><%= postedetails.getNbrAnneeExperience() %> ans d'expérience</p> <!-- Zay <p> farany asiana class="inpute" -->
                                         </div>
                                     </div>
-                                    <div class="input">
+                                    <div class="inpute">
                                         <div class="invariable">
                                             <p>Diplôme</p>
                                         </div>
                                         <div class="variable">
-                                            <p class="input"><%= postedetails.getDiplomeNom() %></p> <!-- Zay <p> farany asiana class="input" -->
+                                            <p class="inpute"><%= postedetails.getDiplomeNom() %></p> <!-- Zay <p> farany asiana class="inpute" -->
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="information">
-                                                <div class="input">
+                                                <div class="inpute">
                                                     <div class="invariable">
                                                         <p>Nom</p>
                                                     </div>
@@ -166,7 +166,7 @@
                                                         <p><%= postedetails.getEntrepriseNom() %></p>
                                                     </div>
                                                 </div>
-                                                <div class="input">
+                                                <div class="inpute">
                                                     <div class="invariable">
                                                         <p>Secteur</p>
                                                     </div>
@@ -174,7 +174,7 @@
                                                         <p>Informatique</p>
                                                     </div>
                                                 </div>
-                                                <div class="input">
+                                                <div class="inpute">
                                                     <div class="invariable">
                                                         <p>Site web</p>
                                                     </div>
@@ -182,7 +182,7 @@
                                                         <p><%= postedetails.getEntrepriseSiteWeb() %></p>
                                                     </div>
                                                 </div>
-                                                <div class="input">
+                                                <div class="inpute">
                                                     <div class="invariable">
                                                         <p>Adresse</p>
                                                     </div>
@@ -190,7 +190,7 @@
                                                         <p><%= postedetails.getEntrepriseAdresse() %></p>
                                                     </div>
                                                 </div>
-                                                <div class="input">
+                                                <div class="inpute">
                                                     <div class="invariable">
                                                         <p>Coordonnées</p>
                                                     </div>
@@ -198,7 +198,7 @@
                                                         <p><%= postedetails.getEntrepriseLatitude() %>° <%= postedetails.getEntrepriseLongitude() %>°</p>
                                                     </div>
                                                 </div>
-                                                <div class="input">
+                                                <div class="inpute">
                                                     <div class="invariable">
                                                         <p>Points</p>
                                                     </div>
@@ -224,6 +224,7 @@
 </body>
 <script src="/public/bootstrap/js/pikaday.min.js"></script>
 <script src="/public/bootstrap/js/theme.js"></script>
+<script src="/public/js/sweetalert2.js"></script>
 <script src="/public/js/angular.min.js"></script>
 <script src="/public/js/client/frontApp.js"></script>
 <script src="/public/js/script.js"></script>

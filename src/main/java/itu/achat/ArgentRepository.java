@@ -25,4 +25,12 @@ public interface ArgentRepository extends JpaRepository<Argent, Integer> {
 
     @Query(value = "select sum(point) as nombre,extract(month from date) as mois from point_vendu where extract(year from date)= :annee group by extract(month from date)",nativeQuery = true)
     List<StatistiquePoint> getStatistiquePoint(@Param("annee") int annee);
+
+    @Modifying
+    @Transactional
+    @Query(value = "insert into point_vendu(id_utilisateur,point) values(:utilisateurId, :nbrPoints)",nativeQuery = true)
+    void insertAchat(Long utilisateurId,int nbrPoints);
+
+    @Query(value = "SELECT prix FROM prix_point ORDER BY date_changement DESC LIMIT 1",nativeQuery = true)
+    Double getPrixPoint();
 }

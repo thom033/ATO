@@ -62,7 +62,8 @@ public class PostulationController {
         postulation.setUtilisateur(utilisateur);
 
         if (utilisateur.getPoint() < posteDetails.getPosteCout()) {
-            throw new Exception("Vous ne possedez pas assez de point");
+            throw new Exception("Vous ne possedez pas assez de point," + utilisateur.getPoint() + " < "
+                    + posteDetails.getPosteCout());
         }
 
         else {
@@ -78,8 +79,8 @@ public class PostulationController {
 
     @GetMapping("/admin/postulation")
     public ModelAndView getMethodName() {
-        ModelAndView mv = new ModelAndView("template");
-        mv.addObject("page", "admin/postulation/index");
+        ModelAndView mv = new ModelAndView("admin/template");
+        mv.addObject("page", "postulation/index.jsp");
         return mv;
     }
 
@@ -99,9 +100,9 @@ public class PostulationController {
             DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
             dateEntretien = LocalDateTime.parse(date, formatter);
         } catch (Exception e) {
-            ModelAndView view = new ModelAndView("template");
+            ModelAndView view = new ModelAndView("admin/template");
             view.addObject("error", "La date de l'embauche n'est pas valide");
-            view.addObject("page", "admin/postulation/index");
+            view.addObject("page", "postulation/index");
             return view;
         }
         Utilisateur utilisateur = utilisateurRepository.getById(Long.valueOf(idUtilisateur));
@@ -112,8 +113,8 @@ public class PostulationController {
 
         Postulation postulation = postulationRepository.getById(Long.valueOf(idPostulation));
         entretien.setPoste(postulation.getPoste());
-        entretien.setReussite(false);
         entretien.setUtilisateur(utilisateur);
+        entretien.setReussite(null);
         entretienRepository.save(entretien);
 
         Notification notification = new Notification();
@@ -126,8 +127,8 @@ public class PostulationController {
         notificationRepository.save(notification);
 
         postulationRepository.deleteById(Long.valueOf(idPostulation));
-        ModelAndView mv = new ModelAndView("template");
-        mv.addObject("page", "admin/postulation/index");
+        ModelAndView mv = new ModelAndView("admin/template");
+        mv.addObject("page", "postulation/index.jsp");
         return mv;
 
     }

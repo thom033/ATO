@@ -34,4 +34,6 @@ public interface PosteDetailsRepository extends JpaRepository<PosteDetails, Long
 
     @Query(value = "SELECT calculate_distance(:userId, :posteId)", nativeQuery = true)
     double calculateDistance(Long userId, Long posteId);
+
+    
 }

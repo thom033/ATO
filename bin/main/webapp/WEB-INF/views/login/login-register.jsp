@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Login page</title>
+    <link rel="shortcut icon" href="/public/img/icon/theR.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link href="/public/css/style.css" rel="stylesheet">
 </head>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     int type = (int) request.getAttribute("type");
+    Double prix = (Double) request.getAttribute("prix");
 %>
 
 <head>
@@ -28,7 +29,7 @@
                                     <img class="icon-image" src="/public/bootstrap/icon/fi-rr-coins.svg" alt="">
                                 </span>
                             </div>
-                            <p class="my-1">1 point : 5 000 Ar</p>
+                            <p class="my-1">1 point : <%= prix %> Ar</p>
                             <div class="head" style="margin-top: 30px;">
                                 <span class="icon">
                                     <h3 id="titre" class="fw-bold">Achat</h3>
@@ -118,7 +119,7 @@
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            <p class="montant">24 000 Ar</p>
+                                                            <p class="montant"><%= (prix-((prix * 4)/100))*5 %> Ar</p>
                                                         </div>
                                                         <hr>
                                                         <div class="desc">
@@ -127,7 +128,7 @@
                                                                     <p class="description">soit</p>
                                                                 </div>
                                                                 <div class="col-md-8">
-                                                                    <p class="description">1 point : 4 800 Ar</p>
+                                                                    <p class="description">1 point : <%= (prix-((prix * 4)/100)) %> Ar</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -158,7 +159,7 @@
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            <p class="montant">48 000 Ar</p>
+                                                            <p class="montant"><%= (prix-((prix * 8)/100))*10 %> Ar</p>
                                                         </div>
                                                         <hr>
                                                         <div class="desc">
@@ -167,7 +168,7 @@
                                                                     <p class="description">soit</p>
                                                                 </div>
                                                                 <div class="col-md-8">
-                                                                    <p class="description">1 point : 4 700 Ar</p>
+                                                                    <p class="description">1 point : <%= (prix-((prix * 8)/100)) %> Ar</p>
                                                                 </div>
                                                             </div>
                                                         </div>
