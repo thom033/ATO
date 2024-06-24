@@ -98,20 +98,10 @@
 	</dependencies>
 	
 	<build>
-		<finalName>ato</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.3.2</version>
-				<configuration>
-					<warName>ATO</warName>
-					<outputDirectory>C:\Users\Tojo\Documents\ITU_Lecon\Web_dynamique\apache-tomcat-10.1.23\webapps</outputDirectory>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
