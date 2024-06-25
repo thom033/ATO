@@ -326,6 +326,7 @@ StatistiqueApp.controller('statistiqueSecteurController', function($scope, $http
         if($scope.mois!=0){
             link+="&mois="+$scope.mois;
         }
+        console.log(link);
         $http.get(link)
         .then(function(response) {
             $scope.statistique = response.data;
@@ -361,7 +362,7 @@ StatistiqueApp.controller('statistiqueSecteurController', function($scope, $http
         $scope.data=[];
         for(let i=0;i<$scope.statistique.length;i++){
             $scope.labels.push($scope.statistique[i].secteur);
-            $scope.data.push($scope.statistique[i].nbSecteur);
+            $scope.data.push($scope.statistique[i].pourcentage);
         }
         callback();
     }
@@ -379,6 +380,8 @@ StatistiqueApp.controller('changePriceController', function($scope, $http) {
     $scope.prixPoint={};
     $scope.prixPoint.prix=0;
     $scope.prixPoint.dateChangement=currentDate;
+
+    $scope.promotion={};
     
     $http.get("/prix_point/actuel")
     .then(function(response) {
@@ -386,10 +389,26 @@ StatistiqueApp.controller('changePriceController', function($scope, $http) {
         console.log($scope);
     });
 
+    $http.get("/promotion/actuel")
+    .then(function(response) {
+        $scope.promotion = response.data;
+        console.log($scope);
+    });
+
     $scope.changePrice=function(){
         $scope.prixPoint.prix=$scope.newPrice;
         console.log(JSON.stringify($scope.prixPoint));
         $http.post("/prix_point/changer",$scope.prixPoint)
+        .then(function(response){
+            alert("updated");
+        });
+    }
+
+    $scope.changePromotion=function(){
+        $scope.promotion.id=0;
+        $scope.promotion.dateChangement=currentDate;
+        console.log(JSON.stringify($scope.promotion));
+        $http.post("/promotion/changer",$scope.promotion)
         .then(function(response){
             alert("updated");
         });
