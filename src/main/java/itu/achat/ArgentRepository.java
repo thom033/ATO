@@ -30,4 +30,7 @@ public interface ArgentRepository extends JpaRepository<Argent, Integer> {
     @Transactional
     @Query(value = "insert into point_vendu(id_utilisateur,point) values(:utilisateurId, :nbrPoints)",nativeQuery = true)
     void insertAchat(Long utilisateurId,int nbrPoints);
+
+    @Query(value = "SELECT prix FROM prix_point ORDER BY date_changement DESC LIMIT 1",nativeQuery = true)
+    Double getPrixPoint();
 }
