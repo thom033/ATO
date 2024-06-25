@@ -11,8 +11,8 @@
         <div class="content">
             <h1>Log In</h1>
             <form action="/admin/login" method="post">
-                <input type="email" name="mail" placeholder="email">
-                <input type="password" name="mdp" placeholder="password">
+                <input type="email" name="mail" placeholder="email" value="admin@example.com">
+                <input type="password" name="mdp" placeholder="password" value="adminpass">
                 <button type="submit">Log In</button>
             </form>
 <%--            <span class="loginwith">Or Connect with</span>

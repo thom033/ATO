@@ -46,7 +46,7 @@ public class AdminController {
             httpSession.setAttribute("administrateur", admin);
 
             mv.addObject("administrateur", admin);
-            mv.addObject("page", "crud/index.jsp");
+            mv.addObject("page", "redirect:/admin/dashboard");
             return mv;
         } else {
             ModelAndView mv = new ModelAndView("/admin/index");
@@ -74,42 +74,42 @@ public class AdminController {
         mv.addObject("page", "postulation/insertPost.jsp");
         return mv;
     }
-    
+
     @GetMapping("/admin/dashboard")
     public ModelAndView dashboard() {
-        ModelAndView mv=new ModelAndView("admin/template");
+        ModelAndView mv = new ModelAndView("admin/template");
         mv.addObject("statistiqueQuestion", questionRepository.getStatistiqueQuestion());
-        mv.addObject("page","dashboard/index.jsp");
+        mv.addObject("page", "dashboard/index.jsp");
         return mv;
     }
 
     @GetMapping("/admin/dashboard/statistique/point")
     public ModelAndView getStatistiquePoint() {
-        ModelAndView mv=new ModelAndView("admin/dashboard/statistique/point");
+        ModelAndView mv = new ModelAndView("admin/dashboard/statistique/point");
         return mv;
     }
 
     @GetMapping("/admin/dashboard/statistique/embauche")
     public ModelAndView getStatistiqueEntretien() {
-        ModelAndView mv=new ModelAndView("admin/dashboard/statistique/embauche");
+        ModelAndView mv = new ModelAndView("admin/dashboard/statistique/embauche");
         return mv;
     }
 
     @GetMapping("/admin/dashboard/statistique/secteur")
     public ModelAndView getStatistiqueSecteur() {
-        ModelAndView mv=new ModelAndView("admin/dashboard/statistique/secteur");
+        ModelAndView mv = new ModelAndView("admin/dashboard/statistique/secteur");
         return mv;
     }
-    
+
     @GetMapping("/admin/dashboard/statistique/monnaie")
     public ModelAndView getStatistiqueMonnaie() {
-        ModelAndView mv=new ModelAndView("admin/dashboard/statistique/monnaie");
+        ModelAndView mv = new ModelAndView("admin/dashboard/statistique/monnaie");
         return mv;
     }
 
     @GetMapping("/admin/dashboard/prix_point/changer")
     public ModelAndView updatePrice() {
-        ModelAndView mv=new ModelAndView("admin/dashboard/change_prix_point");
+        ModelAndView mv = new ModelAndView("admin/dashboard/change_prix_point");
         return mv;
     }
 
@@ -118,5 +118,5 @@ public class AdminController {
         questionRepository.deleteHistorique();
         return "redirect:/admin/dashboard#!/point";
     }
-    
+
 }
