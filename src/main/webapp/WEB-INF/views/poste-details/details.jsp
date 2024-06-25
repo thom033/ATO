@@ -29,14 +29,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="recherche">
-                    <h3>Rechercher des restaurants avec plat</h3>
-                    <label for="menuSelect">Choix de plat :</label><br>
-                    <select id="menuSelect"></select><br><br>
-                    <button id="valider" onclick="searchRestaurants()">Valider</button>
-                    <p id="aide">selectionnez votre point actuel</p>
-                    <a href="back.html">Ajouter des restaurants</a>
-                </div>
+
                 <div class="contact">
                     <div class="info-perso">
                         <div class="svg">
@@ -230,12 +223,6 @@
     </div>
     
 </body>
-<script>
-    var avatar = document.getElementById('avatar');
-    avatar.onclick = function() {
-        document.getElementById('recherche').style.display = 'block';
-    };
-</script>
 <script src="/public/bootstrap/js/pikaday.min.js"></script>
 <script src="/public/bootstrap/js/theme.js"></script>
 <script src="/public/js/sweetalert2.js"></script>
