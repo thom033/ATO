@@ -19,7 +19,7 @@
             <div class="content" ng-app="StatistiqueApp">
                 <div class="row justify-content-center">
 
-                    <div class="col-6" style="padding-left: 5%;">
+                    <div class="col-6" >
                         <h1><strong> TABLEAU DE BORD</strong></h1>
                         <p class="pStatistique">Statistique des données selon différents sujet</p>
                         <div class="row mb-3">
