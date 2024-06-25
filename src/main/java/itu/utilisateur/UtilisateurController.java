@@ -1,10 +1,12 @@
 package itu.utilisateur;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +34,8 @@ import itu.formation.FormationRepository;
 import itu.secteur.Secteur;
 import itu.secteur.SecteurDiplome;
 import itu.secteur.SecteurDiplomeRepository;
+import itu.secteur.SecteurRepository;
+import itu.secteur.StatistiqueSecteur;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -61,11 +65,50 @@ public class UtilisateurController {
     SecteurDiplomeRepository secteurDiplomeRepository;
 
     @Autowired
+    SecteurRepository secteurRepository;
+
+    @Autowired
     HttpSession httpSession;
 
     @GetMapping("/")
     public ModelAndView splashscreen() {
         ModelAndView mv = new ModelAndView("template");
+        List<StatistiqueSecteur> recep=secteurRepository.getStatistiqueSecteurPosteDispo();
+        StatistiqueSecteur[] secteurs=new StatistiqueSecteur[3];
+        double pourcentage=0;
+        int nbSecteur=0;
+        for(int i=0;i<2;i++){
+            secteurs[i]=recep.get(i);
+            pourcentage+=recep.get(i).getPourcentage();
+        }
+        for(int i=2;i<recep.size();i++){
+            nbSecteur+=recep.get(i).getNbSecteur();
+        }
+        final double pourcentages=100.0-pourcentage;
+        final int nbSecteurs=nbSecteur;
+        secteurs[2]=new StatistiqueSecteur() {
+            int idSecteur=0;
+            int nbSecteur=nbSecteurs;
+            double pourcentage=pourcentages;
+            String secteur="Autres";
+            @Override
+            public int getIdSecteur(){
+                return idSecteur;
+            }
+            @Override
+            public int getNbSecteur(){
+                return nbSecteur;
+            }
+            @Override
+            public double getPourcentage(){
+                return pourcentage;
+            }
+            @Override
+            public String getSecteur(){
+                return secteur;
+            }
+        };
+        mv.addObject("secteurs",secteurs);
         mv.addObject("page", "splashScreen/index");
         return mv;
     }
@@ -74,6 +117,42 @@ public class UtilisateurController {
     public ModelAndView deconnexion(HttpSession httpSession) {
         httpSession.removeAttribute("utilisateur");
         ModelAndView mv = new ModelAndView("template");
+        List<StatistiqueSecteur> recep=secteurRepository.getStatistiqueSecteurPosteDispo();
+        StatistiqueSecteur[] secteurs=new StatistiqueSecteur[3];
+        double pourcentage=0;
+        int nbSecteur=0;
+        for(int i=0;i<2;i++){
+            secteurs[i]=recep.get(i);
+            pourcentage+=recep.get(i).getPourcentage();
+        }
+        for(int i=2;i<recep.size();i++){
+            nbSecteur+=recep.get(i).getNbSecteur();
+        }
+        final double pourcentages=100.0-pourcentage;
+        final int nbSecteurs=nbSecteur;
+        secteurs[2]=new StatistiqueSecteur() {
+            int idSecteur=0;
+            int nbSecteur=nbSecteurs;
+            double pourcentage=pourcentages;
+            String secteur="Autres";
+            @Override
+            public int getIdSecteur(){
+                return idSecteur;
+            }
+            @Override
+            public int getNbSecteur(){
+                return nbSecteur;
+            }
+            @Override
+            public double getPourcentage(){
+                return pourcentage;
+            }
+            @Override
+            public String getSecteur(){
+                return secteur;
+            }
+        };
+        mv.addObject("secteurs",secteurs);
         mv.addObject("page", "splashScreen/index");
         return mv;
     }

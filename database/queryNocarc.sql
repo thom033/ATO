@@ -368,6 +368,11 @@ select id_question,count(id_question) as nbQuestion,question from question natur
 
 select secteur.id_secteur,count(secteur.id_secteur) as nbSecteur,secteur.secteur from poste natural join diplome join secteur_diplome as secteurDip on secteurDip.id_diplome=diplome.id_diplome join secteur on secteur.id_secteur=secteurDip.id_secteur group by secteur.secteur,secteur.id_secteur;
 
+insert into prix_point(prix,date_changement) values(10000,'2023-01-01');
+insert into prix_point(prix,date_changement) values(15000,'2023-06-01');
+insert into prix_point(prix,date_changement) values(7000,'2023-11-01');
+insert into prix_point(prix,date_changement) values(7500,'2024-04-01');
+
 -- CREATE TABLE entretien(
 --    id_entretien SERIAL,
 --    date_envoi TIMESTAMP DEFAULT CURRENT_DATE,

@@ -5,6 +5,10 @@ VALUES
 ('Martin', 'Sophie', '1990-11-20', '456 Rue Secondaire, Lyon', 'sophie.martin@example.com', 'Marié', 'photo2.jpg', 200, 45.7640, 4.8357, MD5('securepass'), 'Chef de projet', 55000),
 ('Leroy', 'Julien', '1978-04-05', '789 Rue Tertiaire, Marseille', 'julien.leroy@example.com', 'Divorcé', 'photo3.jpg', 150, 43.2965, 5.3698, MD5('password789'), 'Analyste', 50000);
 
+UPDATE Utilisateur
+SET motdepasse = MD5('password123')
+WHERE id_utilisateur = 1;
+
 INSERT INTO Utilisateur (nom, prenom, date_naissance, adresse, mail, etat_civil, photo, point, latitude, longitude, motdepasse, description, salaire_recherche)
 VALUES
 ('Dupont', 'Jean', '1985-06-15', '123 Rue Principale, Paris', 'jjean.dupont@example.com', 'Célibataire', 'photo1.jpg', 100, 48.8566, 2.3522, MD5('password123'), 'Développeur Full Stack', 45000);
@@ -374,7 +378,7 @@ insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite
 insert into prix_point(prix,date_changement) values(10000,'2023-01-01');
 insert into prix_point(prix,date_changement) values(15000,'2023-06-01');
 insert into prix_point(prix,date_changement) values(7000,'2023-11-01');
-insert into prix_point(prix,date_changement) values(7500,'2024-04-01');
+insert into prix_point(prix,date_changement) values(5000,'2024-04-01');
 
 select sum(point) as point,extract(month from date) as mois from point_vendu where extract(year from date)=2024 group by extract(month from date);
 
@@ -382,7 +386,7 @@ select id_question,count(id_question) as nbQuestion,question from question natur
 
 select secteur.id_secteur,count(secteur.id_secteur) as nbSecteur,secteur.secteur from poste natural join diplome join secteur_diplome as secteurDip on secteurDip.id_diplome=diplome.id_diplome join secteur on secteur.id_secteur=secteurDip.id_secteur group by secteur.secteur,secteur.id_secteur;
 
-select extract(month from date) as mois,sum(get_price(date)*point) as prix from point_vendu where extract(year from date)=2023 group by extract(month from date);
+select extract(month from date) as mois,sum(get_price(date,point)) as prix from point_vendu where extract(year from date)=2023 group by extract(month from date);
 
 with argent_entrant as( 
    select extract(month from date_entretien) as mois, sum(salaire) as prix 
@@ -397,3 +401,6 @@ with argent_entrant as(
 select sum(prix),mois from argent_entrant group by mois;
 
 with argent_entrant as (select sum(salaire) as prix from entretien natural join poste where '2024-01-01'<date_entretien and date_entretien<'2024-06-01' and reussite union select sum(get_price(date)*point) as prix from point_vendu where '2024-01-01'<date and date<'2024-06-01') select sum(prix) as prix from argent_entrant;
+
+insert into nombre_promotion(nombre_promotion1,pourcentage1,nombre_promotion2,pourcentage2,date_changement) values(4,8,10,9,'2023-01-01');
+insert into nombre_promotion(nombre_promotion1,pourcentage1,nombre_promotion2,pourcentage2,date_changement) values(5,10.35,10,20.66,'2023-05-01');
