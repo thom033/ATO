@@ -3,6 +3,7 @@ package itu.postulation;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -56,6 +57,12 @@ public class PostulationController {
 
         PosteDetails posteDetails = posteDetailsRepository
                 .findById(Long.valueOf(idTravail)).orElseThrow(() -> new RuntimeException("PosteDetails not found"));
+
+        List<Postulation> postulationEffectue = postulationRepository.listePostulation(utilisateur,
+                posteDetails);
+        if (postulationEffectue.size() > 0) {
+            throw new Exception("Vous avez déja postulé pour ce travail");
+        }
 
         postulation.setDate(LocalDateTime.now());
         postulation.setPoste(posteDetails);

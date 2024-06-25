@@ -19,32 +19,32 @@
             <div class="content" ng-app="StatistiqueApp">
                 <div class="row justify-content-center">
 
-                    <div class="col-6" style="padding-left: 5%;">
+                    <div class="col-6" >
                         <h1><strong> TABLEAU DE BORD</strong></h1>
                         <p class="pStatistique">Statistique des données selon différents sujet</p>
                         <div class="row mb-3">
                             <ul class="navbar-nav mx-auto">
-                                <li class="nav-item"><a class="btn btn-light" href="/admin/dashboard#!/monnaie" style="font-family: 'Space Grotesk';">Revenu</a></li>
+                                <a class="btn btn-light" href="/admin/dashboard#!/monnaie" style="font-family: 'Space Grotesk';width: fit-content;">Revenu</a>
                             </ul>
                         </div>
                         <div class="row mb-3">
                             <ul class="navbar-nav mx-auto">
-                                <li class="nav-item"><a class="btn btn-light" href="/admin/dashboard#!/point" style="font-family: 'Space Grotesk';">Nombre de points par mois</a></li>
+                                <a class="btn btn-light" href="/admin/dashboard#!/point" style="font-family: 'Space Grotesk';width: fit-content;">Nombre de points par mois</a>
                             </ul>
                         </div>
                         <div class="row mb-3">
                             <ul class="navbar-nav mx-auto">
-                                <li class="nav-item"><a class="btn btn-light" href="/admin/dashboard#!/embauche" style="font-family: 'Space Grotesk';">Nombre de personnes embauché</a></li>
+                                <a class="btn btn-light" href="/admin/dashboard#!/embauche" style="font-family: 'Space Grotesk';width: fit-content;">Nombre de personnes embauché</a>
                             </ul>
                         </div>
                         <div class="row mb-3">
                             <ul class="navbar-nav mx-auto">
-                                <li class="nav-item"><a class="btn btn-light" href="/admin/dashboard#!/secteur" style="font-family: 'Space Grotesk';">Secteurs le plus demandé</a></li>
+                                <a class="btn btn-light" href="/admin/dashboard#!/secteur" style="font-family: 'Space Grotesk';width: fit-content;">Secteurs le plus demandé</a>
                             </ul>
                         </div>
                         <div class="row mb-3">
                             <ul class="navbar-nav mx-auto">
-                                <li class="nav-item"><a class="btn btn-light" href="/admin/dashboard#!/changer_prix" style="font-family: 'Space Grotesk';">Changer la prix des points</a></li>
+                                <a class="btn btn-light" href="/admin/dashboard#!/changer_prix" style="font-family: 'Space Grotesk';width: fit-content;">Changer la prix des points</a>
                             </ul>
                         </div>
                     </div>
