@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" href="/public/leaflet/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 <link rel="stylesheet" href="/public/bootstrap/css/stylesRecherche.css">
 <link rel="stylesheet" href="/public/bootstrap/css/input.css">
 <style>
@@ -221,6 +221,7 @@
     <div class="row" style="margin-left: 15%;">
             
     </div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </div>
 <script src="/public/bootstrap/css/bootstrap.min.css"></script>
 <script src="/public/js/bs-init.js"></script>
@@ -232,49 +233,6 @@
         let percent=13.75*(number);
         formulaire.style.transition="transform 0.8s cubic-bezier(0.25, 0.1, 0, 1.32) 0s";
         formulaire.style.transform="translateX(-"+percent+"%)";
-    }
-</script>
-<script src="/public/leaflet/leaflet.js"></script>
-<script>
-    // Initialiser la carte et la centrer sur Antananarivo
-    var map = L.map('map').setView([-18.8792, 47.5079], 13);
-    // Ajouter une couche de tuiles OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    // Ajouter un événement de clic pour obtenir les coordonnées
-    map.on('click', function(e) {
-        var lat = e.latlng.lat;
-        var lng = e.latlng.lng;
-        marker.remove();
-        marker = L.marker([lat,lng], { icon: customIcon }).addTo(map);
-        const longitude=document.getElementById("longitude");
-        const lattitude=document.getElementById("latitude");
-        const labelLatitude=document.getElementById("labelLatitude");
-        const labelLongitude=document.getElementById("labelLongitude");
-        labelLatitude.style.color="#82b6fb";
-        labelLatitude.style.backgroundColor="#ffffff";
-        labelLongitude.style.backgroundColor="#ffffff";
-        labelLongitude.style.color="#82b6fb";
-        labelLatitude.style.transform="translateY(-0.5rem) translateX(1rem)";
-        labelLongitude.style.transform="translateY(-0.5rem) translateX(1rem)";
-        longitude.style.border="1.5px solid #82b6fb";
-        lattitude.style.border="1.5px solid #82b6fb";
-        longitude.value=lng;
-        lattitude.value=lat;
-        console.log(lattitude.value);
-    });
-    // Définir une icône personnalisée
-    var customIcon = L.icon({
-        iconUrl: '/public/leaflet/images/marker-icon.png', // Chemin vers votre image personnalisée
-        iconSize: [38, 38], // Taille de l'icône
-        iconAnchor: [19, 38], // Point de l'icône correspondant à la position du marqueur
-        popupAnchor: [0, -38] // Point où la bulle d'information est ancrée
-    });
-    //Latitude = -18.910590046209464, Longitude = 47.527537567541174
-    var marker = L.marker([-18.910590046209464, 47.527537567541174], { icon: customIcon }).addTo(map);
-    function showMap(){
-        const div=document.getElementById("map");
     }
 </script>
 <script src="/public/js/angular.min.js"></script>

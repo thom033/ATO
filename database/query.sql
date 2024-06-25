@@ -382,7 +382,7 @@ select id_question,count(id_question) as nbQuestion,question from question natur
 
 select secteur.id_secteur,count(secteur.id_secteur) as nbSecteur,secteur.secteur from poste natural join diplome join secteur_diplome as secteurDip on secteurDip.id_diplome=diplome.id_diplome join secteur on secteur.id_secteur=secteurDip.id_secteur group by secteur.secteur,secteur.id_secteur;
 
-select extract(month from date) as mois,sum(get_price(date)*point) as prix from point_vendu where extract(year from date)=2023 group by extract(month from date);
+select extract(month from date) as mois,sum(get_price(date,point)) as prix from point_vendu where extract(year from date)=2023 group by extract(month from date);
 
 with argent_entrant as( 
    select extract(month from date_entretien) as mois, sum(salaire) as prix 
@@ -397,3 +397,6 @@ with argent_entrant as(
 select sum(prix),mois from argent_entrant group by mois;
 
 with argent_entrant as (select sum(salaire) as prix from entretien natural join poste where '2024-01-01'<date_entretien and date_entretien<'2024-06-01' and reussite union select sum(get_price(date)*point) as prix from point_vendu where '2024-01-01'<date and date<'2024-06-01') select sum(prix) as prix from argent_entrant;
+
+insert into nombre_promotion(nombre_promotion1,pourcentage1,nombre_promotion2,pourcentage2,date_changement) values(4,8,10,9,'2023-01-01');
+insert into nombre_promotion(nombre_promotion1,pourcentage1,nombre_promotion2,pourcentage2,date_changement) values(5,10.35,10,20.66,'2023-05-01');

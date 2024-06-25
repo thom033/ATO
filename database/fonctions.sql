@@ -431,14 +431,26 @@ $$ LANGUAGE plpgsql;
 -- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 -- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-CREATE OR REPLACE FUNCTION get_price(date_change TIMESTAMP)
+CREATE OR REPLACE FUNCTION get_price(date_change TIMESTAMP,nbPoint INTEGER)
 RETURNS numeric AS $$
 DECLARE
     reponse numeric;
+    promotion nombre_promotion%ROWTYPE;
 BEGIN
+    SELECT * into promotion from nombre_promotion where date_changement<date_change limit 1;
+
     -- Récupérer le prix original du produit
     SELECT prix INTO reponse FROM prix_point WHERE date_changement in (select max(date_changement) from prix_point where date_changement<date_change );
-        
-    RETURN reponse;
+
+    IF nbPoint = promotion.nombre_promotion1 THEN
+        RAISE NOTICE 'reponse = % promotion = % nb = %',reponse,promotion.pourcentage1,promotion.nombre_promotion1;
+        RETURN (reponse-((reponse*promotion.pourcentage1)/100))*nbPoint;
+    END IF;
+
+    IF nbPoint = promotion.nombre_promotion2 THEN
+        RETURN (reponse-((reponse*promotion.pourcentage2)/100))*nbPoint;
+    END IF;
+
+    RETURN reponse*nbPoint;
 END;
 $$ LANGUAGE plpgsql;
