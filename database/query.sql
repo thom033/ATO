@@ -5,6 +5,10 @@ VALUES
 ('Martin', 'Sophie', '1990-11-20', '456 Rue Secondaire, Lyon', 'sophie.martin@example.com', 'Marié', 'photo2.jpg', 200, 45.7640, 4.8357, MD5('securepass'), 'Chef de projet', 55000),
 ('Leroy', 'Julien', '1978-04-05', '789 Rue Tertiaire, Marseille', 'julien.leroy@example.com', 'Divorcé', 'photo3.jpg', 150, 43.2965, 5.3698, MD5('password789'), 'Analyste', 50000);
 
+UPDATE Utilisateur
+SET motdepasse = MD5('password123')
+WHERE id_utilisateur = 1;
+
 INSERT INTO Utilisateur (nom, prenom, date_naissance, adresse, mail, etat_civil, photo, point, latitude, longitude, motdepasse, description, salaire_recherche)
 VALUES
 ('Dupont', 'Jean', '1985-06-15', '123 Rue Principale, Paris', 'jjean.dupont@example.com', 'Célibataire', 'photo1.jpg', 100, 48.8566, 2.3522, MD5('password123'), 'Développeur Full Stack', 45000);
