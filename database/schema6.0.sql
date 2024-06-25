@@ -16,8 +16,8 @@ CREATE TABLE Utilisateur(
    etat_civil VARCHAR(255) ,
    photo VARCHAR(255)  DEFAULT 'none.jpg',
    point BIGINT NOT NULL DEFAULT 0 CHECK(point >= 0 ),
-   latitude NUMERIC(15,2)  ,
-   longitude NUMERIC(15,2)  ,
+   latitude NUMERIC(17,15)  ,
+   longitude NUMERIC(17,15)  ,
    motdepasse VARCHAR(255)  NOT NULL,
    description TEXT,
    salaire_recherche NUMERIC(15,2)   DEFAULT 0,
@@ -47,8 +47,8 @@ CREATE TABLE Entreprise(
    adresse VARCHAR(255)  NOT NULL,
    site_web VARCHAR(255) ,
    mail VARCHAR(255)  NOT NULL,
-   latitude NUMERIC(15,2)  ,
-   longitude NUMERIC(15,2)  ,
+   latitude NUMERIC(17,15)  ,
+   longitude NUMERIC(17,15)  ,
    image VARCHAR(255)  DEFAULT 'none.jpg',
    PRIMARY KEY(id_entreprise),
    UNIQUE(mail)
@@ -251,5 +251,16 @@ CREATE TABLE Notification(
 create table prix_point(
    id_prix_point serial,
    prix numeric(10,2),
-   date_changement date
+   date_changement date,
+   PRIMARY KEY(id_prix_point)
+);
+
+create table nombre_promotion(
+   id_nombre_promotion serial,
+   nombre_promotion1 int,
+   pourcentage1 numeric(4,2),
+   nombre_promotion2 int,
+   pourcentage2 numeric(4,2),
+   date_changement date,
+   PRIMARY KEY(id_nombre_promotion)
 );

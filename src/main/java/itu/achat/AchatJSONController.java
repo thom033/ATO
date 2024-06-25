@@ -21,7 +21,10 @@ public class AchatJSONController {
     private PrixPointRepository prixPointRepository;
     
     @Autowired
-    private ArgentRepository argentRepository; 
+    private ArgentRepository argentRepository;
+
+    @Autowired
+    private NombrePromotionRepository nombrePromotionRepository;
     
     @GetMapping("/point/statistique")
     public List<StatistiquePoint> pointStatistique(@RequestParam int annee) {
@@ -62,16 +65,26 @@ public class AchatJSONController {
     }
 
     @GetMapping("/prix_point/actuel")
-    public double getMethodName() {
+    public double getPrixPointActuel() {
         return prixPointRepository.getPrixPoint(LocalDate.now()).getPrix();
+    }
+
+    @GetMapping("/promotion/actuel")
+    public NombrePromotion getPromotion() {
+        return nombrePromotionRepository.getPromotionActuel();
     }
     
 
     @PostMapping("/prix_point/changer")
-    public String postMethodName(@RequestBody PrixPoint prixPoint) {
+    public String changePrixPoint(@RequestBody PrixPoint prixPoint) {
         prixPointRepository.save(prixPoint);
         return "{\"message\":\"inserted\"}";
     }
     
+    @PostMapping("/promotion/changer")
+    public String changePromotion(@RequestBody NombrePromotion nbPromotion) {
+        nombrePromotionRepository.save(nbPromotion);
+        return "{\"message\":\"inserted\"}";
+    }
     
 }
