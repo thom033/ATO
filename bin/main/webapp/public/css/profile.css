@@ -98,6 +98,10 @@
     margin-top: 100px;
 }
 
+.btn-full {
+    width: 42vh;
+}
+
 .btn {
     width: 42vh;
     border-radius: 20px;
