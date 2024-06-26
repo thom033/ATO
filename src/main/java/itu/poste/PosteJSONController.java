@@ -14,10 +14,10 @@ public class PosteJSONController {
     @Autowired
     PosteRepository posteRepository;
     @PostMapping("/poste/insert")
-    public String insert(@RequestBody Poste poste) {
+    public Poste insert(@RequestBody Poste poste) {
         poste.setDateInsertion(LocalDate.now());
-        posteRepository.save(poste);
-        return "{\"message\":\"inserted\"}";
+        //posteRepository.save(poste);
+        return poste;
     }
     
 }

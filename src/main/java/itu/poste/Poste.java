@@ -24,7 +24,7 @@ public class Poste {
     String titre;
 
     @Column(name="annee_experience")
-    int anneeExperince;
+    int anneeExperience;
 
     @Column(name="annee_formation")
     int anneeFormation;
@@ -101,12 +101,12 @@ public class Poste {
         this.titre = titre;
     }
 
-    public int getAnneeExperince() {
-        return anneeExperince;
+    public int getAnneeExperience() {
+        return anneeExperience;
     }
 
-    public void setAnneeExperince(int anneeExperince) {
-        this.anneeExperince = anneeExperince;
+    public void setAnneeExperience(int anneeExperince) {
+        this.anneeExperience = anneeExperince;
     }
 
     public int getAnneeFormation() {
