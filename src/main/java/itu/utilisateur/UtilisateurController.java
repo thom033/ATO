@@ -209,7 +209,8 @@ public class UtilisateurController {
             e.printStackTrace();
         }
         utilisateur.setMail((String) login.get("mail"));
-        utilisateur.setMotdepasse((String) login.get("mdp"));
+        String hashMdp = utilisateur.MD5((String) login.get("mdp"));
+        utilisateur.setMotdepasse(hashMdp);
 
         Utilisateur savedUtilisateur = utilisateurRepository.save(utilisateur);
         argUser.setIdUtilisateur(savedUtilisateur.getId());
