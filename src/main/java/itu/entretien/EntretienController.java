@@ -69,7 +69,7 @@ public class EntretienController {
 
     @GetMapping("/admin/entretien/valider/{idEntretien}")
     public String valider(@PathVariable("idEntretien") String idEntretien) {
-        Entretien entretien = entretienRepository.getById(Long.valueOf(idEntretien));
+        Entretien entretien = entretienRepository.findById(Long.valueOf(idEntretien)).get();
         entretien.setReussite(true);
         entretienRepository.save(entretien);
 

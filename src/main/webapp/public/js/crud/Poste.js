@@ -62,8 +62,16 @@ PosteApp.controller('tableController', function($scope, $http) {
             $scope.initialize();
             alert("Inserted");
         }, function(error) {
-            console.log(error);
-            $scope.initialize();
+            var message = error.data.message;
+            if (message != "") {
+                Swal.fire({
+                    title: 'Problème lors de la génération des données',
+                    text: message,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+            //$scope.initialize();
         });
     };
 });

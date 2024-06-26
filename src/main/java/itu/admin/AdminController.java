@@ -45,8 +45,7 @@ public class AdminController {
             admin = recherche.get(0);
             httpSession.setAttribute("administrateur", admin);
 
-            mv.addObject("administrateur", admin);
-            mv.addObject("page", "redirect:/admin/dashboard");
+            mv.setViewName("redirect:/admin/dashboard");
             return mv;
         } else {
             ModelAndView mv = new ModelAndView("/admin/index");

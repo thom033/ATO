@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="../../../../public/bootstrap/css/input.css">
 <link rel="stylesheet" href="../../../../public/bootstrap/css/stylesRecherche.css">
-<link rel="stylesheet" href="../../../../public/leaflet/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
 <style>
   .form{
     border-radius: 5%;
@@ -180,5 +180,5 @@
   </div>
 </div>
 <script src="../../../../public/js/input.js"></script>
-<script src="../../../../public/leaflet/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="../../../../public/js/crud/Entreprise.js"></script>

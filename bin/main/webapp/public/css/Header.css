@@ -1,4 +1,9 @@
-.nav-item :hover{
-    transform: scale(1.2);
+.nav-item {
+    transition: 0.3s;
+}
+
+.nav-item:hover{
+    transform: scale(1.05);
     text-shadow: 0.6px 0.6px grey;
+    transition: 0.3s;
 }

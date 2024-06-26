@@ -47,17 +47,19 @@
 <div class="container" ng-app="UtilisateurApp" ng-controller="parametreController" style="font-family:Helvetica;display: flex;justify-content: center;margin-top: 5%;">
     <div class="row">
         <div class="col-md-5">
-            <div class="row">
-                <button type="button" id="button-prev" onclick="next(0)" class="button">Information personnelles</button>
+            <h1><strong>Paramètres</strong></h1>
+            <p class="pStatistique">Configurer votre compte à votre guise</p>
+            <div class="row col-md-8 mb-3">
+                <button type="button" id="button-prev" onclick="next(0)" class="btn btn-light">Information personnelles</button>
             </div>
-            <div class="row">
-                <button type="button" id="button-prev" onclick="next(1)" class="button">Joignabilité</button>
+            <div class="row col-md-8 mb-3">
+                <button type="button" id="button-prev" onclick="next(1)" class="btn btn-light">Joignabilité</button>
             </div>
-            <div class="row">
-                <button type="button" id="button-prev" onclick="next(2)" class="button">Proffessionalité</button>
+            <div class="row col-md-8 mb-3">
+                <button type="button" id="button-prev" onclick="next(2)" class="btn btn-light">Proffessionalité</button>
             </div>
-            <div class="row">
-                <button type="button" id="button-next" onclick="next(3)" class="button">Confidentialité</button>
+            <div class="row col-md-8 mb-3">
+                <button type="button" id="button-prev" onclick="next(3)" class="btn btn-light">Confidentialité</button>
             </div>
         </div>
         <div class="col-md-7">

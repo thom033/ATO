@@ -25,10 +25,11 @@
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
-                            <img class="avatar" src="/public/img/avatars/<%= postedetails.getPosteImage() %>" alt="">
+                            <img class="avatar" id="avatar" style="object-fit: cover" src="/public/img/uploaded/<%= user.getId() %>.jpg" alt="" onerror="this.onerror=null; this.src='/public/img/uploaded/avatar.png';">
                         </div>
                     </div>
                 </div>
+
                 <div class="contact">
                     <div class="info-perso">
                         <div class="svg">
