@@ -141,9 +141,9 @@ VALUES
 -- Donnees pour la table administrateur
 INSERT INTO administrateur (mail, mot_de_passe)
 VALUES
-('admin@example.com', 'adminpass'),
-('admin2@example.com', 'adminpass2'),
-('admin3@example.com', 'adminpass3');
+('admin@example.com', MD5('adminpass')),
+('admin2@example.com', MD5('adminpass2')),
+('admin3@example.com', MD5('adminpass3'));
 
 -- Donnees pour la table Notification
 INSERT INTO Notification (message, date_notification, date_lu, id_utilisateur,id_poste, point, id_entretien)

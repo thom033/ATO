@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import itu.faq.QuestionRepository;
+import itu.utilisateur.Utilisateur;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -33,8 +34,10 @@ public class AdminController {
     public ModelAndView login(@RequestParam HashMap<String, Object> login) {
         Admin admin = new Admin();
         admin.setMail((String) login.get("mail"));
-        admin.setMotDePasse((String) login.get("mdp"));
-
+        Utilisateur u = new Utilisateur();
+        String hashMdp = u.MD5((String) login.get("mdp"));
+        admin.setMotDePasse(hashMdp);
+        
         List<Admin> recherche = adminRepository.getAdmin(admin.getMail(),
                 admin.getMotDePasse());
         boolean validite = recherche.size() == 1;
