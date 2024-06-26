@@ -11,7 +11,7 @@
     </section>
     <div class="notification-container" ng-app="frontApp" ng-controller="entretienController" >
             <p ng-if="entretiens.length == 0">404 aucune notification</p>
-            <div ng-repeat="entretien in entretiens" class="notification-item row align-items-center" style="padding-top: 20px;">
+            <div ng-repeat="entretien in entretiens | orderBy:'-dateEnvoi'" class="notification-item row align-items-center" style="padding-top: 20px;">
                 <div class="col-1 text-center pl">
                     <a href="" ng-click="valider(entretien.id)"><span class="notification-icon download" style="margin-left: 40px;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
                     <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>

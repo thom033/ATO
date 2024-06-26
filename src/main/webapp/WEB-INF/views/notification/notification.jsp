@@ -23,7 +23,7 @@
 </section>
 <div class="notification-container" >
     <p ng-if="notifications.length == 0">404 aucune notification</p>
-    <div ng-repeat="notif in notifications" class="notification-item row align-items-center" style="padding-top: 20px;">
+    <div ng-repeat="notif in notifications | orderBy:'-dateNotification'" class="notification-item row align-items-center" style="padding-top: 20px;">
         <div class="col-1 text-center pl">
             <a href="/notification/delete/{{ notif.id }}"><span class="notification-icon download" style="margin-left: 40px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
