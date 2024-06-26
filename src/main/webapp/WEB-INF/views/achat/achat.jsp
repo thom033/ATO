@@ -226,7 +226,7 @@
             var quantite = parseInt(inputQuantite.value) || 0; // Assurez-vous que la valeur est un nombre, sinon, utilisez 0
 
             // Mettre à jour la valeur actuelle
-            var valeurActuelle = quantite * 5000; // Calculer la valeur actuelle en fonction de la quantite
+            var valeurActuelle = quantite * <%= prix %>; // Calculer la valeur actuelle en fonction de la quantite
             solde.innerHTML = valeurActuelle + " Ar";
         }
 
