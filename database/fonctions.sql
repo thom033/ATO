@@ -353,22 +353,22 @@ DECLARE
 BEGIN
     -- Vérifier l'âge de l'utilisateur
     IF check_age(user_id, poste_id) != TRUE THEN
-        status := array_append(status, 'Age: NOT OK');
+        status := array_append(status, 'Vous n''avez pas l''age requis pour ce poste');
     END IF;
 
     -- Vérifier l'expérience de l'utilisateur
     IF check_experience(user_id, poste_id) != TRUE THEN
-        status := array_append(status, 'Experience: NOT OK');
+        status := array_append(status, 'Vous n''avez pas l''experience requise pour ce poste');
     END IF;
 
     -- Vérifier la formation de l'utilisateur
     IF check_formation(user_id, poste_id) != TRUE THEN
-        status := array_append(status, 'Formation:NOT OK');
+        status := array_append(status, 'Vous n''avez suivi aucune formation pour ce poste');
     END IF;
 
     -- Vérifier le diplôme de l'utilisateur
     IF check_diplome(user_id, poste_id) != TRUE THEN
-        status := array_append(status, 'Diplome:NOT OK');
+        status := array_append(status, 'Vous n''avez pas le diplome requis pour ce poste');
     END IF;
 
     -- Calculer la distance entre l'utilisateur et le poste
@@ -378,7 +378,7 @@ BEGIN
     IF distance > 0 THEN
         distance_points := point_distance(user_id, poste_id);
         IF distance_points = 50 THEN
-            status := array_append(status, 'Distance: NOT OK');
+            status := array_append(status, 'Cet entreprise est trop loin de votre domicile');
         END IF;
     END IF;
 
@@ -452,5 +452,42 @@ BEGIN
     END IF;
 
     RETURN reponse*nbPoint;
+END;
+$$ LANGUAGE plpgsql;
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+CREATE OR REPLACE FUNCTION notify_new_price() RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM calculate_compatibility(NEW.id_poste);
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER after_insert_new_price
+AFTER INSERT ON prix_point
+FOR EACH ROW
+EXECUTE PROCEDURE notify_new_post();
+
+
+CREATE OR REPLACE FUNCTION calculate_compatibility(poste_id INT) RETURNS VOID AS $$
+DECLARE
+    user_record RECORD;
+    point_total DOUBLE PRECISION;
+BEGIN
+    FOR user_record IN SELECT id_utilisateur FROM Utilisateur LOOP
+        point_total := get_point_total(user_record.id_utilisateur, poste_id);
+        IF point_total > 80 THEN
+            PERFORM insert_notification(user_record.id_utilisateur, poste_id, point_total);
+        END IF;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION insert_notification(user_id INT, poste_id INT, point_total DOUBLE PRECISION) RETURNS VOID AS $$
+BEGIN
+    INSERT INTO notification(message,date_notification,point,id_poste,id_utilisateur,date_lu,id_entretien)
+    VALUES ('Vous avez un nouveau poste compatible a ' || point_total || '%',NOW(),FALSE,poste_id, user_id,null,null);
 END;
 $$ LANGUAGE plpgsql;

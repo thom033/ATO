@@ -160,6 +160,7 @@ public class RechercheController {
         StringBuilder sql = new StringBuilder("SELECT * FROM postes_details WHERE 1=1");
         List<Object> paramsList = new ArrayList<>();
     
+        
         if (title != null && !title.isEmpty()) {
             sql.append(" AND poste_titre LIKE ?");
             paramsList.add("%" + title + "%");

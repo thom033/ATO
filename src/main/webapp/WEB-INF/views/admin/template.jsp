@@ -152,6 +152,7 @@
     <script src="/public/bootstrap/js/bootstrap.min.js"></script>
     <script src="/public/js/bs-init.js"></script>
     <script src="/public/js/bold-and-bright.js"></script>
+    <script src="/public/js/sweetalert2.js"></script>
 </body>
 
 </html>
