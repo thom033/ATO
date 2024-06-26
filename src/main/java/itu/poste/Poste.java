@@ -105,7 +105,7 @@ public class Poste {
         return anneeExperience;
     }
 
-    public void setAnneeExperience(int anneeExperince) {
+    public void setAnneeExperience(int anneeExperince)throws Exception {
         this.anneeExperience = anneeExperince;
     }
 
@@ -121,7 +121,10 @@ public class Poste {
         return ageMin;
     }
 
-    public void setAgeMin(int ageMin) {
+    public void setAgeMin(int ageMin)throws Exception {
+        if(ageMin<18){
+            throw new Exception("l'age minimum requies est au moins 18 ans");
+        }
         this.ageMin = ageMin;
     }
 

@@ -30,9 +30,12 @@ VALUES
 -- Données pour la table Entreprise
 INSERT INTO Entreprise (entreprise, point, type, date_creation, adresse, site_web, mail, latitude, longitude, image)
 VALUES
-('TechCorp', 300, 'Technologie', '2000-01-01', '12 Rue Tech, Paris', 'https://techcorp.com', 'contact@techcorp.com', 48.8566, 2.3522, 'techcorp.jpg'),
-('FinanceInc', 150, 'Finance', '1995-05-15', '34 Rue Finance, Lyon', 'https://financeinc.com', 'info@financeinc.com', 45.7640, 4.8357, 'financeinc.jpg'),
-('MarketLLC', 200, 'Marketing', '2010-09-10', '56 Rue Market, Marseille', 'https://marketllc.com', 'contact@marketllc.com', 43.2965, 5.3698, 'marketllc.jpg');
+('BOA Andoharanofotsy', 300, 'Finance', '2000-01-01', 'Lot BBC 23 ter', 'https://boa.com', 'boa@gmail.com', -18.979506860078367, 47.5327813117361, 'techcorp.jpg'),
+('FinanceInc', 150, 'Finance', '1995-05-15', 'Lot IVC 163 ter', 'https://financeinc.com', 'financeinc@gmail.com', -18.913137106601667, 47.52198580938375, 'financeinc.jpg'),
+('MarketLLC', 200, 'Marketing', '2010-09-10', 'Lot IAB 102', 'https://marketllc.com', 'marketLLC@gmail.com', -18.92777010586248, 47.511835314089666, 'marketllc.jpg'),
+('JIRAMA', 150, 'Ressources', '1995-05-15', 'Lot VA 103', 'https://JIRAMA.com', 'jirama@gmail.com', -18.913554386667897, 47.52756942559767, 'financeinc.jpg'),
+('BMOI', 200, 'Finance', '2010-09-10', 'Lot IVB 86', 'https://BMOI.com', 'BMOI@gmail.com', -18.910393031943872, 47.52576769876588, 'BMOI.jpg'),
+('MCB', 150, 'Finance', '1995-05-15', 'Lot VAV 123', 'https://MCB.com', 'MCB@gmail.com', -18.90888374964051, 47.522531636346870, 'MCB.jpg'),
 
 -- Données pour la table poste
 INSERT INTO poste (description, date_insertion, salaire, titre, annee_experience, annee_formation, age_min, age_max, image, id_diplome, id_entreprise,cout, disponibilite)
