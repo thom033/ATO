@@ -25,7 +25,7 @@
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
-                            <img class="avatar" src="/public/img/uploaded/p_<%= postedetails.getIdPoste() %>.jpg" alt="" onerror="this.onerror=null; this.src='/public/img/uploaded/travail.jpg';">
+                            <img class="avatar" style="object-fit: cover;" src="/public/img/uploaded/p_<%= postedetails.getIdPoste() %>.jpg" alt="" onerror="this.onerror=null; this.src='/public/img/uploaded/travail.jpg';">
                         </div>
                     </div>
                 </div>
