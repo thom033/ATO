@@ -34,13 +34,18 @@
                     </svg></span></a>
                 </div>
                 
-                <div class="col-8">
+                <div class="col-4">
                     <div class="notification-time"><a class="nom-boutton" href="/admin/utilisateur/profil/{{ postu.utilisateur.id }}">{{ postu.utilisateur.nom }} {{ postu.utilisateur.prenom }}</a></div>
                     <div class="nicolas-message"><a class="nom-boutton" href="/poste/details?idPoste={{ postu.poste.idPoste }}">{{ postu.poste.posteTitre }}</a></div>
                     
-                        <input type="datetime-local" class="input-date" ng-model="postulation.date" name="date"  >
+                        <%-- <input type="datetime-local" class="input-date form-control" ng-model="postulation.date" name="date"  >
                         <input type="hidden" name="id" value="{{ postu.id }}">
-                        <input type="hidden" name="idUtilisateur" value="{{ postu.utilisateur.id }}">
+                        <input type="hidden" name="idUtilisateur" value="{{ postu.utilisateur.id }}"> --%>
+                </div>
+                <div class="col-4">
+                    <input type="datetime-local" class="form-control" ng-model="postulation.date" name="date"  >
+                    <input type="hidden" name="id" value="{{ postu.id }}">
+                    <input type="hidden" name="idUtilisateur" value="{{ postu.utilisateur.id }}">
                 </div>
                 
                 <div class="col-1 text-center"></div>

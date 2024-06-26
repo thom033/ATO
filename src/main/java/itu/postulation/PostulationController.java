@@ -109,7 +109,7 @@ public class PostulationController {
         } catch (Exception e) {
             ModelAndView view = new ModelAndView("admin/template");
             view.addObject("error", "La date de l'embauche n'est pas valide");
-            view.addObject("page", "postulation/index");
+            view.addObject("page", "postulation/index.jsp");
             return view;
         }
         Utilisateur utilisateur = utilisateurRepository.getById(Long.valueOf(idUtilisateur));
