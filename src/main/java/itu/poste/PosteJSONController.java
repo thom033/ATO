@@ -14,9 +14,9 @@ public class PosteJSONController {
     @Autowired
     PosteRepository posteRepository;
     @PostMapping("/poste/insert")
-    public String insert(@RequestBody Poste poste) {
+    public String insert(@RequestBody Poste poste) throws Exception{
         poste.setDateInsertion(LocalDate.now());
-        posteRepository.save(poste);
+        //posteRepository.save(poste);
         return "{\"message\":\"inserted\"}";
     }
     
