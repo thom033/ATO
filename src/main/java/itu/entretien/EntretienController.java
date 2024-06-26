@@ -79,7 +79,9 @@ public class EntretienController {
         entretien.setReussite(true);
         entretienRepository.save(entretien);
 
-        // Entreprise entreprise = entrepriseRepository.findById(entretien.)
+        Entreprise entreprise = entrepriseRepository.findById(entretien.getPoste().getPosteEntreprise()).get();
+        entreprise.setPoint(entreprise.getPoint() + 2);
+        entrepriseRepository.save(entreprise);
 
         Notification notification = new Notification();
         notification.setEntretien(entretien);
