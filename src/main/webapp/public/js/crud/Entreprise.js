@@ -122,6 +122,8 @@ map.on('click', function(e) {
     labelLongitude.style.transform="translateY(-0.5rem) translateX(1rem)";
     longitude.style.border="1.5px solid #82b6fb";
     lattitude.style.border="1.5px solid #82b6fb";
+    longitude.value=lng;
+    lattitude.value=lat;
     $scope.entreprise.latitude=lat;
     $scope.entreprise.longitude=lng;
 });

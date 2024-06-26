@@ -5,6 +5,7 @@ UtilisateurApp.controller('parametreController', function($scope, $http) {
     $http.get("/utilisateur/parametre/modify?idUtilisateur=1")
     .then(function(response) {
         $scope.utilisateur = response.data.utilisateur;
+        $scope.utilisateur.motdepasse="";
         $scope.initMap();
         console.log($scope.utilisateur);
     });

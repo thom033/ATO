@@ -122,10 +122,8 @@ map.on('click', function(e) {
     labelLongitude.style.transform="translateY(-0.5rem) translateX(1rem)";
     longitude.style.border="1.5px solid #82b6fb";
     lattitude.style.border="1.5px solid #82b6fb";
-    lngValue=""+lng;
-    latValue=""+lat;
-    longitude.value=lngValue.replace(/,/g,'.');
-    lattitude.value=latValue.replace(/,/g,'.');
+    longitude.value=lng;
+    lattitude.value=lat;
     $scope.entreprise.latitude=lat;
     $scope.entreprise.longitude=lng;
 });
@@ -140,10 +138,8 @@ map.on('click', function(e) {
             adresse: $scope.entreprise.adresse,
             siteWeb: $scope.entreprise.siteWeb,
             latitude: $scope.entreprise.latitude,
-            image: "",
             longitude: $scope.entreprise.longitude
         };
-        console.log(entreprise.id);
         console.log("Sending data:", JSON.stringify(entreprise)); // Afficher le JSON dans la console
         $http.post('/entreprise/update', entreprise)
         .then(function(response) {

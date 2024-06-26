@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="itu.achat.NombrePromotion"%>
 <%
     int type = (int) request.getAttribute("type");
     Double prix = (Double) request.getAttribute("prix");
+    NombrePromotion nbr = (NombrePromotion) request.getAttribute("promotion");
+
 %>
 
 <head>
@@ -103,7 +106,7 @@
                                                         <div class="element">
                                                             <div class="row">
                                                                 <div class="col-md-9">
-                                                                    <p class="point">5 pts</p>
+                                                                    <p class="point"><%= nbr.getNombrePromotion1() %> pts</p>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <form action="/utilisateur/achat" method="get">
@@ -119,7 +122,7 @@
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            <p class="montant"><%= (prix-((prix * 4)/100))*5 %> Ar</p>
+                                                            <p class="montant"><%= (prix-((prix * nbr.getPourcentage1())/100))*nbr.getNombrePromotion1() %> Ar</p>
                                                         </div>
                                                         <hr>
                                                         <div class="desc">
@@ -128,7 +131,7 @@
                                                                     <p class="description">soit</p>
                                                                 </div>
                                                                 <div class="col-md-8">
-                                                                    <p class="description">1 point : <%= (prix-((prix * 4)/100)) %> Ar</p>
+                                                                    <p class="description">1 point : <%= (prix-((prix * nbr.getPourcentage1())/100)) %> Ar</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -159,7 +162,7 @@
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            <p class="montant"><%= (prix-((prix * 8)/100))*10 %> Ar</p>
+                                                            <p class="montant"><%= (prix-((prix * nbr.getPourcentage2())/100))*nbr.getNombrePromotion2() %> Ar</p>
                                                         </div>
                                                         <hr>
                                                         <div class="desc">
@@ -168,7 +171,7 @@
                                                                     <p class="description">soit</p>
                                                                 </div>
                                                                 <div class="col-md-8">
-                                                                    <p class="description">1 point : <%= (prix-((prix * 8)/100)) %> Ar</p>
+                                                                    <p class="description">1 point : <%= (prix-((prix * nbr.getPourcentage2())/100)) %> Ar</p>
                                                                 </div>
                                                             </div>
                                                         </div>

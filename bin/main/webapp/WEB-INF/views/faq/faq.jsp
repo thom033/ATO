@@ -93,7 +93,7 @@
                                     <img src="/public/img/avatars/{{ fanontaniana.utilisateur.photo }}" alt="Avatar">
                                 </span>
                                 <div class="message-content">
-                                    <p>Jin Kazama</p>
+                                    <p>{{ fanontaniana.utilisateur.nom }} {{ fanontaniana.utilisateur.prenom }} </p>
                                     <h4>{{ fanontaniana.question.question }}</h4>
                                 </div>
                             </div>

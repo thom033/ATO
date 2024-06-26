@@ -43,9 +43,7 @@
                     <div class="row">
                         <p style="font-size: 150%; color: gray;">Nom de l'entreprise : <%= poste.getEntrepriseNom() %></p>
                     </div>
-                    <div class="row">
-                        <button style="width: 15%; margin-left: 1.75%" class="btn btn-outline-dark" type="button"><a href="/poste/details?idPoste=<%= poste.getIdPoste() %>">Voir le travail</a></button>
-                    </div>
+                    <button style="margin-left: 1.75%" class="btn btn-outline-dark" type="button"><a href="/poste/details?idPoste=<%= poste.getIdPoste() %>">Voir le travail</a></button>
                 </div>
             </div>
         </div>

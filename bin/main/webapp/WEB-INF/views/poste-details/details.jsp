@@ -25,10 +25,11 @@
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
-                            <img class="avatar" src="/public/img/avatars/<%= postedetails.getPosteImage() %>" alt="">
+                            <img onclick="" id="avatar" class="avatar" src="/public/img/avatars/<%= postedetails.getPosteImage() %>" alt="">
                         </div>
                     </div>
                 </div>
+
                 <div class="contact">
                     <div class="info-perso">
                         <div class="svg">

@@ -24,18 +24,23 @@ public class AchatController {
 
     @Autowired
     private ArgentRepository argentRepository; 
+
+    @Autowired
+    private NombrePromotionRepository nombrePromotionRepository; 
     
     @GetMapping("/achat")
     public ModelAndView getPageAchat(@RequestParam(name = "type", required = false, defaultValue = "0") int type,
     @RequestParam(name = "error", required = false) String error) {
         ModelAndView mv = new ModelAndView("template");
         Double prix_point = argentRepository.getPrixPoint();
+        NombrePromotion nbr = nombrePromotionRepository.getPromotionActuel();
         mv.addObject("type", type);
         if (error != null) {
             mv.addObject("error", error);
         }
         mv.addObject("page", "achat/achat");
         mv.addObject("prix", prix_point);
+        mv.addObject("promotion", nbr);
 
         return mv;
     }
