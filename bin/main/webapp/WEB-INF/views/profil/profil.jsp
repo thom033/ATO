@@ -38,14 +38,17 @@
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
-                            <img class="avatar" src="/public/img/uploaded/<%= user.getId() %>.jpg" alt="" onerror="this.onerror=null; this.src='/public/img/uploaded/avatar.png';">
+                            <a class="nav-link active" data-bs-toggle="offcanvas" href="#offcanvasEntretien" role="button" aria-controls="offcanvasExample" style="font-family: 'Space Grotesk';">
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <img class="avatar" id="avatar" src="/public/img/uploaded/<%= user.getId() %>.jpg" alt="" onerror="this.onerror=null; this.src='/public/img/uploaded/avatar.png';">
+                            </a>
                         </div>
-                        
-                        <form id="uploadForm" enctype="multipart/form-data">
-                            <input type="file" id="fileInput" name="file" accept="image/*">
-                            <button type="button" onclick="uploadImage()">Upload</button>
-                        </form>
                     </div>
+                </div>
+
+                <!-- Vertically centered modal -->
+                <div class="modal-dialog modal-dialog-centered">
+                    
                 </div>
                 <div class="contact">
                     <div class="info-perso">
@@ -71,8 +74,8 @@
                 </div>
                     <p><%= user.getDescription() %></p>
                 <div class="button-info">
-                    <div class="my-2"><a href="/utilisateur/parametre" style="background-color: #fff; border-color: #000; color: #000;" class="btn btn-primary shadow" type="submit">Compléter vos informations</a></div>
-                    <div class="my-2" ><form action="/utilisateur/deconnexion"><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow" type="submit">Deconnexion</button></form></div>
+                    <div class="my-2"><a href="/utilisateur/parametre" style="background-color: #fff; border-color: #000; color: #000;" class="btn btn-primary shadow btn-full" type="submit">Compléter vos informations</a></div>
+                    <div class="my-2" ><form action="/utilisateur/deconnexion"><button style="background-color: #79A3C1; border-color: #79A3C1; " class="btn btn-primary shadow btn-full" type="submit">Deconnexion</button></form></div>
                 </div>
                 </div>
             </div>
@@ -330,6 +333,25 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Changer de photo de profil</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <input type="file" id="fileInput" name="file" accept="image/*">
+                <button type="button" class="btn btn-primary" onclick="uploadImage()">Upload</button>
+            </form>
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
     <script src="/public/bootstrap/js/pikaday.min.js"></script>
     <script src="/public/bootstrap/js/theme.js"></script>
     <script src="/public/js/upload.js"></script>

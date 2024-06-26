@@ -201,7 +201,7 @@ frontApp.controller("postulationController", function($scope, $http) {
                 confirmButtonText: 'OK'
             });
         }, function(error) {
-            message = "Vous n'avez pas assez de point";
+            message = error.data.message;
             Swal.fire({
                 title: 'Problème lors de la postulation',
                 text: message,
