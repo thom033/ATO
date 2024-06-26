@@ -25,7 +25,7 @@
                 <div class="profile">
                     <div class="container">
                         <div class="div_avatar">
-                            <img onclick="" id="avatar" class="avatar" src="/public/img/avatars/<%= postedetails.getPosteImage() %>" alt="">
+                            <img class="avatar" src="/public/img/uploaded/p_<%= postedetails.getIdPoste() %>.jpg" alt="" onerror="this.onerror=null; this.src='/public/img/uploaded/travail.jpg';">
                         </div>
                     </div>
                 </div>
