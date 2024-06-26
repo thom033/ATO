@@ -371,6 +371,8 @@ insert into prix_point(prix,date_changement) values(15000,'2023-06-01');
 insert into prix_point(prix,date_changement) values(7000,'2023-11-01');
 insert into prix_point(prix,date_changement) values(7500,'2024-04-01');
 
+insert into prix_point(prix,date_changement) values(8000,'2024-06-01');
+
 -- CREATE TABLE entretien(
 --    id_entretien SERIAL,
 --    date_envoi TIMESTAMP DEFAULT CURRENT_DATE,

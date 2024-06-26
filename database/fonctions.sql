@@ -460,34 +460,43 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION notify_new_price() RETURNS TRIGGER AS $$
 BEGIN
-    PERFORM calculate_compatibility(NEW.id_poste);
+    -- Adjusted to handle NEW.prix as numeric(10,2)
+    RAISE NOTICE 'notify_new_price triggered with new price: %', NEW.prix::numeric(10,2);
+    PERFORM parcours_utilisateur(NEW.prix::numeric(10,2));
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER after_insert_new_price
+CREATE TRIGGER trigger_notify_new_price
 AFTER INSERT ON prix_point
 FOR EACH ROW
-EXECUTE PROCEDURE notify_new_post();
+EXECUTE PROCEDURE notify_new_price();
 
-
-CREATE OR REPLACE FUNCTION calculate_compatibility(poste_id INT) RETURNS VOID AS $$
+CREATE OR REPLACE FUNCTION parcours_utilisateur(prix numeric(10,2)) RETURNS VOID AS $$
 DECLARE
     user_record RECORD;
-    point_total DOUBLE PRECISION;
 BEGIN
+    -- Adjusted to handle prix as numeric(10,2)
+    RAISE NOTICE 'parcours_utilisateur called with price: %', prix;
     FOR user_record IN SELECT id_utilisateur FROM Utilisateur LOOP
-        point_total := get_point_total(user_record.id_utilisateur, poste_id);
-        IF point_total > 80 THEN
-            PERFORM insert_notification(user_record.id_utilisateur, poste_id, point_total);
-        END IF;
+        RAISE NOTICE 'Processing user: % with price: %', user_record.id_utilisateur, prix;
+        PERFORM insert_notification_price(user_record.id_utilisateur, prix);
     END LOOP;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION insert_notification(user_id INT, poste_id INT, point_total DOUBLE PRECISION) RETURNS VOID AS $$
+CREATE OR REPLACE FUNCTION insert_notification_price(user_id INT, prix numeric(10,2)) RETURNS VOID AS $$
 BEGIN
-    INSERT INTO notification(message,date_notification,point,id_poste,id_utilisateur,date_lu,id_entretien)
-    VALUES ('Vous avez un nouveau poste compatible a ' || point_total || '%',NOW(),FALSE,poste_id, user_id,null,null);
+    -- Adjusted to handle prix as numeric(10,2)
+    RAISE NOTICE 'insert_notification_price called for user: % with price: %', user_id, prix;
+    INSERT INTO notification(message,date_notification,id_utilisateur)
+    VALUES ('Nouveaux Prix des points ' || prix::text,NOW(),user_id);
 END;
 $$ LANGUAGE plpgsql;
+
+create table prix_point(
+   id_prix_point serial,
+   prix numeric(10,2),
+   date_changement date,
+   PRIMARY KEY(id_prix_point)
+);
