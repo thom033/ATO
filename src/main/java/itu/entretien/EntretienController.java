@@ -25,6 +25,9 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.TextAlignment;
 
+import itu.entreprise.Entreprise;
+import itu.entreprise.EntrepriseController;
+import itu.entreprise.EntrepriseRepository;
 import itu.notification.Notification;
 import itu.notification.NotificationRepository;
 import itu.utilisateur.Utilisateur;
@@ -41,6 +44,9 @@ public class EntretienController {
 
     @Autowired
     NotificationRepository notificationRepository;
+
+    @Autowired
+    EntrepriseRepository entrepriseRepository;
 
     @GetMapping("/admin/entretien/liste")
     public ModelAndView listerEntretien() {
@@ -72,6 +78,8 @@ public class EntretienController {
         Entretien entretien = entretienRepository.findById(Long.valueOf(idEntretien)).get();
         entretien.setReussite(true);
         entretienRepository.save(entretien);
+
+        // Entreprise entreprise = entrepriseRepository.findById(entretien.)
 
         Notification notification = new Notification();
         notification.setEntretien(entretien);
