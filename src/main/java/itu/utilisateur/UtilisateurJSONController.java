@@ -44,6 +44,12 @@ public class UtilisateurJSONController {
 
     @PostMapping("/utilisateur/update")
     public HashMap<String,String> update(@RequestBody Utilisateur utilisateur,HttpSession session) {
+        String mdp = utilisateur.getMotdepasse();
+        String hashdp = utilisateur.MD5(mdp);
+        utilisateur.setMotdepasse(hashdp);
+        if (utilisateur.getMotdepasse().equals("")) {
+            utilisateur.setMotdepasse(null);   
+        }
         this.utilisateurRepository.save(utilisateur);
         session.setAttribute("utilisateur", utilisateur);
         HashMap<String,String> valiny=new HashMap<String,String>();
