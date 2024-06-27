@@ -12,6 +12,7 @@ import ch.qos.logback.classic.pattern.Util;
 
 import org.springframework.data.domain.Page;
 
+import itu.admin.Admin;
 import itu.utilisateur.Utilisateur;
 import itu.utilisateur.UtilisateurRepository;
 import jakarta.servlet.http.HttpSession;
@@ -68,6 +69,12 @@ public class ResultAcceuilController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "8") int size) {
         ModelAndView mv = new ModelAndView("admin/template");
+        Admin admin = (Admin) session.getAttribute("administrateur");
+        if (admin == null) {
+            mv.setViewName("redirect:/admin/index");
+            return mv;
+        }
+
         Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
         if (utilisateur == null) {
             utilisateur = utilisateurRepository.findById(Long.valueOf(1)).get();

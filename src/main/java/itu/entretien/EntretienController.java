@@ -25,6 +25,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.TextAlignment;
 
+import itu.admin.Admin;
 import itu.entreprise.Entreprise;
 import itu.entreprise.EntrepriseController;
 import itu.entreprise.EntrepriseRepository;
@@ -49,8 +50,14 @@ public class EntretienController {
     EntrepriseRepository entrepriseRepository;
 
     @GetMapping("/admin/entretien/liste")
-    public ModelAndView listerEntretien() {
+    public ModelAndView listerEntretien(HttpSession session) {
         ModelAndView mv = new ModelAndView("admin/template");
+        Admin admin = (Admin) session.getAttribute("administrateur");
+        if (admin == null) {
+            mv.setViewName("redirect:/admin/index");
+            return mv;
+        }
+
         mv.addObject("page", "entretien/entretienEnCours.jsp");
 
         return mv;

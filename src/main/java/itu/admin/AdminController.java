@@ -30,6 +30,12 @@ public class AdminController {
         return "admin/index";
     }
 
+    @GetMapping("/admin/deconnexion")
+    public String deconnexion(HttpSession httpSession) {
+        httpSession.removeAttribute("utilisateur");
+        return "redirect:/admin/index";
+    }
+
     @PostMapping("/admin/login")
     public ModelAndView login(@RequestParam HashMap<String, Object> login) {
         Admin admin = new Admin();
@@ -37,7 +43,7 @@ public class AdminController {
         Utilisateur u = new Utilisateur();
         String hashMdp = u.MD5((String) login.get("mdp"));
         admin.setMotDePasse(hashMdp);
-        
+
         List<Admin> recherche = adminRepository.getAdmin(admin.getMail(),
                 admin.getMotDePasse());
         boolean validite = recherche.size() == 1;

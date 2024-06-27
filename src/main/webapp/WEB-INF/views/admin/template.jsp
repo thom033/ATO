@@ -34,7 +34,7 @@
                     if (session.getAttribute("administrateur") == null) { %>
                         <a class="navbar-brand d-flex align-items-center" href="/login"><span style="font-size: small;">Login</span></a>
                     <% } else { %>
-                        <a href="/utilisateur/deconnexion" class="logout-button navbar-brand d-flex align-items-center">
+                        <a href="/admin/deconnexion" class="logout-button navbar-brand d-flex align-items-center">
                             Deconnexion
                         </a>
                     <% } %>
