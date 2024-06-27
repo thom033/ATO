@@ -18,8 +18,8 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <button class="btn btn-dark me-2" type="button">Best Point</button>
-            <button class="btn btn-light" type="button">compatibilite</button>
+            <%-- <button class="btn btn-dark me-2" type="button">Best Point</button>
+            <button class="btn btn-light" type="button">compatibilite</button> --%>
         </div>
     </div>
 </section>
