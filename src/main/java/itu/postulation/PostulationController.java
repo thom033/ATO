@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import itu.admin.Admin;
 import itu.compatibilite.PosteDetails;
 import itu.compatibilite.PosteDetailsRepository;
 import itu.compatibilite.PosteDetailsService;
@@ -85,8 +86,14 @@ public class PostulationController {
     }
 
     @GetMapping("/admin/postulation")
-    public ModelAndView getMethodName() {
+    public ModelAndView getMethodName(HttpSession session) {
         ModelAndView mv = new ModelAndView("admin/template");
+        Admin admin = (Admin) session.getAttribute("administrateur");
+        if (admin == null) {
+            mv.setViewName("redirect:/admin/index");
+            return mv;
+        }
+
         mv.addObject("page", "postulation/index.jsp");
         return mv;
     }
