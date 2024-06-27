@@ -61,7 +61,7 @@ public class AchatController {
 
             if (reduction != null && !reduction.isEmpty()) {
                 if (quantite == nbr.getNombrePromotion1()) {
-                    montantTotal = (prix_point-((prix_point * nbr.getNombrePromotion1())/100))*nbr.getNombrePromotion1();
+                    montantTotal = (prix_point-((prix_point * nbr.getPourcentage1())/100))*nbr.getNombrePromotion1();
                 } else {
                     montantTotal = (prix_point-((prix_point * nbr.getPourcentage2())/100))*nbr.getNombrePromotion2();
                 }
