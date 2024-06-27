@@ -384,3 +384,6 @@ insert into prix_point(prix,date_changement) values(8000,'2024-06-01');
 --    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur),
 --    FOREIGN KEY(id_poste) REFERENCES poste(id_poste)
 -- );
+
+insert into nombre_promotion(nombre_promotion1,pourcentage1,nombre_promotion2,pourcentage2,date_changement) values(4,8,10,9,'2023-01-01');
+insert into nombre_promotion(nombre_promotion1,pourcentage1,nombre_promotion2,pourcentage2,date_changement) values(5,10.35,10,20.66,'2023-05-01');
