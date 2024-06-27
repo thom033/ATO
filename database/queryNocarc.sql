@@ -28,6 +28,53 @@ VALUES
 ('FinanceInc', 150, 'Finance', '1995-05-15', '34 Rue Finance, Lyon', 'https://financeinc.com', 'info@financeinc.com', 45.7640, 4.8357, 'financeinc.jpg'),
 ('MarketLLC', 200, 'Marketing', '2010-09-10', '56 Rue Market, Marseille', 'https://marketllc.com', 'contact@marketllc.com', 43.2965, 5.3698, 'marketllc.jpg');
 
+INSERT INTO poste (description, date_insertion, salaire, titre, annee_experience, annee_formation, age_min, age_max, image, id_diplome, id_entreprise, cout, disponibilite)
+VALUES
+('Consultation en gestion', '2024-04-12', 55000, 'Consultant en Gestion', 5, 7, 32, 42, 'poste9.jpg', 3, 3, 4, FALSE),
+('Conception graphique', '2024-04-12', 41000, 'Graphiste', 3, 5, 25, 35, 'poste10.jpg', 2, 1, 2, FALSE),
+('Analyse de donnees', '2024-04-12', 46000, 'Analyste de Donnees', 4, 6, 28, 38, 'poste11.jpg', 3, 2, 3, FALSE),
+('Gestion des ressources humaines', '2024-04-12', 50000, 'Responsable RH', 5, 7, 30, 40, 'poste12.jpg', 2, 3, 4, FALSE),
+('Enseignement informatique', '2024-04-12', 38000, 'Formateur Informatique', 2, 4, 26, 36, 'poste13.jpg', 1, 1, 2, FALSE),
+('Developpement mobile', '2024-04-12', 43000, 'Developpeur Mobile', 3, 5, 25, 35, 'poste14.jpg', 2, 2, 3, FALSE),
+('Gestion des operations', '2024-04-12', 51000, 'Manager Operations', 5, 7, 32, 42, 'poste15.jpg', 3, 3, 4, FALSE),
+('Redaction de contenu', '2024-04-12', 36000, 'Redacteur de Contenu', 2, 4, 24, 34, 'poste16.jpg', 1, 1, 2, FALSE),
+('Consultation en finance', '2024-04-12', 57000, 'Consultant Finance', 6, 8, 34, 44, 'poste17.jpg', 3, 2, 5, FALSE),
+('Developpement de jeux video', '2024-04-12', 42000, 'Developpeur Jeux', 3, 5, 27, 37, 'poste18.jpg', 2, 3, 3, FALSE),
+('Marketing digital', '2024-04-12', 45000, 'Specialiste Marketing', 4, 6, 28, 38, 'poste19.jpg', 3, 1, 3, FALSE),
+('Analyse de securite', '2024-04-12', 49000, 'Analyste Securite', 5, 7, 31, 41, 'poste20.jpg', 2, 2, 4, FALSE),
+('Gestion des ventes', '2024-04-12', 52000, 'Directeur des Ventes', 6, 8, 33, 43, 'poste21.jpg', 3, 3, 5, FALSE),
+('Enseignement mathematiques', '2024-04-12', 37000, 'Professeur Maths', 2, 4, 26, 36, 'poste22.jpg', 1, 1, 2, FALSE),
+('Consultation en IT', '2024-04-12', 60000, 'Consultant IT', 7, 9, 35, 45, 'poste23.jpg', 3, 2, 6, FALSE),
+('Developpement frontend', '2024-04-12', 44000, 'Developpeur Frontend', 3, 5, 25, 35, 'poste24.jpg', 2, 3, 3, FALSE),
+('Gestion de produit', '2024-04-12', 54000, 'Chef de Produit', 5, 7, 30, 40, 'poste25.jpg', 3, 1, 4, FALSE),
+('Support aux utilisateurs', '2024-04-12', 35000, 'Technicien Support', 1, 3, 22, 32, 'poste26.jpg', 2, 1, 2, FALSE),
+('Redaction web', '2024-04-12', 36000, 'Redacteur Web', 2, 4, 24, 34, 'poste27.jpg', 1, 2, 2, FALSE),
+('Consultation strategique', '2024-04-12', 59000, 'Consultant Strategie', 6, 8, 34, 44, 'poste28.jpg', 3, 3, 5, FALSE),
+('Developpement backend', '2024-04-12', 46000, 'Developpeur Backend', 4, 6, 28, 38, 'poste29.jpg', 2, 2, 3, FALSE),
+('Gestion de la qualite', '2024-04-12', 53000, 'Manager Qualite', 5, 7, 31, 41, 'poste30.jpg', 3, 1, 4, FALSE),
+('Enseignement physique', '2024-04-12', 38000, 'Professeur Physique', 2, 4, 26, 36, 'poste31.jpg', 1, 2, 2, FALSE),
+('Consultation juridique', '2024-04-12', 61000, 'Consultant Juridique', 7, 9, 35, 45, 'poste32.jpg', 3, 1, 6, FALSE);
+
+INSERT INTO poste (description, date_insertion, salaire, titre, annee_experience, annee_formation, age_min, age_max, image, id_diplome, id_entreprise, cout, disponibilite)
+VALUES
+('Ingenierie reseau', '2024-05-12', 42000, 'Ingenieur Reseau', 3, 5, 27, 37, 'poste4.jpg', 2, 1, 4, FALSE),
+('Administration de base de donnees', '2024-05-12', 48000, 'Administrateur BD', 4, 6, 29, 39, 'poste5.jpg', 3, 2, 3, FALSE),
+('Developpement Web', '2024-05-12', 39000, 'Developpeur Web', 2, 4, 24, 34, 'poste6.jpg', 1, 3, 2, FALSE),
+('Support technique', '2024-05-12', 35000, 'Technicien Support', 1, 3, 22, 32, 'poste7.jpg', 2, 1, 3, FALSE),
+('Redaction technique', '2024-05-12', 37000, 'Redacteur Technique', 2, 4, 26, 36, 'poste8.jpg', 1, 2, 1, FALSE),
+('Consultation en gestion', '2024-05-12', 55000, 'Consultant en Gestion', 5, 7, 32, 42, 'poste9.jpg', 3, 3, 4, FALSE),
+('Conception graphique', '2024-05-12', 41000, 'Graphiste', 3, 5, 25, 35, 'poste10.jpg', 2, 1, 2, FALSE),
+('Analyse de donnees', '2024-05-12', 46000, 'Analyste de Donnees', 4, 6, 28, 38, 'poste11.jpg', 3, 2, 3, FALSE),
+('Gestion des ressources humaines', '2024-05-12', 50000, 'Responsable RH', 5, 7, 30, 40, 'poste12.jpg', 2, 3, 4, FALSE),
+('Enseignement informatique', '2024-05-12', 38000, 'Formateur Informatique', 2, 4, 26, 36, 'poste13.jpg', 1, 1, 2, FALSE),
+('Developpement mobile', '2024-05-12', 43000, 'Developpeur Mobile', 3, 5, 25, 35, 'poste14.jpg', 2, 2, 3, FALSE),
+('Gestion des operations', '2024-05-12', 51000, 'Manager Operations', 5, 7, 32, 42, 'poste15.jpg', 3, 3, 4, FALSE),
+('Redaction web', '2024-05-12', 36000, 'Redacteur Web', 2, 4, 24, 34, 'poste27.jpg', 1, 2, 2, FALSE),
+('Consultation strategique', '2024-05-12', 59000, 'Consultant Strategie', 6, 8, 34, 44, 'poste28.jpg', 3, 3, 5, FALSE),
+('Developpement backend', '2024-05-12', 46000, 'Developpeur Backend', 4, 6, 28, 38, 'poste29.jpg', 2, 2, 3, FALSE),
+('Gestion de la qualite', '2024-05-12', 53000, 'Manager Qualite', 5, 7, 31, 41, 'poste30.jpg', 3, 1, 4, FALSE),
+('Enseignement physique', '2024-05-12', 38000, 'Professeur Physique', 2, 4, 26, 36, 'poste31.jpg', 1, 2, 2, FALSE);
+
 -- Donnees pour la table poste
 INSERT INTO poste (description, date_insertion, salaire, titre, annee_experience, annee_formation, age_min, age_max, image, id_diplome, id_entreprise,cout, disponibilite)
 VALUES
@@ -253,112 +300,112 @@ insert into point_vendu(id_utilisateur,point,date) values(1,5,'2023-03-21');
 insert into point_vendu(id_utilisateur,point,date) values(3,10,'2023-02-21');
 insert into point_vendu(id_utilisateur,point,date) values(1,3,'2023-01-21');
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-06-10','2024-06-21',2,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-06-10','2024-06-21',3,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-06-10','2024-06-21',2,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-06-10','2024-06-21',3,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-06-10','2024-06-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-06-10','2024-06-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-06-10','2024-06-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-06-10','2024-06-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-05-10','2024-05-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-05-10','2024-05-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-05-10','2024-05-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-05-10','2024-05-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-04-10','2024-04-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-04-10','2024-04-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-04-10','2024-04-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-04-10','2024-04-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-04-10','2024-04-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-04-10','2024-04-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-04-10','2024-04-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-04-10','2024-04-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-03-10','2024-03-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-02-10','2024-02-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-02-10','2024-02-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-02-10','2024-02-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-02-10','2024-02-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2024-01-10','2024-01-21',1,35,TRUE);
 
 
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-12-10','2023-12-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-12-10','2023-12-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-12-10','2023-12-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-12-10','2023-12-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-12-10','2023-12-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-12-10','2023-12-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-12-10','2023-12-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-12-10','2023-12-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-12-10','2023-12-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-12-10','2023-12-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-11-10','2023-11-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-11-10','2023-11-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-11-10','2023-11-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-11-10','2023-11-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-11-10','2023-11-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-11-10','2023-11-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-11-10','2023-11-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-11-10','2023-11-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-11-10','2023-11-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-11-10','2023-11-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-10-10','2023-10-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-10-10','2023-10-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-09-10','2023-09-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-08-10','2023-08-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-07-10','2023-07-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-07-10','2023-07-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-07-10','2023-07-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-07-10','2023-07-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-07-10','2023-07-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-07-10','2023-07-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-07-10','2023-07-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-07-10','2023-07-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-06-10','2023-06-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-06-10','2023-06-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-06-10','2023-06-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-06-10','2023-06-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-06-10','2023-06-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-06-10','2023-06-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-05-10','2023-05-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-03-10','2023-03-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-03-10','2023-03-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-03-10','2023-03-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-03-10','2023-03-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-03-10','2023-03-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-03-10','2023-03-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-03-10','2023-03-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-03-10','2023-03-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-02-10','2023-02-21',1,35,TRUE);
 
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-01-10','2023-01-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-01-10','2023-01-21',1,1,TRUE);
-insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-01-10','2023-01-21',1,1,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-01-10','2023-01-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-01-10','2023-01-21',1,35,TRUE);
+insert into entretien(date_envoi,date_entretien,id_utilisateur,id_poste,reussite) VALUES('2023-01-10','2023-01-21',1,35,TRUE);
 
 select sum(point) as point,extract(month from date) as mois from point_vendu where extract(year from date)=2024 group by extract(month from date);
 

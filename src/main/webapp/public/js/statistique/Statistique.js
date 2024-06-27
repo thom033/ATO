@@ -326,6 +326,9 @@ StatistiqueApp.controller('statistiqueSecteurController', function($scope, $http
         if($scope.mois!=0){
             link+="&mois="+$scope.mois;
         }
+        else{
+            link="/secteur/statistique/annee?annee="+$scope.annee;
+        }
         console.log(link);
         $http.get(link)
         .then(function(response) {
@@ -350,7 +353,7 @@ StatistiqueApp.controller('statistiqueSecteurController', function($scope, $http
         
         var ctx = document.getElementById('myPieChart').getContext('2d');
         
-        var myPieChart = new Chart(ctx, {
+        $scope.camembert = new Chart(ctx, {
             type: 'pie',
             data: data,
             options: options
@@ -368,9 +371,9 @@ StatistiqueApp.controller('statistiqueSecteurController', function($scope, $http
     }
 
     $scope.updateCamembert=function(){
-        console.log($scope.chartPoint);
-        $scope.chartPoint.data.datasets[0].data = $scope.data;
-        $scope.chartPoint.update();
+        console.log($scope.camembert);
+        $scope.camembert.data.datasets[0].data = $scope.data;
+        $scope.camembert.update();
     }
 });
 

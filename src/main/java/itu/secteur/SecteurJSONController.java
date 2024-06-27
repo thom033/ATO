@@ -11,15 +11,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SecteurJSONController {
     @Autowired
     SecteurRepository secteurRepository;
-    
+
     @GetMapping("/secteur/liste")
     public List<Secteur> liste() {
         return secteurRepository.findAll();
     }
 
     @GetMapping("/secteur/statistique")
-    public List<StatistiqueSecteur> getStatistiqueSecteurs(@RequestParam("annee") int annee,@RequestParam("mois") int mois) {
-        return secteurRepository.getStatistiquePost(annee,mois);
+    public List<StatistiqueSecteur> getStatistiqueSecteurs(@RequestParam("annee") int annee,
+            @RequestParam("mois") int mois) {
+        return secteurRepository.getStatistiquePost(annee, mois);
     }
-    
+
+    @GetMapping("/secteur/statistique/annee")
+    public List<StatistiqueSecteur> getStatistiqueSecteurs(@RequestParam("annee") int annee) {
+        return secteurRepository.getStatistiquePost(annee);
+    }
 }
