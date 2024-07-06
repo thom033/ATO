@@ -23,12 +23,11 @@
 </section>
 <div class="notification-container" >
     <p ng-if="notifications.length == 0">404 aucune notification</p>
-    <div ng-repeat="notif in notifications" class="notification-item row align-items-center" style="padding-top: 20px;">
+    <div ng-repeat="notif in notifications | orderBy:'-dateNotification'" class="notification-item row align-items-center" style="padding-top: 20px;">
         <div class="col-1 text-center pl">
             <a href="/notification/delete/{{ notif.id }}"><span class="notification-icon download" style="margin-left: 40px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
-                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
                 </svg>
             </span></a>
         </div>

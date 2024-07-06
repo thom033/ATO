@@ -23,11 +23,11 @@
             <div class="col-md-3 fixed-top" style="margin-left: 20px;top: 30px;">
                 <div class="profile">
                     <div class="container">
-                        <div class="div_avatar">
-                            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <div class="div_avatar">
                                 <img class="avatar" style="object-fit: cover" src="/public/img/uploaded/p_<%= postedetails.getIdPoste() %>.jpg" alt="" onerror="this.onerror=null; this.src='/public/img/uploaded/travail.jpg';">
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="contact">
@@ -218,7 +218,7 @@
     
 </body>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
         <div class="modal-header">
@@ -228,17 +228,18 @@
         <div class="modal-footer">
             <form id="uploadForm" enctype="multipart/form-data">
                 <input type="file" id="fileInput" name="file" accept="image/*">
-                <button type="button" class="btn btn-primary" onclick="uploadImage()">Upload</button>
+                <button type="button" onclick="uploadImagePoste(<%= postedetails.getIdPoste()  %>)">Upload</button>
             </form>
             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
         </div>
         </div>
     </div>
-</div>
+    </div>
 <script src="/public/bootstrap/js/pikaday.min.js"></script>
 <script src="/public/bootstrap/js/theme.js"></script>
 <script src="/public/js/sweetalert2.js"></script>
 <script src="/public/js/angular.min.js"></script>
 <script src="/public/js/client/frontApp.js"></script>
 <script src="/public/js/script.js"></script>
+<script src="/public/js/upload.js"></script>
 </html>

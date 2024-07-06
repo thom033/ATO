@@ -71,8 +71,12 @@ VALUES
 INSERT INTO poste (description, date_insertion, salaire, titre, annee_experience, annee_formation, age_min, age_max, image, id_diplome, id_entreprise, cout, disponibilite)
 VALUES
 ('Gestion des operations', CURRENT_DATE, 51000, 'Manager Operations', 5, 7, 32, 42, 'poste15.jpg', 3, 3, 4, FALSE);
-
-
+-- 
+-- 
+-- Poste qui est superieur à 80% utilisateur 1;
+INSERT INTO poste (description, date_insertion, salaire, titre, annee_experience, annee_formation, age_min, age_max, image, id_diplome, id_entreprise,cout, disponibilite)
+VALUES
+('Developpeur en avril', CURRENT_DATE, 40000, 'Developpeur avril', 3, 2, 25, 45, 'poste1.jpg', 2, 1,3, TRUE);
 
 -- Donnees pour la table competence
 INSERT INTO competence (competence, description)

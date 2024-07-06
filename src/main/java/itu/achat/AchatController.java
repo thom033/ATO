@@ -54,15 +54,16 @@ public class AchatController {
         RedirectView redirectView = new RedirectView();
 
         Double prix_point = argentRepository.getPrixPoint();
+        NombrePromotion nbr = nombrePromotionRepository.getPromotionActuel();
 
         if (utilisateur != null && quantite > 0) {
             double montantTotal;
 
             if (reduction != null && !reduction.isEmpty()) {
-                if (quantite == 5) {
-                    montantTotal = (prix_point-((prix_point * 4)/100))*5;
+                if (quantite == nbr.getNombrePromotion1()) {
+                    montantTotal = (prix_point-((prix_point * nbr.getPourcentage1())/100))*nbr.getNombrePromotion1();
                 } else {
-                    montantTotal = (prix_point-((prix_point * 8)/100))*10;
+                    montantTotal = (prix_point-((prix_point * nbr.getPourcentage2())/100))*nbr.getNombrePromotion2();
                 }
             } else {
                 montantTotal = quantite * prix_point;

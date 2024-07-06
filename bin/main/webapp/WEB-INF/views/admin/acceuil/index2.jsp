@@ -38,7 +38,7 @@
                         
                     </div>
                     <div class="img_box flex-grow-1">
-                        <img src="/public/img/products/4.jpg" class="img-fluid" alt="">
+                        <img class="img-fluid" style="object-fit: cover" src="/public/img/uploaded/p_<%= p.getIdPoste() %>.jpg" onerror="this.onerror=null; this.src='/public/img/uploaded/travail.jpg';" alt="">
                     </div>
                     <h3 class="mt-3 nicolas-nom-travail"><%= p.getPosteTitre() %></h3>
                     <div class="d-flex justify-content-between align-items-center">

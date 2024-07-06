@@ -16,13 +16,6 @@
 
 .notification-item:hover {
     transform: scale(1.02);
-    height: 10em;
-    transition: 0.2s;
-}
-
-.notification-item:hover {
-    transform: scale(1.02);
-    height: 10em;
     transition: 0.2s;
 }
 
